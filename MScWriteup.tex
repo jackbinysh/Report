@@ -1,4 +1,4 @@
-\documentclass[11pt,journal]{./IEEE_latex_class/IEEEtran}
+\documentclass[10pt,journal]{./IEEE_latex_class/IEEEtran}
 
 % In order to reference go to http://truben.no/latex/bibtex/
 
@@ -122,16 +122,40 @@ the abstract
 \label{sec: Intro}
 The process of gene expression can be briefly summarised as follows: DNA is read, and a copy of it is made, in the form of an RNA molecule (this is called \textit{transcription}). This RNA molecule (known as messenger RNA, or mRNA) makes its way to a piece of cellular machinery called the Ribosome, which reads it, and makes a protein - which protein is made depends on the DNA sequence originally read (\textit{translation}).  
 
- The path from genetic transcription to protein expression is naturally regulated in many ways \cite{MolecularBiology}. This regulation allows a cell to control protein expression, and so cell behaviour, in response to various environmental cues. The natural cell machinery in place to perform this regulation offers rich possibilities for modification, and an important goal within synthetic biology is to understand and manipulate it.
+ The path from genetic transcription to protein expression is naturally regulated in many ways \cite{MolecularBiology}. This regulation allows the cell to control protein expression, and so cell behaviour, in response to various environmental cues. The natural cell machinery in place to perform this regulation offers rich possibilities for modification, and an important goal within synthetic biology is to understand and manipulate it.
 
-As well as acting as the intermediate between DNA and protein, RNA's play direct and important roles in regulating cell behaviour \cite{Isaacs2006}
+As well as acting as the intermediate between DNA and protein, RNA molecules play direct and important roles in regulating cell behaviour \cite{Isaacs2006}. For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA's offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightforward to predict the structure and function of an RNA from its sequence using physiochemical models. Recently, this has been exploited to computationally design DNA sequences encoding synthetic sRNA's, with regulatory behaviour that can be predicted \cite{Rodrigo2013}\cite{Rodrigo2012}.
 
+This report will focus on one such system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of the system beyond the qualitative, by proposing a quantitative model of gene expression, in the form of a set of ODE's, and fitting it to available time series data to estimate the model's unknown parameters.
+
+The report is structured as follows. In section \ref{The sRNA regulatory system} we review the sRNA regulatory system we will consider. In section \ref{Results and Discussion} 
+we propose a set of ODE's to model the system, and estimate its unknown parameters by fitting to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
 
  \begin{itemize}
  \item goal of the project - emph on quantitative modelling of biological system and data, getting a quantitative model, finding its parameters.
  \item Biological background, taken from those 3 papers.
  \item give structure of the report.
  \end{itemize}
+
+\section{The sRNA regulatory system}
+\label{The sRNA regulatory system}
+
+ \begin{itemize}
+ \item  
+ \item
+
+ \end{itemize}
+ 
+ 
+
+\begin{figure}[H]
+\centering
+\includegraphics[trim = 60 630 300 30,page=2,clip = true]{pnas1203831109.pdf}
+\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{community_figure}}
+\label{community}
+\end{figure}
+
+
 
 %%%
 %NEW SECTION%
@@ -158,6 +182,7 @@ As well as acting as the intermediate between DNA and protein, RNA's play direct
  \end{itemize}
  
 \section{Conclusions and Further work}
+\label{Conclusions and Further work}
 
 
 % references section
