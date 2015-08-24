@@ -10,51 +10,50 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: ./IEEE_bibtex_class/IEEEabrv.bib
 Database file #2: library.bib
 Warning--I didn't find a database entry for "MolecularBiology"
-Warning--I didn't find a database entry for "community_figure"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 5 entries,
+You've used 6 entries,
             4024 wiz_defined-function locations,
-            1221 strings with 15532 characters,
-and the built_in function-call counts, 5059 in all, are:
-= -- 418
-> -- 119
-< -- 59
-+ -- 74
-- -- 23
-* -- 262
-:= -- 722
-add.period$ -- 10
-call.type$ -- 5
-change.case$ -- 5
-chr.to.int$ -- 138
-cite$ -- 5
-duplicate$ -- 329
-empty$ -- 343
-format.name$ -- 22
-if$ -- 1148
+            1228 strings with 15741 characters,
+and the built_in function-call counts, 6048 in all, are:
+= -- 506
+> -- 138
+< -- 72
++ -- 86
+- -- 25
+* -- 310
+:= -- 864
+add.period$ -- 12
+call.type$ -- 6
+change.case$ -- 6
+chr.to.int$ -- 168
+cite$ -- 6
+duplicate$ -- 395
+empty$ -- 410
+format.name$ -- 25
+if$ -- 1378
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 52
-newline$ -- 38
-num.names$ -- 5
-pop$ -- 106
+int.to.str$ -- 6
+missing$ -- 61
+newline$ -- 41
+num.names$ -- 6
+pop$ -- 121
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 382
+skip$ -- 461
 stack$ -- 0
-substring$ -- 343
-swap$ -- 315
-text.length$ -- 13
+substring$ -- 414
+swap$ -- 379
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
+type$ -- 6
 warning$ -- 0
-while$ -- 25
-width$ -- 6
-write$ -- 74
-(There were 2 warnings)
+while$ -- 30
+width$ -- 7
+write$ -- 85
+(There was 1 warning)

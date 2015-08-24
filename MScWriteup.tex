@@ -123,7 +123,7 @@ The process of gene expression can be briefly summarised as: DNA is read, and a 
 
  The path from genetic transcription to protein expression is naturally regulated in many ways \cite{MolecularBiology}. This regulation allows the cell to control protein expression, and so cell behaviour, in response to various environmental cues. The natural cell machinery which performs this regulation offers rich possibilities for modification, and an important goal within synthetic biology is to understand and manipulate it.
 
-As well as acting as the intermediate between DNA and protein, RNA molecules play direct and important roles in regulating cell behaviour \cite{Isaacs2006}. For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA's offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightforward to predict the structure and function of an RNA from its sequence using physiochemical models. Recently, this has been exploited to computationally design DNA sequences encoding synthetic sRNA's, with regulatory behaviour that can be predicted \cite{Rodrigo2013}\cite{Rodrigo2012}.
+As well as acting as the intermediate between DNA and protein, RNA molecules play direct and important roles in regulating cell behaviour \cite{Isaacs2006}. For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA's offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightforward to predict the structure and function of an RNA from its sequence using physiochemical models. Recently, this has been exploited to computationally design DNA sequences encoding synthetic sRNA's - small RNA's which do not code for a protein, but rather have some direct regulatory function -  with regulatory behaviour that can be predicted \cite{Rodrigo2013}\cite{Rodrigo2012}.
 
 This report will focus on one such system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of the system beyond the qualitative, by proposing a quantitative model of gene expression, in the form of a set of ODE's, and fitting it to available time series data to estimate the model's unknown parameters.
 
@@ -132,36 +132,42 @@ we propose a set of ODE's to model the system, and estimate its unknown paramete
 
 \section{The sRNA regulatory system}
 \label{The sRNA regulatory system}
-In bacteria, one mechanism by which gene expression is regulated is as follows \cite{Soper2010}: In order for a bacterial mRNA to be translated into a protein, the Ribosome must initially bind to the mRNA. This occurs at the Ribosome Binding Site (RBS) \cite{Shine1974}, a specific nucleotide sequence found on the mRNA. Translation may be self repressed by the tail of the mRNA folding over and binding across the RBS, forming a stem loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to the same region on the mRNA - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind (Fig. \ref{RBS}}). In summary, the presence of the sRNA positively regulates gene expresssion.
-\todo[inline]{define sRNA}
+In bacteria, one mechanism by which gene expression is regulated is as follows \cite{Soper2010}: In order for a bacterial mRNA to be translated into a protein, the Ribosome must initially bind to the mRNA. This occurs at the Ribosome Binding Site (RBS) \cite{Shine1974}, a specific nucleotide sequence found on the mRNA. In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the UTR), upstream of the RBS. Translation may be self repressed by this `tail' of the mRNA folding over and binding across the RBS, forming a stem loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to the same region on the mRNA - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind (Fig. \ref{RBS}). In summary, the presence of the sRNA positively regulates gene expresssion.
 
 \begin{figure}[H]
 \centering
 \includegraphics[trim = 100 170 100 400,page=10,clip = true,scale = 0.6]{Appendix.pdf}
-\caption{A mechanism by which sRNA's can regulate gene expression. Initially, the mRNA is folded over on itself in a loop, covering the RBS and blocking Ribosome binding. The sRNA binds to this mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur. }
+\caption{A mechanism by which sRNA's can regulate gene expression. Initially, the 5' UTR of the mRNA is folded over the RBS, forming a loop and blocking Ribosome binding. The sRNA binds to this mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur.Image reproduced from \cite{Rodrigo2012} }
 \label{RBS}
 \end{figure}
 
-\cite{Rodrigo2012} proposed a computational methodology to design general genetic circuits based on RNA interactions, and as a case study of the methodology chose to design a synthetic sRNA- mRNA pair capable of acting in the manner described above. The algorithm assumed an interaction scheme between the RNA's as shown in Fig. \ref{reactionscheme}. The two RNA's, originally in their own individually folded states, would initially interact via a small 'toehold' sequence of unpaired nucleotides to form an unstable transition state. This intermediate complex would then rapidly form a final, stable complex with the desired conformation. By suggesting sRNA and mRNA sequences which optimised this energy landscape, \cite{Rodrigo2012} suggested several devices which would form a stable hybrid with the RBS free, and experimentally validated their function in \textit{E. coli}.
+\cite{Rodrigo2012} proposed a computational methodology to design general genetic circuits based on RNA interactions, and as a case study of the methodology chose to design a synthetic sRNA- mRNA pair capable of acting in the manner described above. The algorithm assumed an interaction scheme between the RNA's as shown in Fig. \ref{reactionscheme}. The two RNA's, originally in their own individually folded states, would initially interact via a small 'toehold' sequence of unpaired nucleotides to form an unstable transition state. This intermediate complex would then rapidly form a final, stable complex with the desired conformation. By suggesting sRNA and mRNA sequences which optimised this energy landscape, \cite{Rodrigo2012} suggested several devices which would form a stable hybrid with the RBS free, and experimentally validated their function in \textit{E. coli}, using an mRNA which codes for GFP for experimental ease (note the algorithm only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant).
 
 \begin{figure}[H]
 \centering
 \includegraphics[trim = 60 630 300 30,page=2,clip = true]{pnas1203831109.pdf}
-\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{community_figure}}
+\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
 \label{reactionscheme}
 \end{figure}
 
 
+Further, by placing the concentrations of the sRNA and mRNA under the control of tuneable promoters, \cite{Rodrigo2012} constructs a logical AND gate from one of the proposed devices (RAJ11) \textit{in vivo} (Fig. \ref{ANDGate}). In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{LtetO-1}$ and $P_{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of the RNA's is turned off, and no protein is produced. 
+These repressors can themselves be disabled by the presence of two chemicals, aTC and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
+\todo[inline]{promoter?}
 
 
-Further, by placing the concentrations of the sRNA and mRNA under the control of tuneable promoters, \cite{Rodrigo2012} constructs a logical AND gate from one of the proposed devices (RAJ11) \textit{in vivo} (Fig. \ref{ANDGate}).
 
 \begin{figure*}[b!]
 \centering
 \includegraphics[trim = 30 600 30 0,page=4,clip = true]{pnas1203831109.pdf}
-\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{community_figure}}
+\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{LtetO-1}$ and $P_{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a 'double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
 \label{ANDGate}
-\end{figure}
+\end{figure*}
+
+
+
+
+
 
 
 
