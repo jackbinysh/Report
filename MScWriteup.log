@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  24 AUG 2015 13:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  24 AUG 2015 19:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -589,64 +589,87 @@ LaTeX Info: Redefining \addtolength on input line 77.
 )
 \c@@todonotes@numberoftodonotes=\count141
 )
+(/usr/share/texlive/texmf-dist/tex/generic/chemfig/chemfig.sty
+(/usr/share/texlive/texmf-dist/tex/generic/chemfig/chemfig.tex
+\CF@cnt@atomingroup=\count142
+\CF@cnt@groupnumber=\count143
+\CF@cnt@atomnumber=\count144
+\CF@cnt@cycle=\count145
+\CF@dim=\dimen181
+\CF@lewis@box=\box67
+\CF@box@boxa=\box68
+\CF@box@boxb=\box69
+\CF@stuff@box=\box70
+\CF@unused=\write5
+\CF@compound@cnt=\count146
+\CF@arrow@size=\dimen182
+)
+Package: chemfig 2013/11/28 v1.0h Draw molecule with an easy syntax
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
+LaTeX Info: Redefining \em on input line 420.
+LaTeX Info: The control sequence `\[' is already robust on input line 471.
+LaTeX Info: The control sequence `\]' is already robust on input line 472.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen181
-\captionmargin@=\dimen182
-\captionwidth=\dimen183
-\caption@tempdima=\dimen184
-\caption@indent=\dimen185
-\caption@parindent=\dimen186
-\caption@hangindent=\dimen187
+\captionmargin=\dimen183
+\captionmargin@=\dimen184
+\captionwidth=\dimen185
+\caption@tempdima=\dimen186
+\caption@indent=\dimen187
+\caption@parindent=\dimen188
+\caption@hangindent=\dimen189
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 )
-\c@KVtest=\count142
+\c@KVtest=\count147
 \sf@farskip=\skip66
-\sf@captopadj=\dimen188
+\sf@captopadj=\dimen190
 \sf@capskip=\skip67
 \sf@nearskip=\skip68
-\c@subfigure=\count143
-\c@subfigure@save=\count144
-\c@lofdepth=\count145
-\c@subtable=\count146
-\c@subtable@save=\count147
-\c@lotdepth=\count148
+\c@subfigure=\count148
+\c@subfigure@save=\count149
+\c@lofdepth=\count150
+\c@subtable=\count151
+\c@subtable@save=\count152
+\c@lotdepth=\count153
 \sf@top=\skip69
 \sf@bottom=\skip70
 )
 (./MScWriteup.aux)
 \openout1 = `MScWriteup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
-\scratchdimen=\dimen189
-\scratchbox=\box67
-\nofMPsegments=\count150
-\nofMParguments=\count151
+\scratchcounter=\count154
+\scratchdimen=\dimen191
+\scratchbox=\box71
+\nofMPsegments=\count155
+\nofMParguments=\count156
 \everyMPshowfont=\toks35
-\MPscratchCnt=\count152
-\MPscratchDim=\dimen190
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
+\MPscratchCnt=\count157
+\MPscratchDim=\dimen192
+\MPnumerator=\count158
+\makeMPintoPDFobject=\count159
 \everyMPtoPDFconversion=\toks36
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -701,93 +724,104 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 45.
+(lastpage)             ! on input line 44.
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 45.
+LaTeX Info: Redefining \selectfont on input line 44.
  ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 
-LaTeX Warning: Citation `MolecularBiology' on page 1 undefined on input line 12
-4.
+LaTeX Warning: Citation `MolecularBiology' on page 1 undefined on input line 13
+3.
 
-<./Figures/Appendix.pdf, id=4, page=10, 597.52231pt x 845.0471pt>
+<./Figures/pnas1203831109.pdf, id=4, page=4, 587.15062pt x 785.80779pt>
+File: ./Figures/pnas1203831109.pdf Graphic file (type pdf)
+
+<use ./Figures/pnas1203831109.pdf, page 4>
+Package pdftex.def Info: ./Figures/pnas1203831109.pdf, page4 used on input line
+ 151.
+(pdftex.def)             Requested size: 526.9242pt x 183.55588pt.
+
+Overfull \hbox (2.82445pt too wide) in paragraph at lines 151--152
+ [][] 
+ []
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 152.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 152.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<./Figures/Appendix.pdf, id=6, page=10, 597.52231pt x 845.0471pt>
 File: ./Figures/Appendix.pdf Graphic file (type pdf)
 
 <use ./Figures/Appendix.pdf, page 10>
-Package pdftex.def Info: ./Figures/Appendix.pdf, page10 used on input line 139.
+Package pdftex.def Info: ./Figures/Appendix.pdf, page10 used on input line 158.
 
 (pdftex.def)             Requested size: 238.06493pt x 163.74619pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./Figures/Appendix.pdf>]
-<./Figures/pnas1203831109.pdf, id=284, page=2, 587.15062pt x 785.80779pt>
+<./Figures/pnas1203831109.pdf, id=286, page=2, 587.15062pt x 785.80779pt>
 File: ./Figures/pnas1203831109.pdf Graphic file (type pdf)
 
 <use ./Figures/pnas1203831109.pdf, page 2>
 Package pdftex.def Info: ./Figures/pnas1203831109.pdf, page2 used on input line
- 148.
+ 167.
 (pdftex.def)             Requested size: 225.7992pt x 123.33089pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 154.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 154.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<./Figures/pnas1203831109.pdf, id=286, page=4, 587.15062pt x 785.80779pt>
-File: ./Figures/pnas1203831109.pdf Graphic file (type pdf)
+LaTeX Warning: Citation `UriAlon' on page 2 undefined on input line 199.
 
-<use ./Figures/pnas1203831109.pdf, page 4>
-Package pdftex.def Info: ./Figures/pnas1203831109.pdf, page4 used on input line
- 162.
-(pdftex.def)             Requested size: 526.9242pt x 183.55588pt.
 
-Overfull \hbox (2.82445pt too wide) in paragraph at lines 162--163
- [][] 
- []
+Underfull \vbox (badness 1688) has occurred while \output is active []
+
+ [2 <./Figures/pnas1203831109.pdf> <./Figures/pnas1203831109.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 (./MScWriteup.bbl) 
 AED: lastpage setting LastPage
-[2 <./Figures/pnas1203831109.pdf>] [3 <./Figures/pnas1203831109.pdf>]
-(./MScWriteup.aux)
+[3] (./MScWriteup.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13662 strings out of 495028
- 248657 string characters out of 6181497
- 388672 words of memory out of 5000000
- 16562 multiletter control sequences out of 15000+600000
- 42827 words of font info for 87 fonts, out of 8000000 for 9000
+ 14143 strings out of 495028
+ 256178 string characters out of 6181497
+ 422969 words of memory out of 5000000
+ 17032 multiletter control sequences out of 15000+600000
+ 45629 words of font info for 90 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
- 63i,8n,92p,1083b,573s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,22n,92p,1083b,648s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on MScWriteup.pdf (3 pages, 1647996 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on MScWriteup.pdf (3 pages, 1694538 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
+ 452 PDF objects out of 1000 (max. 8388607)
+ 274 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

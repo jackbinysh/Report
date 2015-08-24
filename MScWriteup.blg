@@ -10,6 +10,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: ./IEEE_bibtex_class/IEEEabrv.bib
 Database file #2: library.bib
 Warning--I didn't find a database entry for "MolecularBiology"
+Warning--I didn't find a database entry for "UriAlon"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -17,7 +18,7 @@ Warning--I didn't find a database entry for "MolecularBiology"
 Done.
 You've used 6 entries,
             4024 wiz_defined-function locations,
-            1228 strings with 15741 characters,
+            1230 strings with 15755 characters,
 and the built_in function-call counts, 6048 in all, are:
 = -- 506
 > -- 138
@@ -56,4 +57,4 @@ warning$ -- 0
 while$ -- 30
 width$ -- 7
 write$ -- 85
-(There was 1 warning)
+(There were 2 warnings)
