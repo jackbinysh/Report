@@ -136,7 +136,7 @@ As well as acting as the intermediate between DNA and protein, RNA molecules pla
 
 This report will focus on one such system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of the system beyond the qualitative, by proposing a quantitative model of gene expression, in the form of a set of ODE's, and fitting it to available time series data to estimate the model's unknown parameters.
 
-The report is structured as follows. In the remainder of this section we review the sRNA regulatory system we will consider. In section \ref{Results and Discussion} we propose a set of ODE's to model the system, and estimate its unknown parameters by fitting to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
+The report is structured as follows. In the remainder of this section we review the sRNA regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on this system. In section \ref{Results and Discussion} we propose a set of ODE's to model the system, and estimate its unknown parameters by fitting to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
 
 
 %NEW SUBSECTION%
@@ -149,7 +149,7 @@ In bacteria, one mechanism by which gene expression is regulated is as follows \
 \begin{figure*}[t]
 \centering
 \includegraphics[trim = 30 600 30 0,page=4,clip = true]{pnas1203831109.pdf}
-\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{LtetO-1}$ and $P_{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a 'double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
+\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a 'double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
 \label{ANDGate}
 \end{figure*}
 
@@ -170,12 +170,25 @@ In bacteria, one mechanism by which gene expression is regulated is as follows \
 \end{figure}
 
 
-Further, by placing the concentrations of the sRNA and mRNA under the control of tuneable promoters, \cite{Rodrigo2012} constructs a logical AND gate from one of the proposed devices (RAJ11) \textit{in vivo} (Fig. \ref{ANDGate}). In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{LtetO-1}$ and $P_{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of the RNA's is turned off, and no protein is produced. 
+Further, by placing the concentrations of the sRNA and mRNA under the control of tuneable promoters, \cite{Rodrigo2012} constructs a logical AND gate from one of the proposed devices (RAJ11) \textit{in vivo} (Fig. \ref{ANDGate}). In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of the RNA's is turned off, and no protein is produced. 
 These repressors can themselves be disabled by the presence of two chemicals, aTC and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
 \todo[inline]{promoter?}
 
 Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA device is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
  
+\subsection{Single Cell Fluorescence Data}
+
+Recent experiments have used timelapse microscopy to observe bacteria as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces each cell, allowing timeseries of individual cell fluorescences to be recorded.
+
+\begin{figure}[H]
+\centering
+\includegraphics[trim = 0 0 0  85 ,page=17 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
+\centering
+\includegraphics[trim = 0 0 0  90 ,page=18 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
+\caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them from the media inlet. This inlet also allows the introduction of aTc IPTG. Software then traces these cells, allowing fluorescence timeseries to be built.  Image reproduced from \cite{Jaramillo}.}
+\label{reactionscheme}
+\end{figure}
+
 
 
 %%%
@@ -192,11 +205,10 @@ Although a qualitative understanding of this system exists \cite{Rodrigo2012}, i
 \section{Results and Discussion}
 \label{Results and Discussion}
 
-
 %NEW SUBSECTION%
 
 \subsection{Model Derivation}
-We propose a simple model, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}, to describe the system. Tables \ref{ModelParameters},\ref{StateVariables} give complete descriptions of parameter and state variable meanings.
+We propose a simple model, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}, to describe the system. Tables \ref{ModelParameters}, \ref{StateVariables} give complete descriptions of the parameters and state variables.
  
 \begin{align}
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \label{eq:s}\\
@@ -208,20 +220,52 @@ We propose a simple model, consisting of a set of ODE's with mass action kinetic
 z &= z_{0} +\frac{g}{\theta} \label{eq:z}
 \end{align}
   Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs.\ref{eq:s} - \ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_{on}$ and $k_{off}$.
-\begin{align*}
-sRNA \chemsign+ mRNA\chemrel[$k_{on}$][$k_{off}$]{<>} sRNA:mRNA_{unstable} 
-\end{align*}\\
-\noindent
-after which the stabilization is modelled as an irreversible reaction with rate $k_{hyb}$. 
- \begin{align*}
-sRNA:mRNA_{unstable} \chemrel[$k_{hyb}$]{->} sRNA:mRNA_{stable} 
-\end{align*}
   
+\begin{align*}
+\mathrm{
+sRNA \chemsign+ mRNA\chemrel[$k_{on}$][$k_{off}$]{<>} sRNA:mRNA\textsubscript{unstable}
+}
+\end{align*}
+after which the stabilization is modelled as an irreversible reaction with rate $k_{hyb}$. 
+
+\begin{align*}
+\mathrm{
+sRNA:mRNA\textsubscript{unstable} \chemrel[$k_{hyb}$]{->} sRNA:mRNA\textsubscript{stable} 
+}
+\end{align*}
+
  In addition, these complexes are given degradation rates, $\delta_{s}$, $\delta_{m}$, $\delta_{sm}$, $\delta_{c}$, and dilution of chemical concentrations due to cell growth are modelled with a dilution rate $\mu$. 
  
- Control of the system by aTc and IPTG are modelled by $y(t)$ and $x(t)$ in eqs.\ref{eq:s}, \ref{eq:m}. $y(t)$ models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. $x(t)$ behaves analogously for the mRNA.
+ Control of the system by aTc and IPTG is modelled by $y(t)$ and $x(t)$ in eqs.\ref{eq:s}-\ref{eq:m}. $y(t)$ models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. Thus the forcing may vary between 
+ $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$, where $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter. When engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter and section of DNA coding for sRNA may be placed in the plasmid DNA - this is modelled by the copy number, $N$. Identical considerations hold for $x(t)$ and IPTG concentrations.
+
+We explicitly model translation as a simple one step process in eqs. \ref{eq:p}-\ref{eq:z}. There is a small rate of translation of the self repressed mRNA \cite{Rodrigo2012}, which is modelled at rate $\beta$, and a larger one for translation of the stable complex, $\beta f_s$. Here $f_s$ represents the fractional change in translation rate between the repressed mRNA and the unrepressed complex.
 
 
+\begin{align*}
+\mathrm{
+sRNA:mRNA\textsubscript{Stable} \chemrel[$\beta f_{s}$]{->} GFP\textsubscript{Immature}
+}
+\end{align*}
+
+
+\begin{align*}
+\mathrm{
+mRNA \chemrel[$\beta$ ]{->} GFP\textsubscript{Immature}
+}
+\end{align*}
+
+Initially, the translated GFP is in an immature state, and will not fluoresce. To account for this, we include a maturation rate, $\gamma$
+
+\begin{align*}
+\mathrm{
+GFP\textsubscript{Immature}  \chemrel[$\gamma$]{->} GFP\textsubscript{Mature}
+}
+\end{align*}
+
+Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$, assumed identical for the mature and immature species, with the dilution rate $\mu$ shared by all species.
+\todo[inline]{para about clpX}
+Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence.
 
 
 \begin{table}[h]
@@ -229,49 +273,49 @@ sRNA:mRNA_{unstable} \chemrel[$k_{hyb}$]{->} sRNA:mRNA_{stable}
 \caption{Model Parameters}
 \label{ModelParameters}
 \centering
-\begin{tabular}{| l | l | l |}
-\hline Parameter &  Units & Definition  \\
-\hline \hline N & & plasmid copy number  \\
-\hline $z_{0}$ &  AFU & baseline fluorescence  \\
-\hline $\alpha_{L}$ & nM/min & Max translation rate of Pllac01 promoter  \\
-\hline $\alpha_{T}$  &  nM/min  & Max translation rate of Pltet01 promoter \\
-\hline $f_{L}$ &  & Max llacI fold  \\
-\hline $f_{T}$ &  & lltet fold\\
-\hline $\delta_{g}$  & /min  & gfp degradation rate  \\
-\hline $\gamma$ &  /min & gfp maturation rate  \\
+\begin{tabular}{| l | l | p{0.7\linewidth} |}
+\hline \textbf{Parameter} &  \textbf{Units} & \textbf{Definition}  \\
+\hline \hline N & & Number of copies of promoter existing on plasmid DNA  \\
+\hline $z_{0}$ &  AFU & Baseline experimental fluorescence  \\
+\hline $\alpha_{L}$ & nM/min & Maximal transcription rate of $P_\mathrm{LlacO-1}$ promoter\\
+\hline $\alpha_{T}$  &  nM/min  & Maximal transcription rate of $P_{\mathrm{LtetO-1}}$ promoter \\
+\hline $f_{L}$ &  & Unitless ratio between repressed and unrepressed $P_\mathrm{LlacO-1}$ transcription rate   \\ 
+\hline $f_{T}$ &  & Unitless ratio between repressed and unrepressed $P_{\mathrm{LtetO-1}}$ transcription rate  \\
+\hline $\delta_{g}$  & /min  & GFP degradation rate  \\
+\hline $\gamma$ &  /min & GFP maturation rate  \\
 \hline $v_{z}$ & nM/min & degradation constant of clpx  \\
 \hline $K_{z}$   &   nM/min & Dissociation constant of clpx  \\
-\hline $\theta$  &   nM/AFU & ratio between gfp amount and fluorensence  \\
-\hline $\mu$ &  /min & dilution rate  \\
-\hline $\delta_{m}$ &  /min & mrna degredation rate  \\
-\hline $\delta_{s}$ &  /min & srna degredation rate  \\
-\hline $\delta_{sm}$ &  /min & unstable s:mrna degredation rate  \\
-\hline $\delta_{c}$ &  /min & stable s;m degredation rate  \\
-\hline $k_{on}$ &   /min & s+m $\rightarrow$ s:m rate \\
-\hline $k_{off}$ &  /min & s+m $\leftarrow$ s:m rate \\
-\hline $k_{hyb}$ &  /min & s:m $\rightarrow$ c rate \\
-\hline $\beta$ &   /min & basal translation rate \\
-\hline $f_{s}$ & & srna repression fold \\
+\hline $\theta$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence  \\
+\hline $\mu$ &  /min & Dilution rate  \\
+\hline $\delta_{m}$ &  /min & mRNA degredation rate  \\
+\hline $\delta_{s}$ &  /min & sRNA degredation rate  \\
+\hline $\delta_{sm}$ &  /min & Unstable sRNA:mRNA degradation rate  \\
+\hline $\delta_{c}$ &  /min & Stable sRNA:mRNA degradation rate  \\
+\hline $k_{on}$ &   /min & sRNA:mRNA binding rate \\
+\hline $k_{off}$ &  /min & sRNA:mRNA unbinding rate \\
+\hline $k_{hyb}$ &  /min & sRNA:mRNA hybridization rate \\
+\hline $\beta$ &   /min & Baseline translation rate of repressed mRNA \\
+\hline $f_{s}$ & & Ratio of repressed mRNA to unrepressed complex translation rate. \\
 \hline
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 \renewcommand{\arraystretch}{1.3}
 \caption{State Variables}
 \label{StateVariables}
 \centering
-\begin{tabular}{| l | l |}
-\hline State variable &  Definition  \\
-\hline\hline $s$ &  Definition  \\
-\hline $m$ &  Definition  \\
-\hline $s:m$ &  Definition  \\
-\hline $c$ &  Definition  \\
-\hline $p$ &  Definition  \\
-\hline $g$ &  Definition  \\
-\hline $z$ &  Definition  \\
-\hline $y(t)$ &  Definition  \\
-\hline $x(t)$ &  Definition  \\
+\begin{tabular}{| l | l | l|}
+\hline \textbf{State variable} & Units &  \textbf{Definition}  \\
+\hline\hline $s$  & nM & sRNA concentration \\
+\hline $m$ & nM & mRNA concentration  \\
+\hline $s:m$ &  nM & Unstable sRNA:mRNA complex concentration  \\
+\hline $c$ &  nM & Stable sRNA:mRNA complex concentration  \\
+\hline $p$ & nM & Immature GFP concentration  \\
+\hline $g$ &  nm & Mature GFP concentration  \\
+\hline $z$ & AFU & Observed fluorescence  \\
+\hline $y(t)$ & & Unitless aTc forcing function  \\
+\hline $x(t)$ &  & Unitless IPTG forcing function  \\
 \hline
 \end{tabular}
 \end{table}

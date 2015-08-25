@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  24 AUG 2015 19:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  25 AUG 2015 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,7 +642,11 @@ Package caption Info: Unknown document class (or package),
 \sf@top=\skip69
 \sf@bottom=\skip70
 )
-(./MScWriteup.aux)
+(./MScWriteup.aux
+
+LaTeX Warning: Label `reactionscheme' multiply defined.
+
+)
 \openout1 = `MScWriteup.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
@@ -657,8 +661,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count154
 \scratchdimen=\dimen191
@@ -777,51 +780,78 @@ Package pdftex.def Info: ./Figures/pnas1203831109.pdf, page2 used on input line
  167.
 (pdftex.def)             Requested size: 225.7992pt x 123.33089pt.
 
+<./Figures/WCPM_Warwick-talk45-220115.pdf, id=288, page=17, 845.1575pt x 597.23
+125pt>
+File: ./Figures/WCPM_Warwick-talk45-220115.pdf Graphic file (type pdf)
+ <use ./Figures/WCPM_Warwick-talk45-220115.pdf, page 17>
+Package pdftex.def Info: ./Figures/WCPM_Warwick-talk45-220115.pdf, page17 used 
+on input line 185.
+(pdftex.def)             Requested size: 253.54921pt x 153.57486pt.
 
-LaTeX Warning: Citation `UriAlon' on page 2 undefined on input line 199.
-
-
-Underfull \vbox (badness 1688) has occurred while \output is active []
-
+<./Figures/WCPM_Warwick-talk45-220115.pdf, id=290, page=18, 845.1575pt x 597.23
+125pt>
+File: ./Figures/WCPM_Warwick-talk45-220115.pdf Graphic file (type pdf)
+ <use ./Figures/WCPM_Warwick-talk45-220115.pdf, page 18>
+Package pdftex.def Info: ./Figures/WCPM_Warwick-talk45-220115.pdf, page18 used 
+on input line 187.
+(pdftex.def)             Requested size: 253.54921pt x 152.06923pt.
  [2 <./Figures/pnas1203831109.pdf> <./Figures/pnas1203831109.pdf>]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `UriAlon' on page 3 undefined on input line 211.
 
-(./MScWriteup.bbl) 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <./Figures/WCPM_Warwick-talk45-220115.pdf> <./Figures/WCPM_Warwick-talk45-2
+20115.pdf>]
+Overfull \hbox (17.55379pt too wide) in paragraph at lines 276--301
+ [][] 
+ []
+
+(./MScWriteup.bbl
+Underfull \hbox (badness 2293) in paragraph at lines 59--63
+[]\OT1/ptm/m/n/8 A. Jaramillo, ``Predic-itve Mod-elling of Ri-boreg-u-la-
+ []
+
+) 
 AED: lastpage setting LastPage
-[3] (./MScWriteup.aux)
+[4] (./MScWriteup.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 14143 strings out of 495028
- 256178 string characters out of 6181497
- 422969 words of memory out of 5000000
- 17032 multiletter control sequences out of 15000+600000
- 45629 words of font info for 90 fonts, out of 8000000 for 9000
+ 14156 strings out of 495028
+ 256626 string characters out of 6181497
+ 420038 words of memory out of 5000000
+ 17043 multiletter control sequences out of 15000+600000
+ 47243 words of font info for 92 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
- 63i,22n,92p,1083b,648s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,23n,92p,1083b,659s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
-utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MScWriteup.pdf (3 pages, 1694538 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on MScWriteup.pdf (4 pages, 2341736 bytes).
 PDF statistics:
- 452 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
+ 531 PDF objects out of 1000 (max. 8388607)
+ 325 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
