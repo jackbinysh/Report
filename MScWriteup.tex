@@ -178,7 +178,7 @@ Although a qualitative understanding of this system exists \cite{Rodrigo2012}, i
  
 \subsection{Single Cell Fluorescence Data}
 
-Recent experiments have used timelapse microscopy to observe bacteria as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces each cell, allowing timeseries of individual cell fluorescences to be recorded.
+Recent experiments have used timelapse microscopy to observe bacteria as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing timeseries of individual cell fluorescences to be recorded.
 
 \begin{figure}[H]
 \centering
@@ -273,7 +273,7 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 \caption{Model Parameters}
 \label{ModelParameters}
 \centering
-\begin{tabular}{| l | l | p{0.7\linewidth} |}
+\begin{tabular}{| l | l | p{0.6\linewidth} |}
 \hline \textbf{Parameter} &  \textbf{Units} & \textbf{Definition}  \\
 \hline \hline N & & Number of copies of promoter existing on plasmid DNA  \\
 \hline $z_{0}$ &  AFU & Baseline experimental fluorescence  \\
@@ -324,11 +324,21 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 %NEW SUBSECTION%
 
 \subsection{Parameter Estimation}
- \begin{itemize}
-\item basically the whole project.
-\cite{Isaacs2006}
- \end{itemize}
- 
+Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data. Suppose we have some ODE model of our system
+
+\begin{align}
+\frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t)
+\end{align}
+where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time (representing the fact that the model may have some explicit time dependence). The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. An error between the model prediction and an experimental time series is defined as
+\begin{align}
+J(\boldsymbol{\theta}) = \sum_{i =1}^{N} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
+\end{align}
+where the experimental timeseries, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is evaluated at timepoints $t_{i}$, $i = 1 \hdots N$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a timeseries from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
+\begin{align}
+\min_{\boldsymbol{\theta}} \sum_{i =1}^{N} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
+\end{align}
+The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will 
+
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
