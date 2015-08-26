@@ -41,6 +41,7 @@
 
 
 
+
 \begin{document}
 
 %
@@ -189,6 +190,8 @@ Recent experiments have used timelapse microscopy to observe bacteria as they ar
 \label{reactionscheme}
 \end{figure}
 
+The data we will consider consists of three sets of individual cell timeseries, labelled \textit{13\_9}, \textit{14\_7} and \textit{14\_9}. They correspond to three different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were changed with varying periods. Section \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
+
 
 
 %%%
@@ -217,7 +220,7 @@ We propose a simple model, consisting of a set of ODE's with mass action kinetic
 \frac{dc}{dt} & = k_{\mathrm{hyb}}s:m  -(\mu + \delta_{c})c  \label{eq:c} \\
 \frac{dp}{dt} & = \beta m +f_{s}\beta c -(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}  \label{eq:p} \\
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \label{eq:g} \\
-z &= z_{0} +\frac{g}{\theta} \label{eq:z}
+z &= z_{0} +\frac{g}{\Theta} \label{eq:z}
 \end{align}
   Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs.\ref{eq:s} - \ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_{on}$ and $k_{off}$.
   
@@ -270,7 +273,7 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 
 \begin{table}[h]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model Parameters}
+\caption{Model Parameters (those to be estimated shown in bold)}
 \label{ModelParameters}
 \centering
 \begin{tabular}{| l | l | p{0.6\linewidth} |}
@@ -285,17 +288,17 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 \hline $\gamma$ &  /min & GFP maturation rate  \\
 \hline $v_{z}$ & nM/min & degradation constant of clpx  \\
 \hline $K_{z}$   &   nM/min & Dissociation constant of clpx  \\
-\hline $\theta$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence  \\
-\hline $\mu$ &  /min & Dilution rate  \\
-\hline $\delta_{m}$ &  /min & mRNA degredation rate  \\
-\hline $\delta_{s}$ &  /min & sRNA degredation rate  \\
+\hline $\boldsymbol{\Theta}$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence  \\
+\hline $\boldsymbol{\mu}$ &  /min & Dilution rate  \\
+\hline $\boldsymbol{\delta_{m}}$ &  /min & mRNA degredation rate  \\
+\hline $\boldsymbol{\delta_{s}}$ &  /min & sRNA degredation rate  \\
 \hline $\delta_{sm}$ &  /min & Unstable sRNA:mRNA degradation rate  \\
 \hline $\delta_{c}$ &  /min & Stable sRNA:mRNA degradation rate  \\
-\hline $k_{on}$ &   /min & sRNA:mRNA binding rate \\
-\hline $k_{off}$ &  /min & sRNA:mRNA unbinding rate \\
-\hline $k_{hyb}$ &  /min & sRNA:mRNA hybridization rate \\
-\hline $\beta$ &   /min & Baseline translation rate of repressed mRNA \\
-\hline $f_{s}$ & & Ratio of repressed mRNA to unrepressed complex translation rate. \\
+\hline $\boldsymbol{k_{on}}$ &   /min & sRNA:mRNA binding rate \\
+\hline $\boldsymbol{k_{off}}$ &  /min & sRNA:mRNA unbinding rate \\
+\hline $\boldsymbol{k_{hyb}}$ &  /min & sRNA:mRNA hybridization rate \\
+\hline $\boldsymbol{\beta}$ &   /min & Baseline translation rate of repressed mRNA \\
+\hline $\boldsymbol{f_{s}}$ & & Ratio of repressed mRNA to unrepressed complex translation rate. \\
 \hline
 \end{tabular}
 \end{table}
@@ -324,7 +327,7 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 %NEW SUBSECTION%
 
 \subsection{Parameter Estimation}
-Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data. Suppose we have some ODE model of our system
+Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data \cite{Brewer2008,Algorithms2003, Hu2015}. Suppose we have some ODE model of our system
 
 \begin{align}
 \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t)
@@ -337,7 +340,11 @@ where the experimental timeseries, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is evaluat
 \begin{align}
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{N} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
 \end{align}
-The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will 
+The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. 
+
+In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal.
+
+ After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}). We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}
 
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
@@ -346,6 +353,71 @@ The next step is performing the minimisation. In general, the landscape defined 
 % references section
 \bibliographystyle{./IEEE_bibtex_class/IEEEtran}
 \bibliography{./IEEE_bibtex_class/IEEEabrv,library}
+
+\appendix
+
+\section{Initial Experimental Data}
+\label{Initial Experimental Data}
+
+\begin{figure}[h]
+\centering
+\includegraphics[trim = 0 320 0 300 , scale = 0.4, clip = true]{13_9}
+\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
+\label{reactionscheme}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[trim = 0 300 0 250 , scale = 0.4, clip = true]{14_7}
+\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
+\label{reactionscheme}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[trim = 0 200 0 270 , scale = 0.4, clip = true]{14_9}
+\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
+\label{reactionscheme}
+\end{figure}
+
+
+
+\section{Parameter literature review}
+\label{Parameter literature review}
+
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\caption{Model Parameters}
+\centering
+\begin{tabular}{| l | l | p{0.3\linewidth} | p{0.1\linewidth} | p{0.05\linewidth}}
+\hline \textbf{Parameter} &  \textbf{Value} & \textbf{Definition} & \textbf{Reference} & \textbf{Initial Bounds}  \\
+\hline \hline N & 300 & Number of copies of promoter existing on plasmid DNA & Experimentally set  \\
+\hline $z_{0}$ &   9 AFU & Baseline experimental fluorescence & Experimentally determined  \\
+\hline $\alpha_{L}$ & 11 nM/min & Maximal transcription rate of $P_\mathrm{LlacO-1}$ promoter & \cite{Lutz1997}\\
+\hline $\alpha_{T}$  & 11 nM/min  & Maximal transcription rate of $P_{\mathrm{LtetO-1}}$ promoter  & \cite{Lutz1997} \\
+\hline $f_{L}$ & 620 & Unitless ratio between repressed and unrepressed $P_\mathrm{LlacO-1}$ transcription rate  & \cite{Lutz1997}  \\ 
+\hline $f_{T}$ & 2535 & Unitless ratio between repressed and unrepressed $P_{\mathrm{LtetO-1}}$ transcription rate   & \cite{Lutz1997} \\
+\hline $\delta_{g}$  & 0.0005 /min  & GFP degradation rate & \cite{Andersen1998} \\
+\hline $\gamma$ &  0.132 /min & GFP maturation rate & \cite{Iizuka2011}  \\
+\hline $v_{z}$ & 100 nM/min & degradation constant of clpx & \cite{Hersch2004} \\
+\hline $K_{z}$   &   75 nM/min & Dissociation constant of clpx & \cite{Hersch2004} \\
+\hline $\boldsymbol{\Theta}$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence & & 300 - 1000  \\
+\hline $\boldsymbol{\mu}$ &  /min & Dilution rate & & 0.001-0.05\\
+\hline $\boldsymbol{\delta_{m}}$ &  /min & mRNA degredation rate & & 1 - $10^5$ \\
+\hline $\boldsymbol{\delta_{s}}$ &  /min & sRNA degredation rate & & 1 - $10^3$ \\
+\hline $\delta_{sm}$ &  /min & Unstable sRNA:mRNA degradation rate & &  Set to $\delta_m$\\
+\hline $\delta_{c}$ &  /min & Stable sRNA:mRNA degradation rate & & Set to $\delta_m$ \\
+\hline $\boldsymbol{k_{on}}$ &   /min & sRNA:mRNA binding rate & & 100 - $10^7$\\
+\hline $\boldsymbol{k_{off}}$ &  /min & sRNA:mRNA unbinding rate & & 1 -$10^8$\\
+\hline $\boldsymbol{k_{hyb}}$ &  /min & sRNA:mRNA hybridization rate & & 1 - $10^4$ \\
+\hline $\boldsymbol{\beta}$ &   /min & Baseline translation rate of repressed mRNA & & 0.0001 - 10\\
+\hline $\boldsymbol{f_{s}}$ & & Ratio of repressed mRNA to unrepressed complex translation rate. & & 0.1 - $10^4$\\
+\hline
+\end{tabular}
+\end{table}
 
 
 \end{document}
