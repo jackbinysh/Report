@@ -36,8 +36,8 @@
 
 %  OTHER PACKAGES
 
-\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e}
-\usepackage[caption=false]{subfig}
+\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, caption, subcaption}
+
 
 
 
@@ -179,7 +179,9 @@ Although a qualitative understanding of this system exists \cite{Rodrigo2012}, i
  
 \subsection{Single Cell Fluorescence Data}
 
-Recent experiments have used timelapse microscopy to observe bacteria as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing timeseries of individual cell fluorescences to be recorded.
+Recent experiments have used timelapse microscopy to observe the fluoresence of bacteria which contain the above device, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
+
+The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing timeseries of individual cell fluorescences to be recorded.
 
 \begin{figure}[H]
 \centering
@@ -190,7 +192,7 @@ Recent experiments have used timelapse microscopy to observe bacteria as they ar
 \label{reactionscheme}
 \end{figure}
 
-The data we will consider consists of three sets of individual cell timeseries, labelled \textit{13\_9}, \textit{14\_7} and \textit{14\_9}. They correspond to three different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were changed with varying periods. Section \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
+The data we will consider consists of three sets of individual cell timeseries, labelled \textit{13\_9}, \textit{14\_7} and \textit{14\_9}. They correspond to three different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Section \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
 
 
 
@@ -344,66 +346,144 @@ The next step is performing the minimisation. In general, the landscape defined 
 
 In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal.
 
- After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}). We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}
+ After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}). We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}, by choosing 200 points, uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Fig. \ref{InitialResults} demonstrates that the model is capable of quantitatively capturing the data - however, the fitting also suggests that some parameters are not tightly constrained, taking values right across the initial bounding range specified. 
+ 
+ \begin{itemize}
+ \item discuss estimatbility criteria- uniqeuess and sensitivity
+ \item put in some sensitivity analysis results
+ \item discuss model fixed points
+ \item discuss systematic paramater shift.
+ \end{itemize}
+ 
+ 
+\begin{figure*}
+    \begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.35, clip = true, trim = 80 0 80 0]{13_9_hist.eps}
+        \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{13\_9} dataset. }
+    \end{subfigure}
+    \begin{subfigure}[c]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.38,clip = true, trim = 60 12 80 0]{14_7_hist.eps}
+        \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{14\_7} dataset. }
+    \end{subfigure}
+
+        \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+    \includegraphics[scale = 0.25, clip = true, trim = 100 0 100 0]{13_9_heatmap.eps}
+        \caption{Correlation matrix of estimated parameter sets, from the  \textit{13\_9} dataset. }
+    \end{subfigure}
+    \begin{subfigure}[c]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.25, clip = true, trim = 80 0 80 0]{14_7_heatmap.eps}
+        \caption{Correlation matrix of estimated parameter sets, from the  \textit{14\_7} dataset.}
+    \end{subfigure}
+    
+    \begin{subfigure}[c]{0.49\textwidth}
+    \centering
+    \includegraphics[scale = 0.37]{13_9_bestPlot}
+        \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{13\_9} dataset. A}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.37]{14_7_bestPlot}
+        \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{14\_7} dataset.}
+    \end{subfigure}
+    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response}
+\label{InitialResults}
+\end{figure*} 
+ 
+
+
+\clearpage
+ 
 
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
+\todo[inline]{some stuff}
 
 % references section
 \bibliographystyle{./IEEE_bibtex_class/IEEEtran}
 \bibliography{./IEEE_bibtex_class/IEEEabrv,library}
 
-\appendix
+\clearpage
+\onecolumn
+
+\appendices
+\renewcommand\thefigure{\thesection.\arabic{figure}}  
+
 
 \section{Initial Experimental Data}
 \label{Initial Experimental Data}
+\setcounter{figure}{0}    
 
 \begin{figure}[h]
 \centering
-\includegraphics[trim = 0 320 0 300 , scale = 0.4, clip = true]{13_9}
-\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
+\includegraphics[trim = 0 310 0 300 , scale = 0.5, clip = true]{13_9}
+\caption{The \textit{13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
+\label{reactionscheme}
+\end{figure}
+
+%trim=l b r t
+\begin{figure}[h]
+\centering
+\includegraphics[trim = 0 270 0 360 , scale = 0.5, clip = true]{14_7}
+\caption{The \textit{14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
 \label{reactionscheme}
 \end{figure}
 
 
 \begin{figure}[h]
 \centering
-\includegraphics[trim = 0 300 0 250 , scale = 0.4, clip = true]{14_7}
-\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
+\includegraphics[trim = 0 330 0 270 , scale = 0.5, clip = true]{14_9}
+\caption{The \textit{14\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
 \label{reactionscheme}
 \end{figure}
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[trim = 0 200 0 270 , scale = 0.4, clip = true]{14_9}
-\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
-\label{reactionscheme}
-\end{figure}
+\section{Histogram of Initial Fit Error values}
+\label{Initial fit Error}
+\setcounter{figure}{0}    
 
+\begin{figure}[H]
+    \begin{subfigure}[c]{\textwidth}
+    \centering
+        \includegraphics[scale = 0.5]{13_9_f_hist}
+        \caption{Error values found from 200 initial parameter estimates, \textit{13\_9 dataset}.}
+    \end{subfigure}
+    
+    \begin{subfigure}[c]{\textwidth}
+    \centering
+        \includegraphics[scale = 0.5]{14_7_f_hist}
+        \caption{Error values found from 200 initial parameter estimates, \textit{14\_7 dataset}}
+    \end{subfigure}
+    \caption{}
+\label{hist_f}
+\end{figure} 
 
 
 \section{Parameter literature review}
 \label{Parameter literature review}
+\setcounter{figure}{0}    
 
 
-\begin{table}[h]
+\begin{table}[H]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model Parameters}
+\caption{Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold}
 \centering
-\begin{tabular}{| l | l | p{0.3\linewidth} | p{0.1\linewidth} | p{0.05\linewidth}}
+\begin{tabular}{| l | l | p{0.3\linewidth} | p{0.1\linewidth} | p{0.1\linewidth} |}
 \hline \textbf{Parameter} &  \textbf{Value} & \textbf{Definition} & \textbf{Reference} & \textbf{Initial Bounds}  \\
-\hline \hline N & 300 & Number of copies of promoter existing on plasmid DNA & Experimentally set  \\
-\hline $z_{0}$ &   9 AFU & Baseline experimental fluorescence & Experimentally determined  \\
-\hline $\alpha_{L}$ & 11 nM/min & Maximal transcription rate of $P_\mathrm{LlacO-1}$ promoter & \cite{Lutz1997}\\
-\hline $\alpha_{T}$  & 11 nM/min  & Maximal transcription rate of $P_{\mathrm{LtetO-1}}$ promoter  & \cite{Lutz1997} \\
-\hline $f_{L}$ & 620 & Unitless ratio between repressed and unrepressed $P_\mathrm{LlacO-1}$ transcription rate  & \cite{Lutz1997}  \\ 
-\hline $f_{T}$ & 2535 & Unitless ratio between repressed and unrepressed $P_{\mathrm{LtetO-1}}$ transcription rate   & \cite{Lutz1997} \\
-\hline $\delta_{g}$  & 0.0005 /min  & GFP degradation rate & \cite{Andersen1998} \\
-\hline $\gamma$ &  0.132 /min & GFP maturation rate & \cite{Iizuka2011}  \\
-\hline $v_{z}$ & 100 nM/min & degradation constant of clpx & \cite{Hersch2004} \\
-\hline $K_{z}$   &   75 nM/min & Dissociation constant of clpx & \cite{Hersch2004} \\
+\hline \hline N & 300 & Number of copies of promoter existing on plasmid DNA & Experimentally set & \\
+\hline $z_{0}$ &   9 AFU & Baseline experimental fluorescence & Experimentally determined &  \\
+\hline $\alpha_{L}$ & 11 nM/min & Maximal transcription rate of $P_\mathrm{LlacO-1}$ promoter & \cite{Lutz1997} &\\
+\hline $\alpha_{T}$  & 11 nM/min  & Maximal transcription rate of $P_{\mathrm{LtetO-1}}$ promoter  & \cite{Lutz1997}& \\
+\hline $f_{L}$ & 620 & Unitless ratio between repressed and unrepressed $P_\mathrm{LlacO-1}$ transcription rate  & \cite{Lutz1997}  &  \\ 
+\hline $f_{T}$ & 2535 & Unitless ratio between repressed and unrepressed $P_{\mathrm{LtetO-1}}$ transcription rate   & \cite{Lutz1997} &\\
+\hline $\delta_{g}$  & 0.0005 /min  & GFP degradation rate & \cite{Andersen1998} &\\
+\hline $\gamma$ &  0.132 /min & GFP maturation rate & \cite{Iizuka2011} & \\
+\hline $v_{z}$ & 100 nM/min & degradation constant of clpx & \cite{Hersch2004} &\\
+\hline $K_{z}$   &   75 nM/min & Dissociation constant of clpx & \cite{Hersch2004} &\\
 \hline $\boldsymbol{\Theta}$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence & & 300 - 1000  \\
 \hline $\boldsymbol{\mu}$ &  /min & Dilution rate & & 0.001-0.05\\
 \hline $\boldsymbol{\delta_{m}}$ &  /min & mRNA degredation rate & & 1 - $10^5$ \\
@@ -418,6 +498,8 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \hline
 \end{tabular}
 \end{table}
+
+
 
 
 \end{document}
