@@ -334,7 +334,7 @@ Our next goal is to estimate the unknown parameters of this model, given the ava
 \begin{align}
 \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t)
 \end{align}
-where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time (representing the fact that the model may have some explicit time dependence). The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. An error between the model prediction and an experimental time series is defined as
+where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time. The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. An error between the model prediction and an experimental time series is defined as
 \begin{align}
 J(\boldsymbol{\theta}) = \sum_{i =1}^{N} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
 \end{align}
@@ -344,15 +344,51 @@ where the experimental timeseries, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is evaluat
 \end{align}
 The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. 
 
-In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal.
+In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}).
 
- After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}). We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}, by choosing 200 points, uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Fig. \ref{InitialResults} demonstrates that the model is capable of quantitatively capturing the data - however, the fitting also suggests that some parameters are not tightly constrained, taking values right across the initial bounding range specified. 
+ We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}, by choosing 200 points, uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Fig. \ref{InitialResults} demonstrates that the model is capable of quantitatively capturing the data - however, the fitting also suggests that some parameters are not tightly constrained, taking values right across the initial bounding range specified. Further, the correlation matrices in Fig. \ref{InitialResults} indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to eq. \ref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
+ 
+ There are two main reasons why a parameter may not be estimable  \cite{Mclean2012,Yao2003, Beck}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others - changes in one parameter may be balanced by adjustments to the values of several others. 
+ 
+ We may investigate whether our model suffers from such problems by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
+ 
+ \begin{align}
+S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}}
+\end{align}
+
+where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. This matrix contains information about how sensitive $z$ is to perturbations in parameter values, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
+
+Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared. We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. It is unsurprising that some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}. 
+
+\begin{figure}[h]	
+	\begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.3]{Sensitivity_unscaled}
+        \caption{Unscaled}
+        \label{SensitivityMatrix_unscaled} 
+    \end{subfigure}
+    \begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.3]{Sensitivity_scaled}
+        \caption{Scaled}
+                \label{SensitivityMatrix_scaled} 
+    \end{subfigure}
+    \caption{Sensitivity co-efficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset. \ref{SensitivityMatrix_unscaled} shows them unscaled, \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$.} 
+\label{SensitivityMatrix}   
+\end{figure}
+
+
+ 
+ 
  
  \begin{itemize}
  \item discuss estimatbility criteria- uniqeuess and sensitivity
  \item put in some sensitivity analysis results
  \item discuss model fixed points
  \item discuss systematic paramater shift.
+ \item discuss cross - validation and predicitive ability of parameter sets found.
+ \item suggest two times, work out fixed point for all the solutions found, look at structure of soln,
+ \item re run from starting pararms.
  \end{itemize}
  
  

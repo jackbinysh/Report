@@ -95,6 +95,22 @@ N.~Hansen, ``{The CMA evolution strategy: A comparing review},'' \emph{Studies
   \url{http://www.lri.fr/~hansen/cmatutorial110628.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Mclean2012}
+K.~a.~P. Mclean and K.~B. Mcauley, ``{Mathematical modelling of chemical
+  processes-obtaining the best model predictions and parameter estimates using
+  identifiability and estimability procedures},'' \emph{Canadian Journal of
+  Chemical Engineering}, vol.~90, no.~2, pp. 351--366, 2012.
+
+\bibitem{Yao2003}
+K.~Z. Yao, B.~M. Shaw, B.~Kou, K.~B. McAuley, and D.~W. Bacon, ``{Modeling
+  Ethylene/Butene Copolymerization with Multi‐site Catalysts: Parameter
+  Estimability and Experimental Design},'' \emph{Polymer Reaction Engineering},
+  vol.~11, no.~3, pp. 563--588, 2003.
+
+\bibitem{Beck}
+J.~Beck, \emph{{Parameter Estimation in Engineering and Science}},
+  1st~ed.\hskip 1em plus 0.5em minus 0.4em\relax Wiley, 1977.
+
 \bibitem{Andersen1998}
 J.~B. Andersen, C.~Sternberg, L.~K. Poulsen, S.~P. Bj\o~rn, M.~Givskov, and
   S.~r. Molin, ``{New unstable variants of green fluorescent protein for
