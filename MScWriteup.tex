@@ -36,7 +36,7 @@
 
 %  OTHER PACKAGES
 
-\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, caption, subcaption}
+\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, caption, subcaption,centernot }
 
 
 
@@ -137,7 +137,7 @@ As well as acting as the intermediate between DNA and protein, RNA molecules pla
 
 This report will focus on one such sRNA system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of it beyond the qualitative by proposing a quantitative model of gene expression, in the form of a set of ODE's, and fitting this model to available time series data to estimate its unknown parameters.
 
-The report is structured as follows. In the remainder of this section we review the sRNA regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on this system. In section \ref{Results and Discussion} we propose a set of ODE's to model the system, and estimate its unknown parameters by fitting to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
+The report is structured as follows. In the remainder of this section we review the sRNA regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on this system. In section \ref{Model Derivation} we propose a set of ODE's to model the system. In sect \ref{Parameter Estimation} and estimate its unknown parameters by fitting to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
 
 
 %NEW SUBSECTION%
@@ -207,12 +207,9 @@ The data we will consider consists of three sets of individual cell timeseries, 
 %%%
 %%%
 
-\section{Results and Discussion}
-\label{Results and Discussion}
+\section{Model Derivation}
+\label{Model Derivation}
 
-%NEW SUBSECTION%
-
-\subsection{Model Derivation}
 We propose a simple model, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}, to describe the system. Tables \ref{ModelParameters}, \ref{StateVariables} give complete descriptions of the parameters and state variables.
  
 \begin{align}
@@ -326,9 +323,20 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 \end{table}
 
 
-%NEW SUBSECTION%
+%%%
+%%%
+%%%
+%%%
+%%%
+%NEW SECTION%
+%%%
+%%%
+%%%
+%%%
 
-\subsection{Parameter Estimation}
+\section{Parameter Estimation}
+\label{Parameter Estimation}
+
 Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data \cite{Brewer2008,Algorithms2003, Hu2015}. Suppose we have some ODE model of our system
 
 \begin{align}
@@ -346,9 +354,22 @@ The next step is performing the minimisation. In general, the landscape defined 
 
 In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}).
 
- We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}, by choosing 200 points, uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Fig. \ref{InitialResults} demonstrates that the model is capable of quantitatively capturing the data - however, the fitting also suggests that some parameters are not tightly constrained, taking values right across the initial bounding range specified. Further, the correlation matrices in Fig. \ref{InitialResults} indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to eq. \ref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
+% NEW SUBSECTION
+
+\subsection{Initial Parameter Estimates}
+\label{Initial Parameter Estimates}
+
+
+ We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}, by choosing 200 points, uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Fig. \ref{InitialResults} demonstrates that the model is capable of quantitatively capturing the data - however, the fitting also suggests that some parameters are not tightly constrained, taking values right across the initial bounding range specified. The correlation matrices in Fig. \ref{InitialResults} also indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to eq. \ref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
- There are two main reasons why a parameter may not be estimable  \cite{Mclean2012,Yao2003, Beck}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others - changes in one parameter may be balanced by adjustments to the values of several others. 
+ We can test the predictive ability of our model by cross validating - taking the parameter values found in the fitting of one dataset, and using them to give model predictions for another. We thus take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Fig.\ref{CrossValidation}.Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. The first reason for this may be experiment to experiment variability of parameter values \cite{Hu2015}. The second may be that the model is overfitting.
+ 
+ Taken together, these results suggest that some parameters may be inestimable, and that the data may be better described by a simplified model.  
+ 
+ \subsection{Parameter Estimability}
+\label{Parameter Estimability}
+ 
+ There are two main reasons why a parameter may not be estimable  \cite{Mclean2012,Yao2003, Beck}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others.
  
  We may investigate whether our model suffers from such problems by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
@@ -358,7 +379,49 @@ S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}}
 
 where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. This matrix contains information about how sensitive $z$ is to perturbations in parameter values, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
 
-Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared. We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. It is unsurprising that some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}. 
+It can be shown that if sensitivity co-efficients are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to asses parameter estimability from the sensitivity matrix \cite{Mclean2012}
+
+Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared. We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. 
+
+
+ It is unsurprising then that some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved, and as such that we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
+ \todo[inline]{make more quantitivative with colinaerity idnex}
+ 
+Our inability to estimate some model parameters may stem from structural problems with the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions (eq. \ref{nonidentifiable}) . General methods exist to analyse the structural identifiability of an ODE model \cite{Jimenez-Hornero2008,Grewal1976 } \footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product can ever be estimated, a problem no amount of data can fix.}. 
+
+ \begin{align}
+z(\boldsymbol{\theta}_{1},t) = z(\boldsymbol{\theta}_{2},t) \centernot\implies \theta_{1} = \theta_{2}
+\label{nonidentifiable}
+\end{align}
+
+
+Problems may also come from limitations in available data - differing experimental conditions may lift the strong correlations between parameter effects on model output (this is often termed \textit{practical identifiability} \cite{Mclean2012}). 
+
+In our case, while the model may still turn out to have general structural problems, we suggest that part of the issue is the nature of the forcing used, and the timescales on which the system responds to it. We hypothesize that the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing. If this is the case, then it may be that our experimental data can only probe the system via the fixed point of the models core, and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. If this were the case, the particular shape of the models response curve would be primarily determined by the parameters appearing in eqs. \ref{eq:p}, \ref{eq:g}, \ref{eq:z} - namely $\mu$, $\beta$, $f_{s}$ and $\Theta$. If all the information contained in the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only be expressed in the form of the models fixed point, it would not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable. 
+
+Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. It demonstrates that, at least in some of the parameter sets initially estimated, this difference in time scales exists. The fixed points of eqs. \ref{eq:s} - \ref{eq:c} affects eqs.  \ref{eq:p}, \ref{eq:g} through the $\beta m +f_{s}\beta c$ term - we would expect that, if the fixed point value of this term is what is relevant in determining model response, there would be some consistency in its value across the parameter sets found. Fig. \ref{fixedpoint_f} shows a scatterplot of model fixed point values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. In Fig. \ref{fixedpoint_mu}, we also see a strong positive correlation between the fixed point values and the values of $\mu$ ($R = 0.9854$ for the tightly clustered data). Taken together with the relatively tightly constrained values of $\mu$ found in Fig. \ref{InitialResults}, these results suggest that in order to minimize error, the model is effectively varying  
+ 
+
+ 
+
+\begin{figure}[h]	
+	\begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.26]{14_7_pred_13_9_data}
+        \caption{\textit{14\_7} prediction \textit{13\_9} data}
+        \label{SensitivityMatrix_unscaled} 
+    \end{subfigure}
+    \begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.26]{13_9_pred_14_7_data}
+        \caption{\textit{13\_9} prediction \textit{14\_7} data}
+                \label{SensitivityMatrix_scaled} 
+    \end{subfigure}
+    \caption{Cross validating data by taking parameter estimates from one dataset, and using them to predict another. Here we take the best parameter set fitted on the \textit{13\_9}, and fit it against the \textit{14\_7} dataset, and vice versa } 
+\label{CrossValidation}   
+\end{figure}
+
+
 
 \begin{figure}[h]	
 	\begin{subfigure}[h]{0.49\textwidth}
@@ -377,19 +440,26 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
 \label{SensitivityMatrix}   
 \end{figure}
 
+\begin{figure}[h]	
+    \centering
+        \includegraphics[scale = 0.3]{model_output}
+        \caption{}
+        \label{model_output} 
+\end{figure}
 
- 
- 
- 
- \begin{itemize}
- \item discuss estimatbility criteria- uniqeuess and sensitivity
- \item put in some sensitivity analysis results
- \item discuss model fixed points
- \item discuss systematic paramater shift.
- \item discuss cross - validation and predicitive ability of parameter sets found.
- \item suggest two times, work out fixed point for all the solutions found, look at structure of soln,
- \item re run from starting pararms.
- \end{itemize}
+\begin{figure}[h]	
+    \centering
+        \includegraphics[scale = 0.25]{fixedpoint_f}
+        \caption{}
+        \label{fixedpoint_f} 
+\end{figure}
+
+\begin{figure}[h]	
+    \centering
+        \includegraphics[scale = 0.25]{fixedpoint_mu}
+        \caption{}
+        \label{fixedpoint_mu} 
+\end{figure} 
  
  
 \begin{figure*}
@@ -432,6 +502,18 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
 
 
 \clearpage
+
+ 
+ \begin{itemize}
+ \item discuss estimatbility criteria- uniqeuess and sensitivity
+ \item put in some sensitivity analysis results
+ \item discuss model fixed points
+ \item discuss systematic paramater shift.
+ \item discuss cross - validation and predicitive ability of parameter sets found.
+ \item suggest two times, work out fixed point for all the solutions found, look at structure of soln,
+ \item re run from starting pararms.
+ \end{itemize}
+ 
  
 
 \section{Conclusions and Further work}

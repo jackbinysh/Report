@@ -17,45 +17,45 @@ Warning--missing publisher in UriAlon
 Warning--empty year in UriAlon
 
 Done.
-You've used 19 entries,
+You've used 21 entries,
             4024 wiz_defined-function locations,
-            1321 strings with 18456 characters,
-and the built_in function-call counts, 16685 in all, are:
-= -- 1423
-> -- 386
-< -- 176
-+ -- 228
-- -- 71
-* -- 814
-:= -- 2424
-add.period$ -- 37
-call.type$ -- 19
-change.case$ -- 21
-chr.to.int$ -- 408
-cite$ -- 21
-duplicate$ -- 1144
-empty$ -- 1184
-format.name$ -- 73
-if$ -- 3840
+            1335 strings with 18864 characters,
+and the built_in function-call counts, 18521 in all, are:
+= -- 1586
+> -- 424
+< -- 198
++ -- 250
+- -- 76
+* -- 905
+:= -- 2697
+add.period$ -- 41
+call.type$ -- 21
+change.case$ -- 23
+chr.to.int$ -- 456
+cite$ -- 23
+duplicate$ -- 1270
+empty$ -- 1310
+format.name$ -- 80
+if$ -- 4264
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 177
-newline$ -- 88
-num.names$ -- 19
-pop$ -- 380
+int.to.str$ -- 21
+missing$ -- 196
+newline$ -- 94
+num.names$ -- 21
+pop$ -- 413
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1311
+skip$ -- 1456
 stack$ -- 0
-substring$ -- 1007
-swap$ -- 1025
-text.length$ -- 40
+substring$ -- 1121
+swap$ -- 1143
+text.length$ -- 46
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 19
+type$ -- 21
 warning$ -- 2
-while$ -- 80
-width$ -- 21
-write$ -- 220
+while$ -- 90
+width$ -- 23
+write$ -- 242
 (There were 3 warnings)

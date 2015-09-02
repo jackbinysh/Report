@@ -39,9 +39,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Single Cell Fluorescence Data}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them from the media inlet. This inlet also allows the introduction of aTc IPTG. Software then traces these cells, allowing fluorescence timeseries to be built. Image reproduced from \cite  {Jaramillo}.\relax }}{3}}
 \newlabel{reactionscheme}{{4}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Results and Discussion}{3}}
-\newlabel{Results and Discussion}{{II}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Model Derivation}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Model Derivation}{3}}
+\newlabel{Model Derivation}{{II}{3}}
 \newlabel{eq:s}{{1}{3}}
 \newlabel{eq:m}{{2}{3}}
 \newlabel{eq:sm}{{3}{3}}
@@ -53,21 +52,46 @@
 \citation{Algorithms2003}
 \citation{Hansen2006,Hansen2011}
 \@writefile{tdo}{\contentsline {todo}{para about clpX}{4}}
-\pgfsyspdfmark {pgfid26}{11496193}{34432239}
+\pgfsyspdfmark {pgfid26}{11496193}{35783469}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Model Parameters (those to be estimated shown in bold)\relax }}{4}}
 \newlabel{ModelParameters}{{I}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Parameter Estimation}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Parameter Estimation}{4}}
+\newlabel{Parameter Estimation}{{III}{4}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces State Variables\relax }}{4}}
 \newlabel{StateVariables}{{II}{4}}
+\citation{Hu2015}
 \citation{Mclean2012,Yao2003,Beck}
-\newlabel{SensitivityMatrix_unscaled}{{5a}{5}}
-\newlabel{sub@SensitivityMatrix_unscaled}{{a}{5}}
-\newlabel{SensitivityMatrix_scaled}{{5b}{5}}
-\newlabel{sub@SensitivityMatrix_scaled}{{b}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sensitivity co-efficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 5a\hbox {} shows them unscaled, 5b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{5}}
-\newlabel{SensitivityMatrix}{{5}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Parameter estimates, inter-parameter correlation values, and model predictions for the \textit  {13\_9} and \textit  {14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response\relax }}{6}}
-\newlabel{InitialResults}{{6}{6}}
+\citation{Beck}
+\citation{Mclean2012}
+\citation{Jimenez-Hornero2008,Grewal1976}
+\citation{Mclean2012}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Initial Parameter Estimates}{5}}
+\newlabel{Initial Parameter Estimates}{{\unhbox \voidb@x \hbox {III-A}}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Parameter Estimability}{5}}
+\newlabel{Parameter Estimability}{{\unhbox \voidb@x \hbox {III-B}}{5}}
+\@writefile{tdo}{\contentsline {todo}{make more quantitivative with colinaerity idnex}{5}}
+\pgfsyspdfmark {pgfid27}{29259718}{29193567}
+\newlabel{nonidentifiable}{{12}{5}}
+\newlabel{SensitivityMatrix_unscaled}{{5a}{6}}
+\newlabel{sub@SensitivityMatrix_unscaled}{{a}{6}}
+\newlabel{SensitivityMatrix_scaled}{{5b}{6}}
+\newlabel{sub@SensitivityMatrix_scaled}{{b}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Cross validating data by taking parameter estimates from one dataset, and using them to predict another. Here we take the best parameter set fitted on the \textit  {13\_9}, and fit it against the \textit  {14\_7} dataset, and vice versa \relax }}{6}}
+\newlabel{CrossValidation}{{5}{6}}
+\newlabel{SensitivityMatrix_unscaled}{{6a}{7}}
+\newlabel{sub@SensitivityMatrix_unscaled}{{a}{7}}
+\newlabel{SensitivityMatrix_scaled}{{6b}{7}}
+\newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Sensitivity co-efficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 6a\hbox {} shows them unscaled, 6b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{7}}
+\newlabel{SensitivityMatrix}{{6}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \relax }}{7}}
+\newlabel{model_output}{{7}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \relax }}{7}}
+\newlabel{fixedpoint_f}{{8}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \relax }}{7}}
+\newlabel{fixedpoint_mu}{{9}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Parameter estimates, inter-parameter correlation values, and model predictions for the \textit  {13\_9} and \textit  {14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response\relax }}{8}}
+\newlabel{InitialResults}{{10}{8}}
 \bibstyle{./IEEE_bibtex_class/IEEEtran}
 \bibdata{./IEEE_bibtex_class/IEEEabrv,library}
 \bibcite{Isaacs2006}{1}
@@ -86,22 +110,24 @@
 \bibcite{Mclean2012}{14}
 \bibcite{Yao2003}{15}
 \bibcite{Beck}{16}
-\bibcite{Andersen1998}{17}
-\bibcite{Iizuka2011}{18}
-\bibcite{Hersch2004}{19}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Conclusions and Further work}{7}}
-\newlabel{Conclusions and Further work}{{III}{7}}
-\@writefile{tdo}{\contentsline {todo}{some stuff}{7}}
-\pgfsyspdfmark {pgfid27}{11496193}{47201524}
-\@writefile{toc}{\contentsline {section}{References}{7}}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}A: Initial Experimental Data}{8}}
-\newlabel{Initial Experimental Data}{{A}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces The \textit  {13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{8}}
-\newlabel{reactionscheme}{{A.1}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces The \textit  {14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{8}}
-\newlabel{reactionscheme}{{A.2}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces The \textit  {14\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{8}}
-\newlabel{reactionscheme}{{A.3}{8}}
+\bibcite{Jimenez-Hornero2008}{17}
+\bibcite{Grewal1976}{18}
+\bibcite{Andersen1998}{19}
+\bibcite{Iizuka2011}{20}
+\bibcite{Hersch2004}{21}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{9}}
+\newlabel{Conclusions and Further work}{{IV}{9}}
+\@writefile{tdo}{\contentsline {todo}{some stuff}{9}}
+\pgfsyspdfmark {pgfid28}{11496193}{39187633}
+\@writefile{toc}{\contentsline {section}{References}{9}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}A: Initial Experimental Data}{10}}
+\newlabel{Initial Experimental Data}{{A}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces The \textit  {13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{10}}
+\newlabel{reactionscheme}{{A.1}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces The \textit  {14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{10}}
+\newlabel{reactionscheme}{{A.2}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces The \textit  {14\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{10}}
+\newlabel{reactionscheme}{{A.3}{10}}
 \citation{Lutz1997}
 \citation{Lutz1997}
 \citation{Lutz1997}
@@ -110,13 +136,13 @@
 \citation{Iizuka2011}
 \citation{Hersch2004}
 \citation{Hersch2004}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}B: Histogram of Initial Fit Error values}{9}}
-\newlabel{Initial fit Error}{{B}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces \relax }}{9}}
-\newlabel{hist_f}{{B.1}{9}}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}C: Parameter literature review}{10}}
-\newlabel{Parameter literature review}{{C}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold\relax }}{10}}
-\newlabel{LastPage}{{}{10}}
-\xdef\lastpage@lastpage{10}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}B: Histogram of Initial Fit Error values}{11}}
+\newlabel{Initial fit Error}{{B}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces \relax }}{11}}
+\newlabel{hist_f}{{B.1}{11}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}C: Parameter literature review}{12}}
+\newlabel{Parameter literature review}{{C}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold\relax }}{12}}
+\newlabel{LastPage}{{}{12}}
+\xdef\lastpage@lastpage{12}
 \gdef\lastpage@lastpageHy{}
