@@ -21,6 +21,11 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{MolecularBiology}
+B.~Alberts, A.~Johnson, J.~Lewis, M.~Raff, K.~Roberts, and P.~Walter.,
+  \emph{{Molecular Biology of the Cell}}, 4th~ed.\hskip 1em plus 0.5em minus
+  0.4em\relax Garland Science, 2002.
+
 \bibitem{Isaacs2006}
 F.~J. Isaacs, D.~J. Dwyer, and J.~J. Collins, ``{RNA synthetic biology.}''
   \emph{Nature biotechnology}, vol.~24, no.~5, pp. 545--554, 2006.

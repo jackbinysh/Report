@@ -36,7 +36,7 @@
 
 %  OTHER PACKAGES
 
-\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, caption, subcaption,centernot }
+\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, caption, subcaption,centernot}
 
 
 
@@ -131,13 +131,13 @@ genetic circuitry, RNA's offers an attractive alternative to more traditional me
 \label{sec: Intro}
 The process of gene expression can be summarised as follows: DNA is read, and a copy of it is made, in the form of an RNA molecule (this is called \textit{transcription}). This RNA molecule (known as messenger RNA, or mRNA) makes its way to a piece of cellular machinery called the Ribosome, which reads it, and makes a protein - which protein is made depends on the DNA sequence originally read (\textit{translation}).  
 
- The path from genetic transcription to protein expression is naturally regulated in many ways \cite{MolecularBiology}. This regulation allows the cell to control protein expression, and so cell behaviour, in response to various environmental cues. The natural cell machinery which performs it takes the form a genetic circuits - networks of interacting gene expression regulators. This genetic circuitry offers rich possibilities for modification, and an important goal within synthetic biology is to understand and manipulate it.
+ The path from genetic transcription to protein expression is naturally regulated in many ways \cite{MolecularBiology}. This regulation allows the cell to control protein expression, and so cell behaviour, in response to various environmental cues. The natural cell machinery which performs it takes the form of genetic circuits - networks of interacting gene expression regulators. This genetic circuitry offers rich possibilities for modification, and an important goal within synthetic biology is to understand and manipulate it.
 
 As well as acting as the intermediate between DNA and protein, RNA molecules play direct and important roles in regulating gene expression \cite{Isaacs2006}. For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightforward to predict the structure and function of an RNA from its sequence using physiochemical models. Recently, this has been exploited to computationally design synthetic sRNA's - small RNA's which do not code for a protein, but rather have some direct regulatory function -  with regulatory behaviour that can be predicted \cite{Rodrigo2013}\cite{Rodrigo2012}.
 
-This report will focus on one such sRNA system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of it beyond the qualitative by proposing a quantitative model of gene expression, in the form of a set of ODE's, and fitting this model to available time series data to estimate its unknown parameters.
+This report will focus on one such sRNA system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of it beyond the qualitative by first proposing a quantitative model of its behaviour in the form of a set of ODE's, and then fitting this ODE model to available time series data to estimate its unknown parameters.
 
-The report is structured as follows. In the remainder of this section we review the sRNA regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on this system. In section \ref{Model Derivation} we propose a set of ODE's to model the system. In sect \ref{Parameter Estimation} and estimate its unknown parameters by fitting to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
+The report is structured as follows. In the remainder of this section we review the regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on it. In section \ref{Model Derivation} we propose a set of ODE's to model the system. In section \ref{Parameter Estimation} we attempt to estimate its unknown parameters by fitting the model to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
 
 
 %NEW SUBSECTION%
@@ -145,7 +145,10 @@ The report is structured as follows. In the remainder of this section we review 
 
 \subsection{The sRNA regulatory system}
 \label{The sRNA regulatory system}
-In bacteria, one mechanism by which gene expression is regulated is as follows \cite{Soper2010}: In order for a bacterial mRNA to be translated into a protein, the Ribosome must initially bind to the mRNA (Fig. \ref{RBS}). This occurs at the Ribosome Binding Site (RBS) \cite{Shine1974}, a specific nucleotide sequence found on the mRNA. In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the UTR), upstream of the RBS. Translation may be self repressed by this `tail' of the mRNA folding over and binding across the RBS, forming a stem loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to the same region on the mRNA - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind. In summary, the presence of the sRNA positively regulates gene expresssion.
+In bacteria, one mechanism by which gene expression is naturally regulated is as follows \cite{Soper2010}: In order for a bacterial mRNA to be translated into a protein, the Ribosome must initially bind to the mRNA (Fig. \ref{RBS}). This occurs at the Ribosome Binding Site (RBS) \cite{Shine1974}, a specific nucleotide sequence found on the mRNA. 
+
+In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the UTR), upstream of the RBS \footnote{Both DNA and RNA are directional - the backbone of the molecule is not symmetric. This gives the molecule two distinct ends, denoted 5' and 3'. Translation can only occur in the 5' to 3' direction, hence the meaning of `upstream'}. Translation may be self repressed by this `tail' folding over and binding across the RBS, forming a  loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to this looped tail - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind. In summary, the presence of the sRNA positively regulates gene expresssion.
+
 
 \begin{figure*}[t]
 \centering
@@ -157,29 +160,37 @@ In bacteria, one mechanism by which gene expression is regulated is as follows \
 \begin{figure}[H]
 \centering
 \includegraphics[trim = 100 170 100 400,page=10,clip = true,scale = 0.6]{Appendix.pdf}
-\caption{A mechanism by which sRNA's can regulate gene expression. Initially, the 5' UTR of the mRNA is folded over the RBS, forming a loop and blocking Ribosome binding. The sRNA binds to this mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur.Image reproduced from \cite{Rodrigo2012} }
+\caption{A mechanism by which sRNA can regulate gene expression. Initially, the 5' UTR of the mRNA is folded over the RBS, forming a loop and blocking Ribosome binding. The sRNA binds to this loop in the mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur. Image reproduced from \cite{Rodrigo2012}.}
 \label{RBS}
 \end{figure}
 
-\cite{Rodrigo2012} proposed a computational methodology to design general genetic circuits based on RNA interactions, and as a case study of the methodology chose to design a synthetic sRNA- mRNA pair capable of acting in the manner described above. The algorithm assumed an interaction scheme between the RNA's as shown in Fig. \ref{reactionscheme}. The two RNA's, originally in their own individually folded states, would initially interact via a small 'toehold' sequence of unpaired nucleotides to form an unstable transition state. This intermediate complex would then rapidly form a final, stable complex with the desired conformation. By suggesting sRNA and mRNA sequences which optimised this energy landscape, \cite{Rodrigo2012} suggested several devices which would form a stable hybrid with the RBS free, and experimentally validated their function in \textit{E. coli}, using an mRNA which codes for GFP for experimental ease (note the algorithm only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant).
 
-\begin{figure}[H]
+\cite{Rodrigo2012} proposed a computational methodology to design general genetic circuits based on RNA interactions, and as a case study of the methodology chose to design a synthetic sRNA- mRNA pair capable of acting in the manner described above. The algorithm assumed an interaction scheme between the RNA's as shown in Fig. \ref{reactionscheme}. The sRNA and mRNA, originally in their own individually folded states, would initially interact via a small 
+`toehold' sequence of unpaired nucleotides to form an unstable transition state. This intermediate complex would then rapidly form a final, stable complex with the desired conformation. By finding sRNA and mRNA sequences which optimised the energy landscape shown in Fig. \ref{reactionscheme}, \cite{Rodrigo2012} suggested several sRNA-mRNA pairs which would work in tandem to form a stable hybrid with the RBS free. 
+
+\begin{figure}[h]
 \centering
 \includegraphics[trim = 60 630 300 30,page=2,clip = true]{pnas1203831109.pdf}
-\caption{A network with an intuitively clear community structure, which is captured by the partition chosen, shown in gray. Image reproduced from \cite{Rodrigo2012}}
+\caption{A proposed reaction scheme between the synthetic sRNA-mRNA pairs proposed in \cite{Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small 
+`toehold' sequence, forming an unstable transition state, which then stabilises to give the final compound. Image reproduced from \cite{Rodrigo2012}}
 \label{reactionscheme}
 \end{figure}
 
 
-Further, by placing the concentrations of the sRNA and mRNA under the control of tuneable promoters, \cite{Rodrigo2012} constructs a logical AND gate from one of the proposed devices (RAJ11) \textit{in vivo} (Fig. \ref{ANDGate}). In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of the RNA's is turned off, and no protein is produced. 
-These repressors can themselves be disabled by the presence of two chemicals, aTC and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
-\todo[inline]{promoter?}
+The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoters, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
 
-Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA device is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
+\todo[inline]{promoter? ).}
+
+
+
+In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
+These repressors can themselves be disabled by the presence of two chemicals, aT and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
+
+Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA pair is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
  
 \subsection{Single Cell Fluorescence Data}
 
-Recent experiments have used timelapse microscopy to observe the fluoresence of bacteria which contain the above device, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
+mRNA concentrations in this system shown in Fig. \ref{ANDGate} can be indirectly observed by designing the mRNA to code for GFP \footnote{ The methodology of \cite{Rodrigo2012} only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant}. Recent experiments have used timelapse microscopy to observe the fluoresence of bacteria which contain the above sRNA-mRNA pair, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
 
 The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing timeseries of individual cell fluorescences to be recorded.
 
@@ -189,10 +200,10 @@ The bacteria are grown a single layer thick in rows of chambers. A medium consta
 \centering
 \includegraphics[trim = 0 0 0  90 ,page=18 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
 \caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them from the media inlet. This inlet also allows the introduction of aTc IPTG. Software then traces these cells, allowing fluorescence timeseries to be built.  Image reproduced from \cite{Jaramillo}.}
-\label{reactionscheme}
+\label{}
 \end{figure}
 
-The data we will consider consists of three sets of individual cell timeseries, labelled \textit{13\_9}, \textit{14\_7} and \textit{14\_9}. They correspond to three different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Section \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
+The data we will consider consists of two sets of individual cell timeseries, labelled \textit{13\_9}, \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Section \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
 
 
 
@@ -221,7 +232,7 @@ We propose a simple model, consisting of a set of ODE's with mass action kinetic
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \label{eq:g} \\
 z &= z_{0} +\frac{g}{\Theta} \label{eq:z}
 \end{align}
-  Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs.\ref{eq:s} - \ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_{on}$ and $k_{off}$.
+  Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs. \ref{eq:s}-\ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_{on}$ and $k_{off}$.
   
 \begin{align*}
 \mathrm{
@@ -238,8 +249,8 @@ sRNA:mRNA\textsubscript{unstable} \chemrel[$k_{hyb}$]{->} sRNA:mRNA\textsubscrip
 
  In addition, these complexes are given degradation rates, $\delta_{s}$, $\delta_{m}$, $\delta_{sm}$, $\delta_{c}$, and dilution of chemical concentrations due to cell growth are modelled with a dilution rate $\mu$. 
  
- Control of the system by aTc and IPTG is modelled by $y(t)$ and $x(t)$ in eqs.\ref{eq:s}-\ref{eq:m}. $y(t)$ models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. Thus the forcing may vary between 
- $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$, where $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter. When engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter and section of DNA coding for sRNA may be placed in the plasmid DNA - this is modelled by the copy number, $N$. Identical considerations hold for $x(t)$ and IPTG concentrations.
+ Control of the system by aTc and IPTG is modelled by $y(t)$ and $x(t)$ in eqs. \ref{eq:s}-\ref{eq:m}. $y(t)$ models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. Thus the forcing may vary between 
+ $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$, where $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter. When engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter, and section of DNA coding for sRNA, may be placed in the bacterial DNA - this is modelled by the copy number, $N$. Identical considerations hold for $x(t)$ and IPTG concentrations.
 
 We explicitly model translation as a simple one step process in eqs. \ref{eq:p}-\ref{eq:z}. There is a small rate of translation of the self repressed mRNA \cite{Rodrigo2012}, which is modelled at rate $\beta$, and a larger one for translation of the stable complex, $\beta f_s$. Here $f_s$ represents the fractional change in translation rate between the repressed mRNA and the unrepressed complex.
 
@@ -267,7 +278,7 @@ GFP\textsubscript{Immature}  \chemrel[$\gamma$]{->} GFP\textsubscript{Mature}
 
 Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$, assumed identical for the mature and immature species, with the dilution rate $\mu$ shared by all species.
 \todo[inline]{para about clpX}
-Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence.
+Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
 
 
 \begin{table}[h]
@@ -348,13 +359,13 @@ where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of mod
 \begin{align}
 J(\boldsymbol{\theta}) = \sum_{i =1}^{N} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
 \end{align}
-where the experimental timeseries, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is evaluated at timepoints $t_{i}$, $i = 1 \hdots N$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a timeseries from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
+where the experimental timeseries, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots N$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a timeseries from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
 \begin{align}
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{N} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
 \end{align}
 The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. 
 
-In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in \ref{ModelParameters}).
+In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
 
  
 \begin{figure*}
@@ -445,7 +456,7 @@ where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with paramet
 
 It can be shown that if sensitivity co-efficients are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to asses parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to simply plot the sensitivity co-effecients as a function of time, and visually check for obvious linear relations between the curves.
 
-Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time.
+Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
 
 \begin{figure}[h]	
 	\begin{subfigure}[h]{0.49\textwidth}
@@ -464,9 +475,7 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
 \label{SensitivityMatrix}   
 \end{figure}
 
- Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared. We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. 
-
-This may help to explain why some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
+We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. This may help to explain why some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
  
 
 We suggest that part of the issue is the step function forcing used in model predictions, and the timescales on which the system responds to it. We hypothesize that the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing. If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. If this were the case, the particular shape of the models response curve would be primarily determined by the parameters appearing in eqs. \ref{eq:p}, \ref{eq:g}, \ref{eq:z} - namely $\mu$, $\beta$, $f_{s}$ and $\Theta$. If all the information contained in the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only be expressed in the form of the models fixed point, it would not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable. 
@@ -475,7 +484,7 @@ Fig. \ref{model_output} shows model output for all state variables, using the pa
 
 \begin{figure}[h]	
     \centering
-        \includegraphics[scale = 0.3]{model_output}
+        \includegraphics[scale = 0.25]{model_output}
         \caption{}
         \label{model_output} 
 \end{figure}
@@ -501,43 +510,33 @@ In Fig. \ref{fixedpoint_mu}, we also see a strong positive correlation between t
 
 These results further suggest that, while we are trying to minimise model error over our initial high dimensional space, we are effectively working in a lower dimensional space, in which one dimension is the value of the models $\beta m +f_{s}\beta c$ .
  
-
-
-
-
  
 
-
- 
- \begin{itemize}
- \item explore degeneracies in fixed point equations
- \item discuss estimatbility criteria- uniqeuess and sensitivity
- \item put in some sensitivity analysis results
- \item discuss model fixed points
- \item discuss systematic paramater shift.
- \item discuss cross - validation and predicitive ability of parameter sets found.
- \item suggest two times, work out fixed point for all the solutions found, look at structure of soln,
- \item re run from starting pararms.
- \end{itemize}
  
  
 
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
- \begin{itemize}
- \item discuss evidence for model being very over parametrized, and suggest a simpler model may work equally well - suggest biologically interesting parameters may be unobservable.
- \item discuss general methodological flaws - throwing marbles in the air, local minima, is MLE even any good? say data shows even the EA doesn't avoid local minima. The space is so unconstrained. the algorithm can't be expected to just fix all these problems.
- \item suggest additional forcing time data may not help due to two timing nature, 
- \item suggest there MAY be other ways to fit the data, but the wide range of parameter bounds mean we just don't know - the landscape is complicated and huge, and there may be minima widely separated in the parameter space. whose to say which is right?
- \item Further work - on experimnetal side, propoer lit review to rightly constrain some values, fix more. More state variables! should easily be able to fix mu, theta, maybe others too? other forcing functions?
- \item a proper bloody methodology - gaussian processes.
- \item mention this is how sys bio papers do it, and we were given some earlier fitting work which we think is now crap.
- \item suggest a general structural analysis be carried out.
- 
- \end{itemize}
+In this report, we have proposed a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}. We have attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach, similar to that found in recent system biology literature \cite{Hu2015}. Where this approach has failed to give estimates, we have discussed in detail how the method has broken down.
 
-\todo[inline]{some stuff}
+ 
+The results in this paper suggest that, even though the model has a solid biological rationale, some parameters included in it may not be estimable. We have suggested practical reasons for this, namely that the step function nature of the forcing is giving highly correlated parameter effects, causing the minimisation algorithm to effectively work in a much lower dimensional space than our full parameter space. This result suggests that using the additional step function data  available may not help in determining the parameters - all of these step functions are applied at timescales over which the `fast' part of the model responds instantly, and so essentially tell us the same thing about the parameters contained in those equations. The different sets may give more information about $\mu$, which appears to work on a timescale comparable to the forcing.  
+
+We note that it is possible that this separation of timescales is an artefact of the fitting, and not necessarily true of the system. We can only evaluate model predictions on the parameter sets the algorithm returns us, and it seems the case that the parameter sets found by the algorithm have this feature. Hypothetically, there may exist parameter sets where all state variables vary on a similar timescale - all we can say is that, in the search region specified, the algorithm has not found any which give a low error. 
+
+This point raises another issue - the arbitrary nature of the initial bounding box. Without good biological constraints on most parameter values, they have been bounded loosely and not necessarily sensibly. Rate constants can vary by many orders of magnitude, and it may be possible that the true optimum lies entirely outside the bounding box specified. Equally,  when our fitness function has turned out to be very flat in some directions, or multimodal, good biologically motivated parameter bounds may be needed to ensure our minimisation algorithm does not wander outside realistic parameter space - the algorithm may present several equally good regions of parameter space, and improved bounds will help us choose between them. We also note that while some parameters may be hard to get any realistic bounds on, values for others - $\mu, \Theta$ for example - may already be available.
+
+ The model may also have general structural issues. \cite{Mclean2012, Grewal1976} give general tests which can be applied to a system of ODE's to determine if all parameters are, in principle, estimable. We note that our system has few enough parameters to make these tests feasible.
+ 
+ Thus, further work may consist of tightening the bounds on parameter values, carrying out a structural analysis, and possibly simplifying the model. A much simpler model, consisting of  just eqs. \ref{eq:p} \ref{eq:g}, may explain existing data perfectly well without the need for inestimable parameters. Experimentally, one option  may be to use different forcing functions. The effect of this on parameter estimability might be anticipated by running a sensitivity analysis using this new forcing, to see if the form of Fig. \ref{SensitivityMatrix} changes. Another option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the effects of parameters contained in eqs. \ref{eq:s} - \ref{eq:c}.
+
+Some earlier fitting work has been done on this dataset via a similar method to the one used above. Our results suggest that those estimates should be viewed with caution - the estimates will not be unique, and the values of some parameters (those in eqs. \ref{eq:s} - \ref{eq:c}) may be very far off any values which are eventually found.
+
+These results also suggest general problems with our methodology - using a least squares minimisation approach. The first problem is local minima. Using the CMA-ES will give better results that a local minimisation algorithm, but you can never be sure you have found a global optimum - for example, \cite{Algorithms2003} compares several algorithms and finds, in the problem set, none locate the true global optimum. A related problem is that of working with single points rather than distributions on parameter space. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and a more systematic approach which gives a probability distribution on parameter space would be desirable.
+
+\todo[inline]{write section on GP's}.
+
 
 % references section
 \bibliographystyle{./IEEE_bibtex_class/IEEEtran}
@@ -558,7 +557,7 @@ These results further suggest that, while we are trying to minimise model error 
 \centering
 \includegraphics[trim = 0 310 0 300 , scale = 0.5, clip = true]{13_9}
 \caption{The \textit{13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
-\label{reactionscheme}
+\label{}
 \end{figure}
 
 %trim=l b r t
@@ -566,16 +565,16 @@ These results further suggest that, while we are trying to minimise model error 
 \centering
 \includegraphics[trim = 0 270 0 360 , scale = 0.5, clip = true]{14_7}
 \caption{The \textit{14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
-\label{reactionscheme}
+\label{}
 \end{figure}
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[trim = 0 330 0 270 , scale = 0.5, clip = true]{14_9}
-\caption{The \textit{14\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
-\label{reactionscheme}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[trim = 0 330 0 270 , scale = 0.5, clip = true]{14_9}
+%\caption{The \textit{14\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing %curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
+%\label{}
+%\end{figure}
 
 
 \section{Histogram of Initial Fit Error values}
@@ -635,7 +634,30 @@ These results further suggest that, while we are trying to minimise model error 
 \end{tabular}
 \end{table}
 
-
+ 
+ \begin{itemize}
+ \item look at degeneracies in the fixed points.
+ \item discuss evidence for model being very over parametrized, and suggest a simpler model may work equally well - suggest biologically interesting parameters may be unobservable.
+ \item discuss general methodological flaws - throwing marbles in the air, local minima, is MLE even any good? say data shows even the EA doesn't avoid local minima. The space is so unconstrained. the algorithm can't be expected to just fix all these problems.
+ \item suggest additional forcing time data may not help due to two timing nature, 
+ \item suggest there MAY be other ways to fit the data, but the wide range of parameter bounds mean we just don't know - the landscape is complicated and huge, and there may be minima widely separated in the parameter space. whose to say which is right?
+ \item Further work - on experimnetal side, propoer lit review to rightly constrain some values, fix more. More state variables! should easily be able to fix mu, theta, maybe others too? other forcing functions?
+ \item a proper bloody methodology - gaussian processes.
+ \item mention this is how sys bio papers do it, and we were given some earlier fitting work which we think is now crap.
+ \item suggest a general structural analysis be carried out.
+ 
+ \end{itemize}
+ 
+  \begin{itemize}
+ \item explore degeneracies in fixed point equations
+ \item discuss estimatbility criteria- uniqeuess and sensitivity
+ \item put in some sensitivity analysis results
+ \item discuss model fixed points
+ \item discuss systematic paramater shift.
+ \item discuss cross - validation and predicitive ability of parameter sets found.
+ \item suggest two times, work out fixed point for all the solutions found, look at structure of soln,
+ \item re run from starting pararms.
+ \end{itemize}
 
 
 \end{document}
