@@ -54,7 +54,7 @@
 
 % The paper headers
 \markboth{hi}%
-{Computational design of RNA-based oscillatory circuits}
+{Parameter estimation of RNA-based oscillatory circuits}
 
 % make the title area
 \maketitle
@@ -109,7 +109,7 @@ Place conference title here}}\hfil\hbox{}}}
 %\addtolength{\textheight}{-0.1\baselineskip}
 
 \begin{abstract}
-genetic circuitry, RNA's offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightfor
+For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA is an attractive tool, due to the ease of predicting its behaviour from physiochemical models. In this report, we propose a system of ODE's to model a recently designed synthetic regulatory circuit, before attempting to estimate its unknown parameters using recent time series data. We provide estimates for a subset of parameters, but find many of them to be inestimable. We discuss why this is this case for our system, and suggest how this problem might be resolved.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -157,7 +157,7 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 \label{ANDGate}
 \end{figure*}
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[trim = 100 170 100 400,page=10,clip = true,scale = 0.6]{Appendix.pdf}
 \caption{A mechanism by which sRNA can regulate gene expression. Initially, the 5' UTR of the mRNA is folded over the RBS, forming a loop and blocking Ribosome binding. The sRNA binds to this loop in the mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur. Image reproduced from \cite{Rodrigo2012}.}
@@ -171,20 +171,16 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 \begin{figure}[h]
 \centering
 \includegraphics[trim = 60 630 300 30,page=2,clip = true]{pnas1203831109.pdf}
-\caption{A proposed reaction scheme between the synthetic sRNA-mRNA pairs proposed in \cite{Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small 
+\caption{A proposed reaction scheme between the synthetic sRNA-mRNA pairs designed in \cite{Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small 
 `toehold' sequence, forming an unstable transition state, which then stabilises to give the final compound. Image reproduced from \cite{Rodrigo2012}}
 \label{reactionscheme}
 \end{figure}
 
 
-The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoters, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
-
-\todo[inline]{promoter? ).}
-
-
+The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoter regions \footnote{A promoter region in a DNA sequence is a sequence of nucleotides, found upstream of where transcription of a gene begins, which can influence the transcription rate of the gene.}, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
 
 In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
-These repressors can themselves be disabled by the presence of two chemicals, aT and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
+These repressors can themselves be disabled by the presence of two chemicals, aTc and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
 
 Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA pair is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
  
@@ -194,12 +190,12 @@ mRNA concentrations in this system shown in Fig. \ref{ANDGate} can be indirectly
 
 The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing timeseries of individual cell fluorescences to be recorded.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[trim = 0 0 0  85 ,page=17 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
 \centering
 \includegraphics[trim = 0 0 0  90 ,page=18 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
-\caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them from the media inlet. This inlet also allows the introduction of aTc IPTG. Software then traces these cells, allowing fluorescence timeseries to be built.  Image reproduced from \cite{Jaramillo}.}
+\caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timeseries to be built.  Image reproduced from \cite{Jaramillo}.}
 \label{}
 \end{figure}
 
@@ -277,7 +273,7 @@ GFP\textsubscript{Immature}  \chemrel[$\gamma$]{->} GFP\textsubscript{Mature}
 \end{align*}
 
 Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$, assumed identical for the mature and immature species, with the dilution rate $\mu$ shared by all species.
-\todo[inline]{para about clpX}
+\todo[inline]{need a description about the terms representing clpX degradation.}
 Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
 
 
@@ -484,8 +480,8 @@ Fig. \ref{model_output} shows model output for all state variables, using the pa
 
 \begin{figure}[h]	
     \centering
-        \includegraphics[scale = 0.25]{model_output}
-        \caption{}
+        \includegraphics[scale = 0.22]{model_output}
+        \caption{model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. }
         \label{model_output} 
 \end{figure}
 
@@ -495,14 +491,14 @@ It demonstrates that, at least in some of the parameter sets initially estimated
 \begin{figure}[h]	
     \centering
         \includegraphics[scale = 0.25]{fixedpoint_f}
-        \caption{}
+        \caption{A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. }
         \label{fixedpoint_f} 
 \end{figure}
 
 \begin{figure}[h]	
     \centering
         \includegraphics[scale = 0.25]{fixedpoint_mu}
-        \caption{}
+        \caption{A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu$ in that set.}
         \label{fixedpoint_mu} 
 \end{figure} 
 
@@ -642,8 +638,8 @@ These results also suggest general problems with our methodology - using a least
  \item suggest additional forcing time data may not help due to two timing nature, 
  \item suggest there MAY be other ways to fit the data, but the wide range of parameter bounds mean we just don't know - the landscape is complicated and huge, and there may be minima widely separated in the parameter space. whose to say which is right?
  \item Further work - on experimnetal side, propoer lit review to rightly constrain some values, fix more. More state variables! should easily be able to fix mu, theta, maybe others too? other forcing functions?
- \item a proper bloody methodology - gaussian processes.
- \item mention this is how sys bio papers do it, and we were given some earlier fitting work which we think is now crap.
+ \item a proper methodology - gaussian processes.
+ \item mention this is how sys bio papers do it, and we were given some earlier fitting work which we think is now wrong.
  \item suggest a general structural analysis be carried out.
  
  \end{itemize}
