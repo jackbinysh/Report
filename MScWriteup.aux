@@ -35,8 +35,10 @@
 \citation{Jaramillo}
 \citation{UriAlon}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Single Cell Fluorescence Data}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Model Derivation}{3}}
-\newlabel{Model Derivation}{{II}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}ODE Model}{3}}
+\newlabel{ODE Model}{{II}{3}}
+\@writefile{tdo}{\contentsline {todo}{give the original model and discuss modifications in appendix.}{3}}
+\pgfsyspdfmark {pgfid1}{11496193}{9986474}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timesseries to be built. Image reproduced from \cite  {Jaramillo}.\relax }}{3}}
 \newlabel{}{{4}{3}}
 \newlabel{eq:s}{{1}{3}}
@@ -50,11 +52,11 @@
 \citation{Rodrigo2012}
 \citation{Brewer2008,Algorithms2003,Hu2015}
 \@writefile{tdo}{\contentsline {todo}{need a description about the terms representing clpX degradation.}{4}}
-\pgfsyspdfmark {pgfid25}{11496193}{9888236}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Model Parameters (those to be estimated shown in bold)\relax }}{4}}
-\newlabel{ModelParameters}{{I}{4}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces State Variables\relax }}{4}}
-\newlabel{StateVariables}{{II}{4}}
+\pgfsyspdfmark {pgfid26}{11496193}{9886731}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces State Variables\relax }}{4}}
+\newlabel{StateVariables}{{I}{4}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Model Parameters (those to be estimated shown in bold)\relax }}{4}}
+\newlabel{ModelParameters}{{II}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Parameter Estimation}{4}}
 \newlabel{Parameter Estimation}{{III}{4}}
 \citation{Algorithms2003}
@@ -62,18 +64,34 @@
 \citation{Hu2015}
 \citation{Mclean2012,Yao2003,Beck}
 \citation{Jimenez-Hornero2008,Grewal1976}
-\citation{Mclean2012}
-\citation{Beck}
+\@writefile{tdo}{\contentsline {todo}{explain why not fit each curve individually.}{5}}
+\pgfsyspdfmark {pgfid27}{11496193}{36503584}
+\@writefile{tdo}{\contentsline {todo}{why use CMA-ES? Some refs}{5}}
+\pgfsyspdfmark {pgfid28}{11496193}{26241312}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Initial Parameter Estimates}{5}}
 \newlabel{Initial Parameter Estimates}{{\unhbox \voidb@x \hbox {III-A}}{5}}
 \@writefile{tdo}{\contentsline {todo}{follow this up properly.}{5}}
-\pgfsyspdfmark {pgfid28}{29259718}{33407513}
+\pgfsyspdfmark {pgfid29}{29259718}{20942236}
+\@writefile{tdo}{\contentsline {todo}{move this down into the discussion, and that the data may be better described by a simplified model}{5}}
+\pgfsyspdfmark {pgfid30}{29259718}{17766351}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Parameter Estimability}{5}}
 \newlabel{Parameter Estimability}{{\unhbox \voidb@x \hbox {III-B}}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Parameter estimates, inter-parameter correlation values, and model predictions for the \textit  {13\_9} and \textit  {14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response \todo [inline]{colour forcings differntly, the 14 7 has the wrong forcing plotted, put a colorbar on the maps.}\relax }}{6}}
-\@writefile{tdo}{\contentsline {todo}{colour forcings differntly, the 14 7 has the wrong forcing plotted, put a colorbar on the maps.}{6}}
-\pgfsyspdfmark {pgfid27}{20377956}{7437718}
+\newlabel{InitialResults_13_9_hist}{{5a}{6}}
+\newlabel{sub@InitialResults_13_9_hist}{{a}{6}}
+\newlabel{InitialResults_14_7_hist}{{5b}{6}}
+\newlabel{sub@InitialResults_14_7_hist}{{b}{6}}
+\newlabel{InitialResults_13_9_correlation}{{5c}{6}}
+\newlabel{sub@InitialResults_13_9_correlation}{{c}{6}}
+\newlabel{InitialResults_14_7_correlation}{{5d}{6}}
+\newlabel{sub@InitialResults_14_7_correlation}{{d}{6}}
+\newlabel{InitialResults_13_9_best}{{5e}{6}}
+\newlabel{sub@InitialResults_13_9_best}{{e}{6}}
+\newlabel{InitialResults_14_7_best}{{5f}{6}}
+\newlabel{sub@InitialResults_14_7_best}{{f}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Parameter estimates, inter-parameter correlation values, and model predictions for the \textit  {13\_9} and \textit  {14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response.\relax }}{6}}
 \newlabel{InitialResults}{{5}{6}}
+\citation{Mclean2012}
+\citation{Beck}
 \citation{Beck}
 \citation{Mclean2012}
 \newlabel{SensitivityMatrix_unscaled}{{6a}{7}}
@@ -82,20 +100,19 @@
 \newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cross validating data by taking parameter estimates from one dataset, and using them to predict another. Here we take the best parameter set fitted on the \textit  {13\_9}, and fit it against the \textit  {14\_7} dataset, and vice versa \relax }}{7}}
 \newlabel{CrossValidation}{{6}{7}}
-\newlabel{SensitivityMatrix_unscaled}{{7a}{7}}
-\newlabel{sub@SensitivityMatrix_unscaled}{{a}{7}}
-\newlabel{SensitivityMatrix_scaled}{{7b}{7}}
-\newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 7a\hbox {} shows them unscaled, 7b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{7}}
-\newlabel{SensitivityMatrix}{{7}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Differing timescales within the system}{7}}
 \citation{Rodrigo2012}
 \citation{Hu2015}
+\newlabel{SensitivityMatrix_unscaled}{{7a}{8}}
+\newlabel{sub@SensitivityMatrix_unscaled}{{a}{8}}
+\newlabel{SensitivityMatrix_scaled}{{7b}{8}}
+\newlabel{sub@SensitivityMatrix_scaled}{{b}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 7a\hbox {} shows them unscaled, 7b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{8}}
+\newlabel{SensitivityMatrix}{{7}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces model output for all state variables, using the parameter values giving the lowest error on the \textit  {13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. \relax }}{8}}
 \newlabel{model_output}{{8}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. \relax }}{8}}
 \newlabel{fixedpoint_f}{{9}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu $ in that set.\relax }}{8}}
-\newlabel{fixedpoint_mu}{{10}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{8}}
 \newlabel{Conclusions and Further work}{{IV}{8}}
 \citation{Mclean2012,Grewal1976}
@@ -111,6 +128,11 @@
 \bibcite{Shine1974}{6}
 \bibcite{Lutz1997}{7}
 \bibcite{Jaramillo}{8}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu $ in that set.\relax }}{9}}
+\newlabel{fixedpoint_mu}{{10}{9}}
+\@writefile{tdo}{\contentsline {todo}{write section on GP's}{9}}
+\pgfsyspdfmark {pgfid31}{29259718}{25482092}
+\@writefile{toc}{\contentsline {section}{References}{9}}
 \bibcite{UriAlon}{9}
 \bibcite{Brewer2008}{10}
 \bibcite{Algorithms2003}{11}
@@ -120,9 +142,6 @@
 \bibcite{Mclean2012}{15}
 \bibcite{Yao2003}{16}
 \bibcite{Beck}{17}
-\@writefile{tdo}{\contentsline {todo}{write section on GP's}{9}}
-\pgfsyspdfmark {pgfid29}{29259718}{43634031}
-\@writefile{toc}{\contentsline {section}{References}{9}}
 \bibcite{Jimenez-Hornero2008}{18}
 \bibcite{Grewal1976}{19}
 \bibcite{Andersen1998}{20}

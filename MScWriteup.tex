@@ -214,10 +214,11 @@ The data we will consider consists of two sets of individual cell time series, l
 %%%
 %%%
 
-\section{Model Derivation}
-\label{Model Derivation}
+\section{ODE Model}
+\label{ODE Model}
 
-In eqs. \ref{eq:s} - \ref{eq:z}, we propose a simple model consisting of a set of ODE's with mass action kinetics to describe the system \cite{UriAlon}. Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{ModelParameters} and \ref{StateVariables} give complete descriptions of the parameters and state variables.
+In eqs. \ref{eq:s} - \ref{eq:z}, we present a modified version an existing model which describes the system, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{ModelParameters} and \ref{StateVariables} give complete descriptions of the parameters and state variables.
+\todo[inline]{give the original model and discuss modifications in appendix.}
  
 \begin{align}
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \label{eq:s}\\
@@ -245,8 +246,8 @@ sRNA:mRNA\textsubscript{unstable} \chemrel[$k_\mathrm{hyb}$]{->} sRNA:mRNA\texts
 
  In addition, these complexes are given degradation rates, $\delta_{s}$, $\delta_{m}$, $\delta_{sm}$, $\delta_{c}$, and dilutions of chemical concentrations due to cell growth are modelled with a dilution rate $\mu$. 
  
- Control of the system by aTc and IPTG is modelled by $y(t)$ and $x(t)$ in eqs. \ref{eq:s}-\ref{eq:m}. $y(t)$ models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. Thus the forcing may vary between 
- $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$, where $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter. When engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter, and section of DNA coding for sRNA, may be placed in the bacterial DNA - this is modelled by the copy number, $N$. Identical considerations hold for $x(t)$ and IPTG concentrations.
+ Control of the system by aTc is modelled by $y(t)$ in eq. \ref{eq:s}. This function models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter, and $N$ is the copy number, which models the fact that when engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter may be placed in the bacterial DNA. Thus the transcription rate varies as a sigmoid bounded by $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$. Identical considerations hold for $x(t)$ in eq. \ref{eq:m}, and IPTG concentration.
+
 
 We explicitly model translation as a simple one step process in eqs. \ref{eq:p}-\ref{eq:z}. There is a small rate of translation of the self repressed mRNA \cite{Rodrigo2012}, which is modelled at rate $\beta$, and a larger one for translation of the stable complex, $\beta f_s$. Here $f_s$ represents the fractional change in translation rate between the repressed mRNA and the unrepressed complex.
 
@@ -276,6 +277,25 @@ Degradation of the immature and mature GFP is modelled in two ways. Firstly a ge
 \todo[inline]{need a description about the terms representing clpX degradation.}
 Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
 
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.3}
+\caption{State Variables}
+\label{StateVariables}
+\centering
+\begin{tabular}{| l | l | l|}
+\hline \textbf{State variable} & Units &  \textbf{Definition}  \\
+\hline\hline $s$  & nM & sRNA concentration \\
+\hline $m$ & nM & mRNA concentration  \\
+\hline $s:m$ &  nM & Unstable sRNA:mRNA complex concentration  \\
+\hline $c$ &  nM & Stable sRNA:mRNA complex concentration  \\
+\hline $p$ & nM & Immature GFP concentration  \\
+\hline $g$ &  nm & Mature GFP concentration  \\
+\hline $z$ & AFU & Observed fluorescence  \\
+\hline $y(t)$ & & Unitless aTc forcing function  \\
+\hline $x(t)$ &  & Unitless IPTG forcing function  \\
+\hline
+\end{tabular}
+\end{table}
 
 \begin{table}[h]
 \renewcommand{\arraystretch}{1.3}
@@ -309,25 +329,7 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 \end{tabular}
 \end{table}
 
-\begin{table}[h]
-\renewcommand{\arraystretch}{1.3}
-\caption{State Variables}
-\label{StateVariables}
-\centering
-\begin{tabular}{| l | l | l|}
-\hline \textbf{State variable} & Units &  \textbf{Definition}  \\
-\hline\hline $s$  & nM & sRNA concentration \\
-\hline $m$ & nM & mRNA concentration  \\
-\hline $s:m$ &  nM & Unstable sRNA:mRNA complex concentration  \\
-\hline $c$ &  nM & Stable sRNA:mRNA complex concentration  \\
-\hline $p$ & nM & Immature GFP concentration  \\
-\hline $g$ &  nm & Mature GFP concentration  \\
-\hline $z$ & AFU & Observed fluorescence  \\
-\hline $y(t)$ & & Unitless aTc forcing function  \\
-\hline $x(t)$ &  & Unitless IPTG forcing function  \\
-\hline
-\end{tabular}
-\end{table}
+
 
 
 %%%
@@ -351,17 +353,19 @@ Our next goal is to estimate the unknown parameters of this model, given the ava
 \begin{align}
 \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t)
 \end{align}
-where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time. The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. An error between the model prediction and an experimental time series is defined as
+where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time. The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. The least squares error between the model prediction and an experimental time series is defined as
 \begin{align}
-J(\boldsymbol{\theta}) = \sum_{i =1}^{N} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
+J(\boldsymbol{\theta}) = \sum_{i =1}^{n} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
 \end{align}
-where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots N$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a time series from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
+where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots n$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a time series from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
+\todo[inline]{explain why not fit each curve individually.}
 \begin{align}
-\min_{\boldsymbol{\theta}} \sum_{i =1}^{N} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
+\min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
 \end{align}
-The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. \footnote{CMA-ES stands for covariance matrix evolutionary strategy. This algorithm generates a population of test points according to a multivariate gaussian distribution. It then ranks the points based on their fitness function scores, and  considers some number of the highest ranked points as a sample from a new multivariate gaussian. Using this sample, it then estimates a new mean and covariance matrix for this gaussian and the process is iterated.}
+The next step is performing the minimisation. In general, the landscape defined by the error function may be very rugged, and contain many local minima. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. \footnote{CMA-ES stands for covariance matrix evolutionary strategy. This algorithm generates a population of test points according to a multivariate gaussian distribution. It then ranks the points based on their fitness function scores, and  considers some number of the highest ranked points as a sample from a new multivariate gaussian. Using this sample, it then estimates a new mean and covariance matrix for this gaussian and the process is iterated.}
+\todo[inline]{why use CMA-ES? Some refs}
 
-In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Appendix \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
+In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Appendix \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we simplify the model by assuming that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
 
  
 \begin{figure*}
@@ -369,35 +373,41 @@ In order to reduce the dimensionality of our search space, we can perform a lite
     \centering
         \includegraphics[scale = 0.38, clip = true, trim = 80 0 74 0]{13_9_hist.eps}
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{13\_9} dataset.}
+        \label{InitialResults_13_9_hist}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.38,clip = true, trim = 60 12 74 0]{14_7_hist.eps}
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{14\_7} dataset. }
+        \label{InitialResults_14_7_hist}
     \end{subfigure}
 
         \begin{subfigure}[c]{0.49\textwidth}
         \centering
     \includegraphics[scale = 0.25, clip = true, trim = 100 0 90 0]{13_9_heatmap.eps}
         \caption{Correlation matrix of estimated parameter sets, from the  \textit{13\_9} dataset. }
+        \label{InitialResults_13_9_correlation}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.25, clip = true, trim = 80 0 70 0]{14_7_heatmap.eps}
         \caption{Correlation matrix of estimated parameter sets, from the  \textit{14\_7} dataset.}
+        \label{InitialResults_14_7_correlation}
     \end{subfigure}
     
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
     \includegraphics[scale = 0.37]{13_9_bestPlot}
         \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{13\_9} dataset.}
+                \label{InitialResults_13_9_best}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.37]{14_7_bestPlot}
         \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{14\_7} dataset.}
+        \label{InitialResults_14_7_best}
     \end{subfigure}
-    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response \todo[inline]{colour forcings differntly, the 14 7 has the wrong forcing plotted, put a colorbar on the maps.}}
+    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response.}
 \label{InitialResults}
 \end{figure*} 
  
@@ -408,7 +418,11 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \label{Initial Parameter Estimates}
 
 
- We begin by fitting two of the datasets, \textit{13\_9} and \textit{14\_7}, by choosing 200 points, uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Fig. \ref{InitialResults} demonstrates that the model is capable of quantitatively capturing the data - however, the fitting also suggests that some parameters are not tightly constrained, taking values right across the initial bounding range specified. The correlation matrices in Fig. \ref{InitialResults} also indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to eq. \ref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
+ We begin by fitting each dataset individually, by choosing 200 parameter sets uniformly distributed over our initial parameter bounds and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ and $\Theta$ in particular) are much tighter.
+
+
+Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the matrix $R_{ij}$ is then the correlation co-efficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to eq. \ref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. Biologically, an increased production rate of GFP being balance by an increased dilution rate. 
+The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
  We can test the predictive ability of our model by cross validating - taking the parameter values found in the fitting of one dataset, and using them to give model predictions for another. We thus take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Fig.\ref{CrossValidation}.
  
@@ -432,7 +446,8 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. The first reason for this may be that parameter values will vary between experimental runs \cite{Hu2015}. The second may be that the model is overfitting.
 \todo[inline]{follow this up properly.}
  
- Taken together, these results suggest that some parameters may be inestimable, and that the data may be better described by a simplified model.  
+ Taken together, these results suggest that some parameters may be inestimable.  
+ \todo[inline]{move this down into the discussion, and that the data may be better described by a simplified model}
  
  \subsection{Parameter Estimability}
 \label{Parameter Estimability}
@@ -441,7 +456,7 @@ Though the predictions are reasonable, they are substantially worse than the pre
  
 These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model. \footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}
 
-Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in general this is not true. \footnote{\cite{Beck} gives an example in which a parameter only affects model predictions after several hours, though others will affect it at all timescales - in this example, if we only took data for a few minutes, the parameter would be inestimable, but in principle it is not.} In this case, parameter estimates may be improved by taking data in more varied experimental conditions, and attempting to observe as many components of the model output as possible. 
+Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in other regimes this is not true. \footnote{\cite{Beck} gives an example in which a parameter only affects model predictions after several hours, though others will affect it at all timescales - in this example, if we only took data for a few minutes, the parameter would be inestimable, but in principle it is not.} In this case, parameter estimates may be improved by taking data in more varied experimental conditions, and attempting to observe as many components of the model output as possible. 
  
  We may begin to investigate these issues in our model by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
@@ -449,11 +464,11 @@ Problems may also arise for more practical reasons (\textit{practical identifiab
 S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}}
 \end{align}
 
-where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. This matrix contains information about how sensitive $z$ is to perturbations in parameter values, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
+where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. Each column of $S$ is a time series of sensitivity co-efficients, which describe how sensitive $z$ is to perturbations in the parameter associated with that column, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
 
-It can be shown that if sensitivity coefficients are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity coefficients as a function of time, and visually check for obvious linear relations between the curves.
+It can be shown that if the sensitivity coefficients (columns of $S$) are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity coefficients as a function of time, and visually check for obvious linear relations between the curves.
 
-Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
+Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
 
 \begin{figure}[h]	
 	\begin{subfigure}[h]{0.49\textwidth}
@@ -472,8 +487,9 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
 \label{SensitivityMatrix}   
 \end{figure}
 
-We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. This may help to explain why some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
+We see that many of the parameters give sensitivity curves of similar shapes, and have near linear dependence - this implies that the effects of perturbing any one of these parameters all look similar in terms of model output, and are hard to distinguish between. This may help to explain why some of our initial parameter estimates are very loose, and why there are correlations between the estimated parameter sets - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
  
+\subsection{Differing timescales within the system}
 
 We suggest that part of the issue is the step function forcing used in model predictions, and the timescales on which the system responds to it. We hypothesize that the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing. If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. If this were the case, the particular shape of the models response curve would be primarily determined by the parameters appearing in eqs. \ref{eq:p} - \ref{eq:z} - namely $\mu$, $\beta$, $f_{s}$ and $\Theta$. If all the information contained in the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only be expressed in the form of the model's fixed point, it would not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable. 
 
