@@ -153,7 +153,7 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 \begin{figure*}[t]
 \centering
 \includegraphics[trim = 30 600 30 0,page=4,clip = true]{pnas1203831109.pdf}
-\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a 'double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
+\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
 \label{ANDGate}
 \end{figure*}
 
@@ -179,27 +179,27 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 
 The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoter regions \footnote{A promoter region in a DNA sequence is a sequence of nucleotides, found upstream of where transcription of a gene begins, which can influence the transcription rate of the gene.}, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
 
-In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \text{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
+In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \textit{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
 These repressors can themselves be disabled by the presence of two chemicals, aTc and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
 
 Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA pair is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
  
 \subsection{Single Cell Fluorescence Data}
 
-mRNA concentrations in this system shown in Fig. \ref{ANDGate} can be indirectly observed by designing the mRNA to code for GFP \footnote{ The methodology of \cite{Rodrigo2012} only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant}. Recent experiments have used timelapse microscopy to observe the fluoresence of bacteria which contain the above sRNA-mRNA pair, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
+mRNA concentrations in this system shown in Fig. \ref{ANDGate} can be indirectly observed by designing the mRNA to code for GFP \footnote{ The methodology of \cite{Rodrigo2012} only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant.}. Recent experiments have used timelapse microscopy to observe the fluoresence of bacteria which contain the above sRNA-mRNA pair, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
 
-The bacteria are grown a single layer thick in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing timeseries of individual cell fluorescences to be recorded.
+A single layer of the bacteria are grown in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing time series of individual cell fluorescences to be recorded.
 
 \begin{figure}[h]
 \centering
-\includegraphics[trim = 0 0 0  85 ,page=17 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
+\includegraphics[trim = 280 0 0  85 ,page=17 ,clip = true, scale=0.4]{WCPM_Warwick-talk45-220115.pdf}
 \centering
-\includegraphics[trim = 0 0 0  90 ,page=18 ,clip = true, scale=0.3]{WCPM_Warwick-talk45-220115.pdf}
-\caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timeseries to be built.  Image reproduced from \cite{Jaramillo}.}
+\includegraphics[trim = 0 0 0  90 ,page=18 ,clip = true, scale=0.35]{WCPM_Warwick-talk45-220115.pdf}
+\caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timesseries to be built.  Image reproduced from \cite{Jaramillo}.}
 \label{}
 \end{figure}
 
-The data we will consider consists of two sets of individual cell timeseries, labelled \textit{13\_9}, \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Section \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
+The data we will consider consists of two sets of individual cell time series, labelled \textit{13\_9} and \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Appendix \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
 
 
 
@@ -217,7 +217,7 @@ The data we will consider consists of two sets of individual cell timeseries, la
 \section{Model Derivation}
 \label{Model Derivation}
 
-We propose a simple model, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}, to describe the system. Tables \ref{ModelParameters}, \ref{StateVariables} give complete descriptions of the parameters and state variables.
+In eqs. \ref{eq:s} - \ref{eq:z}, we propose a simple model consisting of a set of ODE's with mass action kinetics to describe the system \cite{UriAlon}. Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{ModelParameters} and \ref{StateVariables} give complete descriptions of the parameters and state variables.
  
 \begin{align}
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \label{eq:s}\\
@@ -228,22 +228,22 @@ We propose a simple model, consisting of a set of ODE's with mass action kinetic
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \label{eq:g} \\
 z &= z_{0} +\frac{g}{\Theta} \label{eq:z}
 \end{align}
-  Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs. \ref{eq:s}-\ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_{on}$ and $k_{off}$.
+  Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs. \ref{eq:s}-\ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_\mathrm{on}$ and $k_\mathrm{off}$.
   
 \begin{align*}
 \mathrm{
-sRNA \chemsign+ mRNA\chemrel[$k_{on}$][$k_{off}$]{<>} sRNA:mRNA\textsubscript{unstable}
+sRNA \chemsign+ mRNA\chemrel[$k_\mathrm{on}$][$k_\mathrm{off}$]{<>} sRNA:mRNA\textsubscript{unstable}
 }
 \end{align*}
-after which the stabilization is modelled as an irreversible reaction with rate $k_{hyb}$. 
+after which the stabilization is modelled as an irreversible reaction with rate $k_\mathrm{hyb}$:
 
 \begin{align*}
 \mathrm{
-sRNA:mRNA\textsubscript{unstable} \chemrel[$k_{hyb}$]{->} sRNA:mRNA\textsubscript{stable} 
+sRNA:mRNA\textsubscript{unstable} \chemrel[$k_\mathrm{hyb}$]{->} sRNA:mRNA\textsubscript{stable} 
 }
 \end{align*}
 
- In addition, these complexes are given degradation rates, $\delta_{s}$, $\delta_{m}$, $\delta_{sm}$, $\delta_{c}$, and dilution of chemical concentrations due to cell growth are modelled with a dilution rate $\mu$. 
+ In addition, these complexes are given degradation rates, $\delta_{s}$, $\delta_{m}$, $\delta_{sm}$, $\delta_{c}$, and dilutions of chemical concentrations due to cell growth are modelled with a dilution rate $\mu$. 
  
  Control of the system by aTc and IPTG is modelled by $y(t)$ and $x(t)$ in eqs. \ref{eq:s}-\ref{eq:m}. $y(t)$ models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. Thus the forcing may vary between 
  $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$, where $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter. When engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter, and section of DNA coding for sRNA, may be placed in the bacterial DNA - this is modelled by the copy number, $N$. Identical considerations hold for $x(t)$ and IPTG concentrations.
@@ -285,14 +285,14 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 \begin{tabular}{| l | l | p{0.6\linewidth} |}
 \hline \textbf{Parameter} &  \textbf{Units} & \textbf{Definition}  \\
 \hline \hline N & & Number of copies of promoter existing on plasmid DNA  \\
-\hline $z_{0}$ &  AFU & Baseline experimental fluorescence  \\
+\hline $z_{0}$ &  Arbitrary (AU) & Baseline experimental fluorescence  \\
 \hline $\alpha_{L}$ & nM/min & Maximal transcription rate of $P_\mathrm{LlacO-1}$ promoter\\
 \hline $\alpha_{T}$  &  nM/min  & Maximal transcription rate of $P_{\mathrm{LtetO-1}}$ promoter \\
 \hline $f_{L}$ &  & Unitless ratio between repressed and unrepressed $P_\mathrm{LlacO-1}$ transcription rate   \\ 
 \hline $f_{T}$ &  & Unitless ratio between repressed and unrepressed $P_{\mathrm{LtetO-1}}$ transcription rate  \\
 \hline $\delta_{g}$  & /min  & GFP degradation rate  \\
 \hline $\gamma$ &  /min & GFP maturation rate  \\
-\hline $v_{z}$ & nM/min & degradation constant of clpx  \\
+\hline $v_{z}$ & nM/min & Degradation constant of clpx  \\
 \hline $K_{z}$   &   nM/min & Dissociation constant of clpx  \\
 \hline $\boldsymbol{\Theta}$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence  \\
 \hline $\boldsymbol{\mu}$ &  /min & Dilution rate  \\
@@ -346,7 +346,7 @@ Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to ex
 \section{Parameter Estimation}
 \label{Parameter Estimation}
 
-Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data \cite{Brewer2008,Algorithms2003, Hu2015}. Suppose we have some ODE model of our system
+Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting the predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data \cite{Brewer2008,Algorithms2003, Hu2015}. Suppose we have some ODE model of our system
 
 \begin{align}
 \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t)
@@ -355,49 +355,49 @@ where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of mod
 \begin{align}
 J(\boldsymbol{\theta}) = \sum_{i =1}^{N} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
 \end{align}
-where the experimental timeseries, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots N$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a timeseries from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
+where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots N$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a time series from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
 \begin{align}
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{N} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
 \end{align}
-The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. 
+The next step is performing the minimisation. In general, the landscape defined by the error function is multimodal, and may be very rugged. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. \footnote{CMA-ES stands for covariance matrix evolutionary strategy. This algorithm generates a population of test points according to a multivariate gaussian distribution. It then ranks the points based on their fitness function scores, and  considers some number of the highest ranked points as a sample from a new multivariate gaussian. Using this sample, it then estimates a new mean and covariance matrix for this gaussian and the process is iterated.}
 
-In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Section \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
+In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Appendix \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we assume that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
 
  
 \begin{figure*}
     \begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.35, clip = true, trim = 80 0 80 0]{13_9_hist.eps}
-        \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{13\_9} dataset. }
+        \includegraphics[scale = 0.3, clip = true, trim = 80 0 74 0]{13_9_hist.eps}
+        \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{13\_9} dataset.}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.38,clip = true, trim = 60 12 80 0]{14_7_hist.eps}
+        \includegraphics[scale = 0.38,clip = true, trim = 60 12 74 0]{14_7_hist.eps}
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{14\_7} dataset. }
     \end{subfigure}
 
         \begin{subfigure}[c]{0.49\textwidth}
         \centering
-    \includegraphics[scale = 0.25, clip = true, trim = 100 0 100 0]{13_9_heatmap.eps}
+    \includegraphics[scale = 0.25, clip = true, trim = 100 0 90 0]{13_9_heatmap.eps}
         \caption{Correlation matrix of estimated parameter sets, from the  \textit{13\_9} dataset. }
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.25, clip = true, trim = 80 0 80 0]{14_7_heatmap.eps}
+        \includegraphics[scale = 0.25, clip = true, trim = 80 0 70 0]{14_7_heatmap.eps}
         \caption{Correlation matrix of estimated parameter sets, from the  \textit{14\_7} dataset.}
     \end{subfigure}
     
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
     \includegraphics[scale = 0.37]{13_9_bestPlot}
-        \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{13\_9} dataset. A}
+        \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{13\_9} dataset.}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.37]{14_7_bestPlot}
         \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{14\_7} dataset.}
     \end{subfigure}
-    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response}
+    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response \todo[inline]{colour forcings differntly, the 14 7 has the wrong forcing plotted, put a colorbar on the maps.}}
 \label{InitialResults}
 \end{figure*} 
  
@@ -429,7 +429,8 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \label{CrossValidation}   
 \end{figure}
 
-Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. The first reason for this may be experiment to experiment variability of parameter values \cite{Hu2015}. The second may be that the model is overfitting.
+Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. The first reason for this may be that parameter values will vary between experimental runs \cite{Hu2015}. The second may be that the model is overfitting.
+\todo[inline]{follow this up properly.}
  
  Taken together, these results suggest that some parameters may be inestimable, and that the data may be better described by a simplified model.  
  
@@ -438,9 +439,9 @@ Though the predictions are reasonable, they are substantially worse than the pre
  
  There are two main reasons why a parameter may not be estimable \cite{Mclean2012,Yao2003, Beck}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others.
  
-These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model. \footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product can ever be estimated, a problem no amount of data can fix.}
+These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model. \footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}
 
-Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in general this is not true. \footnote{\cite{Beck} gives an example in which a parameter only effects model predictions after several hours, though others will affect it at all timescales - in this example, if we only took data for a few minutes, the parameter would be inestimable, but in principle it is not.} In this case, parameter estimates be may improved by taking data in more varied experimental conditions, and attempting to observe as many components of the model output as possible. 
+Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in general this is not true. \footnote{\cite{Beck} gives an example in which a parameter only affects model predictions after several hours, though others will affect it at all timescales - in this example, if we only took data for a few minutes, the parameter would be inestimable, but in principle it is not.} In this case, parameter estimates may be improved by taking data in more varied experimental conditions, and attempting to observe as many components of the model output as possible. 
  
  We may begin to investigate these issues in our model by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
@@ -450,7 +451,7 @@ S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}}
 
 where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. This matrix contains information about how sensitive $z$ is to perturbations in parameter values, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
 
-It can be shown that if sensitivity co-efficients are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to asses parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to simply plot the sensitivity co-effecients as a function of time, and visually check for obvious linear relations between the curves.
+It can be shown that if sensitivity coefficients are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity coefficients as a function of time, and visually check for obvious linear relations between the curves.
 
 Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset - these show the evolution of the sensitivity matrix over time. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
 
@@ -467,14 +468,14 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
         \caption{Scaled}
                 \label{SensitivityMatrix_scaled} 
     \end{subfigure}
-    \caption{Sensitivity co-efficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset. \ref{SensitivityMatrix_unscaled} shows them unscaled, \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$.} 
+    \caption{Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset. \ref{SensitivityMatrix_unscaled} shows them unscaled, \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$.} 
 \label{SensitivityMatrix}   
 \end{figure}
 
 We see that many of the parameters give sensitivity curves of similar shapes - the effects of perturbing any one of these parameters all look similar in terms of model output. This may help to explain why some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
  
 
-We suggest that part of the issue is the step function forcing used in model predictions, and the timescales on which the system responds to it. We hypothesize that the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing. If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. If this were the case, the particular shape of the models response curve would be primarily determined by the parameters appearing in eqs. \ref{eq:p}, \ref{eq:g}, \ref{eq:z} - namely $\mu$, $\beta$, $f_{s}$ and $\Theta$. If all the information contained in the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only be expressed in the form of the models fixed point, it would not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable. 
+We suggest that part of the issue is the step function forcing used in model predictions, and the timescales on which the system responds to it. We hypothesize that the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing. If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. If this were the case, the particular shape of the models response curve would be primarily determined by the parameters appearing in eqs. \ref{eq:p} - \ref{eq:z} - namely $\mu$, $\beta$, $f_{s}$ and $\Theta$. If all the information contained in the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only be expressed in the form of the model's fixed point, it would not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable. 
 
 Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. 
 
@@ -486,7 +487,7 @@ Fig. \ref{model_output} shows model output for all state variables, using the pa
 \end{figure}
 
 
-It demonstrates that, at least in some of the parameter sets initially estimated, this difference in time scales exists. The fixed points of eqs. \ref{eq:s} - \ref{eq:c} affects eqs.  \ref{eq:p}, \ref{eq:g} through the $\beta m +f_{s}\beta c$ term - we would expect that, if the fixed point value of this term is what is relevant in determining model response, there would be some consistency in its value across the parameter sets found. Fig. \ref{fixedpoint_f} shows a scatterplot of model fixed point values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
+It demonstrates that, at least in some of the parameter sets initially estimated, this difference in time scales exists. The fixed point of eqs. \ref{eq:s} - \ref{eq:c} affects eqs.  \ref{eq:p}, \ref{eq:g} through the $\beta m +f_{s}\beta c$ term - we would expect that, if the fixed point value of this term is what is relevant in determining model response, there would be some consistency in its value across the parameter sets found. Fig. \ref{fixedpoint_f} shows a scatterplot of model fixed point values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
 
 \begin{figure}[h]	
     \centering
@@ -507,10 +508,6 @@ In Fig. \ref{fixedpoint_mu}, we also see a strong positive correlation between t
 These results further suggest that, while we are trying to minimise model error over our initial high dimensional space, we are effectively working in a lower dimensional space, in which one dimension is the value of the models $\beta m +f_{s}\beta c$ .
  
  
-
- 
- 
-
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
@@ -529,7 +526,7 @@ This point raises another issue - the arbitrary nature of the initial bounding b
 
 Some earlier fitting work has been done on this dataset via a similar method to the one used above. Our results suggest that those estimates should be viewed with caution - the estimates will not be unique, and the values of some parameters (those in eqs. \ref{eq:s} - \ref{eq:c}) may be very far off any values which are eventually found.
 
-These results also suggest general problems with our methodology - using a least squares minimisation approach. The first problem is local minima. Using the CMA-ES will give better results that a local minimisation algorithm, but you can never be sure you have found a global optimum - for example, \cite{Algorithms2003} compares several algorithms and finds, in the problem set, none locate the true global optimum. A related problem is that of working with single points rather than distributions on parameter space. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and a more systematic approach which gives a probability distribution on parameter space would be desirable.
+These results also suggest general problems with our methodology - using a least squares minimisation approach. The first problem is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but you can never be sure you have found a global optimum - for example, \cite{Algorithms2003} compares several algorithms and finds, in the problem set, none locate the true global optimum. A related problem is that of working with single points rather than distributions on parameter space. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and a more systematic approach which gives a probability distribution on parameter space would be desirable.
 
 \todo[inline]{write section on GP's}.
 
