@@ -21,6 +21,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-A}}The sRNA regulatory system}{1}}
 \newlabel{The sRNA regulatory system}{{\unhbox \voidb@x \hbox {I-A}}{1}}
 \citation{Lutz1997}
+\citation{Rodrigo2012}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm  {LtetO-1}}$ and $P_\mathrm  {LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit  {E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell. Image reproduced from \cite  {Rodrigo2012}.\relax }}{2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{ANDGate}{{1}{2}}
@@ -29,18 +30,21 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A proposed reaction scheme between the synthetic sRNA-mRNA pairs designed in \cite  {Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small `toehold' sequence, forming an unstable transition state, which then stabilises to give the final compound. Image reproduced from \cite  {Rodrigo2012}\relax }}{2}}
 \newlabel{reactionscheme}{{3}{2}}
 \citation{Rodrigo2012}
-\citation{Rodrigo2012}
 \citation{Jaramillo}
 \citation{Jaramillo}
 \citation{Jaramillo}
 \citation{UriAlon}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Single Cell Fluorescence Data}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}ODE Model}{3}}
-\newlabel{ODE Model}{{II}{3}}
+\newlabel{ODEModel}{{II}{3}}
 \@writefile{tdo}{\contentsline {todo}{give the original model and discuss modifications in appendix.}{3}}
-\pgfsyspdfmark {pgfid1}{11496193}{10285242}
+\pgfsyspdfmark {pgfid1}{11496193}{10822759}
+\newlabel{InitialResults_13_9_hist}{{4a}{3}}
+\newlabel{sub@InitialResults_13_9_hist}{{a}{3}}
+\newlabel{InitialResults_14_7_hist}{{4b}{3}}
+\newlabel{sub@InitialResults_14_7_hist}{{b}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timesseries to be built. Image reproduced from \cite  {Jaramillo}.\relax }}{3}}
-\newlabel{}{{4}{3}}
+\newlabel{ExperimentalSetup}{{4}{3}}
 \newlabel{eq:s}{{1}{3}}
 \newlabel{eq:m}{{2}{3}}
 \newlabel{eq:sm}{{3}{3}}
@@ -50,9 +54,8 @@
 \newlabel{eq:z}{{7}{3}}
 \citation{Rodrigo2012}
 \citation{Rodrigo2012}
+\citation{Hersch2004}
 \citation{Brewer2008,Algorithms2003,Hu2015}
-\@writefile{tdo}{\contentsline {todo}{need a description about the terms representing clpX degradation.}{4}}
-\pgfsyspdfmark {pgfid26}{11496193}{9886731}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces State Variables\relax }}{4}}
 \newlabel{StateVariables}{{I}{4}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Model Parameters (those to be estimated shown in bold)\relax }}{4}}
@@ -65,15 +68,15 @@
 \citation{Mclean2012,Yao2003,Beck}
 \citation{Jimenez-Hornero2008,Grewal1976}
 \@writefile{tdo}{\contentsline {todo}{explain why not fit each curve individually.}{5}}
-\pgfsyspdfmark {pgfid27}{11496193}{37224480}
+\pgfsyspdfmark {pgfid26}{11496193}{37224480}
 \@writefile{tdo}{\contentsline {todo}{why use CMA-ES? Some refs}{5}}
-\pgfsyspdfmark {pgfid28}{11496193}{26962208}
+\pgfsyspdfmark {pgfid27}{11496193}{26962208}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Initial Parameter Estimates}{5}}
 \newlabel{Initial Parameter Estimates}{{\unhbox \voidb@x \hbox {III-A}}{5}}
 \@writefile{tdo}{\contentsline {todo}{follow this up properly.}{5}}
-\pgfsyspdfmark {pgfid29}{29259718}{21511366}
+\pgfsyspdfmark {pgfid28}{29259718}{21511366}
 \@writefile{tdo}{\contentsline {todo}{move this down into the discussion, and that the data may be better described by a simplified model}{5}}
-\pgfsyspdfmark {pgfid30}{29259718}{18259598}
+\pgfsyspdfmark {pgfid29}{29259718}{18259598}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Parameter Estimability}{5}}
 \newlabel{Parameter Estimability}{{\unhbox \voidb@x \hbox {III-B}}{5}}
 \newlabel{InitialResults_13_9_hist}{{5a}{6}}
@@ -100,33 +103,31 @@
 \newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cross validating data by taking parameter estimates from one dataset, and using them to predict another. Here we take the best parameter set fitted on the \textit  {13\_9}, and fit it against the \textit  {14\_7} dataset, and vice versa \relax }}{7}}
 \newlabel{CrossValidation}{{6}{7}}
-\newlabel{SensitivityMatrix_unscaled}{{7a}{7}}
-\newlabel{sub@SensitivityMatrix_unscaled}{{a}{7}}
-\newlabel{SensitivityMatrix_scaled}{{7b}{7}}
-\newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 7a\hbox {} shows them unscaled, 7b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{7}}
-\newlabel{SensitivityMatrix}{{7}{7}}
-\citation{Rodrigo2012}
-\citation{Hu2015}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Differing timescales within the system}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Differing timescales within the system}{7}}
+\newlabel{eq:m_fixed}{{12}{8}}
+\newlabel{eq:c_fixed}{{13}{8}}
+\newlabel{SensitivityMatrix_unscaled}{{7a}{8}}
+\newlabel{sub@SensitivityMatrix_unscaled}{{a}{8}}
+\newlabel{SensitivityMatrix_scaled}{{7b}{8}}
+\newlabel{sub@SensitivityMatrix_scaled}{{b}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 7a\hbox {} shows them unscaled, 7b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{8}}
+\newlabel{SensitivityMatrix}{{7}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces model output for all state variables, using the parameter values giving the lowest error on the \textit  {13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. \relax }}{8}}
 \newlabel{model_output}{{8}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{8}}
-\newlabel{Conclusions and Further work}{{IV}{8}}
+\citation{Rodrigo2012}
+\citation{Hu2015}
 \citation{Mclean2012,Grewal1976}
 \citation{Algorithms2003}
 \citation{Hu2015}
-\bibstyle{./IEEE_bibtex_class/IEEEtran}
-\bibdata{./IEEE_bibtex_class/IEEEabrv,library}
-\bibcite{MolecularBiology}{1}
-\newlabel{eq:m_fixed}{{6}{9}}
-\newlabel{eq:c_fixed}{{7}{9}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. \relax }}{9}}
 \newlabel{fixedpoint_f}{{9}{9}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu $ in that set.\relax }}{9}}
 \newlabel{fixedpoint_mu}{{10}{9}}
-\@writefile{tdo}{\contentsline {todo}{write section on GP's}{9}}
-\pgfsyspdfmark {pgfid31}{29259718}{8155226}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{9}}
+\newlabel{Conclusions and Further work}{{IV}{9}}
+\bibstyle{./IEEE_bibtex_class/IEEEtran}
+\bibdata{./IEEE_bibtex_class/IEEEabrv,library}
+\bibcite{MolecularBiology}{1}
 \bibcite{Isaacs2006}{2}
 \bibcite{Rodrigo2013}{3}
 \bibcite{Rodrigo2012}{4}
@@ -135,19 +136,21 @@
 \bibcite{Lutz1997}{7}
 \bibcite{Jaramillo}{8}
 \bibcite{UriAlon}{9}
-\bibcite{Brewer2008}{10}
-\bibcite{Algorithms2003}{11}
-\bibcite{Hu2015}{12}
-\bibcite{Hansen2006}{13}
-\bibcite{Hansen2011}{14}
-\bibcite{Mclean2012}{15}
-\bibcite{Yao2003}{16}
-\bibcite{Beck}{17}
-\bibcite{Jimenez-Hornero2008}{18}
-\bibcite{Grewal1976}{19}
-\bibcite{Andersen1998}{20}
-\bibcite{Iizuka2011}{21}
-\bibcite{Hersch2004}{22}
+\bibcite{Hersch2004}{10}
+\bibcite{Brewer2008}{11}
+\bibcite{Algorithms2003}{12}
+\bibcite{Hu2015}{13}
+\bibcite{Hansen2006}{14}
+\bibcite{Hansen2011}{15}
+\bibcite{Mclean2012}{16}
+\bibcite{Yao2003}{17}
+\bibcite{Beck}{18}
+\bibcite{Jimenez-Hornero2008}{19}
+\bibcite{Grewal1976}{20}
+\bibcite{Andersen1998}{21}
+\bibcite{Iizuka2011}{22}
+\@writefile{tdo}{\contentsline {todo}{write section on GP's}{10}}
+\pgfsyspdfmark {pgfid30}{11496193}{40017471}
 \@writefile{toc}{\contentsline {section}{References}{10}}
 \@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}A: Initial Experimental Data}{11}}
 \newlabel{Initial Experimental Data}{{A}{11}}

@@ -69,6 +69,12 @@ A.~Jaramillo, ``{Predicitve Modelling of Riboregulatory Circuits to Re-engineer
 \bibitem{UriAlon}
 {Uri Alon}, \emph{{An Introduction to Systems Biology}}, 1st~ed.
 
+\bibitem{Hersch2004}
+G.~L. Hersch, T.~a. Baker, and R.~T. Sauer, ``{SspB delivery of substrates for
+  ClpXP proteolysis probed by the design of improved degradation tags.}''
+  \emph{Proceedings of the National Academy of Sciences of the United States of
+  America}, vol. 101, no.~33, pp. 12\,136--12\,141, 2004.
+
 \bibitem{Brewer2008}
 D.~Brewer, M.~Barenco, R.~Callard, M.~Hubank, and J.~Stark, ``{Fitting ordinary
   differential equations to short time course data.}'' \emph{Philosophical
@@ -140,11 +146,5 @@ R.~Iizuka, M.~Yamagishi-Shirasaki, and T.~Funatsu, ``{Kinetic study of de novo
   Biochemistry}, vol. 414, no.~2, pp. 173--178, 2011. [Online]. Available:
   \url{http://dx.doi.org/10.1016/j.ab.2011.03.036}
 \BIBentrySTDinterwordspacing
-
-\bibitem{Hersch2004}
-G.~L. Hersch, T.~a. Baker, and R.~T. Sauer, ``{SspB delivery of substrates for
-  ClpXP proteolysis probed by the design of improved degradation tags.}''
-  \emph{Proceedings of the National Academy of Sciences of the United States of
-  America}, vol. 101, no.~33, pp. 12\,136--12\,141, 2004.
 
 \end{thebibliography}
