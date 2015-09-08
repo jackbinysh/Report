@@ -38,7 +38,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {II}ODE Model}{3}}
 \newlabel{ODE Model}{{II}{3}}
 \@writefile{tdo}{\contentsline {todo}{give the original model and discuss modifications in appendix.}{3}}
-\pgfsyspdfmark {pgfid1}{11496193}{9986474}
+\pgfsyspdfmark {pgfid1}{11496193}{10285242}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timesseries to be built. Image reproduced from \cite  {Jaramillo}.\relax }}{3}}
 \newlabel{}{{4}{3}}
 \newlabel{eq:s}{{1}{3}}
@@ -65,15 +65,15 @@
 \citation{Mclean2012,Yao2003,Beck}
 \citation{Jimenez-Hornero2008,Grewal1976}
 \@writefile{tdo}{\contentsline {todo}{explain why not fit each curve individually.}{5}}
-\pgfsyspdfmark {pgfid27}{11496193}{36503584}
+\pgfsyspdfmark {pgfid27}{11496193}{37224480}
 \@writefile{tdo}{\contentsline {todo}{why use CMA-ES? Some refs}{5}}
-\pgfsyspdfmark {pgfid28}{11496193}{26241312}
+\pgfsyspdfmark {pgfid28}{11496193}{26962208}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Initial Parameter Estimates}{5}}
 \newlabel{Initial Parameter Estimates}{{\unhbox \voidb@x \hbox {III-A}}{5}}
 \@writefile{tdo}{\contentsline {todo}{follow this up properly.}{5}}
-\pgfsyspdfmark {pgfid29}{29259718}{20942236}
+\pgfsyspdfmark {pgfid29}{29259718}{21511366}
 \@writefile{tdo}{\contentsline {todo}{move this down into the discussion, and that the data may be better described by a simplified model}{5}}
-\pgfsyspdfmark {pgfid30}{29259718}{17766351}
+\pgfsyspdfmark {pgfid30}{29259718}{18259598}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Parameter Estimability}{5}}
 \newlabel{Parameter Estimability}{{\unhbox \voidb@x \hbox {III-B}}{5}}
 \newlabel{InitialResults_13_9_hist}{{5a}{6}}
@@ -100,19 +100,17 @@
 \newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cross validating data by taking parameter estimates from one dataset, and using them to predict another. Here we take the best parameter set fitted on the \textit  {13\_9}, and fit it against the \textit  {14\_7} dataset, and vice versa \relax }}{7}}
 \newlabel{CrossValidation}{{6}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Differing timescales within the system}{7}}
+\newlabel{SensitivityMatrix_unscaled}{{7a}{7}}
+\newlabel{sub@SensitivityMatrix_unscaled}{{a}{7}}
+\newlabel{SensitivityMatrix_scaled}{{7b}{7}}
+\newlabel{sub@SensitivityMatrix_scaled}{{b}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 7a\hbox {} shows them unscaled, 7b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{7}}
+\newlabel{SensitivityMatrix}{{7}{7}}
 \citation{Rodrigo2012}
 \citation{Hu2015}
-\newlabel{SensitivityMatrix_unscaled}{{7a}{8}}
-\newlabel{sub@SensitivityMatrix_unscaled}{{a}{8}}
-\newlabel{SensitivityMatrix_scaled}{{7b}{8}}
-\newlabel{sub@SensitivityMatrix_scaled}{{b}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit  {13\_9} dataset. 7a\hbox {} shows them unscaled, 7b\hbox {} shows them scaled by the norm of each column of $S$.\relax }}{8}}
-\newlabel{SensitivityMatrix}{{7}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Differing timescales within the system}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces model output for all state variables, using the parameter values giving the lowest error on the \textit  {13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. \relax }}{8}}
 \newlabel{model_output}{{8}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. \relax }}{8}}
-\newlabel{fixedpoint_f}{{9}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{8}}
 \newlabel{Conclusions and Further work}{{IV}{8}}
 \citation{Mclean2012,Grewal1976}
@@ -121,6 +119,14 @@
 \bibstyle{./IEEE_bibtex_class/IEEEtran}
 \bibdata{./IEEE_bibtex_class/IEEEabrv,library}
 \bibcite{MolecularBiology}{1}
+\newlabel{eq:m_fixed}{{6}{9}}
+\newlabel{eq:c_fixed}{{7}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. \relax }}{9}}
+\newlabel{fixedpoint_f}{{9}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu $ in that set.\relax }}{9}}
+\newlabel{fixedpoint_mu}{{10}{9}}
+\@writefile{tdo}{\contentsline {todo}{write section on GP's}{9}}
+\pgfsyspdfmark {pgfid31}{29259718}{8155226}
 \bibcite{Isaacs2006}{2}
 \bibcite{Rodrigo2013}{3}
 \bibcite{Rodrigo2012}{4}
@@ -128,11 +134,6 @@
 \bibcite{Shine1974}{6}
 \bibcite{Lutz1997}{7}
 \bibcite{Jaramillo}{8}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu $ in that set.\relax }}{9}}
-\newlabel{fixedpoint_mu}{{10}{9}}
-\@writefile{tdo}{\contentsline {todo}{write section on GP's}{9}}
-\pgfsyspdfmark {pgfid31}{29259718}{25482092}
-\@writefile{toc}{\contentsline {section}{References}{9}}
 \bibcite{UriAlon}{9}
 \bibcite{Brewer2008}{10}
 \bibcite{Algorithms2003}{11}
@@ -147,6 +148,7 @@
 \bibcite{Andersen1998}{20}
 \bibcite{Iizuka2011}{21}
 \bibcite{Hersch2004}{22}
+\@writefile{toc}{\contentsline {section}{References}{10}}
 \@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}A: Initial Experimental Data}{11}}
 \newlabel{Initial Experimental Data}{{A}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces The \textit  {13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{11}}
@@ -168,6 +170,11 @@
 \@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}C: Parameter literature review}{13}}
 \newlabel{Parameter literature review}{{C}{13}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold\relax }}{13}}
-\newlabel{LastPage}{{}{13}}
-\xdef\lastpage@lastpage{13}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}D: Model Fixed Point}{13}}
+\newlabel{ModelFixedPoint}{{D}{13}}
+\newlabel{eqn_dbl_x}{{6}{14}}
+\newlabel{eqn_dbl_y}{{7}{14}}
+\newlabel{eqn_dbl_y}{{8}{14}}
+\newlabel{LastPage}{{}{14}}
+\xdef\lastpage@lastpage{14}
 \gdef\lastpage@lastpageHy{}

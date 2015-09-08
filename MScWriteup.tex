@@ -36,7 +36,10 @@
 
 %  OTHER PACKAGES
 
-\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, caption, subcaption,centernot}
+\usepackage{float,amsfonts,multicol,fancyvrb,lastpage,ragged2e,url,color,lipsum,enumerate,todonotes,chemfig,fixltx2e, epstopdf, subcaption,centernot}
+\usepackage[font=small,labelfont = sf, textfont=sf,labelfont=bf]{caption}
+
+\newcounter{MYtempeqncnt}
 
 
 
@@ -217,7 +220,7 @@ The data we will consider consists of two sets of individual cell time series, l
 \section{ODE Model}
 \label{ODE Model}
 
-In eqs. \ref{eq:s} - \ref{eq:z}, we present a modified version an existing model which describes the system, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{ModelParameters} and \ref{StateVariables} give complete descriptions of the parameters and state variables.
+In eqs. \ref{eq:s} - \ref{eq:z}, we present a modified version an existing model which describes the system, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{StateVariables} and \ref{ModelParameters} give complete descriptions of the parameters and state variables.
 \todo[inline]{give the original model and discuss modifications in appendix.}
  
 \begin{align}
@@ -371,13 +374,13 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \begin{figure*}
     \begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.38, clip = true, trim = 80 0 74 0]{13_9_hist.eps}
+        \includegraphics[scale = 0.27, clip = true, trim = 120 0 125 0]{13_9_hist}
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{13\_9} dataset.}
         \label{InitialResults_13_9_hist}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.38,clip = true, trim = 60 12 74 0]{14_7_hist.eps}
+        \includegraphics[scale = 0.3,clip = true, trim = 120 0 125 0]{14_7_hist}
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{14\_7} dataset. }
         \label{InitialResults_14_7_hist}
     \end{subfigure}
@@ -491,9 +494,7 @@ We see that many of the parameters give sensitivity curves of similar shapes, an
  
 \subsection{Differing timescales within the system}
 
-We suggest that part of the issue is the step function forcing used in model predictions, and the timescales on which the system responds to it. We hypothesize that the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing. If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. If this were the case, the particular shape of the models response curve would be primarily determined by the parameters appearing in eqs. \ref{eq:p} - \ref{eq:z} - namely $\mu$, $\beta$, $f_{s}$ and $\Theta$. If all the information contained in the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only be expressed in the form of the model's fixed point, it would not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable. 
-
-Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. 
+Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. We see that $s,m,s:m$ and $c$ respond rapidly to the forcing function, flipping between the two fixed points defined by the step function forcing almost instantly. By contrast, there is delay in the response of $p$ and $g$, on a timescale comparable to the period of the forcing. This result suggests that, at least in some of the parameter sets initially estimated, the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing.
 
 \begin{figure}[h]	
     \centering
@@ -502,8 +503,55 @@ Fig. \ref{model_output} shows model output for all state variables, using the pa
         \label{model_output} 
 \end{figure}
 
+If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. This would explain the similarity between the sensitivity curves of many parameters - if the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only act to alter the model's fixed point, they would all alter the sensitivity curve in exactly the same way, since a small perturbation in one of these parameters would only act to perturb the location of the models fixed points. It would then not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable.
 
-It demonstrates that, at least in some of the parameter sets initially estimated, this difference in time scales exists. The fixed point of eqs. \ref{eq:s} - \ref{eq:c} affects eqs.  \ref{eq:p}, \ref{eq:g} through the $\beta m +f_{s}\beta c$ term - we would expect that, if the fixed point value of this term is what is relevant in determining model response, there would be some consistency in its value across the parameter sets found. Fig. \ref{fixedpoint_f} shows a scatterplot of model fixed point values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
+The fixed point values of $s,m, s:m$ and $c$ affect eqs.  \ref{eq:p}, \ref{eq:g} through the $\beta m +f_{s}\beta c$ term in \ref{eq:p}. Explicit forms for $m$ and $c$ are given in eqs.  \ref{eq:m_fixed}, \ref{eq:c_fixed}. The fact that this term is  the only one in eqs.\ref{eq:p}, \ref{eq:g} to include $f_{s}$ and $\beta$ may also explain the similarity of the sensitivity curves for these parameters to those found in eqs. \ref{eq:s} - \ref{eq:c} - all that $p$ and $g$ see is this $\beta m +f_{s}\beta c$ flipping between its two fixed point values, so any parameters that only enter the system via this term will have indistinguishable roles.
+
+Although we have seen that parameter sets with similar least squares error values can contain very different parameter values, this explanation implies that we would expect similar values of $\beta m +f_{s}\beta c$ across all the sets.Fig. \ref{fixedpoint_f} shows a scatterplot of model fixed point values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
+
+In Fig. \ref{fixedpoint_mu}, we also see a strong positive correlation between the fixed point values and the values of $\mu$ ($R = 0.9854$ for the visually tightly clustered data). Taken together with the relatively tightly constrained values of $\mu$ found in Fig. \ref{InitialResults}, these results suggest that in order to minimize error, the algorithm is effectively trying to vary $\beta m +f_{s}\beta c$ and $\mu$, and finding a `trench' of highly correlated values, which is shown in Fig. \ref{fixedpoint_mu}. 
+
+These results further suggest that, while we are trying to minimise model error over our initial high dimensional space, we are effectively working in a lower dimensional space, in which one dimension is the value of the models $\beta m +f_{s}\beta c$ .
+
+
+
+
+\begin{figure*}[!t]
+% ensure that we have normalsize text
+\tiny
+% Store the current equation number.
+\setcounter{MYtempeqncnt}{\value{equation}}
+% Set the equation number to one less than the one
+% desired for the first equation here.
+% The value here will have to changed if equations
+% are added or removed prior to the place these
+% equations are referenced in the main text.
+\setcounter{equation}{5}
+\begin{equation}
+\label{eq:m_fixed}
+m\to -\frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}-(\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(\mu +\delta _m\right)
+   \left(k_{\text{hyb}}+\delta _m\right)}
+\end{equation}
+\begin{equation}
+\label{eq:c_fixed}
+\frac{k_{\text{hyb}} \left(\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)\right)}{2 k_{\text{on}} \left(\mu +\delta
+   _m\right) \left(k_{\text{hyb}}+\delta _m\right){}^2}
+\end{equation}
+% Restore the current equation number.
+\setcounter{equation}{\value{MYtempeqncnt}}
+% IEEE uses as a separator
+\hrulefill
+% The spacer can be tweaked to stop underfull vboxes.
+\vspace*{4pt}
+\end{figure*}
+
+
 
 \begin{figure}[h]	
     \centering
@@ -519,9 +567,7 @@ It demonstrates that, at least in some of the parameter sets initially estimated
         \label{fixedpoint_mu} 
 \end{figure} 
 
-In Fig. \ref{fixedpoint_mu}, we also see a strong positive correlation between the fixed point values and the values of $\mu$ ($R = 0.9854$ for the visually tightly clustered data). Taken together with the relatively tightly constrained values of $\mu$ found in Fig. \ref{InitialResults}, these results suggest that in order to minimize error, the algorithm is effectively trying to vary $\beta m +f_{s}\beta c$ and $\mu$, and finding a `trench' of highly correlated values, which is shown in Fig. \ref{fixedpoint_mu}. 
 
-These results further suggest that, while we are trying to minimise model error over our initial high dimensional space, we are effectively working in a lower dimensional space, in which one dimension is the value of the models $\beta m +f_{s}\beta c$ .
  
  
 \section{Conclusions and Further work}
@@ -668,5 +714,59 @@ These results also suggest general problems with our methodology - using a least
  \item re run from starting pararms.
  \end{itemize}
 
+\section{Model Fixed Point}
+\label{ModelFixedPoint}
+\setcounter{figure}{0}   
+
+
+\begin{figure*}[!t]
+% ensure that we have normalsize text
+\tiny
+% Store the current equation number.
+\setcounter{MYtempeqncnt}{\value{equation}}
+% Set the equation number to one less than the one
+% desired for the first equation here.
+% The value here will have to changed if equations
+% are added or removed prior to the place these
+% equations are referenced in the main text.
+\setcounter{equation}{5}
+\begin{equation}
+\label{eqn_dbl_x}
+y\to \frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right){}^2}
+\end{equation}
+\begin{equation}
+\label{eqn_dbl_y}
+m\to -\frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}-(\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(\mu +\delta _m\right)
+   \left(k_{\text{hyb}}+\delta _m\right)}
+\end{equation}
+\begin{equation}
+\label{eqn_dbl_y}
+s\to -\frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(\mu +\delta _s\right)
+   \left(k_{\text{hyb}}+\delta _m\right)}
+\end{equation}
+\begin{equation}
+\frac{k_{\text{hyb}} \left(\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)\right)}{2 k_{\text{on}} \left(\mu +\delta
+   _m\right) \left(k_{\text{hyb}}+\delta _m\right){}^2}
+\end{equation}
+% Restore the current equation number.
+\setcounter{equation}{\value{MYtempeqncnt}}
+% IEEE uses as a separator
+\hrulefill
+% The spacer can be tweaked to stop underfull vboxes.
+\vspace*{4pt}
+\end{figure*}
 
 \end{document}
