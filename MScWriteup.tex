@@ -113,7 +113,7 @@ Place conference title here}}\hfil\hbox{}}}
 %\addtolength{\textheight}{-0.1\baselineskip}
 
 \begin{abstract}
-For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA is an attractive tool, due to the ease of predicting its behaviour from physiochemical models. In this report, we propose a system of ODE's to model a recently designed synthetic regulatory circuit, before attempting to estimate its unknown parameters using recent time series data. We provide estimates for a subset of parameters, but find many of them to be inestimable. We discuss why this is this case for our system, and suggest how this problem might be resolved.
+For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA is an attractive tool, due to the ease of predicting its behaviour from physiochemical models. In this report, we introduce a system of ODE's to model a recently designed synthetic regulatory circuit, before attempting to estimate its unknown parameters using recent time series data. We provide estimates for a subset of parameters, but find many of them to be inestimable. We discuss why this is this case for our system, and suggest how this problem might be resolved.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -151,22 +151,21 @@ The report is structured as follows. In the remainder of this section we review 
 \label{The sRNA regulatory system}
 In bacteria, one mechanism by which gene expression is naturally regulated is as follows \cite{Soper2010}: In order for a bacterial mRNA to be translated into a protein, the Ribosome must initially bind to the mRNA (Fig. \ref{RBS}). This occurs at the Ribosome Binding Site (RBS) \cite{Shine1974}, a specific nucleotide sequence found on the mRNA. 
 
-In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the UTR), upstream of the RBS \footnote{Both DNA and RNA are directional - the backbone of the molecule is not symmetric. This gives the molecule two distinct ends, denoted 5' and 3'. Translation can only occur in the 5' to 3' direction, hence the meaning of `upstream'}. Translation may be self repressed by this `tail' folding over and binding across the RBS, forming a  loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to this looped tail - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind. In summary, the presence of the sRNA positively regulates gene expresssion.
-
-
-\begin{figure*}[t]
+\begin{figure*}[t!]
 \centering
 \includegraphics[trim = 30 600 30 0,page=4,clip = true]{pnas1203831109.pdf}
 \caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
 \label{ANDGate}
 \end{figure*}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[trim = 100 170 100 400,page=10,clip = true,scale = 0.6]{Appendix.pdf}
 \caption{A mechanism by which sRNA can regulate gene expression. Initially, the 5' UTR of the mRNA is folded over the RBS, forming a loop and blocking Ribosome binding. The sRNA binds to this loop in the mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur. Image reproduced from \cite{Rodrigo2012}.}
 \label{RBS}
 \end{figure}
+
+In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the UTR), upstream of the RBS \footnote{Both DNA and RNA are directional - the backbone of the molecule is not symmetric. This gives the molecule two distinct ends, denoted 5' and 3'. Translation can only occur in the 5' to 3' direction, hence the meaning of `upstream'}. Translation may be self repressed by this `tail' folding over and binding across the RBS, forming a  loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to this looped tail - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind. In summary, the presence of the sRNA positively regulates gene expresssion.
 
 
 \cite{Rodrigo2012} proposed a computational methodology to design general genetic circuits based on RNA interactions, and as a case study of the methodology chose to design a synthetic sRNA- mRNA pair capable of acting in the manner described above. The algorithm assumed an interaction scheme between the RNA's as shown in Fig. \ref{reactionscheme}. The sRNA and mRNA, originally in their own individually folded states, would initially interact via a small 
@@ -180,7 +179,6 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 \label{reactionscheme}
 \end{figure}
 
-
 The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoter regions \footnote{A promoter region in a DNA sequence is a sequence of nucleotides, found upstream of where transcription of a gene begins, which can influence the transcription rate of the gene.}, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
 
 In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \textit{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
@@ -192,25 +190,20 @@ Although a qualitative understanding of this system exists \cite{Rodrigo2012}, i
 
 mRNA concentrations in the system shown in Fig. \ref{ANDGate} can be indirectly observed by designing the mRNA to code for GFP \footnote{ The methodology of \cite{Rodrigo2012} only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant.}. Recent experiments have used timelapse microscopy to observe the fluoresence of bacteria which contain the above sRNA-mRNA pair, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
 
-The experimental setup is as follows (Fig. \ref{ExperimentalSetup}): A single layer of the bacteria are grown in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing time series of individual cell fluorescences to be recorded.
+The experimental setup is as follows (Figs. \ref{ExperimentalSetup_overview},  \ref{ExperimentalSetup_chambers}): A single layer of the bacteria are grown in rows of chambers. A medium constantly flows through these chambers, allowing normal feeding of the bacteria, and the introduction of aTc or IPTG. The chambers are monitored with software which traces the position of each cell over time, allowing time series of individual cell fluorescences to be recorded.
 
-\begin{figure}[h]
-\begin{subfigure}[h]{0.49\textwidth}
+\begin{figure}
     \centering
 		\includegraphics[trim = 280 0 0  85 ,page=17 ,clip = true, scale=0.4]{WCPM_Warwick-talk45-220115.pdf}
-        \caption{An overview of the entire setup, including bacterial growth chambers (labelled `Microfabricated Microchemstat device'), the microscope imaging them, and the software constructing fluorescence time series. }
-        \label{InitialResults_13_9_hist}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.49\textwidth}
+        \caption{An overview of the experimental setup which allows single cell fluorescences to be recorded over time. Shown are the bacterial growth chambers (labelled `Microfabricated Microchemstat device'), the microscope imaging them, and the software constructing fluorescence time series. Image reproduced from \cite{Jaramillo}. }
+            \label{ExperimentalSetup_overview}
+\end{figure}
+\begin{figure}
     \centering
 	\includegraphics[trim = 0 0 0  90 ,page=18 ,clip = true, scale=0.35]{WCPM_Warwick-talk45-220115.pdf}
-        \caption{A diagram of the bacterial growth chambers. The schematic shows the chambers themselves, and the medium inlet where aTc and IPTG are let in. Shown also are photographs of a row of chambers, and an individual chamber with bacteria growing in it.}
-        \label{InitialResults_14_7_hist}
-    \end{subfigure}
-    \caption{A schematic of an experimental setup which allows single cell fluorescences to be recorded over time. Bacteria are grown in chambers, with a constant supply of medium flowing through them, which allows the introduction of aTc and IPTG. Software then traces these cells, allowing fluorescence timesseries to be built.  Image reproduced from \cite{Jaramillo}.}
-    \label{ExperimentalSetup}
+        \caption{A diagram of the bacterial growth chambers shown in Fig. \ref{ExperimentalSetup_overview}. The schematic shows the chambers themselves, and the medium inlet where aTc and IPTG are let in. Shown also are photographs of a row of chambers, and an individual chamber with bacteria growing in it. Image reproduced from \cite{Jaramillo}.}
+    \label{ExperimentalSetup_chambers}
 \end{figure}
-
 
 The data we will consider consists of two sets of individual cell time series, labelled \textit{13\_9} and \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Appendix \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
 
@@ -230,7 +223,7 @@ The data we will consider consists of two sets of individual cell time series, l
 \section{ODE Model}
 \label{ODEModel}
 
-In eqs. \ref{eq:s} - \ref{eq:z}, we present a modified version an existing model which describes the system, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{StateVariables} and \ref{ModelParameters} give complete descriptions of the parameters and state variables.
+In \eqref{eq:s} - \eqref{eq:z}, we present a modified version an existing model which describes the system, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{StateVariables} and \ref{ModelParameters} give complete descriptions of the parameters and state variables.
 \todo[inline]{give the original model and discuss modifications in appendix.}
  
 \begin{align}
@@ -242,51 +235,50 @@ In eqs. \ref{eq:s} - \ref{eq:z}, we present a modified version an existing model
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \label{eq:g} \\
 z &= z_{0} +\frac{g}{\Theta} \label{eq:z}
 \end{align}
-  Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in eqs. \ref{eq:s}-\ref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_\mathrm{on}$ and $k_\mathrm{off}$.
+
+Based on the reaction mechanism in Fig. \ref{reactionscheme}, the hybridization of the sRNA and mRNA first into an unstable complex, then a stable one, is modelled in \eqref{eq:s} - \eqref{eq:c}. The initial binding is modelled as a reversible reaction with forward and backward rates $k_\mathrm{on}$ and $k_\mathrm{off}$:
   
 \begin{align*}
 \mathrm{
 sRNA \chemsign+ mRNA\chemrel[$k_\mathrm{on}$][$k_\mathrm{off}$]{<>} sRNA:mRNA\textsubscript{unstable}
-}
+},
 \end{align*}
 after which the stabilization is modelled as an irreversible reaction with rate $k_\mathrm{hyb}$:
 
 \begin{align*}
 \mathrm{
 sRNA:mRNA\textsubscript{unstable} \chemrel[$k_\mathrm{hyb}$]{->} sRNA:mRNA\textsubscript{stable} 
-}
+}.
 \end{align*}
 
  In addition, these complexes are given degradation rates, $\delta_{s}$, $\delta_{m}$, $\delta_{sm}$, $\delta_{c}$, and dilutions of chemical concentrations due to cell growth are modelled with a dilution rate $\mu$. 
  
- Control of the system by aTc is modelled by $y(t)$ in eq. \ref{eq:s}. This function models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter, and $N$ is the copy number, which models the fact that when engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter may be placed in the bacterial DNA. Thus the transcription rate varies as a sigmoid bounded by $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$. Identical considerations hold for $x(t)$ in eq. \ref{eq:m}, and IPTG concentration.
+ Control of the system by aTc is modelled by $y(t)$ in \eqref{eq:s}. This function models the response of the sRNA transcription rate to a time varying aTc concentration - it is normalised to lie between $1$ and $f_{T}$, and is typically sigmoid in response to aTc concentration \cite{Rodrigo2012}. $\alpha_{T}$ is the maximal transcription rate of the $P_{\mathrm{LtetO-1}}$ promoter, and $N$ is the copy number, which models the fact that when engineering the system, many copies of the $P_{\mathrm{LtetO-1}}$ promoter may be placed in the bacterial DNA. Thus the transcription rate varies as a sigmoid bounded by $N\frac{1}{f_{T}}$ and $N\frac{\alpha_{T}}{f}$. Identical considerations hold for $x(t)$ in \eqref{eq:m}, and IPTG concentration.
 
 
-We explicitly model translation as a simple one step process in eqs. \ref{eq:p}-\ref{eq:z}. There is a small rate of translation of the self repressed mRNA \cite{Rodrigo2012}, which is modelled at rate $\beta$, and a larger one for translation of the stable complex, $\beta f_s$. Here $f_s$ represents the fractional change in translation rate between the repressed mRNA and the unrepressed complex.
+We explicitly model translation as a simple one step process in \eqref{eq:p} - \eqref{eq:z}. There is a small rate of translation of the self repressed mRNA \cite{Rodrigo2012}, which is modelled at rate $\beta$, and a larger one for translation of the stable complex, $\beta f_s$. Here $f_s$ represents the fractional change in translation rate between the repressed mRNA and the unrepressed complex:
 
 
 \begin{align*}
 \mathrm{
 sRNA:mRNA\textsubscript{Stable} \chemrel[$\beta f_{s}$]{->} GFP\textsubscript{Immature}
-}
+},
 \end{align*}
-
-
 \begin{align*}
 \mathrm{
 mRNA \chemrel[$\beta$ ]{->} GFP\textsubscript{Immature}
-}
+}.
 \end{align*}
 
-Initially, the translated GFP is in an immature state, and will not fluoresce. To account for this, we include a maturation rate, $\gamma$
+Initially, the translated GFP is in an immature state, and will not fluoresce. To account for this, we include a maturation rate, $\gamma$:
 
 \begin{align*}
 \mathrm{
 GFP\textsubscript{Immature}  \chemrel[$\gamma$]{->} GFP\textsubscript{Mature}
-}
+}.
 \end{align*}
 
-Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$ is included, assumed identical for the mature and immature species, along with the dilution rate $\mu$ shared by all species. Secondly, in the experimental setup we can arrange for GFP molecules to be produced with a \textit{degradation tag} attached to them \cite{Hersch2004}. This tag is sought out by a protein, ClpX, which will then degrade the molecule the tag is  attached to. This degradation process is modelled by the final terms in eqs. \ref{eq:p} and \ref{eq:g}. Finally, eq. \ref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
+Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$ is included, assumed identical for the mature and immature species, along with the dilution rate $\mu$ shared by all species. Secondly, in the experimental setup we can arrange for GFP molecules to be produced with a \textit{degradation tag} attached to them \cite{Hersch2004}. This tag is sought out by a protein, ClpX, which will then degrade the molecule the tag is  attached to. This degradation process is modelled by the final terms in \eqref{eq:p} and \eqref{eq:g}. Finally, \eqref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
 
 \begin{table}[h]
 \renewcommand{\arraystretch}{1.3}
@@ -362,16 +354,16 @@ Degradation of the immature and mature GFP is modelled in two ways. Firstly a ge
 Our next goal is to estimate the unknown parameters of this model, given the available fluorescence time series data, by fitting the predicted time series from the model to the data. Typically, this is done by minimising the least squares error between model prediction and the experimental data \cite{Brewer2008,Algorithms2003, Hu2015}. Suppose we have some ODE model of our system
 
 \begin{align}
-\frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t)
+\frac{\mathrm{d}\mathbf{y}}{\mathrm{d}t} = \mathbf{f}(\mathbf{y},\boldsymbol{\theta},t),
 \end{align}
 where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time. The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. The least squares error between the model prediction and an experimental time series is defined as
 \begin{align}
-J(\boldsymbol{\theta}) = \sum_{i =1}^{n} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2
+J(\boldsymbol{\theta}) = \sum_{i =1}^{n} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2,
 \end{align}
 where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots n$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a time series from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
 \todo[inline]{explain why not fit each curve individually.}
 \begin{align}
-\min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2
+\min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
 \end{align}
 The next step is performing the minimisation. In general, the landscape defined by the error function may be very rugged, and contain many local minima. \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.} A local optimisation algorithm will often get stuck in local minima. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. \footnote{CMA-ES stands for covariance matrix evolutionary strategy. This algorithm generates a population of test points according to a multivariate gaussian distribution. It then ranks the points based on their fitness function scores, and  considers some number of the highest ranked points as a sample from a new multivariate gaussian. Using this sample, it then estimates a new mean and covariance matrix for this gaussian and the process is iterated.}
 \todo[inline]{why use CMA-ES? Some refs}
@@ -432,7 +424,7 @@ In order to reduce the dimensionality of our search space, we can perform a lite
  We begin by fitting each dataset individually, by choosing 200 parameter sets uniformly distributed over our initial parameter bounds and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ and $\Theta$ in particular) are much tighter.
 
 
-Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the matrix $R_{ij}$ is then the correlation co-efficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to eq. \ref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. Biologically, an increased production rate of GFP being balance by an increased dilution rate. 
+Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the matrix $R_{ij}$ is then the correlation co-efficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. Biologically, an increased production rate of GFP being balance by an increased dilution rate. 
 The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
  We can test the predictive ability of our model by cross validating - taking the parameter values found in the fitting of one dataset, and using them to give model predictions for another. We thus take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Fig.\ref{CrossValidation}.
@@ -511,9 +503,8 @@ Problems may also arise for more practical reasons (\textit{practical identifiab
  We may begin to investigate these issues in our model by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
  \begin{align}
-S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}}
+S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}},
 \end{align}
-
 where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. Each column of $S$ is a time series of sensitivity co-efficients, which describe how sensitive $z$ is to perturbations in the parameter associated with that column, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
 
 It can be shown that if the sensitivity coefficients (columns of $S$) are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity coefficients as a function of time, and visually check for obvious linear relations between the curves.
@@ -543,18 +534,18 @@ We see that many of the parameters give sensitivity curves of similar shapes, an
  
 \subsection{Differing timescales within the system}
 
-Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. We see that $s,m,s:m$ and $c$ respond rapidly to the forcing function, flipping between the two fixed points defined by the step function forcing almost instantly. By contrast, there is delay in the response of $p$ and $g$, on a timescale comparable to the period of the forcing. This result suggests that, at least in some of the parameter sets initially estimated, the system may have two timescales in it - a fast timescale in which eqs. \ref{eq:s} - \ref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in eqs. \ref{eq:p}, \ref{eq:g}, in which measured fluorescence changes in response to the forcing.
+Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. We see that $s,m,s:m$ and $c$ respond rapidly to the forcing function, flipping between the two fixed points defined by the step function forcing almost instantly. By contrast, there is delay in the response of $p$ and $g$, on a timescale comparable to the period of the forcing. This result suggests that, at least in some of the parameter sets initially estimated, the system may have two timescales in it - a fast timescale in which \eqref{eq:s} - \eqref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in \eqref{eq:p}, \eqref{eq:g}, in which measured fluorescence changes in response to the forcing.
 
 \begin{figure}[h]	
     \centering
-        \includegraphics[scale = 0.22]{model_output}
+        \includegraphics[scale = 0.26,clip = true, trim = 90 0 60 0]{model_output}
         \caption{model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. }
         \label{model_output} 
 \end{figure}
 
-If this is the case, then it may be that our experimental data can only probe the system via the fixed point of eqs. \ref{eq:s} - \ref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. This would explain the similarity between the sensitivity curves of many parameters - if the parameters in eqs.\ref{eq:s} - \ref{eq:c} can only act to alter the model's fixed point, they would all alter the sensitivity curve in exactly the same way, since a small perturbation in one of these parameters would only act to perturb the location of the models fixed points. It would then not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable.
+If this is the case, then it may be that our experimental data can only probe the system via the fixed point of \eqref{eq:s} - \eqref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. This would explain the similarity between the sensitivity curves of many parameters - if the parameters in \eqref{eq:s} - \eqref{eq:c} can only act to alter the model's fixed point, they would all alter the sensitivity curve in exactly the same way, since a small perturbation in one of these parameters would only act to perturb the location of the models fixed points. It would then not be surprising if there were large spaces of parameters, all giving the same model fixed point, which were indistinguishable.
 
-The fixed point values of $s,m, s:m$ and $c$ affect eqs.  \ref{eq:p}, \ref{eq:g} through the $\beta m +f_{s}\beta c$ term in \ref{eq:p}. Explicit forms for $m$ and $c$ are given in eqs.  \ref{eq:m_fixed}, \ref{eq:c_fixed}. The fact that this term is  the only one in eqs.\ref{eq:p}, \ref{eq:g} to include $f_{s}$ and $\beta$ may also explain the similarity of the sensitivity curves for these parameters to those found in eqs. \ref{eq:s} - \ref{eq:c} - all that $p$ and $g$ see is this $\beta m +f_{s}\beta c$ flipping between its two fixed point values, so any parameters that only enter the system via this term will have indistinguishable roles.
+The fixed point values of $s,m, s:m$ and $c$ affect \eqref{eq:p}, \eqref{eq:g} through the $\beta m +f_{s}\beta c$ term in \eqref{eq:p}. Explicit forms for $m$ and $c$ are given in \eqref{eq:m_fixed}, \eqref{eq:c_fixed}. The fact that this term is  the only one in \eqref{eq:p}, \eqref{eq:g} to include $f_{s}$ and $\beta$ may also explain the similarity of the sensitivity curves for these parameters to those found in \eqref{eq:s} - \eqref{eq:c} - all that $p$ and $g$ see is this $\beta m +f_{s}\beta c$ flipping between its two fixed point values, so any parameters that only enter the system via this term will have indistinguishable roles.
 
 Although we have seen that parameter sets with similar least squares error values can contain very different parameter values, this explanation implies that we would expect similar values of $\beta m +f_{s}\beta c$ across all the sets.Fig. \ref{fixedpoint_f} shows a scatterplot of model fixed point values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
 
@@ -594,9 +585,9 @@ This point raises another issue - the arbitrary nature of the initial bounding b
 
  The model may also have general structural issues. \cite{Mclean2012, Grewal1976} give general tests which can be applied to a system of ODE's to determine if all parameters are, in principle, estimable. We note that our system has few enough parameters to make these tests feasible.
  
- Thus, further work may consist of tightening the bounds on parameter values, carrying out a structural analysis, and possibly simplifying the model. A much simpler model, consisting of  just eqs. \ref{eq:p} \ref{eq:g}, may explain existing data perfectly well without the need for inestimable parameters. Experimentally, one option  may be to use different forcing functions. The effect of this on parameter estimability might be anticipated by running a sensitivity analysis using this new forcing, to see if the form of Fig. \ref{SensitivityMatrix} changes. Another option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the effects of parameters contained in eqs. \ref{eq:s} - \ref{eq:c}.
+ Thus, further work may consist of tightening the bounds on parameter values, carrying out a structural analysis, and possibly simplifying the model. A much simpler model, consisting of  just \eqref{eq:p} and \eqref{eq:g}, may explain existing data perfectly well without the need for inestimable parameters. Experimentally, one option  may be to use different forcing functions. The effect of this on parameter estimability might be anticipated by running a sensitivity analysis using this new forcing, to see if the form of Fig. \ref{SensitivityMatrix} changes. Another option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the effects of parameters contained in eqs. \ref{eq:s} - \ref{eq:c}.
 
-Some earlier fitting work has been done on this dataset via a similar method to the one used above. Our results suggest that those estimates should be viewed with caution - the estimates will not be unique, and the values of some parameters (those in eqs. \ref{eq:s} - \ref{eq:c}) may be very far off any values which are eventually found.
+Some earlier fitting work has been done on this dataset via a similar method to the one used above. Our results suggest that those estimates should be viewed with caution - the estimates will not be unique, and the values of some parameters (those in \eqref{eq:s} - \eqref{eq:c}) may be very far off any values which are eventually found.
 
 These results also suggest general problems with our methodology - using a least squares minimisation approach. The first problem is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but you can never be sure you have found a global optimum - for example, \cite{Algorithms2003} compares several algorithms and finds, in the problem set, none locate the true global optimum. A related problem is that of working with single points rather than distributions on parameter space. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and a more systematic approach which gives a probability distribution on parameter space would be desirable.
 
