@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  8 SEP 2015 19:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  9 SEP 2015 19:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1061,7 +1061,7 @@ ed-to.pdf>
 (epstopdf)                    size: 37095 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/Sensitivity_unsc
 aled-eps-converted-to.pdf ./Figures/Sensitivity_unscaled.eps>
-(epstopdf)             \includegraphics on input line 517.
+(epstopdf)             \includegraphics on input line 515.
 Package epstopdf Info: Output file is already uptodate.
 
 <./Figures/Sensitivity_unscaled-eps-converted-to.pdf, id=554, 754.82pt x 469.75
@@ -1070,7 +1070,7 @@ File: ./Figures/Sensitivity_unscaled-eps-converted-to.pdf Graphic file (type pd
 f)
  <use ./Figures/Sensitivity_unscaled-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/Sensitivity_unscaled-eps-converted-to.pdf us
-ed on input line 517.
+ed on input line 515.
 (pdftex.def)             Requested size: 232.57228pt x 164.41672pt.
 Package epstopdf Info: Source file: <./Figures/Sensitivity_scaled.eps>
 (epstopdf)                    date: 2015-08-30 16:53:30
@@ -1081,7 +1081,7 @@ Package epstopdf Info: Source file: <./Figures/Sensitivity_scaled.eps>
 (epstopdf)                    size: 38554 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/Sensitivity_scal
 ed-eps-converted-to.pdf ./Figures/Sensitivity_scaled.eps>
-(epstopdf)             \includegraphics on input line 523.
+(epstopdf)             \includegraphics on input line 521.
 Package epstopdf Info: Output file is already uptodate.
 
 <./Figures/Sensitivity_scaled-eps-converted-to.pdf, id=556, 754.82pt x 468.7512
@@ -1090,15 +1090,15 @@ File: ./Figures/Sensitivity_scaled-eps-converted-to.pdf Graphic file (type pdf)
 
  <use ./Figures/Sensitivity_scaled-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/Sensitivity_scaled-eps-converted-to.pdf used
- on input line 523.
+ on input line 521.
 (pdftex.def)             Requested size: 237.84207pt x 164.06538pt.
 
-Overfull \hbox (3.76189pt too wide) in paragraph at lines 515--527
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 513--525
 []$[]$
  []
 
 
-Overfull \hbox (3.76189pt too wide) in paragraph at lines 515--527
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 513--525
 []$ 
  []
 
@@ -1114,7 +1114,7 @@ f>
 (epstopdf)                    size: 51528 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/model_output-eps
 -converted-to.pdf ./Figures/model_output.eps>
-(epstopdf)             \includegraphics on input line 541.
+(epstopdf)             \includegraphics on input line 539.
 Package epstopdf Info: Output file is already uptodate.
 
 <./Figures/model_output-eps-converted-to.pdf, id=558, 1182.4175pt x 482.80376pt
@@ -1122,10 +1122,10 @@ Package epstopdf Info: Output file is already uptodate.
 File: ./Figures/model_output-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/model_output-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/model_output-eps-converted-to.pdf used on in
-put line 541.
+put line 539.
 (pdftex.def)             Requested size: 268.27588pt x 125.52602pt.
 
-Overfull \hbox (15.22601pt too wide) in paragraph at lines 541--542
+Overfull \hbox (15.22601pt too wide) in paragraph at lines 539--540
  [][] 
  []
 
@@ -1143,7 +1143,7 @@ f>
 (epstopdf)                    size: 9798 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/fixedpoint_f-eps
 -converted-to.pdf ./Figures/fixedpoint_f.eps>
-(epstopdf)             \includegraphics on input line 559.
+(epstopdf)             \includegraphics on input line 557.
 Package epstopdf Info: Output file is already uptodate.
 
 <./Figures/fixedpoint_f-eps-converted-to.pdf, id=576, 1182.4175pt x 482.80376pt
@@ -1151,10 +1151,10 @@ Package epstopdf Info: Output file is already uptodate.
 File: ./Figures/fixedpoint_f-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/fixedpoint_f-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/fixedpoint_f-eps-converted-to.pdf used on in
-put line 559.
+put line 557.
 (pdftex.def)             Requested size: 295.60365pt x 120.70064pt.
 
-Overfull \hbox (42.55379pt too wide) in paragraph at lines 559--560
+Overfull \hbox (42.55379pt too wide) in paragraph at lines 557--558
  [][] 
  []
 
@@ -1170,7 +1170,7 @@ df>
 (epstopdf)                    size: 9990 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/fixedpoint_mu-ep
 s-converted-to.pdf ./Figures/fixedpoint_mu.eps>
-(epstopdf)             \includegraphics on input line 566.
+(epstopdf)             \includegraphics on input line 564.
 Package epstopdf Info: Output file is already uptodate.
 
 <./Figures/fixedpoint_mu-eps-converted-to.pdf, id=577, 1182.4175pt x 482.80376p
@@ -1178,10 +1178,10 @@ t>
 File: ./Figures/fixedpoint_mu-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/fixedpoint_mu-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/fixedpoint_mu-eps-converted-to.pdf used on i
-nput line 566.
+nput line 564.
 (pdftex.def)             Requested size: 295.60365pt x 120.70064pt.
 
-Overfull \hbox (42.55379pt too wide) in paragraph at lines 566--567
+Overfull \hbox (42.55379pt too wide) in paragraph at lines 564--565
  [][] 
  []
 
@@ -1281,40 +1281,40 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12 <./Figures/13_9_f_hist-eps-converted-to.pdf> <./Figures/14_7_f_hist-eps-co
 nverted-to.pdf>]
-Overfull \hbox (109.70744pt too wide) detected at line 741
+Overfull \hbox (109.70744pt too wide) detected at line 716
 \OML/cmm/m/it/5 y \OMS/cmsy/m/n/5 ! []
  []
 
 
-Overfull \hbox (117.98763pt too wide) detected at line 749
+Overfull \hbox (117.98763pt too wide) detected at line 724
 \OML/cmm/m/it/5 m \OMS/cmsy/m/n/5 ! ^^@[]
  []
 
 
-Overfull \hbox (114.92046pt too wide) detected at line 757
+Overfull \hbox (114.92046pt too wide) detected at line 732
 \OML/cmm/m/it/5 s \OMS/cmsy/m/n/5 ! ^^@[]
  []
 
 
-Overfull \hbox (116.43983pt too wide) detected at line 764
+Overfull \hbox (116.43983pt too wide) detected at line 739
 []
  []
 
 
 AED: lastpage setting LastPage
-[13] [14] (./MScWriteup.aux)
+[13] (./MScWriteup.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  14767 strings out of 495028
- 269208 string characters out of 6181497
+ 269184 string characters out of 6181497
  435499 words of memory out of 5000000
  17609 multiletter control sequences out of 15000+600000
  54699 words of font info for 107 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
- 63i,23n,94p,1210b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,23n,94p,1247b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/
@@ -1342,10 +1342,10 @@ e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MScWriteup.pdf (14 pages, 3112376 bytes).
+Output written on MScWriteup.pdf (13 pages, 3111676 bytes).
 PDF statistics:
- 771 PDF objects out of 1000 (max. 8388607)
- 480 compressed objects within 5 object streams
+ 768 PDF objects out of 1000 (max. 8388607)
+ 478 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
  231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

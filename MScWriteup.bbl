@@ -133,6 +133,17 @@ M.~Grewal and K.~Glover, ``{Identifiability of linear and nonlinear dynamical
   systems},'' \emph{IEEE Transactions on Automatic Control}, vol.~21, no.~6,
   pp. 833--837, 1976.
 
+\bibitem{Jitjareonchai2006}
+J.~J. Jitjareonchai, P.~M. Reilly, T.~a. Duever, and D.~B. Chambers,
+  ``{Parameter Estimation in the Error-in-Variables Models Using the Gibbs
+  Sampler},'' \emph{Canadian Journal of Chemical Engineering}, vol.~84, no.
+  February, pp. 125--138, 2006.
+
+\bibitem{Andrieu2003}
+C.~Andrieu, N.~{De Freitas}, A.~Doucet, and M.~I. Jordan, ``{An introduction to
+  MCMC for machine learning},'' \emph{Machine Learning}, vol.~50, no. 1-2, pp.
+  5--43, 2003.
+
 \bibitem{Andersen1998}
 J.~B. Andersen, C.~Sternberg, L.~K. Poulsen, S.~P. Bj\o~rn, M.~Givskov, and
   S.~r. Molin, ``{New unstable variants of green fluorescent protein for
