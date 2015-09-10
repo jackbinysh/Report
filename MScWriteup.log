@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  9 SEP 2015 19:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  10 SEP 2015 17:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -708,22 +708,16 @@ Package: centernot 2011/07/11 v1.3 Centers the not symbol horizontally (HO)
 
 (./MScWriteup.aux
 
-LaTeX Warning: Label `SensitivityMatrix_unscaled' multiply defined.
+LaTeX Warning: Label `' multiply defined.
 
 
-LaTeX Warning: Label `sub@SensitivityMatrix_unscaled' multiply defined.
-
-
-LaTeX Warning: Label `SensitivityMatrix_scaled' multiply defined.
-
-
-LaTeX Warning: Label `sub@SensitivityMatrix_scaled' multiply defined.
+LaTeX Warning: Label `hist_f' multiply defined.
 
 
 LaTeX Warning: Label `' multiply defined.
 
 
-LaTeX Warning: Label `eqn_dbl_y' multiply defined.
+LaTeX Warning: Label `' multiply defined.
 
 )
 \openout1 = `MScWriteup.aux'.
@@ -863,15 +857,15 @@ Package epstopdf Info: Source file: <./Figures/13_9_hist.eps>
 (epstopdf)                    size: 13846 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_hist-eps-co
 nverted-to.pdf ./Figures/13_9_hist.eps>
-(epstopdf)             \includegraphics on input line 377.
+(epstopdf)             \includegraphics on input line 378.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/13_9_hist-eps-converted-to.pdf, id=480, 1328.965pt x 736.7525pt>
+<./Figures/13_9_hist-eps-converted-to.pdf, id=479, 1328.965pt x 736.7525pt>
 File: ./Figures/13_9_hist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/13_9_hist-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/13_9_hist-eps-converted-to.pdf used on input
- line 377.
+ line 378.
 (pdftex.def)             Requested size: 255.11815pt x 176.8242pt.
 Package epstopdf Info: Source file: <./Figures/14_7_hist.eps>
 (epstopdf)                    date: 2015-09-08 18:17:33
@@ -881,15 +875,15 @@ Package epstopdf Info: Source file: <./Figures/14_7_hist.eps>
 (epstopdf)                    size: 13998 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/14_7_hist-eps-co
 nverted-to.pdf ./Figures/14_7_hist.eps>
-(epstopdf)             \includegraphics on input line 383.
+(epstopdf)             \includegraphics on input line 384.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/14_7_hist-eps-converted-to.pdf, id=482, 1328.965pt x 736.7525pt>
+<./Figures/14_7_hist-eps-converted-to.pdf, id=481, 1328.965pt x 736.7525pt>
 File: ./Figures/14_7_hist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/14_7_hist-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/14_7_hist-eps-converted-to.pdf used on input
- line 383.
+ line 384.
 (pdftex.def)             Requested size: 255.11815pt x 176.8242pt.
 Package epstopdf Info: Source file: <./Figures/13_9_heatmap.eps>
 (epstopdf)                    date: 2015-09-07 18:32:24
@@ -900,18 +894,18 @@ f>
 (epstopdf)                    size: 11761 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_heatmap-eps
 -converted-to.pdf ./Figures/13_9_heatmap.eps>
-(epstopdf)             \includegraphics on input line 390.
+(epstopdf)             \includegraphics on input line 391.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/13_9_heatmap-eps-converted-to.pdf, id=484, 1328.965pt x 736.7525pt>
+<./Figures/13_9_heatmap-eps-converted-to.pdf, id=483, 1328.965pt x 736.7525pt>
 File: ./Figures/13_9_heatmap-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/13_9_heatmap-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/13_9_heatmap-eps-converted-to.pdf used on in
-put line 390.
+put line 391.
 (pdftex.def)             Requested size: 284.56232pt x 184.18767pt.
 
-Overfull \hbox (27.75056pt too wide) in paragraph at lines 390--391
+Overfull \hbox (27.75056pt too wide) in paragraph at lines 391--392
  [][] 
  []
 
@@ -924,18 +918,18 @@ f>
 (epstopdf)                    size: 11759 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/14_7_heatmap-eps
 -converted-to.pdf ./Figures/14_7_heatmap.eps>
-(epstopdf)             \includegraphics on input line 396.
+(epstopdf)             \includegraphics on input line 397.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/14_7_heatmap-eps-converted-to.pdf, id=486, 1328.965pt x 736.7525pt>
+<./Figures/14_7_heatmap-eps-converted-to.pdf, id=485, 1328.965pt x 736.7525pt>
 File: ./Figures/14_7_heatmap-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/14_7_heatmap-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/14_7_heatmap-eps-converted-to.pdf used on in
-put line 396.
+put line 397.
 (pdftex.def)             Requested size: 294.59981pt x 184.18767pt.
 
-Overfull \hbox (37.78806pt too wide) in paragraph at lines 396--397
+Overfull \hbox (37.78806pt too wide) in paragraph at lines 397--398
  [][] 
  []
 
@@ -948,17 +942,17 @@ df>
 (epstopdf)                    size: 44192 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_bestPlot-ep
 s-converted-to.pdf ./Figures/13_9_bestPlot.eps>
-(epstopdf)             \includegraphics on input line 403.
+(epstopdf)             \includegraphics on input line 404.
 Package epstopdf Info: Output file is already uptodate.
-<./Figures/13_9_bestPlot-eps-converted-to.pdf, id=488, 1182.4175pt x 481.8pt>
+<./Figures/13_9_bestPlot-eps-converted-to.pdf, id=487, 1182.4175pt x 481.8pt>
 File: ./Figures/13_9_bestPlot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/13_9_bestPlot-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/13_9_bestPlot-eps-converted-to.pdf used on i
-nput line 403.
+nput line 404.
 (pdftex.def)             Requested size: 265.66618pt x 125.26503pt.
 
-Overfull \hbox (8.85443pt too wide) in paragraph at lines 403--404
+Overfull \hbox (8.85443pt too wide) in paragraph at lines 404--405
  [][] 
  []
 
@@ -971,17 +965,44 @@ df>
 (epstopdf)                    size: 122811 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/14_7_bestPlot-ep
 s-converted-to.pdf ./Figures/14_7_bestPlot.eps>
-(epstopdf)             \includegraphics on input line 409.
+(epstopdf)             \includegraphics on input line 410.
 Package epstopdf Info: Output file is already uptodate.
-<./Figures/14_7_bestPlot-eps-converted-to.pdf, id=490, 1182.4175pt x 481.8pt>
+<./Figures/14_7_bestPlot-eps-converted-to.pdf, id=489, 1182.4175pt x 481.8pt>
 File: ./Figures/14_7_bestPlot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/14_7_bestPlot-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/14_7_bestPlot-eps-converted-to.pdf used on i
-nput line 409.
+nput line 410.
 (pdftex.def)             Requested size: 265.66618pt x 125.26503pt.
 
-Overfull \hbox (8.85443pt too wide) in paragraph at lines 409--410
+Overfull \hbox (8.85443pt too wide) in paragraph at lines 410--411
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <./Figures/13_9_partial_data_13_9_pred.eps>
+
+(epstopdf)                    date: 2015-09-10 14:41:42
+(epstopdf)                    size: 328605 bytes
+(epstopdf)             Output file: <./Figures/13_9_partial_data_13_9_pred-eps-
+converted-to.pdf>
+(epstopdf)                    date: 2015-09-10 14:41:49
+(epstopdf)                    size: 43992 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_partial_dat
+a_13_9_pred-eps-converted-to.pdf ./Figures/13_9_partial_data_13_9_pred.eps>
+(epstopdf)             \includegraphics on input line 436.
+Package epstopdf Info: Output file is already uptodate.
+
+<./Figures/13_9_partial_data_13_9_pred-eps-converted-to.pdf, id=491, 1064.97874
+pt x 467.7475pt>
+File: ./Figures/13_9_partial_data_13_9_pred-eps-converted-to.pdf Graphic file (
+type pdf)
+
+<use ./Figures/13_9_partial_data_13_9_pred-eps-converted-to.pdf>
+Package pdftex.def Info: ./Figures/13_9_partial_data_13_9_pred-eps-converted-to
+.pdf used on input line 436.
+(pdftex.def)             Requested size: 272.21898pt x 140.32532pt.
+
+Overfull \hbox (15.40723pt too wide) in paragraph at lines 436--437
  [][] 
  []
 
@@ -994,19 +1015,19 @@ d-to.pdf>
 (epstopdf)                    size: 43854 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/14_7_pred_13_9_d
 ata-eps-converted-to.pdf ./Figures/14_7_pred_13_9_data.eps>
-(epstopdf)             \includegraphics on input line 435.
+(epstopdf)             \includegraphics on input line 442.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/14_7_pred_13_9_data-eps-converted-to.pdf, id=492, 1064.97874pt x 468
+<./Figures/14_7_pred_13_9_data-eps-converted-to.pdf, id=493, 1064.97874pt x 468
 .75125pt>
 File: ./Figures/14_7_pred_13_9_data-eps-converted-to.pdf Graphic file (type pdf
 )
  <use ./Figures/14_7_pred_13_9_data-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/14_7_pred_13_9_data-eps-converted-to.pdf use
-d on input line 435.
+d on input line 442.
 (pdftex.def)             Requested size: 272.21898pt x 140.62645pt.
 
-Overfull \hbox (15.40723pt too wide) in paragraph at lines 435--436
+Overfull \hbox (15.40723pt too wide) in paragraph at lines 442--443
  [][] 
  []
 
@@ -1019,39 +1040,48 @@ d-to.pdf>
 (epstopdf)                    size: 47394 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_pred_14_7_d
 ata-eps-converted-to.pdf ./Figures/13_9_pred_14_7_data.eps>
-(epstopdf)             \includegraphics on input line 441.
+(epstopdf)             \includegraphics on input line 448.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/13_9_pred_14_7_data-eps-converted-to.pdf, id=494, 1064.97874pt x 468
+<./Figures/13_9_pred_14_7_data-eps-converted-to.pdf, id=495, 1064.97874pt x 468
 .75125pt>
 File: ./Figures/13_9_pred_14_7_data-eps-converted-to.pdf Graphic file (type pdf
 )
  <use ./Figures/13_9_pred_14_7_data-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/13_9_pred_14_7_data-eps-converted-to.pdf use
-d on input line 441.
+d on input line 448.
 (pdftex.def)             Requested size: 272.21898pt x 140.62645pt.
 
-Overfull \hbox (15.40723pt too wide) in paragraph at lines 441--442
+Overfull \hbox (15.40723pt too wide) in paragraph at lines 448--449
  [][] 
  []
 
 
-Overfull \hbox (3.76189pt too wide) in paragraph at lines 433--445
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 434--452
 []$[]$
  []
 
 
-Overfull \hbox (3.76189pt too wide) in paragraph at lines 433--445
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 434--452
+[]$
+ []
+
+
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 434--452
 []$ 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6 <./Figures/13_9_hist-eps-converted-to.pdf> <./Figures/14_7_hist-eps-conv
-erted-to.pdf> <./Figures/13_9_heatmap-eps-converted-to.pdf> <./Figures/14_7_hea
-tmap-eps-converted-to.pdf> <./Figures/13_9_bestPlot-eps-converted-to.pdf> <./Fi
-gures/14_7_bestPlot-eps-converted-to.pdf>]
+
+Underfull \vbox (badness 6125) has occurred while \output is active []
+
+ [5]
+[6 <./Figures/13_9_hist-eps-converted-to.pdf> <./Figures/14_7_hist-eps-converte
+d-to.pdf> <./Figures/13_9_heatmap-eps-converted-to.pdf> <./Figures/14_7_heatmap
+-eps-converted-to.pdf> <./Figures/13_9_bestPlot-eps-converted-to.pdf> <./Figure
+s/14_7_bestPlot-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/Sensitivity_unscaled.eps>
 (epstopdf)                    date: 2015-08-30 16:43:20
 (epstopdf)                    size: 240992 bytes
@@ -1061,16 +1091,16 @@ ed-to.pdf>
 (epstopdf)                    size: 37095 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/Sensitivity_unsc
 aled-eps-converted-to.pdf ./Figures/Sensitivity_unscaled.eps>
-(epstopdf)             \includegraphics on input line 515.
+(epstopdf)             \includegraphics on input line 520.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/Sensitivity_unscaled-eps-converted-to.pdf, id=554, 754.82pt x 469.75
+<./Figures/Sensitivity_unscaled-eps-converted-to.pdf, id=555, 754.82pt x 469.75
 5pt>
 File: ./Figures/Sensitivity_unscaled-eps-converted-to.pdf Graphic file (type pd
 f)
  <use ./Figures/Sensitivity_unscaled-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/Sensitivity_unscaled-eps-converted-to.pdf us
-ed on input line 515.
+ed on input line 520.
 (pdftex.def)             Requested size: 232.57228pt x 164.41672pt.
 Package epstopdf Info: Source file: <./Figures/Sensitivity_scaled.eps>
 (epstopdf)                    date: 2015-08-30 16:53:30
@@ -1081,30 +1111,33 @@ Package epstopdf Info: Source file: <./Figures/Sensitivity_scaled.eps>
 (epstopdf)                    size: 38554 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/Sensitivity_scal
 ed-eps-converted-to.pdf ./Figures/Sensitivity_scaled.eps>
-(epstopdf)             \includegraphics on input line 521.
+(epstopdf)             \includegraphics on input line 526.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/Sensitivity_scaled-eps-converted-to.pdf, id=556, 754.82pt x 468.7512
+<./Figures/Sensitivity_scaled-eps-converted-to.pdf, id=557, 754.82pt x 468.7512
 5pt>
 File: ./Figures/Sensitivity_scaled-eps-converted-to.pdf Graphic file (type pdf)
 
  <use ./Figures/Sensitivity_scaled-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/Sensitivity_scaled-eps-converted-to.pdf used
- on input line 521.
+ on input line 526.
 (pdftex.def)             Requested size: 237.84207pt x 164.06538pt.
 
-Overfull \hbox (3.76189pt too wide) in paragraph at lines 513--525
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 518--530
 []$[]$
  []
 
 
-Overfull \hbox (3.76189pt too wide) in paragraph at lines 513--525
+Overfull \hbox (3.76189pt too wide) in paragraph at lines 518--530
 []$ 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[7 <./Figures/13_9_partial_data_13_9_pred-eps-converted-to.pdf> <./Figures/14_7
+_pred_13_9_data-eps-converted-to.pdf> <./Figures/13_9_pred_14_7_data-eps-conver
+ted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/model_output.eps>
 (epstopdf)                    date: 2015-09-02 16:04:42
 (epstopdf)                    size: 444235 bytes
@@ -1114,26 +1147,23 @@ f>
 (epstopdf)                    size: 51528 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/model_output-eps
 -converted-to.pdf ./Figures/model_output.eps>
-(epstopdf)             \includegraphics on input line 539.
+(epstopdf)             \includegraphics on input line 544.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/model_output-eps-converted-to.pdf, id=558, 1182.4175pt x 482.80376pt
+<./Figures/model_output-eps-converted-to.pdf, id=582, 1182.4175pt x 482.80376pt
 >
 File: ./Figures/model_output-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/model_output-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/model_output-eps-converted-to.pdf used on in
-put line 539.
+put line 544.
 (pdftex.def)             Requested size: 268.27588pt x 125.52602pt.
 
-Overfull \hbox (15.22601pt too wide) in paragraph at lines 539--540
+Overfull \hbox (15.22601pt too wide) in paragraph at lines 544--545
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7 <./Figures/14_7_pred_13_9_data-eps-converted-to.pdf> <./Figures/13_9_pred_14
-_7_data-eps-converted-to.pdf>]
+[8 <./Figures/Sensitivity_unscaled-eps-converted-to.pdf> <./Figures/Sensitivity
+_scaled-eps-converted-to.pdf> <./Figures/model_output-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/fixedpoint_f.eps>
 (epstopdf)                    date: 2015-09-02 18:44:55
 (epstopdf)                    size: 133330 bytes
@@ -1143,23 +1173,20 @@ f>
 (epstopdf)                    size: 9798 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/fixedpoint_f-eps
 -converted-to.pdf ./Figures/fixedpoint_f.eps>
-(epstopdf)             \includegraphics on input line 557.
+(epstopdf)             \includegraphics on input line 562.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/fixedpoint_f-eps-converted-to.pdf, id=576, 1182.4175pt x 482.80376pt
+<./Figures/fixedpoint_f-eps-converted-to.pdf, id=607, 1182.4175pt x 482.80376pt
 >
 File: ./Figures/fixedpoint_f-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/fixedpoint_f-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/fixedpoint_f-eps-converted-to.pdf used on in
-put line 557.
+put line 562.
 (pdftex.def)             Requested size: 295.60365pt x 120.70064pt.
 
-Overfull \hbox (42.55379pt too wide) in paragraph at lines 557--558
+Overfull \hbox (42.55379pt too wide) in paragraph at lines 562--563
  [][] 
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package epstopdf Info: Source file: <./Figures/fixedpoint_mu.eps>
 (epstopdf)                    date: 2015-09-02 18:35:07
@@ -1170,26 +1197,24 @@ df>
 (epstopdf)                    size: 9990 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/fixedpoint_mu-ep
 s-converted-to.pdf ./Figures/fixedpoint_mu.eps>
-(epstopdf)             \includegraphics on input line 564.
+(epstopdf)             \includegraphics on input line 569.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/fixedpoint_mu-eps-converted-to.pdf, id=577, 1182.4175pt x 482.80376p
+<./Figures/fixedpoint_mu-eps-converted-to.pdf, id=608, 1182.4175pt x 482.80376p
 t>
 File: ./Figures/fixedpoint_mu-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/fixedpoint_mu-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/fixedpoint_mu-eps-converted-to.pdf used on i
-nput line 564.
+nput line 569.
 (pdftex.def)             Requested size: 295.60365pt x 120.70064pt.
 
-Overfull \hbox (42.55379pt too wide) in paragraph at lines 564--565
+Overfull \hbox (42.55379pt too wide) in paragraph at lines 569--570
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8 <./Figures/Sensitivity_unscaled-eps-converted-to.pdf> <./Figures/Sensitivity
-_scaled-eps-converted-to.pdf> <./Figures/model_output-eps-converted-to.pdf>]
 [9 <./Figures/fixedpoint_f-eps-converted-to.pdf> <./Figures/fixedpoint_mu-eps-c
 onverted-to.pdf>] (./MScWriteup.bbl
 Underfull \hbox (badness 1910) in paragraph at lines 64--68
@@ -1199,19 +1224,48 @@ Underfull \hbox (badness 1910) in paragraph at lines 64--68
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ê in font ptmr7t!
-) [10] <./Figures/13_9.pdf, id=626, 597.50829pt x 845.0471pt>
+[10]) [11
+
+] <./Figures/13_9.pdf, id=637, 597.50829pt x 845.0471pt>
 File: ./Figures/13_9.pdf Graphic file (type pdf)
 
 <use ./Figures/13_9.pdf>
-Package pdftex.def Info: ./Figures/13_9.pdf used on input line 614.
-(pdftex.def)             Requested size: 298.7534pt x 116.37877pt.
+Package pdftex.def Info: ./Figures/13_9.pdf used on input line 619.
+(pdftex.def)             Requested size: 418.25294pt x 162.92957pt.
 
-<./Figures/14_7.pdf, id=628, 597.23125pt x 845.1575pt>
+<./Figures/14_7.pdf, id=639, 597.23125pt x 845.1575pt>
 File: ./Figures/14_7.pdf Graphic file (type pdf)
 
 <use ./Figures/14_7.pdf>
-Package pdftex.def Info: ./Figures/14_7.pdf used on input line 622.
-(pdftex.def)             Requested size: 298.61488pt x 106.39647pt.
+Package pdftex.def Info: ./Figures/14_7.pdf used on input line 627.
+(pdftex.def)             Requested size: 418.05902pt x 226.24281pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 650--650
+[]\OT1/ptm/m/n/7 Experimentally
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
+[]\OT1/ptm/m/n/7 Experimentally
+ []
+
+
+Underfull \hbox (badness 2781) in paragraph at lines 654--654
+[]\OT1/ptm/m/n/7 Unitless ra-tio be-tween re-pressed and un-re-pressed
+ []
+
+
+Underfull \hbox (badness 2781) in paragraph at lines 655--655
+[]\OT1/ptm/m/n/7 Unitless ra-tio be-tween re-pressed and un-re-pressed
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12
+
+
+ <./Figures/13_9.pdf> <./Figures/14_7.pdf>]
 Package epstopdf Info: Source file: <./Figures/13_9_f_hist.eps>
 (epstopdf)                    date: 2015-08-27 18:37:09
 (epstopdf)                    size: 22490 bytes
@@ -1221,15 +1275,15 @@ Package epstopdf Info: Source file: <./Figures/13_9_f_hist.eps>
 (epstopdf)                    size: 6579 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_f_hist-eps-
 converted-to.pdf ./Figures/13_9_f_hist.eps>
-(epstopdf)             \includegraphics on input line 643.
+(epstopdf)             \includegraphics on input line 682.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/13_9_f_hist-eps-converted-to.pdf, id=630, 754.82pt x 469.755pt>
+<./Figures/13_9_f_hist-eps-converted-to.pdf, id=668, 754.82pt x 469.755pt>
 File: ./Figures/13_9_f_hist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/13_9_f_hist-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/13_9_f_hist-eps-converted-to.pdf used on inp
-ut line 643.
+ut line 682.
 (pdftex.def)             Requested size: 377.40909pt x 234.87692pt.
 Package epstopdf Info: Source file: <./Figures/14_7_f_hist.eps>
 (epstopdf)                    date: 2015-08-27 17:46:46
@@ -1240,78 +1294,131 @@ Package epstopdf Info: Source file: <./Figures/14_7_f_hist.eps>
 (epstopdf)                    size: 6518 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/14_7_f_hist-eps-
 converted-to.pdf ./Figures/14_7_f_hist.eps>
-(epstopdf)             \includegraphics on input line 649.
+(epstopdf)             \includegraphics on input line 688.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/14_7_f_hist-eps-converted-to.pdf, id=631, 754.82pt x 469.755pt>
+<./Figures/14_7_f_hist-eps-converted-to.pdf, id=669, 754.82pt x 469.755pt>
 File: ./Figures/14_7_f_hist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/14_7_f_hist-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/14_7_f_hist-eps-converted-to.pdf used on inp
-ut line 649.
+ut line 688.
 (pdftex.def)             Requested size: 377.40909pt x 234.87692pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11
+ [13]
+Package epstopdf Info: Source file: <./Figures/13_9_14_7_with_13_9_bestplot.eps
+>
+(epstopdf)                    date: 2015-09-10 16:14:53
+(epstopdf)                    size: 330471 bytes
+(epstopdf)             Output file: <./Figures/13_9_14_7_with_13_9_bestplot-eps
+-converted-to.pdf>
+(epstopdf)                    date: 2015-09-10 16:22:24
+(epstopdf)                    size: 44032 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_14_7_with_1
+3_9_bestplot-eps-converted-to.pdf ./Figures/13_9_14_7_with_13_9_bestplot.eps>
+(epstopdf)             \includegraphics on input line 702.
+Package epstopdf Info: Output file is already uptodate.
 
+<./Figures/13_9_14_7_with_13_9_bestplot-eps-converted-to.pdf, id=674, 1328.965p
+t x 736.7525pt>
+File: ./Figures/13_9_14_7_with_13_9_bestplot-eps-converted-to.pdf Graphic file 
+(type pdf)
 
- <./Figures/13_9.pdf> <./Figures/14_7.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 668--668
-[]\OT1/ptm/m/n/7 Experimentally
- []
+<use ./Figures/13_9_14_7_with_13_9_bestplot-eps-converted-to.pdf>
+Package pdftex.def Info: ./Figures/13_9_14_7_with_13_9_bestplot-eps-converted-t
+o.pdf used on input line 702.
+(pdftex.def)             Requested size: 398.69258pt x 221.02745pt.
+Package epstopdf Info: Source file: <./Figures/13_9_14_7_with_14_7_bestplot.eps
+>
+(epstopdf)                    date: 2015-09-10 16:14:47
+(epstopdf)                    size: 291562 bytes
+(epstopdf)             Output file: <./Figures/13_9_14_7_with_14_7_bestplot-eps
+-converted-to.pdf>
+(epstopdf)                    date: 2015-09-10 16:22:25
+(epstopdf)                    size: 48219 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_14_7_with_1
+4_7_bestplot-eps-converted-to.pdf ./Figures/13_9_14_7_with_14_7_bestplot.eps>
+(epstopdf)             \includegraphics on input line 708.
+Package epstopdf Info: Output file is already uptodate.
 
+<./Figures/13_9_14_7_with_14_7_bestplot-eps-converted-to.pdf, id=675, 1328.965p
+t x 736.7525pt>
+File: ./Figures/13_9_14_7_with_14_7_bestplot-eps-converted-to.pdf Graphic file 
+(type pdf)
 
-Underfull \hbox (badness 10000) in paragraph at lines 669--669
-[]\OT1/ptm/m/n/7 Experimentally
- []
+<use ./Figures/13_9_14_7_with_14_7_bestplot-eps-converted-to.pdf>
+Package pdftex.def Info: ./Figures/13_9_14_7_with_14_7_bestplot-eps-converted-t
+o.pdf used on input line 708.
+(pdftex.def)             Requested size: 398.69258pt x 221.02745pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \hbox (badness 2781) in paragraph at lines 672--672
-[]\OT1/ptm/m/n/7 Unitless ra-tio be-tween re-pressed and un-re-pressed
- []
+ [14 <./Figures/13_9_f_hist-eps-converted-to.pdf> <./Figures/14_7_f_hist-eps-co
+nverted-to.pdf>]
+Package epstopdf Info: Source file: <./Figures/13_9_14_7_hist.eps>
+(epstopdf)                    date: 2015-09-10 16:21:32
+(epstopdf)                    size: 179202 bytes
+(epstopdf)             Output file: <./Figures/13_9_14_7_hist-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2015-09-10 16:22:25
+(epstopdf)                    size: 13895 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_14_7_hist-e
+ps-converted-to.pdf ./Figures/13_9_14_7_hist.eps>
+(epstopdf)             \includegraphics on input line 717.
+Package epstopdf Info: Output file is already uptodate.
 
+<./Figures/13_9_14_7_hist-eps-converted-to.pdf, id=689, 1328.965pt x 736.7525pt
+>
+File: ./Figures/13_9_14_7_hist-eps-converted-to.pdf Graphic file (type pdf)
+ <use ./Figures/13_9_14_7_hist-eps-converted-to.pdf>
+Package pdftex.def Info: ./Figures/13_9_14_7_hist-eps-converted-to.pdf used on 
+input line 717.
+(pdftex.def)             Requested size: 531.57658pt x 294.69577pt.
 
-Underfull \hbox (badness 2781) in paragraph at lines 673--673
-[]\OT1/ptm/m/n/7 Unitless ra-tio be-tween re-pressed and un-re-pressed
+Overfull \hbox (7.47684pt too wide) in paragraph at lines 717--718
+ [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12 <./Figures/13_9_f_hist-eps-converted-to.pdf> <./Figures/14_7_f_hist-eps-co
-nverted-to.pdf>]
-Overfull \hbox (109.70744pt too wide) detected at line 716
-\OML/cmm/m/it/5 y \OMS/cmsy/m/n/5 ! []
- []
+ [15 <./Figures/13_9_14_7_with_13_9_bestplot-eps-converted-to.pdf> <./Figures/1
+3_9_14_7_with_14_7_bestplot-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <./Figures/13_9_14_7_f_hist.eps>
+(epstopdf)                    date: 2015-09-10 16:22:01
+(epstopdf)                    size: 24265 bytes
+(epstopdf)             Output file: <./Figures/13_9_14_7_f_hist-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2015-09-10 16:22:25
+(epstopdf)                    size: 6458 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Figures/13_9_14_7_f_hist
+-eps-converted-to.pdf ./Figures/13_9_14_7_f_hist.eps>
+(epstopdf)             \includegraphics on input line 724.
+Package epstopdf Info: Output file is already uptodate.
 
-
-Overfull \hbox (117.98763pt too wide) detected at line 724
-\OML/cmm/m/it/5 m \OMS/cmsy/m/n/5 ! ^^@[]
- []
-
-
-Overfull \hbox (114.92046pt too wide) detected at line 732
-\OML/cmm/m/it/5 s \OMS/cmsy/m/n/5 ! ^^@[]
- []
-
-
-Overfull \hbox (116.43983pt too wide) detected at line 739
-[]
- []
+<./Figures/13_9_14_7_f_hist-eps-converted-to.pdf, id=703, 1183.42125pt x 482.80
+376pt>
+File: ./Figures/13_9_14_7_f_hist-eps-converted-to.pdf Graphic file (type pdf)
+ <use ./Figures/13_9_14_7_f_hist-eps-converted-to.pdf>
+Package pdftex.def Info: ./Figures/13_9_14_7_f_hist-eps-converted-to.pdf used o
+n input line 724.
+(pdftex.def)             Requested size: 355.02911pt x 144.84224pt.
 
 
 AED: lastpage setting LastPage
-[13] (./MScWriteup.aux)
+[16 <./Figures/13_9_14_7_hist-eps-converted-to.pdf> <./Figures/13_9_14_7_f_hist
+-eps-converted-to.pdf>] (./MScWriteup.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14767 strings out of 495028
- 269184 string characters out of 6181497
+ 14798 strings out of 495028
+ 270614 string characters out of 6181497
  435499 words of memory out of 5000000
- 17609 multiletter control sequences out of 15000+600000
+ 17635 multiletter control sequences out of 15000+600000
  54699 words of font info for 107 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
  63i,23n,94p,1247b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1342,10 +1449,10 @@ e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MScWriteup.pdf (13 pages, 3111676 bytes).
+Output written on MScWriteup.pdf (16 pages, 3255131 bytes).
 PDF statistics:
- 768 PDF objects out of 1000 (max. 8388607)
- 478 compressed objects within 5 object streams
+ 814 PDF objects out of 1000 (max. 8388607)
+ 508 compressed objects within 6 object streams
  0 named destinations out of 1000 (max. 500000)
- 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 

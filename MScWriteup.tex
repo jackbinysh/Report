@@ -205,7 +205,7 @@ The experimental setup is as follows (Figs. \ref{ExperimentalSetup_overview},  \
     \label{ExperimentalSetup_chambers}
 \end{figure}
 
-The data we will consider consists of two sets of individual cell time series, labelled \textit{13\_9} and \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Appendix \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions.
+The data we will consider consists of two sets of individual cell time series, labelled \textit{13\_9} and \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Appendix \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions. Note that \textit{13\_9} contains two different forcing periods.
 
 
 
@@ -364,6 +364,7 @@ where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is record
 \todo[inline]{explain why not fit each curve individually.}
 \begin{align}
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
+\label{eq:min}
 \end{align}
 The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm will may get stuck in \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.}. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. \footnote{CMA-ES stands for covariance matrix evolutionary strategy. This algorithm generates a population of test points according to a multivariate gaussian distribution. It then ranks the points based on their fitness function scores, and  considers some number of the highest ranked points as a sample from a new multivariate gaussian. Using this sample, it then estimates a new mean and covariance matrix for this gaussian and the process is iterated.}
 \todo[inline]{why use CMA-ES? Some refs}
@@ -421,34 +422,38 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \label{Initial Parameter Estimates}
 
 
- We begin by fitting each dataset individually, by choosing 200 parameter sets uniformly distributed over our initial parameter bounds and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ and $\Theta$ in particular) are much tighter.
-
+ We begin by fitting each dataset individually, by choosing 200 parameter sets uniformly distributed over our initial parameter bounds and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ in particular) are much tighter. $\Theta$ appears tightly constrained, but many of the estimated values are close to the upper bound set, and must be treated with caution.
 
 Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices between parameter sets, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the correlation matrix $R_{ij}$ is then the correlation co-efficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. Biologically, an increased production rate of GFP is being balance by an increased dilution rate. 
 The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
- We can test the predictive ability of our model by cross validating - taking the parameter values found in the fitting of one dataset, and using them to give model predictions for another. We thus take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Fig.\ref{CrossValidation}.
+ We can test the predictive ability of our model by cross validating, either by taking the parameter values found in the fitting of one dataset and using them to give model predictions for another, or only fitting part of a single dataset and predicting the rest.  We begin by fitting to only the data for the first forcing period in \textit{13\_9}, and then predicting the full time series. Results are shown in Fig. \ref{CrossValidation_1}, for the parameter set giving the lowest error on the training data. We see the prediction is very similar to that obtained by fitting to the full dataset (Fig. \ref{InitialResults_13_9_best}). Next, we take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Figs. \ref{CrossValidation_2}, \ref{CrossValidation_3}.
+Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. One reason for this may be that parameter values will vary between experimental runs \cite{Hu2015}. We can also fit to both datasets combined, by extending \eqref{eq:min} to a sum over multiple datasets. Results are shown in Appendix \ref{Bothdatasetfitting}. We are unable to achieve error values as low as those found when fitting individual datasets. In addition, we do not see a tightening of the estimates on our parameters, as we might expect from including the additional data. Instead, many parameter estimates remain spread across the initial bounding region. We also note that all three of the cases considered (\textit{13\_9}, \textit{14\_7}, both) see a shift in the estimated value of $\mu$.
  
- \begin{figure}[h!]	
+ \begin{figure}[h]	
+ 	\begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.3,clip = true, trim = 87 0 70 0]{13_9_partial_data_13_9_pred}
+        \caption{Model trained on \textit{13\_9}  60/60 data only, full prediction}
+        \label{CrossValidation_1} 
+    \end{subfigure}
 	\begin{subfigure}[h]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.3,clip = true, trim = 87 0 70 0]{14_7_pred_13_9_data}
         \caption{\textit{14\_7} prediction \textit{13\_9} data}
-        \label{SensitivityMatrix_unscaled} 
+        \label{CrossValidation_2} 
     \end{subfigure}
     \begin{subfigure}[h]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.3,clip = true, trim = 87 0 70 0]{13_9_pred_14_7_data}
         \caption{\textit{13\_9} prediction \textit{14\_7} data}
-                \label{SensitivityMatrix_scaled} 
+                \label{CrossValidation_3} 
     \end{subfigure}
-    \caption{Cross validating data by taking parameter estimates from one dataset, and using them to predict another. Here we take the best parameter set fitted on the \textit{13\_9}, and fit it against the \textit{14\_7} dataset, and vice versa } 
+    \caption{Cross validating data by taking parameter estimates from one dataset, and using them to predict another. \ref{CrossValidation_1} shows model predictions for the full \textit{13\_9} dataset, when only trained on the first forcing period data. \ref{CrossValidation_2}, \ref{CrossValidation_3} show model predictions for fitting to one dataset, and predicting the other.}
 \label{CrossValidation}   
 \end{figure}
 
-Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. One reason for this may be that parameter values will vary between experimental runs \cite{Hu2015}. Another may be that the model is inadequate.
- 
- Taken together, these results suggest that simply performing a least squares fit on the available data will not give unique parameter estimates. In the following sections we discuss why this might be.
+ Taken together, these results suggest that simply performing a least squares fit on the available data will not give unique parameter estimates. In the following sections we investigate why this might be.
  
  \begin{figure*}[!t]
 % ensure that we have normalsize text
@@ -593,11 +598,11 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 
 \todo[inline]{write section on GP's}.
 
-
 % references section
+\begin{footnotesize}
 \bibliographystyle{./IEEE_bibtex_class/IEEEtran}
 \bibliography{./IEEE_bibtex_class/IEEEabrv,library}
-
+\end{footnotesize}
 \clearpage
 \onecolumn
 
@@ -611,7 +616,7 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 
 \begin{figure}[h]
 \centering
-\includegraphics[trim = 0 310 0 300 , scale = 0.5, clip = true]{13_9}
+\includegraphics[trim = 0 310 0 300 , scale = 0.7, clip = true]{13_9}
 \caption{The \textit{13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
 \label{}
 \end{figure}
@@ -619,7 +624,7 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 %trim=l b r t
 \begin{figure}[h]
 \centering
-\includegraphics[trim = 0 270 0 360 , scale = 0.5, clip = true]{14_7}
+\includegraphics[trim = 0 270 0 250 , scale = 0.7, clip = true]{14_7}
 \caption{The \textit{14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response}
 \label{}
 \end{figure}
@@ -632,32 +637,9 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 %\label{}
 %\end{figure}
 
-
-\section{Histogram of Initial Fit Error values}
-\label{Initial fit Error}
-\setcounter{figure}{0}    
-
-\begin{figure}[H]
-    \begin{subfigure}[c]{\textwidth}
-    \centering
-        \includegraphics[scale = 0.5]{13_9_f_hist}
-        \caption{Error values found from 200 initial parameter estimates, \textit{13\_9 dataset}.}
-    \end{subfigure}
-    
-    \begin{subfigure}[c]{\textwidth}
-    \centering
-        \includegraphics[scale = 0.5]{14_7_f_hist}
-        \caption{Error values found from 200 initial parameter estimates, \textit{14\_7 dataset}}
-    \end{subfigure}
-    \caption{}
-\label{hist_f}
-\end{figure} 
-
-
 \section{Parameter literature review}
 \label{Parameter literature review}
 \setcounter{figure}{0}    
-
 
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3}
@@ -689,6 +671,64 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 \hline
 \end{tabular}
 \end{table}
+
+\section{Histogram of Initial Fit Error values}
+\label{Initial fit Error}
+\setcounter{figure}{0}    
+
+\begin{figure}[H]
+    \begin{subfigure}[c]{\textwidth}
+    \centering
+        \includegraphics[scale = 0.5]{13_9_f_hist}
+        \caption{Error values found from 200 initial parameter estimates, \textit{13\_9 dataset}.}
+    \end{subfigure}
+    
+    \begin{subfigure}[c]{\textwidth}
+    \centering
+        \includegraphics[scale = 0.5]{14_7_f_hist}
+        \caption{Error values found from 200 initial parameter estimates, \textit{14\_7 dataset}}
+    \end{subfigure}
+    \caption{}
+\label{hist_f}
+\end{figure} 
+
+\section{Initial parameter Estimates, both datasets}
+\label{Bothdatasetfitting}
+\setcounter{figure}{0} 
+
+\begin{figure}[H]
+    \begin{subfigure}[c]{\textwidth}
+    \centering
+        \includegraphics[scale = 0.3]{13_9_14_7_with_13_9_bestplot}
+        \caption{Model prediction from parameter set which gives lowest error when trained on the combination of both datasets, plotted against the  \textit{13\_9} dataset. }
+    \end{subfigure}
+    
+    \begin{subfigure}[c]{\textwidth}
+    \centering
+        \includegraphics[scale = 0.3]{13_9_14_7_with_14_7_bestplot}
+        \caption{Model prediction from parameter set which gives lowest error when trained on the combination of both datasets, plotted against the  \textit{14\_7} dataset.}
+    \end{subfigure}
+    \caption{}
+\label{hist_f}
+\end{figure}
+
+\begin{figure}[H]
+   \centering
+        \includegraphics[scale = 0.4]{13_9_14_7_hist}
+        \caption{Histogram of estimated parameter values, found from 100 runs of the CMA-ES algorithm. Fitted to both the  \textit{13\_9} and \textit{14\_7} datasets.}
+        \label{}
+\end{figure}
+
+\begin{figure}[H]
+   \centering
+        \includegraphics[scale = 0.3]{13_9_14_7_f_hist}
+        \caption{Error values found from 100 initial parameter estimates. Fitted to both the  \textit{13\_9} and \textit{14\_7} datasets.}
+        \label{}
+\end{figure}
+
+\end{document}
+
+
 
 \section{Model Fixed Point}
 \label{ModelFixedPoint}
@@ -744,5 +784,3 @@ s\to -\frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\rig
 % The spacer can be tweaked to stop underfull vboxes.
 \vspace*{4pt}
 \end{figure*}
-
-\end{document}
