@@ -27,7 +27,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm  {LtetO-1}}$ and $P_\mathrm  {LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit  {E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell. Image reproduced from \cite  {Rodrigo2012}.\relax }}{2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{ANDGate}{{1}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A proposed reaction scheme between the synthetic sRNA-mRNA pairs designed in \cite  {Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small `toehold' sequence, forming an unstable transition state, which then stabilises to give the final compound. Image reproduced from \cite  {Rodrigo2012}\relax }}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The reaction scheme between the synthetic sRNA-mRNA pairs designed in \cite  {Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small `toehold' sequence, forming an unstable transition state, which then stabilises to give the final compound. Image reproduced from \cite  {Rodrigo2012}\relax }}{2}}
 \newlabel{reactionscheme}{{3}{2}}
 \citation{Rodrigo2012}
 \citation{Jaramillo}
@@ -35,6 +35,8 @@
 \citation{Jaramillo}
 \citation{Jaramillo}
 \citation{Jaramillo}
+\citation{Jaramilloa}
+\citation{Jaramilloa}
 \citation{UriAlon}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces An overview of the experimental setup which allows single cell fluorescences to be recorded over time. Shown are the bacterial growth chambers (labelled `Microfabricated Microchemstat device'), the microscope imaging them, and the software constructing fluorescence time series. Image reproduced from \cite  {Jaramillo}. \relax }}{3}}
 \newlabel{ExperimentalSetup_overview}{{4}{3}}
@@ -43,8 +45,6 @@
 \newlabel{ExperimentalSetup_chambers}{{5}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}ODE Model}{3}}
 \newlabel{ODEModel}{{II}{3}}
-\@writefile{tdo}{\contentsline {todo}{give the original model and discuss modifications in appendix.}{3}}
-\pgfsyspdfmark {pgfid1}{29259718}{22917875}
 \newlabel{eq:s}{{1}{3}}
 \newlabel{eq:m}{{2}{3}}
 \newlabel{eq:sm}{{3}{3}}
@@ -56,23 +56,26 @@
 \citation{Rodrigo2012}
 \citation{Hersch2004}
 \citation{Brewer2008,Algorithms2003,Hu2015}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Parameter Estimation}{4}}
+\newlabel{Parameter Estimation}{{III}{4}}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces State Variables\relax }}{4}}
 \newlabel{StateVariables}{{I}{4}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Model Parameters (those to be estimated shown in bold)\relax }}{4}}
 \newlabel{ModelParameters}{{II}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Parameter Estimation}{4}}
-\newlabel{Parameter Estimation}{{III}{4}}
 \citation{Algorithms2003}
 \citation{Hansen2006,Hansen2011}
 \citation{Hu2015}
 \citation{Mclean2012,Yao2003,Beck}
+\citation{Jimenez-Hornero2008,Grewal1976}
 \@writefile{tdo}{\contentsline {todo}{explain why not fit each curve individually.}{5}}
-\pgfsyspdfmark {pgfid26}{11496193}{37198335}
+\pgfsyspdfmark {pgfid25}{11496193}{42144402}
 \newlabel{eq:min}{{10}{5}}
 \@writefile{tdo}{\contentsline {todo}{why use CMA-ES? Some refs}{5}}
-\pgfsyspdfmark {pgfid27}{11496193}{27009505}
+\pgfsyspdfmark {pgfid26}{11496193}{31993487}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Initial Parameter Estimates}{5}}
 \newlabel{Initial Parameter Estimates}{{\unhbox \voidb@x \hbox {III-A}}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Parameter Estimability}{5}}
+\newlabel{Parameter Estimability}{{\unhbox \voidb@x \hbox {III-B}}{5}}
 \newlabel{InitialResults_13_9_hist}{{6a}{6}}
 \newlabel{sub@InitialResults_13_9_hist}{{a}{6}}
 \newlabel{InitialResults_14_7_hist}{{6b}{6}}
@@ -85,9 +88,8 @@
 \newlabel{sub@InitialResults_13_9_best}{{e}{6}}
 \newlabel{InitialResults_14_7_best}{{6f}{6}}
 \newlabel{sub@InitialResults_14_7_best}{{f}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Parameter estimates, inter-parameter correlation values, and model predictions for the \textit  {13\_9} and \textit  {14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response.\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Parameter estimates, inter-parameter correlation values, and model predictions for the \textit  {13\_9} and \textit  {14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and on a level which saturates the cell's response.\relax }}{6}}
 \newlabel{InitialResults}{{6}{6}}
-\citation{Jimenez-Hornero2008,Grewal1976}
 \citation{Mclean2012}
 \citation{Beck}
 \citation{Beck}
@@ -100,10 +102,6 @@
 \newlabel{sub@CrossValidation_3}{{c}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cross validating data by taking parameter estimates from one dataset, and using them to predict another. 7a\hbox {} shows model predictions for the full \textit  {13\_9} dataset, when only trained on the first forcing period data. 7b\hbox {}, 7c\hbox {} show model predictions for fitting to one dataset, and predicting the other.\relax }}{7}}
 \newlabel{CrossValidation}{{7}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Parameter Estimability}{7}}
-\newlabel{Parameter Estimability}{{\unhbox \voidb@x \hbox {III-B}}{7}}
-\newlabel{eq:m_fixed}{{12}{8}}
-\newlabel{eq:c_fixed}{{13}{8}}
 \newlabel{SensitivityMatrix_unscaled}{{8a}{8}}
 \newlabel{sub@SensitivityMatrix_unscaled}{{a}{8}}
 \newlabel{SensitivityMatrix_scaled}{{8b}{8}}
@@ -113,15 +111,12 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Differing timescales within the system}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Model output for all state variables over two oscillations, using the parameter values giving the lowest error on the \textit  {13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. \relax }}{8}}
 \newlabel{model_output}{{9}{8}}
+\newlabel{eq:p_simplified}{{12}{8}}
+\newlabel{eq:g_simplified}{{13}{8}}
+\newlabel{eq:z_simplified}{{14}{8}}
 \citation{Rodrigo2012}
 \citation{Hu2015}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. \relax }}{9}}
-\newlabel{fixedpoint_f}{{10}{9}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{9}}
-\newlabel{Conclusions and Further work}{{IV}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu $ in that set.\relax }}{9}}
-\newlabel{fixedpoint_mu}{{11}{9}}
-\citation{Mclean2012,Grewal1976}
+\citation{Hu2015}
 \citation{Algorithms2003}
 \citation{Hu2015}
 \citation{Jitjareonchai2006,Andrieu2003}
@@ -135,31 +130,32 @@
 \bibcite{Shine1974}{6}
 \bibcite{Lutz1997}{7}
 \bibcite{Jaramillo}{8}
-\bibcite{UriAlon}{9}
-\bibcite{Hersch2004}{10}
-\bibcite{Brewer2008}{11}
-\bibcite{Algorithms2003}{12}
-\bibcite{Hu2015}{13}
-\bibcite{Hansen2006}{14}
-\bibcite{Hansen2011}{15}
-\bibcite{Mclean2012}{16}
-\bibcite{Yao2003}{17}
-\bibcite{Beck}{18}
-\bibcite{Jimenez-Hornero2008}{19}
-\bibcite{Grewal1976}{20}
-\@writefile{tdo}{\contentsline {todo}{write section on GP's}{10}}
-\pgfsyspdfmark {pgfid28}{11496193}{8041380}
-\@writefile{toc}{\contentsline {section}{References}{10}}
-\bibcite{Jitjareonchai2006}{21}
-\bibcite{Andrieu2003}{22}
-\bibcite{Andersen1998}{23}
-\bibcite{Iizuka2011}{24}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}A: Initial Experimental Data}{12}}
-\newlabel{Initial Experimental Data}{{A}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces The \textit  {13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{12}}
-\newlabel{}{{A.1}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces The \textit  {14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{12}}
-\newlabel{}{{A.2}{12}}
+\bibcite{Jaramilloa}{9}
+\bibcite{UriAlon}{10}
+\bibcite{Hersch2004}{11}
+\bibcite{Brewer2008}{12}
+\bibcite{Algorithms2003}{13}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusions and Further work}{9}}
+\newlabel{Conclusions and Further work}{{IV}{9}}
+\@writefile{toc}{\contentsline {section}{References}{9}}
+\bibcite{Hu2015}{14}
+\bibcite{Hansen2006}{15}
+\bibcite{Hansen2011}{16}
+\bibcite{Mclean2012}{17}
+\bibcite{Yao2003}{18}
+\bibcite{Beck}{19}
+\bibcite{Jimenez-Hornero2008}{20}
+\bibcite{Grewal1976}{21}
+\bibcite{Jitjareonchai2006}{22}
+\bibcite{Andrieu2003}{23}
+\bibcite{Andersen1998}{24}
+\bibcite{Iizuka2011}{25}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}A: Initial Experimental Data}{11}}
+\newlabel{Initial Experimental Data}{{A}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces The \textit  {13\_9} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{11}}
+\newlabel{}{{A.1}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces The \textit  {14\_7} dataset, with aTc forcing shown. IPTG concentration is constant at a level which saturates the cell's response. Note the forcing curve's height is schematic - aTc concentation is switched between off, and a level which saturates the cell's response\relax }}{11}}
+\newlabel{}{{A.2}{11}}
 \citation{Lutz1997}
 \citation{Lutz1997}
 \citation{Lutz1997}
@@ -168,21 +164,29 @@
 \citation{Iizuka2011}
 \citation{Hersch2004}
 \citation{Hersch2004}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}B: Parameter literature review}{13}}
-\newlabel{Parameter literature review}{{B}{13}}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold\relax }}{13}}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}C: Histogram of Initial Fit Error values}{14}}
-\newlabel{Initial fit Error}{{C}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {C.1}{\ignorespaces \relax }}{14}}
-\newlabel{hist_f}{{C.1}{14}}
-\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}D: Initial parameter Estimates, both datasets}{15}}
-\newlabel{Bothdatasetfitting}{{D}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {D.1}{\ignorespaces \relax }}{15}}
-\newlabel{hist_f}{{D.1}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {D.2}{\ignorespaces Histogram of estimated parameter values, found from 100 runs of the CMA-ES algorithm. Fitted to both the \textit  {13\_9} and \textit  {14\_7} datasets.\relax }}{16}}
-\newlabel{}{{D.2}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {D.3}{\ignorespaces Error values found from 100 initial parameter estimates. Fitted to both the \textit  {13\_9} and \textit  {14\_7} datasets.\relax }}{16}}
-\newlabel{}{{D.3}{16}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}B: Parameter literature review}{12}}
+\newlabel{Parameter literature review}{{B}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold\relax }}{12}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}C: Histogram of Initial Fit Error values}{13}}
+\newlabel{Initial fit Error}{{C}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {C.1}{\ignorespaces \relax }}{13}}
+\newlabel{hist_f}{{C.1}{13}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}D: Initial parameter Estimates, both datasets}{14}}
+\newlabel{Bothdatasetfitting}{{D}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {D.1}{\ignorespaces \relax }}{14}}
+\newlabel{hist_f}{{D.1}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {D.2}{\ignorespaces Histogram of estimated parameter values, found from 100 runs of the CMA-ES algorithm. Fitted to both the \textit  {13\_9} and \textit  {14\_7} datasets.\relax }}{15}}
+\newlabel{}{{D.2}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {D.3}{\ignorespaces Error values found from 100 initial parameter estimates. Fitted to both the \textit  {13\_9} and \textit  {14\_7} datasets.\relax }}{15}}
+\newlabel{}{{D.3}{15}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}E: Model Fixed Point}{15}}
+\newlabel{ModelFixedPoint}{{E}{15}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  {}F: Fixed point scatterplot}{15}}
+\newlabel{Fixedpointscatterplot}{{F}{15}}
+\newlabel{eq:m_fixed}{{12}{16}}
+\newlabel{eq:c_fixed}{{13}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {F.1}{\ignorespaces A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. \relax }}{16}}
+\newlabel{fixedpoint_f}{{F.1}{16}}
 \newlabel{LastPage}{{}{16}}
 \xdef\lastpage@lastpage{16}
 \gdef\lastpage@lastpageHy{}

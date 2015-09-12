@@ -41,7 +41,7 @@
 
 
 \newcounter{MYtempeqncnt}
-
+\renewcommand{\thefootnote}{\roman{footnote}}
 
 
 
@@ -113,7 +113,7 @@ Place conference title here}}\hfil\hbox{}}}
 %\addtolength{\textheight}{-0.1\baselineskip}
 
 \begin{abstract}
-For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA is an attractive tool, due to the ease of predicting its behaviour from physiochemical models. In this report, we introduce a system of ODE's to model a recently designed synthetic regulatory circuit, before attempting to estimate its unknown parameters using recent time series data. We provide estimates for a subset of parameters, but find many of them to be inestimable. We discuss why this is this case for our system, and suggest how this problem might be resolved.
+For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA is an attractive tool due to the ease of predicting its behaviour from physiochemical models. In this report, we introduce a system of ODEs to model a recently designed synthetic regulatory circuit, before attempting to estimate its unknown parameters using recent single cell time series data. We provide estimates for a subset of parameters, but find many of them to be inestimable. We discuss why this is the case for our system, and suggest how this problem might be resolved.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -137,11 +137,11 @@ The process of gene expression can be summarised as follows: DNA is read, and a 
 
  The path from genetic transcription to protein expression is naturally regulated in many ways \cite{MolecularBiology}. This regulation allows the cell to control protein expression, and so cell behaviour, in response to various environmental cues. The natural cell machinery which performs it takes the form of genetic circuits - networks of interacting gene expression regulators. This genetic circuitry offers rich possibilities for modification, and an important goal within synthetic biology is to understand and manipulate it.
 
-As well as acting as the intermediate between DNA and protein, RNA molecules play direct and important roles in regulating gene expression \cite{Isaacs2006}. For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightforward to predict the structure and function of an RNA from its sequence using physiochemical models. Recently, this has been exploited to computationally design synthetic sRNA's - small RNA's which do not code for a protein, but rather have some direct regulatory function -  with regulatory behaviour that can be predicted \cite{Rodrigo2013}\cite{Rodrigo2012}.
+As well as acting as the intermediate between DNA and protein, RNA molecules play direct and important roles in regulating gene expression \cite{Isaacs2006}. For the synthetic biologist looking to engineer regulation of genetic circuitry, RNA offers an attractive alternative to more traditional methods, which typically involve using proteins to regulate DNA transcription. In comparison to proteins, it is relatively straightforward to predict the intra and intermolecular interactions of an RNA from its sequence using physiochemical models. Recently, this has been exploited to computationally design synthetic sRNAs - small RNAs which do not code for a protein, but rather have some direct regulatory function -  with regulatory behaviour that can be predicted \cite{Rodrigo2013}\cite{Rodrigo2012}.
 
-This report will focus on one such sRNA system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of it beyond the qualitative by first proposing a quantitative model of its behaviour in the form of a set of ODE's, and then fitting this ODE model to available time series data to estimate its unknown parameters.
+This report will focus on one such sRNA system, introduced in \cite{Rodrigo2012}. It will extend existing understanding of it beyond the qualitative by first proposing a quantitative model of its behaviour in the form of a set of ODEs, and then fitting this ODE model to available time series data to estimate its unknown parameters.
 
-The report is structured as follows. In the remainder of this section we review the regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on it. In section \ref{ODEModel} we introduce a set of ODE's to model the system. In section \ref{Parameter Estimation} we attempt to estimate its unknown parameters by fitting the model to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
+The report is structured as follows. In the remainder of this section we review the regulatory system we will consider, and discuss recent single cell fluorescence experiments performed on it. In section \ref{ODEModel} we introduce a set of ODEs to model the system. In section \ref{Parameter Estimation} we attempt to estimate its unknown parameters by fitting the model to time series data. Finally, in section \ref{Conclusions and Further work}, we conclude, and suggest directions for further work.
 
 
 %NEW SUBSECTION%
@@ -174,15 +174,15 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 \begin{figure}[h]
 \centering
 \includegraphics[trim = 60 630 300 30,page=2,clip = true]{pnas1203831109.pdf}
-\caption{A proposed reaction scheme between the synthetic sRNA-mRNA pairs designed in \cite{Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small 
+\caption{The reaction scheme between the synthetic sRNA-mRNA pairs designed in \cite{Rodrigo2012}. The reaction co-ordinate is defined as the number of paired nucleotides, and the vertical axis denotes free energy. The RNA's initially interact via a small 
 `toehold' sequence, forming an unstable transition state, which then stabilises to give the final compound. Image reproduced from \cite{Rodrigo2012}}
 \label{reactionscheme}
 \end{figure}
 
-The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoter regions \footnote{A promoter region in a DNA sequence is a sequence of nucleotides, found upstream of where transcription of a gene begins, which can influence the transcription rate of the gene.}, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
+The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoters \footnote{A promoter in a DNA sequence is a sequence of nucleotides, found upstream of where transcription of a gene begins, which can influence the transcription rate of the gene.}, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
 
-In this system, transcription of the designed sRNA and mRNA are placed under the control of promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI, which are naturally present in the strain of \textit{E. coli} considered. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
-These repressors can themselves be disabled by the presence of two chemicals, aTc and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNA's is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
+In this system, transcription of the designed sRNA and mRNA are placed under the control of promoters, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI respectively, which are naturally present in the strain of \textit{E. coli} used. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
+These repressors can themselves be disabled by the presence of two chemicals, aTc and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNAs is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
 
 Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA pair is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
  
@@ -205,7 +205,7 @@ The experimental setup is as follows (Figs. \ref{ExperimentalSetup_overview},  \
     \label{ExperimentalSetup_chambers}
 \end{figure}
 
-The data we will consider consists of two sets of individual cell time series, labelled \textit{13\_9} and \textit{14\_7}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Appendix \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions. Note that \textit{13\_9} contains two different forcing periods.
+The data we will consider consists of two sets of individual cell time series, labelled \textit{13\_9} and \textit{14\_7} \cite{Jaramilloa}. They correspond to different experimental runs of the above apparatus, for which IPTG concentration was held constant, at a value assumed large enough to saturate the cell's response, and aTc concentrations were varied periodically. Appendix \ref{Initial  Experimental Data} shows the full datasets, with their forcing functions. Note that \textit{13\_9} contains two different forcing periods.
 
 
 
@@ -223,8 +223,7 @@ The data we will consider consists of two sets of individual cell time series, l
 \section{ODE Model}
 \label{ODEModel}
 
-In \eqref{eq:s} - \eqref{eq:z}, we present a modified version an existing model which describes the system, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{StateVariables} and \ref{ModelParameters} give complete descriptions of the parameters and state variables.
-\todo[inline]{give the original model and discuss modifications in appendix.}
+In \eqref{eq:s} - \eqref{eq:z}, we present a modified version an existing model which describes the system \cite{Jaramilloa}, consisting of a set of ODE's with mass action kinetics \cite{UriAlon}.  Its state is given by the vector $(s,m,s:m,c,p,g,z)$, with all other variables representing model parameters. Tables \ref{StateVariables} and \ref{ModelParameters} give complete descriptions of the parameters and state variables.
  
 \begin{align}
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \label{eq:s}\\
@@ -278,7 +277,7 @@ GFP\textsubscript{Immature}  \chemrel[$\gamma$]{->} GFP\textsubscript{Mature}
 }.
 \end{align*}
 
-Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$ is included, assumed identical for the mature and immature species, along with the dilution rate $\mu$ shared by all species. Secondly, in the experimental setup we can arrange for GFP molecules to be produced with a \textit{degradation tag} attached to them \cite{Hersch2004}. This tag is sought out by a protein, ClpX, which will then degrade the molecule the tag is  attached to. This degradation process is modelled by the final terms in \eqref{eq:p} and \eqref{eq:g}. Finally, \eqref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
+Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$ is included, assumed identical for the mature and immature species, along with the dilution rate $\mu$ shared by all species. Secondly, in the experimental setup we can arrange for GFP molecules to be produced with a \textit{degradation tag} attached to them \cite{Hersch2004}. This tag is identified by an enzyme, ClpX, which will then degrade the molecule the tag is  attached to. This degradation process is modelled by the final terms in \eqref{eq:p} and \eqref{eq:g}. Finally, \eqref{eq:z} simply represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
 
 \begin{table}[h]
 \renewcommand{\arraystretch}{1.3}
@@ -411,7 +410,7 @@ In order to reduce the dimensionality of our search space, we can perform a lite
         \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{14\_7} dataset.}
         \label{InitialResults_14_7_best}
     \end{subfigure}
-    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response.}
+    \caption{Parameter estimates, inter-parameter correlation values, and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and on a level which saturates the cell's response.}
 \label{InitialResults}
 \end{figure*} 
  
@@ -422,9 +421,9 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \label{Initial Parameter Estimates}
 
 
- We begin by fitting each dataset individually, by choosing 200 parameter sets uniformly distributed over our initial parameter bounds and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ in particular) are much tighter. $\Theta$ appears tightly constrained, but many of the estimated values are close to the upper bound set, and must be treated with caution.
+ We begin by fitting each dataset individually, by choosing 200 sets of the parameters, with each parameter choice uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ in particular) are much tighter. $\Theta$ appears tightly constrained, but many of the estimated values are close to the upper bound set, and must be treated with caution.
 
-Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices between parameter sets, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the correlation matrix $R_{ij}$ is then the correlation co-efficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged. Biologically, an increased production rate of GFP is being balance by an increased dilution rate. 
+Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices between parameter sets, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the correlation matrix $R_{ij}$ is then the Pearson correlation coefficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged.
 The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
  We can test the predictive ability of our model by cross validating, either by taking the parameter values found in the fitting of one dataset and using them to give model predictions for another, or only fitting part of a single dataset and predicting the rest.  We begin by fitting to only the data for the first forcing period in \textit{13\_9}, and then predicting the full time series. Results are shown in Fig. \ref{CrossValidation_1}, for the parameter set giving the lowest error on the training data. We see the prediction is very similar to that obtained by fitting to the full dataset (Fig. \ref{InitialResults_13_9_best}). Next, we take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Figs. \ref{CrossValidation_2}, \ref{CrossValidation_3}.
@@ -455,45 +454,6 @@ Though the predictions are reasonable, they are substantially worse than the pre
 
  Taken together, these results suggest that simply performing a least squares fit on the available data will not give unique parameter estimates. In the following sections we investigate why this might be.
  
- \begin{figure*}[!t]
-% ensure that we have normalsize text
-\tiny
-% Store the current equation number.
-\setcounter{MYtempeqncnt}{\value{equation}}
-% Set the equation number to one less than the one
-% desired for the first equation here.
-% The value here will have to changed if equations
-% are added or removed prior to the place these
-% equations are referenced in the main text.
-\setcounter{equation}{11}
-\begin{align}
-\label{eq:m_fixed}  
-m &= \frac{1}{{2 k_{\text{on}} \left(\mu +\delta _m\right)
-   \left(k_{\text{hyb}}+\delta _m\right)}}
-   \Bigg(\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
-   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
-   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2} \\ \nonumber  
- &- (\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)\Bigg)
-\end{align}
-\begin{align}
-\label{eq:c_fixed}
-c &= \frac{k_{\text{hyb}}}{2 k_{\text{on}} \left(\mu +\delta
-   _m\right) \left(k_{\text{hyb}}+\delta _m\right){}^2}
-   \Bigg( \sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
-   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
-   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2} \\ \nonumber
-   &+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right) \Bigg)
-\end{align}
-% Restore the current equation number.
-\setcounter{equation}{\value{MYtempeqncnt}}
-% IEEE uses as a separator
-\hrulefill
-% The spacer can be tweaked to stop underfull vboxes.
-\vspace*{4pt}
-\end{figure*}
- 
  \subsection{Parameter Estimability}
 \label{Parameter Estimability}
  
@@ -512,7 +472,7 @@ where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with paramet
 
 It can be shown that if the sensitivity curves (columns of $S$) are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity curves as a function of time, and visually check for obvious linear relations between them.
 
-Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset. Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
+Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset (Fig \ref{InitialResults_13_9_best}). Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
 
 \begin{figure}[h]	
 	\begin{subfigure}[h]{0.49\textwidth}
@@ -537,66 +497,42 @@ We see that many of the parameters give sensitivity curves of similar shapes, an
  
 \subsection{Differing timescales within the system}
 
-Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. We see that $s,m,s:m$ and $c$ respond rapidly to the forcing function, flipping between the two fixed points defined by the step function forcing almost instantly. By contrast, there is delay in the response of $p$ and $g$, on a timescale comparable to the period of the forcing. This result suggests that, at least in some of the parameter sets initially estimated, the system may have two timescales in it - a fast timescale in which \eqref{eq:s} - \eqref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in \eqref{eq:p}, \eqref{eq:g}, in which measured fluorescence changes in response to the forcing.
+Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. We see that $s,m,s:m$ and $c$ respond rapidly to the forcing function, flipping between the two fixed points defined by the step function forcing almost instantly. By contrast, there is delay in the response of $p$ and $g$, on a timescale comparable to the period of the forcing. This result suggests that, at least in some of the parameter sets initially estimated, the system may have two timescales in it - a fast timescale in which \eqref{eq:s} - \eqref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in \eqref{eq:p}, \eqref{eq:g}, in which measured fluorescence changes in response to the forcing. Biologically, this would correspond to \eqref{eq:p}, representing translation, being a rate limiting step.
 
 \begin{figure}[h]	
     \centering
-        \includegraphics[scale = 0.26,clip = true, trim = 90 0 60 0]{model_output}
+        \includegraphics[scale = 0.25,clip = true, trim = 95 0 60 0]{model_output}
         \caption{Model output for all state variables over two oscillations, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. }
         \label{model_output} 
 \end{figure}
 
-If this is the case, then it may be that our experimental data can only probe the system via the fixed point of \eqref{eq:s} - \eqref{eq:c} , and that the parameters contained within those equations can only work to set the particular fixed point values of $p$ and $g$ that the system tends toward. This would explain the similarity between the sensitivity curves of many parameters - if the parameters in \eqref{eq:s} - \eqref{eq:c} can only act to alter the model's fixed point, they would all alter the sensitivity curve in exactly the same way, since a small perturbation in one of these parameters would only act to perturb the location of the models fixed points. It would also suggest that all parameter sets giving the same value of the models fixed point will give similar model predictions - and there may be many, very different, parameter sets which all give the same fixed point. 
+If this is the case, then our experimental data can only probe the system via the fixed point of \eqref{eq:s} - \eqref{eq:c}, whose value is communicated to the rest of the model via the $\beta m +f_{s}\beta c$ term in \eqref{eq:p} \footnote{ Explicit forms for $m$ and $c$ are given in appendix \ref{ModelFixedPoint}}. $\beta m +f_{s}\beta c$ will flip between two values, which will cause the fixed point values of $p$ and $g$ to flip, with $p$ and $g$ tending towards them in response. This is what we observe in Fig \ref{model_output}.
 
-The fixed point values of $s,m, s:m$ and $c$ affect \eqref{eq:p}, \eqref{eq:g} through the $\beta m +f_{s}\beta c$ term in \eqref{eq:p}. Explicit forms for $m$ and $c$ are given in \eqref{eq:m_fixed}, \eqref{eq:c_fixed}. The fact that this term is  the only one in \eqref{eq:p}, \eqref{eq:g} to include $f_{s}$ and $\beta$ may also explain the similarity of the sensitivity curves for these parameters to those found in \eqref{eq:s} - \eqref{eq:c} (Fig. \ref{SensitivityMatrix_scaled}) - all that $p$ and $g$ see is this $\beta m +f_{s}\beta c$ flipping between its two fixed point values, so any parameters that only enter the system via this term will have indistinguishable roles.
+This would explain the similarity between the sensitivity curves of many parameters - if the parameters in \eqref{eq:s} - \eqref{eq:c} can only act to alter the fixed point values of $p$ and $g$ which the system tends toward, they all play qualitatively identical roles on the time series of $z$. The fact that $\beta m +f_{s}\beta c$ is the only term in \eqref{eq:p}, \eqref{eq:g} to include $f_{s}$ and $\beta$ may also explain the similarity of the sensitivity curves for these parameters to those found in \eqref{eq:s} - \eqref{eq:c} (Fig. \ref{SensitivityMatrix_scaled}), by the same reasoning. This explanation also suggests that all parameter sets giving the same value of the model's fixed point will give similar model predictions - and there may be many, very different, parameter sets which all give the same fixed point. Fig. \ref{fixedpoint_f} shows a scatterplot of error function value against $\beta m +f_{s}\beta c$ for the 200 estimated parameter sets for the \textit{13\_9} dataset, and demonstrates that, although individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
 
-Although we have seen that parameter sets with similar least squares error values can contain very different parameter values, this explanation implies that we would expect similar values of $\beta m +f_{s}\beta c$ across all the sets. Fig. \ref{fixedpoint_f} shows a scatterplot of $\beta m +f_{s}\beta c$  values against error function value, and demonstrates that, though individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
+These results suggest we may simplify our model, by replacing $\beta m +f_{s}\beta c$ in \eqref{eq:p} with a phenomenological forcing function, and removing \eqref{eq:s} - \eqref{eq:c} entirely. The simplified model is shown in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}
 
-In Fig. \ref{fixedpoint_mu}, we also see a strong positive correlation between the fixed point values and the values of $\mu$ ($R = 0.9854$ for the visually tightly clustered data). Taken together with the relatively tightly constrained values of $\mu$ found in Fig. \ref{InitialResults}, these results suggest that in order to minimize error, the algorithm is effectively trying to vary $\beta m +f_{s}\beta c$ and $\mu$, and finding a `trench' of highly correlated values, which is shown in Fig. \ref{fixedpoint_mu}. 
+\begin{align}
+\frac{dp}{dt} & = Fy(t)-(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}  \label{eq:p_simplified} \\
+\frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \label{eq:g_simplified} \\
+z &= z_{0} +\frac{g}{\Theta} \label{eq:z_simplified}
+\end{align}
 
-These results further suggest that, while we are trying to minimise model error over our initial high dimensional space, we are effectively working in a lower dimensional space, in which one dimension is the value of the models $\beta m +f_{s}\beta c$ .
-
-
-\begin{figure}[h]	
-    \centering
-        \includegraphics[scale = 0.25]{fixedpoint_f}
-        \caption{A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. }
-        \label{fixedpoint_f} 
-\end{figure}
-
-\begin{figure}[h]	
-    \centering
-        \includegraphics[scale = 0.25]{fixedpoint_mu}
-        \caption{A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the value of $\mu$ in that set.}
-        \label{fixedpoint_mu} 
-\end{figure} 
-
-
- 
+where $F$ is a phenomenological scaling factor. We now have three free parameters, $F,\mu,\Theta$, which we may estimate as before. Results are shown in Fig.\ref{SimplifiedModelResults}. In contrast to the results of Fig.\ref{InitialResults}, we see relatively tightly estimated parameters, with no estimated parameter values near the initial bounding box. Further, this simplified model achieves error values as low as the more complex model, and predictions from both are similar. In fact, the simplified algorithm is more consistently able to find the minimal function value identified in Fig. \ref{Initial fit Error}, possibly because the low dimension of the new model makes parameter space easier to search. We also note positive correlation between $F$ and $\Theta$, suggesting that both play similar roles in determining the fit. This may be explained as follows: neglecting the ClpX degradation term, \eqref{eq:p_simplified} is a simple exponential decay to a fixed value. Here, $F$ will determine the value the $p$ will tend to, and $\mu$ will determine its rate constant. $F$ is then a linear scaling factor, just as $\Theta$ is - both scale the value the exponential will tend to.
  
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
-In this report, we have presented a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}. We have attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach, similar to that found in recent system biology literature \cite{Hu2015}. Where this approach has failed to give estimates, we have discussed in detail how the method has broken down.
+In this report, we have presented a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}. We have attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach, similar to that found in recent synthetic biology literature \cite{Hu2015}. Where this approach has failed to give estimates, we have discussed why, and suggested that a simpler model may provide an equally good description of the data with fewer parameters than the initial model.
 
- 
-The results in this paper suggest that, even though the model has a solid biological rationale, some parameters included in it may not be estimable. We have suggested practical reasons for this, namely that the effects of the parameters are highly correlated with one another, because the relevant quantity for determining a model prediction is not the full parameter set, but only the fixed point values of $\beta m +f_{s}\beta c$, and $\mu$. Thus the parameters in \eqref{eq:s} - \eqref{eq:c} only work to alter the fixed point value of $\beta m +f_{s}\beta c$, and so all have a qualitatively identical effects on model predictions. Effectively our algorithm is only working in a 2 dimensional space, varying $\beta m +f_{s}\beta c$ and $\mu$ to minimize error. This result suggests that using any additional step function data available may not help in determining the parameters - all of these step functions are applied at timescales over which the `fast' part of the model responds instantly, and so essentially tell us the same thing about the parameters contained in those equations. The different sets may give more information about $\mu$, which appears to work on a timescale comparable to the forcing.  
+The results in this paper demonstrate that, even though the original model has a solid biological rationale, some parameters included in it may not be estimable. The suggested reason for this is that \eqref{eq:p} represents a rate limiting step, and so the parameters in \eqref{eq:s} - \eqref{eq:c} only work to alter the fixed point value of $\beta m +f_{s}\beta c$ in \eqref{eq:p}, causing them to give qualitatively identical effects on model predictions. A simplified model, consisting of three free parameters, gives model predictions with errors as low as the full model, but contains parameters which can be estimated unambiguously.
 
-We note that it is possible that this separation of timescales is an artefact of the fitting, and not necessarily true of the system. We can only evaluate model predictions on the parameter sets the algorithm returns us, and it seems the case that the parameter sets found by the algorithm have this feature. Hypothetically, there may exist parameter sets where all state variables vary on a similar timescale - all we can say is that, in the search region specified, the algorithm has not found any which give a low error. 
+These results suggest that, if estimates of the parameters contained in \eqref{eq:s} - \eqref{eq:c} are desired, fluorescence time series data alone will not be sufficient. One option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the `fast' timescale. On the other hand, if a good description of the fluorescence data is what is really of interest, further work may consist of using the simplified model, but improving the modelling of the translation step.  \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. 
+We also note that $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - it may be of interest to compare those values to the ones estimated here.
 
-This point raises another issue - the arbitrary nature of the initial bounding box. Without good biological constraints on most parameter values, they have been bounded loosely and not necessarily sensibly. Rate constants can vary by many orders of magnitude, and it may be possible that the true optimum lies entirely outside the bounding box specified. Equally,  when our fitness function has turned out to be very flat in some directions, or multimodal, good biologically motivated parameter bounds may be needed to ensure our minimisation algorithm does not wander outside realistic parameter space - the algorithm may present several equally good regions of parameter space, and improved bounds will help us choose between them. We also note that while some parameters may be hard to get any realistic bounds on, values for others - $\mu, \Theta$ for example - may already be available.
+Further work may also consist of improving our methodology. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum. A related problem is that of working with point estimates of parameters rather than distributions. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc.
 
- The model may also have general structural issues. \cite{Mclean2012, Grewal1976} give general tests which can be applied to a system of ODE's to determine if all parameters are, in principle, estimable. We note that our system has few enough parameters to make these tests feasible.
- 
- Thus, further work may consist of tightening the bounds on parameter values, carrying out a structural analysis, and possibly simplifying the model. A much simpler phenomenological model, consisting of  just \eqref{eq:p} and \eqref{eq:g}, may explain existing data perfectly well without the need for inestimable parameters. Experimentally, one option  may be to use different forcing functions. The effect of this on parameter estimability might be anticipated by running a sensitivity analysis using this new forcing, to see if the form of Fig. \ref{SensitivityMatrix} (which shows model predictions for all states) changes. Another option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the effects of parameters contained in \eqref{eq:s} - \eqref{eq:c}.
-
-Some earlier fitting work has been done on this dataset via a similar method to the one used above. Our results suggest that those estimates should be viewed with caution - the estimates will not be unique, and the values of some parameters (those in \eqref{eq:s} - \eqref{eq:c}) may be very far off any values which are eventually found.
-
-These results also suggest general problems with our methodology - using a least squares minimisation approach. The first problem is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but you can never be sure you have found a global optimum - for example, \cite{Algorithms2003} compares several algorithms and finds, in the problem set, none locate the true global optimum. A related problem is that of working with single points rather than distributions on parameter space. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc.
-
-A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for the parameter estimation \cite{Jitjareonchai2006,Andrieu2003}. This method would explicitly provide us with marginal distributions of parameters, giving a more complete and systematic picture of the best parameter sets and their uncertainties than we currently have - we would still be able to pick out a Maximum Likelihood point estimator, as we do now, but rather than getting an ad hoc picture of the uncertainty in the parameters by repeatedly running the minimisation algorithm, the marginals would give us this information directly.
-
-\todo[inline]{write section on GP's}.
+A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) to perform a Bayesian parameter estimation \cite{Jitjareonchai2006,Andrieu2003}. This method would explicitly provide us with marginal distributions of parameters, giving a more complete and systematic picture of the best parameter sets and their uncertainties than we currently have - we would still be able to pick out a maximum likelihood point estimator, as we do now, but rather than getting an ad hoc picture of the uncertainty in the parameters by repeatedly running the minimisation algorithm, the marginals would give us this information directly.
 
 % references section
 \begin{footnotesize}
@@ -716,6 +652,8 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 \label{hist_f}
 \end{figure}
 
+\clearpage
+
 \begin{figure}[H]
    \centering
         \includegraphics[scale = 0.4]{13_9_14_7_hist}
@@ -730,16 +668,11 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
         \label{}
 \end{figure}
 
-\end{document}
-
-
-
 \section{Model Fixed Point}
 \label{ModelFixedPoint}
-\setcounter{figure}{0}   
-
-
-\begin{figure*}[!t]
+\setcounter{figure}{0} 
+ 
+ \begin{figure*}[!t]
 % ensure that we have normalsize text
 \tiny
 % Store the current equation number.
@@ -749,42 +682,64 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) for t
 % The value here will have to changed if equations
 % are added or removed prior to the place these
 % equations are referenced in the main text.
-\setcounter{equation}{5}
-\begin{equation}
-\label{eqn_dbl_x}
-y\to \frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+\setcounter{equation}{11}
+\begin{align}
+\label{eq:m_fixed}  
+m &= \frac{1}{{2 k_{\text{on}} \left(\mu +\delta _m\right)
+   \left(k_{\text{hyb}}+\delta _m\right)}}
+   \Bigg(\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
    \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
-   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right){}^2}
-\end{equation}
-\begin{equation}
-\label{eqn_dbl_y}
-m\to -\frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
-   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
-   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}-(\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(\mu +\delta _m\right)
-   \left(k_{\text{hyb}}+\delta _m\right)}
-\end{equation}
-\begin{equation}
-\label{eqn_dbl_y}
-s\to -\frac{\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
-   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
-   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)}{2 k_{\text{on}} \left(\mu +\delta _s\right)
-   \left(k_{\text{hyb}}+\delta _m\right)}
-\end{equation}
-\begin{equation}
-\frac{k_{\text{hyb}} \left(\sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
-   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
-   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2}+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
-   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)\right)}{2 k_{\text{on}} \left(\mu +\delta
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2} \\ \nonumber  
+ &- (\text{am}-\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)\Bigg)
+\end{align}
+\begin{align}
+\label{eq:c_fixed}
+c &= \frac{k_{\text{hyb}}}{2 k_{\text{on}} \left(\mu +\delta
    _m\right) \left(k_{\text{hyb}}+\delta _m\right){}^2}
-\end{equation}
+   \Bigg( \sqrt{2 (\text{am}+\text{as}) k_{\text{on}} \left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+\delta _m\right)
+   \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right)+(\text{am}-\text{as})^2 k_{\text{on}}^2 \left(k_{\text{hyb}}+\delta _m\right){}^2+\left(\mu +\delta _m\right){}^2
+   \left(\mu +\delta _s\right){}^2 \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right){}^2} \\ \nonumber
+   &+(\text{am}+\text{as}) k_{\text{on}} \left(k_{\text{hyb}}+\delta
+   _m\right)+\left(\mu +\delta _m\right) \left(\mu +\delta _s\right) \left(k_{\text{hyb}}+k_{\text{off}}+\delta _m\right) \Bigg)
+\end{align}
 % Restore the current equation number.
 \setcounter{equation}{\value{MYtempeqncnt}}
 % IEEE uses as a separator
 \hrulefill
 % The spacer can be tweaked to stop underfull vboxes.
 \vspace*{4pt}
-\end{figure*}
+\end{figure*} 
+
+
+
+\section{Fixed point scatterplot}
+\label{Fixedpointscatterplot}
+\setcounter{figure}{0} 
+
+\begin{figure}[h]	
+    \centering
+        \includegraphics[scale = 0.25]{fixedpoint_f}
+        \caption{A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. }
+        \label{fixedpoint_f} 
+\end{figure}
+
+
+\end{document}
+
+
+
+We note that it is possible that this separation of timescales is an artefact of the fitting, and not necessarily true of the system. We can only evaluate model predictions on the parameter sets the algorithm returns us, and it seems the case that the parameter sets found by the algorithm have this feature. Hypothetically, there may exist parameter sets where all state variables vary on a similar timescale - all we can say is that, in the search region specified, the algorithm has not found any which give a low error. 
+
+We also note that while some parameters may be hard to get any realistic bounds on, values for others - $\mu, \Theta$ for example - may already be available.
+
+
+
+This point raises another issue - the arbitrary nature of the initial bounding box. Without good biological constraints on most parameter values, they have been bounded loosely and not necessarily sensibly. Rate constants can vary by many orders of magnitude, and it may be possible that the true optimum lies entirely outside the bounding box specified. Equally,  when our fitness function has turned out to be very flat in some directions, or multimodal, good biologically motivated parameter bounds may be needed to ensure our minimisation algorithm does not wander outside realistic parameter space - the algorithm may present several equally good regions of parameter space, and improved bounds will help us choose between them. 
+
+ The model may also have general structural issues. \cite{Mclean2012, Grewal1976} give general tests which can be applied to a system of ODEs to determine if all parameters are in principle estimable, and apply them successfully to models with comparable numbers of parameters to ours.
+ 
+ Thus, further work may consist of tightening the bounds on parameter values, carrying out a structural analysis, and possibly simplifying the model. A much simpler phenomenological model, consisting of  just \eqref{eq:p} and \eqref{eq:g}, may explain existing data perfectly well without the need for inestimable parameters. Experimentally, one option  may be to use different forcing functions. The effect of this on parameter estimability might be anticipated by running a sensitivity analysis using this new forcing, to see if the form of Fig. \ref{SensitivityMatrix} (which shows model predictions for all states) changes. Another option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the effects of parameters contained in \eqref{eq:s} - \eqref{eq:c}.
+
+
+
