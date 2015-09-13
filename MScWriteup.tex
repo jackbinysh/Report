@@ -365,7 +365,7 @@ where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is record
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
 \label{eq:min}
 \end{align}
-The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm will may get stuck in \footnote{this is true even if ODE model is linear in its parameters, as is almost the case for us - though the ODE model is linear, the resulting solutions are in general not. A counterexample is the harmonic oscillator.}. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. \footnote{CMA-ES stands for covariance matrix evolutionary strategy. This algorithm generates a population of test points according to a multivariate gaussian distribution. It then ranks the points based on their fitness function scores, and  considers some number of the highest ranked points as a sample from a new multivariate gaussian. Using this sample, it then estimates a new mean and covariance matrix for this gaussian and the process is iterated.}
+The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm will may get stuck in. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. 
 \todo[inline]{why use CMA-ES? Some refs}
 
 In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Appendix \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we simplify the model by assuming that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
@@ -423,7 +423,7 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 
  We begin by fitting each dataset individually, by choosing 200 sets of the parameters, with each parameter choice uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{hist_f}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of estimated parameter values found from fitting the above 200 sets indicate many parameter estimates are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ in particular) are much tighter. $\Theta$ appears tightly constrained, but many of the estimated values are close to the upper bound set, and must be treated with caution.
 
-Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices between parameter sets, computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the correlation matrix $R_{ij}$ is then the Pearson correlation coefficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged.
+Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices between parameter sets\footnote{These are computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the correlation matrix $R_{ij}$ is then the Pearson correlation coefficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters}. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged.
 The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
  We can test the predictive ability of our model by cross validating, either by taking the parameter values found in the fitting of one dataset and using them to give model predictions for another, or only fitting part of a single dataset and predicting the rest.  We begin by fitting to only the data for the first forcing period in \textit{13\_9}, and then predicting the full time series. Results are shown in Fig. \ref{CrossValidation_1}, for the parameter set giving the lowest error on the training data. We see the prediction is very similar to that obtained by fitting to the full dataset (Fig. \ref{InitialResults_13_9_best}). Next, we take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Figs. \ref{CrossValidation_2}, \ref{CrossValidation_3}.
@@ -457,11 +457,11 @@ Though the predictions are reasonable, they are substantially worse than the pre
  \subsection{Parameter Estimability}
 \label{Parameter Estimability}
  
- There are two main reasons why a parameter may not be estimable \cite{Mclean2012,Yao2003, Beck}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others.
+ There are two main reasons why a parameter may not be estimable \cite{Mclean2012,Yao2003, Beck,Jimenez-Hornero2008,Grewal1976}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others.
  
 These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model. \footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}
 
-Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in other regimes this is not true. \footnote{\cite{Beck} gives an example in which a parameter only affects model predictions after several hours, though others will affect it at all timescales - in this example, if we only took data for a few minutes, the parameter would be inestimable, but in principle it is not.} In this case, parameter estimates may be improved by taking data in more varied experimental conditions, and attempting to observe as many components of the model output as possible. 
+Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in other regimes this is not true. In this case, parameter estimates may be improved by taking data in more varied experimental conditions, or attempting to increase the number of model outputs observed - in our case, observing more of the state vector than simply $z$. 
  
  We may begin to investigate these issues in our model by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
@@ -510,6 +510,8 @@ If this is the case, then our experimental data can only probe the system via th
 
 This would explain the similarity between the sensitivity curves of many parameters - if the parameters in \eqref{eq:s} - \eqref{eq:c} can only act to alter the fixed point values of $p$ and $g$ which the system tends toward, they all play qualitatively identical roles on the time series of $z$. The fact that $\beta m +f_{s}\beta c$ is the only term in \eqref{eq:p}, \eqref{eq:g} to include $f_{s}$ and $\beta$ may also explain the similarity of the sensitivity curves for these parameters to those found in \eqref{eq:s} - \eqref{eq:c} (Fig. \ref{SensitivityMatrix_scaled}), by the same reasoning. This explanation also suggests that all parameter sets giving the same value of the model's fixed point will give similar model predictions - and there may be many, very different, parameter sets which all give the same fixed point. Fig. \ref{fixedpoint_f} shows a scatterplot of error function value against $\beta m +f_{s}\beta c$ for the 200 estimated parameter sets for the \textit{13\_9} dataset, and demonstrates that, although individual parameter values can be spread across very large ranges, they are correlated in such a way as to give similar model fixed points. 
 
+\subsection{A simplified model}
+
 These results suggest we may simplify our model, by replacing $\beta m +f_{s}\beta c$ in \eqref{eq:p} with a phenomenological forcing function, and removing \eqref{eq:s} - \eqref{eq:c} entirely. The simplified model is shown in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}
 
 \begin{align}
@@ -518,7 +520,17 @@ These results suggest we may simplify our model, by replacing $\beta m +f_{s}\be
 z &= z_{0} +\frac{g}{\Theta} \label{eq:z_simplified}
 \end{align}
 
-where $F$ is a phenomenological scaling factor. We now have three free parameters, $F,\mu,\Theta$, which we may estimate as before. Results are shown in Fig.\ref{SimplifiedModelResults}. In contrast to the results of Fig.\ref{InitialResults}, we see relatively tightly estimated parameters, with no estimated parameter values near the initial bounding box. Further, this simplified model achieves error values as low as the more complex model, and predictions from both are similar. In fact, the simplified algorithm is more consistently able to find the minimal function value identified in Fig. \ref{Initial fit Error}, possibly because the low dimension of the new model makes parameter space easier to search. We also note positive correlation between $F$ and $\Theta$, suggesting that both play similar roles in determining the fit. This may be explained as follows: neglecting the ClpX degradation term, \eqref{eq:p_simplified} is a simple exponential decay to a fixed value. Here, $F$ will determine the value the $p$ will tend to, and $\mu$ will determine its rate constant. $F$ is then a linear scaling factor, just as $\Theta$ is - both scale the value the exponential will tend to.
+where $F$ is a phenomenological scaling factor. We now have three free parameters, $F,\mu,\Theta$, which we may estimate as before. Results are shown in Fig.\ref{SimplifiedModelResults}, for the \textit{13\_9} dataset only. In contrast to the results of Fig. \ref{InitialResults}, we see relatively tightly estimated parameters, with no estimated parameter values near the initial bounding box \footnote{Initial bounding box values given in appendix \ref{Simplified model initial bounding box}.}. Further, this simplified model achieves error values as low as the more complex model, and predictions from both are similar. In fact, the simplified algorithm is more consistently able to find the minimal function value identified in Fig. \ref{Initial fit Error}, possibly because the low dimension of the new model makes parameter space easier to search. We also note positive correlation between $F$ and $\Theta$, suggesting that both play similar roles in determining the fit. Fig. \ref{Sensitivity_scaled_simplified} shows the normalised sensitivity curves using this simplified model for the \textit{13\_9} dataset, and also suggests $F$ and $\Theta$ play similar, though not identical, roles.
+
+
+  This may be explained as follows: neglecting the ClpX degradation term, \eqref{eq:p_simplified} is a simple exponential decay to a fixed value. Here, $F$ will determine the value the $p$ will tend to, and $\mu$ will determine its rate constant. $F$ is then a linear scaling factor, just as $\Theta$ is - both scale the value the exponential will tend to. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale = 0.23,clip = true, trim = 90 0 60 0]{Sensitivity_scaled_simplified}
+\caption{Using the simplified model \eqref{eq:p_simplified} - \eqref{eq:z_simplified}, normalised sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset, for a single oscillation.}
+\label{Sensitivity_scaled_simplified}
+\end{figure}
  
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
@@ -723,6 +735,26 @@ c &= \frac{k_{\text{hyb}}}{2 k_{\text{on}} \left(\mu +\delta
         \caption{A scatterplot of the fixed point value of $\beta m +f_{s}\beta c$, for a given parameter set, against the error value of that set. }
         \label{fixedpoint_f} 
 \end{figure}
+
+\clearpage
+
+\section{Simplified model initial bounding box}
+\label{Simplified model initial bounding box}
+\setcounter{figure}{0} 
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.3}
+\caption{Initial bounds on parameters to be estimated in the simplified model, \eqref{eq:p_simplified} - \eqref{eq:z_simplified}.}
+\centering
+\begin{tabular}{| l | l | p{0.3\linewidth} | p{0.1\linewidth} | p{0.1\linewidth} |}
+\hline \textbf{Parameter} &  \textbf{Units} & \textbf{Definition}  & \textbf{Initial Bounds}  \\
+\hline ${\mu}$ &  /min & Dilution rate  & 0.001-0.1\\
+\hline ${F}$ &  nM /min & Phenomenological forcing  & 10-1500\\
+\hline ${\Theta}$  &   nM/AFU & Ratio between GFP concentration and observed fluoresence  & 100 - 10000  \\
+\hline
+\end{tabular}
+\end{table}
+
 
 
 \end{document}
