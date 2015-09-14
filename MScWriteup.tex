@@ -360,7 +360,6 @@ where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of mod
 J(\boldsymbol{\theta}) = \sum_{i =1}^{n} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2,
 \end{align}
 where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots n$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a time series from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
-\todo[inline]{explain why not fit each curve individually.}
 \begin{align}
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
 \label{eq:min}
@@ -541,7 +540,7 @@ where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing f
 	\begin{subfigure}[h]{0.49\textwidth}
     \centering
         \includegraphics[scale = 0.23 ,clip = true, trim = 85 0 0 0]{Likelihood_profile_rough}
-        \caption{ Error function profile, $\Theta = 5400$}
+        \caption{ Colormap scaled }
         \label{Likelihood_profile_rough} 
     \end{subfigure}
     	\begin{subfigure}[h]{0.49\textwidth}
@@ -550,37 +549,27 @@ where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing f
         \caption{ Error function profile, $\Theta = 5400$}
         \label{Likelihood_profile_fine} 
     \end{subfigure}
-    \caption{} 
+    \caption{Error plotted as a function of $\mu$ and $F$, $\Theta = 5400$} 
 \label{SimplifiedModelLikelihood}   
 \end{figure}
   
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
-In this report, we have presented a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}, and attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach similar to that found in recent synthetic biology literature \cite{Hu2015}. We have found many of the parameters contained in the full model to be inestimable, suggested reasons  for why this might be. We have further suggested a simplified model, which provides an equally good description of the data with fewer parameters than the initial model.
+In this report, we have presented a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}, and attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach similar to that found in recent synthetic biology literature \cite{Hu2015}. We have found many of the parameters contained in the full model to be inestimable, and suggested reasons for why this might be. We have further suggested a simplified model, which provides an equally good description of the data with fewer parameters than the initial model.
 
 The results in this paper demonstrate that, even though the original model has a solid biological rationale, some parameters included in it may not be estimable. The suggested reason for this is that \eqref{eq:p} represents a rate limiting step, and so the parameters in \eqref{eq:s} - \eqref{eq:c} only work to alter the fixed point value of $\beta m +f_{s}\beta c$ in \eqref{eq:p}, causing them to give qualitatively identical effects on model predictions. A simplified model, consisting of three free parameters, gives model predictions with errors as low as the full model, but contains parameters which can be estimated unambiguously.
 
 These results suggest that if estimates of the parameters contained in \eqref{eq:s} - \eqref{eq:c} are desired, fluorescence time series data alone will not be sufficient, and new experiments are needed. If possible, direct observations of other components of the state vector - $s$, $m$, $s:m$ and $c$ - would improve parameter estimates by giving access to the `fast' timescale. Another option would be further investigation of the methods presented in \cite{Mclean2012,Yao2003,Mclean2012-2}. Given a complex chemical model based on physical principles, and limited data, these methods rank parameters in order of estimability, and can determine if a subset of parameters might be estimable.
 
-On the other hand, if a good description of the fluorescence data is what is really of interest, the simplified model may be a better starting point. $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - a realistic range of values could be used to bound the error function profile shown in Fig. \ref{}. Further modelling work may focus on improving the modelling of translation, the rate limiting step - \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. Any additional parameters introduced will likely act on the same timescale as $\mu$, and stand a better chance of being estimable.
+On the other hand, if a good description of the fluorescence data is what is really of interest, the simplified model may be a better starting point. $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - a realistic range of values could be used to bound the error function profile shown in Fig. \ref{SimplifiedModelLikelihood}. Further modelling work may focus on improving the modelling of translation, the rate limiting step - \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. Any additional parameters introduced will likely act on the same timescale as $\mu$, and stand a better chance of being estimable.
 
-Further work may also consist of improving our methodology for parameter estimation. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that a global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum.
+Further work may also consist of fitting each timeseries individually, rather than fitting to the experimental mean, as described in \eqref{eq:min}. This would allow us to detect cell to cell variability in parameter values within each dataset, something we have already suggested possible between datasets.
 
- A related problem is that of working with point estimates of parameters rather than distributions. The CMA-ES will only ever find a single optimum, giving a point estimate of parameter values, with no uncertainty information. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and we have seen in Figs. \ref{13_9_scatterplot_simplified,ggds} that it can give a misleading impression of how tightly estimated parameters are.
+We may also consist of changing our methodology for parameter estimation. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that a global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum.
+A related problem is that of working with point estimates of parameters rather than distributions. The CMA-ES will only ever find a single optimum, giving a point estimate of parameter values, with no uncertainty information. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and we have seen in Fig. \ref{SimplifiedModelLikelihood} that it can give a misleading impression of how tightly estimated parameters are.
 
-
-
-\todo[inline]{talk about AIC, bayesian mode comparison here? https://sciencehouse.files.wordpress.com/2013/07/gordonconf13.pdf}
-
-
-
-A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) to perform a Bayesian parameter estimation \cite{Jitjareonchai2006,Andrieu2003}. This method would explicitly provide us with marginal distributions of parameters, giving a more complete and systematic picture of the best parameter sets and their uncertainties than we currently have - we would still be able to pick out a maximum likelihood point estimator, as we do now, but rather than getting an ad hoc picture of the uncertainty in the parameters by repeatedly running the minimisation algorithm, the marginals would give us this information directly.
-
-\begin{itemize}
-\item systematic mode comparison ? or subset of paramter estimation if we really want to keep this model.
-\item literature bounds?
-\end{itemize}
+Another approach might be to use Markov Chain Monte Carlo (MCMC) to perform a Bayesian parameter estimation \cite{Jitjareonchai2006,Andrieu2003}. This method would explicitly provide us with marginal distributions of parameter probabilities, giving a more complete picture of the best parameter sets and their uncertainties than we currently have - we would still be able to pick out a maximum likelihood point estimator, as we do now, but rather than getting an ad hoc picture of the uncertainty in the parameters by repeatedly running the minimisation algorithm, the marginals would give us this information directly. However, this change in methodology would not have allowed us to gain estimates of the parameters in the original model, and is not necessary for the simplified one. It may be useful to use in place of the least squares approach if further modelling of the translation step is pursued.
 
 % references section
 \begin{footnotesize}
