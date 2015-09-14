@@ -365,7 +365,7 @@ where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is record
 \min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
 \label{eq:min}
 \end{align}
-The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm will may get stuck in. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular recommends several Evolutionary Algorithms, of which we choose one, the CMA-ES \cite{Hansen2006,Hansen2011}. 
+The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm will may get stuck in. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular demonstrates that several Evolutionary Algorithms perform well on a test problem involving a set of ODEs modelling a biological system. We choose one of those recommended, the CMA-ES \cite{Hansen2006,Hansen2011}, which in addition. 
 \todo[inline]{why use CMA-ES? Some refs}
 
 In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Appendix \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we simplify the model by assuming that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
@@ -407,13 +407,15 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \label{Initial Parameter Estimates}
 
 
- We begin by fitting each dataset individually, by choosing 200 sets of the parameters uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{InitialResults_additional}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of the parameter estimates (Figs. \ref{InitialResults_13_9_hist}, \ref{InitialResults_14_7_hist}) indicate that many are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ in particular) are much tighter. $\Theta$ appears tightly constrained, but many of the estimated values are close to the upper bound set, and must be treated with caution.
+ We begin by fitting each dataset individually, by choosing 200 sets of the parameters uniformly distributed over our initial parameter bounds, and running the CMA-ES starting from them. Results are shown in Figs. \ref{InitialResults}, \ref{InitialResults_additional}. Figs. \ref{InitialResults_13_9_best}, \ref{InitialResults_14_7_best}  demonstrate that the model is capable of quantitatively capturing the data. However, histograms of the parameter estimates (Figs. \ref{InitialResults_13_9_hist}, \ref{InitialResults_14_7_hist}) indicate that many are not tightly constrained, taking values right across the initial bounding range specified - in particular, $k_\mathrm{off}$, $\delta_{m}$ and $\delta_{s}$ are very weakly constrained, with substantial numbers of runs constrained only by the initial bounding box. By contrast, some parameter estimates ($\mu$ in particular) are much tighter. $\Theta$ appears tightly constrained, but many of the estimated values are close to the upper bound set, and must be treated with caution. We also note a shift in the estimated value of $\mu$ between the two datasets. Since the two sets of estimates for $\mu$ are relatively sharp, this variation may be a genuine feature of the data - one explanation for it is a variation in cell growth rate between the two experimental runs \cite{Hu2015}.
 
 Figs. \ref{InitialResults_13_9_correlation}, \ref{InitialResults_14_7_correlation} show correlation matrices between parameter sets\footnote{These are computed by viewing each of the estimated parameter sets as a sample from a multivariate random variable. An element of the correlation matrix $R_{ij}$ is then the Pearson correlation coefficient between the $i^\mathrm{th}$ and $j^\mathrm{th}$ random variable - or, in our case, the $i^\mathrm{th}$ and $j^\mathrm{th}$ parameters}. These correlation matrices indicate that there are spaces of parameters within which the fitness function remains approximately constant - for example, in both datasets there exists of positive correlation between values of $\mu$ and $\beta$. Referring to \eqref{eq:p}, this makes heuristic sense - the two parameters may have similar effects on model predictions, and may be able to co-vary in such a way as to leave the model prediction unchanged.
 The results suggest a fitness landscape relatively flat to perturbations in certain combinations of parameters, and indicate we may have difficulty obtaining unique estimates of the model parameters.
  
  We can test the predictive ability of our model by cross validating, either by taking the parameter values found in the fitting of one dataset and using them to give model predictions for another, or only fitting part of a single dataset and predicting the rest.  We begin by fitting to only the data for the first forcing period in \textit{13\_9}, and then predicting the full time series. Results are shown in Fig. \ref{CrossValidation_1}, for the parameter set giving the lowest error on the training data. We see the prediction is very similar to that obtained by fitting to the full dataset (Fig. \ref{InitialResults_13_9_best}). Next, we take the parameter values giving the best fit for the  \textit{13\_9} dataset and use them to predict the \textit{14\_7} dataset, and vice versa. Results are shown in Figs. \ref{CrossValidation_2}, \ref{CrossValidation_3}.
-Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. One reason for this may be that parameter values will vary between experimental runs \cite{Hu2015}. We can also fit to both datasets combined, by extending \eqref{eq:min} to a sum over multiple datasets. Results are shown in Appendix \ref{Bothdatasetfitting}. We are unable to achieve error values as low as those found when fitting individual datasets. In addition, we do not see a tightening of the estimates on our parameters, as we might expect from including the additional data. Instead, many parameter estimates remain spread across the initial bounding region. We also note that all three of the cases considered (\textit{13\_9}, \textit{14\_7}, both) see a shift in the estimated value of $\mu$.
+Though the predictions are reasonable, they are substantially worse than the predictions for the data they were trained on. One reason for this may be the variation in parameter values between experiments suggested above. We can also fit to both datasets combined, by extending \eqref{eq:min} to a sum over multiple datasets. Results are shown in Appendix \ref{Bothdatasetfitting}. We are unable to achieve error values as low as those found when fitting individual datasets. In addition, we do not see a tightening of the estimates on our parameters, as we might expect from including the additional data. Instead, many parameter estimates remain spread across the initial bounding region. 
+
+
  
  \begin{figure}[h]	
  	\begin{subfigure}[h]{0.49\textwidth}
@@ -438,7 +440,7 @@ Though the predictions are reasonable, they are substantially worse than the pre
 \label{CrossValidation}   
 \end{figure}
 
- Taken together, these results suggest that simply performing a least squares fit on the available data will not give unique parameter estimates. In the following sections we investigate why this might be.
+ Taken together, these results suggest that simply performing a least squares fit on the available data will not give unique estimates for many of the parameters. In the following sections we investigate this further.
  
  \subsection{Parameter Estimability}
 \label{Parameter Estimability}
@@ -454,7 +456,7 @@ S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}},
 \end{align}
 where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. Each column of $S$ is a time series of sensitivity co-efficients, which describe how sensitive $z$ is to perturbations in the parameter associated with that column, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
 
-It can be shown that if the sensitivity curves (columns of $S$) are linearly dependent over the range of observation values, the associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity curves as a function of time, and visually check for obvious linear relations between them.
+Suppose we take a set of parameters that give a local minima in the error function, and plot the sensitivity curves (columns of $S$)  over the range of observation times. It can be shown that, if two curves are linearly dependent, there exists a degenerate line of minima in parameter space, and the two associated parameters cannot be simultaneously estimated \cite{Beck}. Related to this fact, a number of measures have been proposed to assess parameter estimability from the sensitivity matrix \cite{Mclean2012}, the simplest of which is to plot the sensitivity curves as a function of time, and visually check for obvious linear relations between them.
 
 Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the parameter set giving the lowest error in the \textit{13\_9} dataset (Fig \ref{InitialResults_13_9_best}). Fig. \ref{SensitivityMatrix_unscaled} shows them unscaled, Fig. \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$, so that their shapes may be more easily compared.
 
@@ -475,10 +477,8 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
 \label{SensitivityMatrix}   
 \end{figure}
 
-We see that many of the parameters give sensitivity curves of similar shapes, and have near linear dependence - this implies that the effects of perturbing any one of these parameters all look similar in terms of model output, and are hard to distinguish between. This may help to explain why some of our initial parameter estimates are very loose, and why there are correlations between the estimated parameter sets - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}.
+We see that many of the parameters give sensitivity curves of similar shapes, and have near linear dependence - this implies that the effects of perturbing any one of these parameters all look similar in terms of model output, and are hard to distinguish between. This may help to explain why some of our initial parameter estimates are very loose, and why there are correlations between the estimated parameter sets - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}. Note also that the curve for $\Theta$ is very similar to those for the remaining parameters. This suggests that our estimated value of $\Theta$ in Fig. \ref{InitialResults_13_9_hist} is misleading, and likely a consequence of the initial bounding box.
 
-
- 
 \subsection{Differing timescales within the system}
 
 Fig. \ref{model_output} shows model output for all state variables, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. We see that $s,m,s:m$ and $c$ respond rapidly to the forcing function, flipping between the two fixed points defined by the step function forcing almost instantly. By contrast, there is delay in the response of $p$ and $g$, on a timescale comparable to the period of the forcing. This result suggests that, at least in some of the parameter sets initially estimated, the system may have two timescales in it - a fast timescale in which \eqref{eq:s} - \eqref{eq:c}, representing the hybridization of the sRNA and mRNA into a stable complex, equilibrate in response to external forcing, and a slower timescale, in \eqref{eq:p}, \eqref{eq:g}, in which measured fluorescence changes in response to the forcing. Biologically, this would correspond to \eqref{eq:p}, representing translation, being a rate limiting step.
@@ -496,7 +496,7 @@ This would explain the similarity between the sensitivity curves of many paramet
 
 \subsection{A simplified model}
 
-These results suggest we may simplify our model, by replacing $\beta m +f_{s}\beta c$ in \eqref{eq:p} with a phenomenological forcing function, and removing \eqref{eq:s} - \eqref{eq:c} entirely. The simplified model is shown in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}
+These results suggest we may simplify our model, by replacing $\beta m +f_{s}\beta c$ in \eqref{eq:p} with the forcing function used in \eqref{eq:s}, and removing \eqref{eq:s} - \eqref{eq:c} entirely - in other words, moving the forcing term directly to the translation step. The simplified model is shown in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}
 
 \begin{align}
 \frac{dp}{dt} & = Fy(t)-(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}  \label{eq:p_simplified} \\
@@ -504,7 +504,7 @@ These results suggest we may simplify our model, by replacing $\beta m +f_{s}\be
 z &= z_{0} +\frac{g}{\Theta} \label{eq:z_simplified}
 \end{align}
 
-where $F$ is a phenomenological scaling factor. We now have three free parameters, $F, \mu, \Theta$, which we may estimate as before. Based on the results of earlier fitting, we set a new bounding box for these parameters (shown in table \ref{Simplified_model_initial_bounding_box}) and run the CMA-ES 400 times.  Results are shown in Fig. \ref{SimplifiedModelResults}, for the \textit{13\_9} dataset only.
+where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing function used in \eqref{eq:s}. We now have three free parameters, $F, \mu, \Theta$, which we may estimate as before. Based on the results of earlier fitting, we set a new bounding box for these parameters (shown in table \ref{Simplified_model_initial_bounding_box}) and run the CMA-ES 400 times.  Results are shown in Fig. \ref{SimplifiedModelResults}, for the \textit{13\_9} dataset only.
 
 \begin{figure}[h]	
 	\begin{subfigure}[h]{0.49\textwidth}
@@ -523,13 +523,11 @@ where $F$ is a phenomenological scaling factor. We now have three free parameter
 \label{SimplifiedModelResults}   
 \end{figure}
 
- In contrast to the results of Fig. \ref{InitialResults}, we see relatively tightly estimated parameters, with no estimated parameter values near the initial bounding box. Further, this simplified model achieves error values as low as the more complex model. Fig \ref{13_9_f_simplified} shows that the simplified algorithm is more consistently able to find the minimal function value identified in Fig. \ref{InitialResults_13_9_f}, possibly because the low dimension of the new model makes parameter space easier to search.
+ In contrast to the results of Fig. \ref{InitialResults}, we see relatively tightly estimated parameters, with no estimated values near the initial bounding box. Further, this simplified model achieves error values as low as the more complex model. Fig \ref{13_9_f_simplified} shows that the simplified algorithm is more consistently able to find the minimal function value identified in Fig. \ref{InitialResults_13_9_f}, possibly because the low dimension of the new model makes parameter space easier to search.
  
- We also note that \ref{13_9_scatterplot_simplified} shows two distinct clusters of parameter sets, and a strong positive correlation between between $F$ and $\Theta$. The latter suggests that both play similar roles in determining the fit. Fig. \ref{Sensitivity_scaled_simplified} shows the normalised sensitivity curves using this simplified model for the \textit{13\_9} dataset, and also suggests $F$ and $\Theta$ play similar, though not identical, roles.
-  This may be explained as follows: neglecting the ClpX degradation term, \eqref{eq:p_simplified} is a simple exponential decay to a fixed value. Here, $F$ will determine the value the $p$ will tend to, and $\mu$ will determine its rate constant. $F$ is then a linear scaling factor, just as $\Theta$ is - both scale the value the exponential will tend to. 
-  
-  The clustering of values suggests that there may be several local minima, all with similar error values. We further investigate by fixing the value of $\Theta$, and plotting the error as a function of $\mu$ and $F$.
-
+ We note that \ref{13_9_scatterplot_simplified} shows a strong positive correlation between the minima found for $F$ and $\Theta$. This is consistent with the  normalised sensitivity curves for the \textit{13\_9} dataset, shown in Fig. \ref{Sensitivity_scaled_simplified}. As before, the similarity of the $F$ and $\Theta$ curves suggests that any minima in $F - \Theta$ space will be locally non-unique \cite{Beck}. This may be explained as follows: neglecting the ClpX degradation term, \eqref{eq:p_simplified} is a simple exponential decay to a fixed value. Here, $F$ will determine the value the $p$ will tend to, and $\mu$ will determine its rate constant. $F$ is then a linear scaling factor, just as $\Theta$ is - both scale the value the exponential will tend to. 
+ 
+ 
 \begin{figure}[h]
 \centering
 \includegraphics[scale = 0.23,clip = true, trim = 90 0 60 0]{Sensitivity_scaled_simplified}
@@ -537,20 +535,45 @@ where $F$ is a phenomenological scaling factor. We now have three free parameter
 \label{Sensitivity_scaled_simplified}
 \end{figure}
  
+ We also note that the parameter estimates come in two distinct clusters.  We further investigate by fixing the value of $\Theta$, and plotting the error as a function of $\mu$ and $F$. Results are shown in Fig. \ref{SimplifiedModelLikelihood}. We find a local basin in $ \mu - F$ space, pocketed by many local minima of similar fitness values. The optimisation algorithm will always terminate in one of these local minima, explaining the disconnected clusters shown in Fig.  \ref{13_9_scatterplot_simplified}. Thus the tightness of each peak in Fig. \ref{13_9_hist_simplified} is misleading - the uncertainty in parameter estimates is better reflected by the contours of Fig. \ref{Likelihood_profile_fine}.
+ 
+ \begin{figure}[h]	
+	\begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.23 ,clip = true, trim = 85 0 0 0]{Likelihood_profile_rough}
+        \caption{ Error function profile, $\Theta = 5400$}
+        \label{Likelihood_profile_rough} 
+    \end{subfigure}
+    	\begin{subfigure}[h]{0.49\textwidth}
+    \centering
+        \includegraphics[scale = 0.23 ,clip = true, trim = 85 0 0 0]{Likelihood_profile_fine}
+        \caption{ Error function profile, $\Theta = 5400$}
+        \label{Likelihood_profile_fine} 
+    \end{subfigure}
+    \caption{} 
+\label{SimplifiedModelLikelihood}   
+\end{figure}
+  
 \section{Conclusions and Further work}
 \label{Conclusions and Further work}
 
-In this report, we have presented a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}, and attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach similar to that found in recent synthetic biology literature \cite{Hu2015}. We have found many of the parameters contained in the full model to be inestimable, and suggested reasons  for why this might be. We have further suggested a simplified model, which provides an equally good description of the data with fewer parameters than the initial model.
+In this report, we have presented a system of ODE's to model a recently proposed synthetic RNA regulatory circuit \cite{Rodrigo2012}, and attempted to estimate the model's parameters using existing time series data, with a least squares minimisation approach similar to that found in recent synthetic biology literature \cite{Hu2015}. We have found many of the parameters contained in the full model to be inestimable, suggested reasons  for why this might be. We have further suggested a simplified model, which provides an equally good description of the data with fewer parameters than the initial model.
 
 The results in this paper demonstrate that, even though the original model has a solid biological rationale, some parameters included in it may not be estimable. The suggested reason for this is that \eqref{eq:p} represents a rate limiting step, and so the parameters in \eqref{eq:s} - \eqref{eq:c} only work to alter the fixed point value of $\beta m +f_{s}\beta c$ in \eqref{eq:p}, causing them to give qualitatively identical effects on model predictions. A simplified model, consisting of three free parameters, gives model predictions with errors as low as the full model, but contains parameters which can be estimated unambiguously.
 
-These results suggest that, if estimates of the parameters contained in \eqref{eq:s} - \eqref{eq:c} are desired, fluorescence time series data alone may not be sufficient. One option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the `fast' timescale. Another option would be further investigation of the methods presented in \cite{Mclean2012,Yao2003,Mclean2012-2}. Given a complex chemical model based on physical principles, and limited data, these methods rank parameters in order of estimability, and can determine if a subset of parameters might be estimable.
+These results suggest that if estimates of the parameters contained in \eqref{eq:s} - \eqref{eq:c} are desired, fluorescence time series data alone will not be sufficient, and new experiments are needed. If possible, direct observations of other components of the state vector - $s$, $m$, $s:m$ and $c$ - would improve parameter estimates by giving access to the `fast' timescale. Another option would be further investigation of the methods presented in \cite{Mclean2012,Yao2003,Mclean2012-2}. Given a complex chemical model based on physical principles, and limited data, these methods rank parameters in order of estimability, and can determine if a subset of parameters might be estimable.
 
-On the other hand, if a good description of the fluorescence data is what is really of interest, further work may consist of reformulating the model, perhaps beginning with the simplified model in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}, but improving the modelling of the translation step.  \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. When constructing this revised model, a systematic approach to model comparison, 
+On the other hand, if a good description of the fluorescence data is what is really of interest, the simplified model may be a better starting point. $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - a realistic range of values could be used to bound the error function profile shown in Fig. \ref{}. Further modelling work may focus on improving the modelling of translation, the rate limiting step - \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. Any additional parameters introduced will likely act on the same timescale as $\mu$, and stand a better chance of being estimable.
+
+Further work may also consist of improving our methodology for parameter estimation. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that a global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum.
+
+ A related problem is that of working with point estimates of parameters rather than distributions. The CMA-ES will only ever find a single optimum, giving a point estimate of parameter values, with no uncertainty information. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and we have seen in Figs. \ref{13_9_scatterplot_simplified,ggds} that it can give a misleading impression of how tightly estimated parameters are.
+
+
+
 \todo[inline]{talk about AIC, bayesian mode comparison here? https://sciencehouse.files.wordpress.com/2013/07/gordonconf13.pdf}
-We also note that $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - it may be of interest to compare those values to the ones estimated here.
 
-Further work may also consist of improving our methodology for parameter estimation. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum. A related problem is that of working with point estimates of parameters rather than distributions. The CMA-ES will only ever find a single optimum, but in the case where the error landscape is very flat -  for example a flat basin pocketed by many local minima - the exact minimum it finds paints a misleading picture, because it gives no idea of the uncertainty in the answer given. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc.
+
 
 A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) to perform a Bayesian parameter estimation \cite{Jitjareonchai2006,Andrieu2003}. This method would explicitly provide us with marginal distributions of parameters, giving a more complete and systematic picture of the best parameter sets and their uncertainties than we currently have - we would still be able to pick out a maximum likelihood point estimator, as we do now, but rather than getting an ad hoc picture of the uncertainty in the parameters by repeatedly running the minimisation algorithm, the marginals would give us this information directly.
 
@@ -607,6 +630,7 @@ A more systematic approach might be to use Markov Chain Monte Carlo (MCMC) to pe
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.3}
 \caption{Literature references, or initial rough bounds, on parameter values, with those to be estimated shown in bold}
+\label{Parameter_literature_review_table}
 \centering
 \begin{tabular}{| l | l | p{0.3\linewidth} | p{0.1\linewidth} | p{0.1\linewidth} |}
 \hline \textbf{Parameter} &  \textbf{Value} & \textbf{Definition} & \textbf{Reference} & \textbf{Initial Bounds}  \\
@@ -812,6 +836,30 @@ This point raises another issue - the arbitrary nature of the initial bounding b
  The model may also have general structural issues. \cite{Mclean2012, Grewal1976} give general tests which can be applied to a system of ODEs to determine if all parameters are in principle estimable, and apply them successfully to models with comparable numbers of parameters to ours.
  
  Thus, further work may consist of tightening the bounds on parameter values, carrying out a structural analysis, and possibly simplifying the model. A much simpler phenomenological model, consisting of  just \eqref{eq:p} and \eqref{eq:g}, may explain existing data perfectly well without the need for inestimable parameters. Experimentally, one option  may be to use different forcing functions. The effect of this on parameter estimability might be anticipated by running a sensitivity analysis using this new forcing, to see if the form of Fig. \ref{SensitivityMatrix} (which shows model predictions for all states) changes. Another option, though perhaps experimentally infeasible, would be to directly observe other components of the state vector - $s$, $m$, $s:m$ and $c$. This would improve parameter estimates by giving direct observations of the effects of parameters contained in \eqref{eq:s} - \eqref{eq:c}.
+ 
+ 
+  
+ 
+ , and that the values of $\mu$ and $\Theta$ shown in Fig. \ref{13_9_hist_simplified} differ from those found in the initial fitting, Fig. \ref{InitialResults_13_9_hist} - in particular, $\Theta$ has increased beyond the upper bound initially specified. The clustering of values suggests that there may be several disconnected local minima, all with similar error values. Within each of these minima, $\Theta$ and $\mu$ will show tight clustering.
+ 
+ 
+  The initial upper bound on $\Theta$ set in table \ref{Parameter_literature_review_table} will cut off some of these minima
+ 
+ 
+ 
+
+ 
+ 
+  This may be explained with reference to the clustering of parameter estimatees \ref{13_9_scatterplot_simplified}, which shows that 
+ 
+Finally, we note that that \ref{13_9_scatterplot_simplified}  
+  
+
+  
+
+  
+  
+  shows two distinct clusters of parameter sets,
  
  
 
