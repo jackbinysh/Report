@@ -136,6 +136,11 @@ M.~Grewal and K.~Glover, ``{Identifiability of linear and nonlinear dynamical
   systems},'' \emph{IEEE Transactions on Automatic Control}, vol.~21, no.~6,
   pp. 833--837, 1976.
 
+\bibitem{Mclean2012-2}
+K.~a.~P. McLean, S.~Wu, and K.~B. McAuley, ``{Mean-squared-error methods for
+  selecting optimal parameter subsets for estimation},'' \emph{Industrial and
+  Engineering Chemistry Research}, vol.~51, no.~17, pp. 6105--6115, 2012.
+
 \bibitem{Jitjareonchai2006}
 J.~J. Jitjareonchai, P.~M. Reilly, T.~a. Duever, and D.~B. Chambers,
   ``{Parameter Estimation in the Error-in-Variables Models Using the Gibbs
