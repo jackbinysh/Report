@@ -42,7 +42,7 @@
 
 \newcounter{MYtempeqncnt}
 \renewcommand{\thefootnote}{\roman{footnote}}
-
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 
 
@@ -150,13 +150,14 @@ The report is structured as follows. In the remainder of this section we review 
 \subsection{The sRNA regulatory system}
 \label{The sRNA regulatory system}
 In bacteria, one mechanism by which gene expression is naturally regulated is as follows \cite{Soper2010}: In order for a bacterial mRNA to be translated into a protein, the Ribosome must initially bind to the mRNA (Fig. \ref{RBS}). This occurs at the Ribosome Binding Site (RBS) \cite{Shine1974}, a specific nucleotide sequence found on the mRNA. 
-
+\setcounter{figure}{1}
 \begin{figure*}[t!]
 \centering
 \includegraphics[trim = 30 600 30 0,page=4,clip = true]{pnas1203831109.pdf}
 \caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
 \label{ANDGate}
 \end{figure*}
+\setcounter{figure}{0}
 
 \begin{figure}[H]
 \centering
@@ -164,8 +165,9 @@ In bacteria, one mechanism by which gene expression is naturally regulated is as
 \caption{A mechanism by which sRNA can regulate gene expression. Initially, the 5' UTR of the mRNA is folded over the RBS, forming a loop and blocking Ribosome binding. The sRNA binds to this loop in the mRNA, causing a conformational change which uncovers the RBS, and allows translation to occur. Image reproduced from \cite{Rodrigo2012}.}
 \label{RBS}
 \end{figure}
+\setcounter{figure}{2}
 
-In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the UTR), upstream of the RBS \footnote{Both DNA and RNA are directional - the backbone of the molecule is not symmetric. This gives the molecule two distinct ends, denoted 5' and 3'. Translation can only occur in the 5' to 3' direction, hence the meaning of `upstream'}. Translation may be self repressed by this `tail' folding over and binding across the RBS, forming a  loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to this looped tail - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind. In summary, the presence of the sRNA positively regulates gene expresssion.
+In an mRNA there is an untranslated region of nucleotides at the 5' end of the molecule (the 5' UTR), upstream of the RBS \footnote{Both DNA and RNA are directional - the backbone of the molecule is not symmetric. This gives the molecule two distinct ends, denoted 5' and 3'. Translation can only occur in the 5' to 3' direction, hence the meaning of `upstream'}. Translation may be self repressed by this `tail' folding over and binding across the RBS, forming a  loop in the mRNA and preventing the Ribosome from binding (Fig. \ref{RBS}). This self repression may be released with an sRNA which binds to this looped tail - the new conformation of the sRNA:mRNA complex uncovers the RBS, allowing the Ribosome to bind. In summary, the presence of the sRNA positively regulates gene expresssion.
 
 
 \cite{Rodrigo2012} proposed a computational methodology to design general genetic circuits based on RNA interactions, and as a case study of the methodology chose to design a synthetic sRNA- mRNA pair capable of acting in the manner described above. The algorithm assumed an interaction scheme between the RNA's as shown in Fig. \ref{reactionscheme}. The sRNA and mRNA, originally in their own individually folded states, would initially interact via a small 
@@ -194,8 +196,8 @@ The experimental setup is as follows (Figs. \ref{ExperimentalSetup_overview},  \
 
 \begin{figure}
     \centering
-		\includegraphics[trim = 280 0 0  85 ,page=17 ,clip = true, scale=0.4]{WCPM_Warwick-talk45-220115.pdf}
-        \caption{An overview of the experimental setup which allows single cell fluorescences to be recorded over time. Shown are the bacterial growth chambers (labelled `Microfabricated Microchemstat device'), the microscope imaging them, and the software constructing fluorescence time series. Image reproduced from \cite{Jaramillo}. }
+		\includegraphics[trim = 280 0 0  85 ,page=17 ,clip = true, scale=0.45]{WCPM_Warwick-talk45-220115.pdf}
+        \caption{An overview of the experimental setup which allows single cell fluorescences to be recorded over time. Shown are the bacterial growth chambers (labelled `Microfabricated Microchemstat device'), the microscope imaging them (the surrounding apparatus - lens, condenser, Dichroic mirror, CCD etc.), and the software constructing fluorescence time series. Image reproduced from \cite{Jaramillo}. }
             \label{ExperimentalSetup_overview}
 \end{figure}
 \begin{figure}
@@ -357,14 +359,14 @@ Our next goal is to estimate the unknown parameters of this model, given the ava
 \end{align}
 where $\mathbf{y}$ is our state vector, $\boldsymbol{\theta}$ is a vector of model parameters, and $t$ is time. The model may be integrated numerically, giving a prediction $\mathbf{y}(t,\boldsymbol{\theta})$. The least squares error between the model prediction and an experimental time series is defined as
 \begin{align}
-J(\boldsymbol{\theta}) = \sum_{i =1}^{n} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2,
+ \sum_{i =1}^{n} (\mathbf{y}_{\mathrm{exp}}(t_{i}) - \mathbf{y}(t_{i},\boldsymbol{\theta}))^2,
 \end{align}
 where the experimental time series, $\mathbf{y}_{\mathrm{exp}}(t_{i})$ is recorded at timepoints $t_{i}$, $i = 1 \hdots n$. This error function defines a landscape in $\boldsymbol{\theta}$ space, and we seek to minimise it by varying $\boldsymbol{\theta}$. In our case, we do not have experimental data on the full state vector, but only one component of it - the observed fluorescence, $z(t)$. In addition, rather than a single experimental run, we have many, corresponding to a time series from each cell. We incorporate this by fitting to the experimental mean of the data, and only minimising over the observed component. Our minimisation problem is thus
 \begin{align}
-\min_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
+\argmin_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
 \label{eq:min}
 \end{align}
-The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm will may get stuck in. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular demonstrates that several Evolutionary Algorithms perform well on a test problem involving a set of ODEs modelling a biological system. We choose one of those recommended, the CMA-ES \cite{Hansen2006,Hansen2011}, which in addition. 
+The next step is performing the minimisation. In general, the landscape defined by the error function may be rugged and contain many local minima, which a local optimisation algorithm may get stuck in. To try and surmount this problem, \cite{Algorithms2003} suggests the use of a global optimisation algorithm, and in particular demonstrates that several Evolutionary Algorithms perform well on a test problem involving a set of ODEs modelling a biological system. We choose one of those recommended, the CMA-ES \cite{Hansen2006,Hansen2011}, which in addition. 
 \todo[inline]{why use CMA-ES? Some refs}
 
 In order to reduce the dimensionality of our search space, we can perform a literature search for existing values of some of our parameters, simplify our model to remove others, and place bounds on those that remain. Appendix \ref{Parameter literature review} contains a list of parameter values found in the literature, where available, and their reference, as well as initial bounds placed on parameters not found in the literature. To further reduce the search space, we simplify the model by assuming that $\delta_m$, $\delta_{sm}$ and $\delta_c$ all take similar values, and set them equal. After this is done, we are left with a 9 dimensional search space, bounded by a hypercube (parameters to be estimated are shown in bold in table \ref{ModelParameters}).
@@ -373,13 +375,13 @@ In order to reduce the dimensionality of our search space, we can perform a lite
 \begin{figure*}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
-    \includegraphics[scale = 0.26,clip = true, trim = 90 0 70 0]{13_9_bestPlot}
+    \includegraphics[scale = 0.24,clip = true, trim = 115 0 60 0]{13_9_bestPlot}
         \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{13\_9} dataset.}
                 \label{InitialResults_13_9_best}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.26,clip = true, trim = 90 0 70 0]{14_7_bestPlot}
+        \includegraphics[scale = 0.24,clip = true, trim = 100 0 70 0]{14_7_bestPlot}
         \caption{Model prediction, using the parameter set with the smallest error value of the initial 200 found, for the \textit{14\_7} dataset.}
         \label{InitialResults_14_7_best}
     \end{subfigure}
@@ -395,7 +397,7 @@ In order to reduce the dimensionality of our search space, we can perform a lite
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{14\_7} dataset. }
         \label{InitialResults_14_7_hist}
     \end{subfigure}
-    \caption{Parameter estimates and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and on a level which saturates the cell's response.}
+    \caption{Parameter estimates and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response.}
 \label{InitialResults}
 \end{figure*} 
  
@@ -416,22 +418,22 @@ Though the predictions are reasonable, they are substantially worse than the pre
 
 
  
- \begin{figure}[h]	
+ \begin{figure}[h!]	
  	\begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.29,clip = true, trim = 82 0 70 0]{13_9_partial_data_13_9_pred}
+        \includegraphics[scale = 0.3,clip = true, trim = 70 0 70 0]{13_9_partial_data_13_9_pred}
         \caption{Model trained on \textit{13\_9}  60/60 data only, full prediction}
         \label{CrossValidation_1} 
     \end{subfigure}
 	\begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.3,clip = true, trim = 87 0 70 0]{14_7_pred_13_9_data}
+        \includegraphics[scale = 0.3,clip = true, trim = 70 0 70 0]{14_7_pred_13_9_data}
         \caption{\textit{14\_7} prediction \textit{13\_9} data}
         \label{CrossValidation_2} 
     \end{subfigure}
     \begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.3,clip = true, trim = 87 0 70 0]{13_9_pred_14_7_data}
+        \includegraphics[scale = 0.3,clip = true, trim = 70 0 70 0]{13_9_pred_14_7_data}
         \caption{\textit{13\_9} prediction \textit{14\_7} data}
         \label{CrossValidation_3} 
     \end{subfigure}
@@ -446,12 +448,13 @@ Though the predictions are reasonable, they are substantially worse than the pre
  
  There are two main reasons why a parameter may not be estimable \cite{Mclean2012,Yao2003, Beck,Jimenez-Hornero2008,Grewal1976}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others.
  
-These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model\footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}. Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in, parameter effects may be weak, or highly correlated, but in other regimes this is not true. In this case, parameter estimates may be improved by taking data in more varied experimental conditions, or attempting to increase the number of model outputs observed - in our case, observing more of the state vector than simply $z$. 
+These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model\footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}. Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in (eg. the forcing function we use, the components of the model's state we can observe), parameter effects may be weak, or highly correlated, but in other regimes this is not true. In this case, parameter estimates may be improved by taking data in more varied experimental conditions, or attempting to increase the number of model outputs observed - in our case, observing more of the state vector than simply $z$. 
  
  We may begin to investigate these issues in our model by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
  \begin{align}
 S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}},
+\label{eq:Sensitivity}
 \end{align}
 where $S_{ij}$ is the derivative of the observed fluorescence, $z$, with parameter $\theta_{j}$, evaluated at timepoint $t_{i}$. Each column of $S$ is a time series of sensitivity co-efficients, which describe how sensitive $z$ is to perturbations in the parameter associated with that column, and at what times it is most sensitive. $\hat{\theta}_{j}$ is the value of the parameter that the derivative is being evaluated at. It is included to set the scale that parameters may vary at, to ensure that apparently small sensitivity values do not result from a poor choice of units.
 
@@ -472,7 +475,7 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
         \caption{Scaled}
                 \label{SensitivityMatrix_scaled} 
     \end{subfigure}
-    \caption{Sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset, for a single oscillation. \ref{SensitivityMatrix_unscaled} shows them unscaled, \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$.} 
+    \caption{Sensitivity coefficients $S_{ij}$ \eqref{eq:Sensitivity}, evaluated about a set of estimated parameters from the \textit{13\_9} dataset, for a single oscillation. \ref{SensitivityMatrix_unscaled} shows them unscaled, \ref{SensitivityMatrix_scaled} shows them scaled by the norm of each column of $S$.} 
 \label{SensitivityMatrix}   
 \end{figure}
 
@@ -484,7 +487,7 @@ Fig. \ref{model_output} shows model output for all state variables, using the pa
 
 \begin{figure}[h]	
     \centering
-        \includegraphics[scale = 0.25,clip = true, trim = 95 0 60 0]{model_output}
+        \includegraphics[scale = 0.23,clip = true, trim = 95 0 60 0]{model_output}
         \caption{Model output for all state variables over two oscillations, using the parameter values giving the lowest error on the \textit{13\_9} dataset, and normalised to lie on the same scale. Note $g$ is not explicitly shown, but is simply a rescaling of $z$ and as such would lie over it. }
         \label{model_output} 
 \end{figure}
@@ -495,7 +498,7 @@ This would explain the similarity between the sensitivity curves of many paramet
 
 \subsection{A simplified model}
 
-These results suggest we may simplify our model, by replacing $\beta m +f_{s}\beta c$ in \eqref{eq:p} with the forcing function used in \eqref{eq:s}, and removing \eqref{eq:s} - \eqref{eq:c} entirely - in other words, moving the forcing term directly to the translation step. The simplified model is shown in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}
+These results suggest we may simplify our model, by replacing $\beta m +f_{s}\beta c$ in \eqref{eq:p} with the forcing function used in \eqref{eq:s}, and removing \eqref{eq:s} - \eqref{eq:c} entirely - in other words, moving the forcing term directly to the translation step. The simplified model is shown in \eqref{eq:p_simplified} - \eqref{eq:z_simplified}:
 
 \begin{align}
 \frac{dp}{dt} & = Fy(t)-(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}  \label{eq:p_simplified} \\
@@ -505,16 +508,16 @@ z &= z_{0} +\frac{g}{\Theta} \label{eq:z_simplified}
 
 where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing function used in \eqref{eq:s}. We now have three free parameters, $F, \mu, \Theta$, which we may estimate as before. Based on the results of earlier fitting, we set a new bounding box for these parameters (shown in table \ref{Simplified_model_initial_bounding_box}) and run the CMA-ES 400 times.  Results are shown in Fig. \ref{SimplifiedModelResults}, for the \textit{13\_9} dataset only.
 
-\begin{figure}[h]	
+\begin{figure}[h!]	
 	\begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.25 ,clip = true, trim = 100 0 60 400]{13_9_hist_simplified}
+        \includegraphics[scale = 0.24 ,clip = true, trim = 100 0 60 400]{13_9_hist_simplified}
         \caption{Histograms of estimated parameter values, using the simplified model \eqref{eq:p_simplified} - \eqref{eq:z_simplified}.}
         \label{13_9_hist_simplified} 
     \end{subfigure}
     \begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale =  0.25 ,clip = true, trim = 100 0 60 400]{13_9_scatterplot_simplified}
+        \includegraphics[scale =  0.24 ,clip = true, trim = 100 0 60 400]{13_9_scatterplot_simplified}
         \caption{Scatterplots of estimated parameters shown in \ref{13_9_hist_simplified}  against one another}
                 \label{13_9_scatterplot_simplified} 
     \end{subfigure}
@@ -527,7 +530,7 @@ where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing f
  We note that \ref{13_9_scatterplot_simplified} shows a strong positive correlation between the minima found for $F$ and $\Theta$. This is consistent with the  normalised sensitivity curves for the \textit{13\_9} dataset, shown in Fig. \ref{Sensitivity_scaled_simplified}. As before, the similarity of the $F$ and $\Theta$ curves suggests that any minima in $F - \Theta$ space will be locally non-unique \cite{Beck}. This may be explained as follows: neglecting the ClpX degradation term, \eqref{eq:p_simplified} is a simple exponential decay to a fixed value. Here, $F$ will determine the value the $p$ will tend to, and $\mu$ will determine its rate constant. $F$ is then a linear scaling factor, just as $\Theta$ is - both scale the value the exponential will tend to. 
  
  
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
 \includegraphics[scale = 0.23,clip = true, trim = 90 0 60 0]{Sensitivity_scaled_simplified}
 \caption{Using the simplified model \eqref{eq:p_simplified} - \eqref{eq:z_simplified}, normalised sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset, for a single oscillation.}
@@ -536,20 +539,20 @@ where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing f
  
  We also note that the parameter estimates come in two distinct clusters.  We further investigate by fixing the value of $\Theta$, and plotting the error as a function of $\mu$ and $F$. Results are shown in Fig. \ref{SimplifiedModelLikelihood}. We find a local basin in $ \mu - F$ space, pocketed by many local minima of similar fitness values. The optimisation algorithm will always terminate in one of these local minima, explaining the disconnected clusters shown in Fig.  \ref{13_9_scatterplot_simplified}. Thus the tightness of each peak in Fig. \ref{13_9_hist_simplified} is misleading - the uncertainty in parameter estimates is better reflected by the contours of Fig. \ref{Likelihood_profile_fine}.
  
- \begin{figure}[h]	
+ \begin{figure}[t!]	
 	\begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.23 ,clip = true, trim = 85 0 0 0]{Likelihood_profile_rough}
-        \caption{ Colormap scaled }
+        \includegraphics[scale = 0.24 ,clip = true, trim = 55 0 0 0]{Likelihood_profile_rough}
+        \caption{ A basin of low error values in $\mu - F$ space. Note the colour scaling maps all values above $20$ to the maximum colour.}
         \label{Likelihood_profile_rough} 
     \end{subfigure}
     	\begin{subfigure}[h]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.23 ,clip = true, trim = 85 0 0 0]{Likelihood_profile_fine}
-        \caption{ Error function profile, $\Theta = 5400$}
+        \includegraphics[scale = 0.24 ,clip = true, trim = 55 0 0 0]{Likelihood_profile_fine}
+        \caption{Zoomed in on the bottom of the basin in Fig.\ref{Likelihood_profile_rough}. Note the colour scaling maps all values above $5.7$ to the maximum colour.}
         \label{Likelihood_profile_fine} 
     \end{subfigure}
-    \caption{Error plotted as a function of $\mu$ and $F$, $\Theta = 5400$} 
+    \caption{Error function plotted as a function of $\mu$ and $F$, $\Theta = 5400$. Note the many disconnected local minima in the bottom of a basin of low error function values.} 
 \label{SimplifiedModelLikelihood}   
 \end{figure}
   
@@ -562,11 +565,11 @@ The results in this paper demonstrate that, even though the original model has a
 
 These results suggest that if estimates of the parameters contained in \eqref{eq:s} - \eqref{eq:c} are desired, fluorescence time series data alone will not be sufficient, and new experiments are needed. If possible, direct observations of other components of the state vector - $s$, $m$, $s:m$ and $c$ - would improve parameter estimates by giving access to the `fast' timescale. Another option would be further investigation of the methods presented in \cite{Mclean2012,Yao2003,Mclean2012-2}. Given a complex chemical model based on physical principles, and limited data, these methods rank parameters in order of estimability, and can determine if a subset of parameters might be estimable.
 
-On the other hand, if a good description of the fluorescence data is what is really of interest, the simplified model may be a better starting point. $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - a realistic range of values could be used to bound the error function profile shown in Fig. \ref{SimplifiedModelLikelihood}. Further modelling work may focus on improving the modelling of translation, the rate limiting step - \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. Any additional parameters introduced will likely act on the same timescale as $\mu$, and stand a better chance of being estimable.
+On the other hand, if a good description of the fluorescence data is what is really of interest, the simplified model may be a better starting point. On the experimental side, $\mu$ and $\Theta$ are both parameters which can be easily estimated independent of our datasets - a realistic range of values could be used to bound the error function profile shown in Fig. \ref{SimplifiedModelLikelihood}. Further modelling work may focus on improving the modelling of translation, the rate limiting step - \cite{Hu2015}, for example, uses a more detailed model than our single step description of translation. Any additional parameters introduced will likely act on the same timescale as $\mu$, and stand a better chance of being estimable.
 
 Further work may also consist of fitting each timeseries individually, rather than fitting to the experimental mean, as described in \eqref{eq:min}. This would allow us to detect cell to cell variability in parameter values within each dataset, something we have already suggested possible between datasets.
 
-We may also consist of changing our methodology for parameter estimation. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that a global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum.
+We may also consider changing our methodology for parameter estimation. Using a least squares minimisation approach has several problems, the first of which is local minima. Using the CMA-ES will give better results than a local minimisation algorithm, but one can never be sure that a global optimum has been found - for example, \cite{Algorithms2003} compares several algorithms and finds, in the test case considered, none locate the true global optimum.
 A related problem is that of working with point estimates of parameters rather than distributions. The CMA-ES will only ever find a single optimum, giving a point estimate of parameter values, with no uncertainty information. To surmount this problem, we may rerun the algorithm many times, from many starting locations, and interpret the resulting spread of parameter values found as an uncertainty \cite{Hu2015}, as we have done in this report. However this methodology is rather ad hoc, and we have seen in Fig. \ref{SimplifiedModelLikelihood} that it can give a misleading impression of how tightly estimated parameters are.
 
 Another approach might be to use Markov Chain Monte Carlo (MCMC) to perform a Bayesian parameter estimation \cite{Jitjareonchai2006,Andrieu2003}. This method would explicitly provide us with marginal distributions of parameter probabilities, giving a more complete picture of the best parameter sets and their uncertainties than we currently have - we would still be able to pick out a maximum likelihood point estimator, as we do now, but rather than getting an ad hoc picture of the uncertainty in the parameters by repeatedly running the minimisation algorithm, the marginals would give us this information directly. However, this change in methodology would not have allowed us to gain estimates of the parameters in the original model, and is not necessary for the simplified one. It may be useful to use in place of the least squares approach if further modelling of the translation step is pursued.
@@ -657,13 +660,13 @@ Another approach might be to use Markov Chain Monte Carlo (MCMC) to perform a Ba
 \begin{figure}[H]
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
-    \includegraphics[scale = 0.24, clip = true, trim = 120 0 70 0]{13_9_heatmap.eps}
+    \includegraphics[scale = 0.235, clip = true, trim = 120 0 65 0]{13_9_heatmap.eps}
         \caption{Correlation matrix of estimated parameter sets, from the  \textit{13\_9} dataset. }
         \label{InitialResults_13_9_correlation}
     \end{subfigure}
     \begin{subfigure}[c]{0.49\textwidth}
     \centering
-        \includegraphics[scale = 0.24, clip = true, trim = 80 0 70 0]{14_7_heatmap.eps}
+        \includegraphics[scale = 0.235, clip = true, trim = 80 0 70 0]{14_7_heatmap.eps}
         \caption{Correlation matrix of estimated parameter sets, from the  \textit{14\_7} dataset.}
         \label{InitialResults_14_7_correlation}
     \end{subfigure} 
