@@ -44,6 +44,10 @@
 \renewcommand{\thefootnote}{\roman{footnote}}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+\usepackage{letltxmacro}
+\LetLtxMacro{\originaleqref}{\eqref}
+\renewcommand{\eqref}{eq.~\originaleqref}
+
 
 
 \begin{document}
@@ -154,7 +158,7 @@ In bacteria, one mechanism by which gene expression is naturally regulated is as
 \begin{figure*}[t!]
 \centering
 \includegraphics[trim = 30 600 30 0,page=4,clip = true]{pnas1203831109.pdf}
-\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoter regions, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
+\caption{A logical AND gate formed from a self repressed mRNA, and an sRNA which uncovers its RBS. In this system, transcription of the sRNA (transRNA) and mRNA (5'-UTR,GFP) are controlled by two promoters, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$. These are disabled by the presence of two chemical repressors, TetR and LacI, found naturally in the strain of \textit{E. coli} discussed. These chemical repressors are themselves disabled by two chemicals, aTC and IPTG. In the notation of the diagram, a barred line indicates repression, and an arrowed line indicates production. We see a `double negative' in aTc repressing TetR, which itself represses transcription of the sRNA (likewise for IPTG and the mRNA). Thus the presence of the sRNA and mRNA are controlled by the presence of aTc and IPTG, which can be experimentally introduced to the cell.  Image reproduced from \cite{Rodrigo2012}.}
 \label{ANDGate}
 \end{figure*}
 \setcounter{figure}{0}
@@ -183,7 +187,7 @@ In an mRNA there is an untranslated region of nucleotides at the 5' end of the m
 
 The authors then experimentally validated their methodology by testing the suggested sRNA-mRNA pairs in \textit{E. coli}.  Further, by placing the \textit{in vivo}  concentrations of the sRNA and mRNA under the control of tuneable promoters \footnote{A promoter in a DNA sequence is a sequence of nucleotides, found upstream of where transcription of a gene begins, which can influence the transcription rate of the gene.}, they constructed a logical AND gate from one of the proposed pairs (Fig. \ref{ANDGate}). 
 
-In this system, transcription of the designed sRNA and mRNA are placed under the control of promoters, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI respectively, which are naturally present in the strain of \textit{E. coli} used. These repressors disable the promoter regions, and so by default transcription of both RNA's is turned off, and no protein is produced. 
+In this system, transcription of the designed sRNA and mRNA are placed under the control of promoters, $P_{\mathrm{LtetO-1}}$ and $P_\mathrm{LlacO-1}$ \cite{Lutz1997}. These are in turn controlled by two transcriptional repressors, TetR and LacI respectively, which are naturally present in the strain of \textit{E. coli} used. These repressors disable the promoters, and so by default transcription of both RNA's is turned off, and no protein is produced. 
 These repressors can themselves be disabled by the presence of two chemicals, aTc and IPTG, which can be introduced externally into the cell (Fig. \ref{ANDGate}).  So transcription of the two RNAs is indirectly controlled by the presence of two chemicals - if neither is present, sRNA and mRNA transcription is repressed, and no protein is produced. If only one is present, the AND gate remains off, either because there is no mRNA to be translated into protein, or because the mRNA is self repressed. But when both are present, the conformational change discussed above occurs, and protein is produced.
 
 Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in reponse to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA pair is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and the model's rate constants.
@@ -397,7 +401,7 @@ In order to reduce the dimensionality of our search space, we can perform a lite
         \caption{Histogram of estimated parameter values, found from 200 runs of the CMA-ES algorithm. Fitted to the \textit{14\_7} dataset. }
         \label{InitialResults_14_7_hist}
     \end{subfigure}
-    \caption{Parameter estimates and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off, and a level which saturates the cell's response.}
+    \caption{Parameter estimates and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off and on (where by `on' we mean a level which saturates the cell's response).}
 \label{InitialResults}
 \end{figure*} 
  
@@ -532,7 +536,7 @@ where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing f
  
 \begin{figure}[t]
 \centering
-\includegraphics[scale = 0.23,clip = true, trim = 90 0 60 0]{Sensitivity_scaled_simplified}
+\includegraphics[scale = 0.23,clip = true, trim = 80 0 60 0]{Sensitivity_scaled_simplified}
 \caption{Using the simplified model \eqref{eq:p_simplified} - \eqref{eq:z_simplified}, normalised sensitivity coefficients $S_{ij}$ evaluated about a set of estimated parameters from the \textit{13\_9} dataset, for a single oscillation.}
 \label{Sensitivity_scaled_simplified}
 \end{figure}
@@ -552,7 +556,7 @@ where $F$ is a phenomenological scaling factor, and $y(t)$ is the same forcing f
         \caption{Zoomed in on the bottom of the basin in Fig.\ref{Likelihood_profile_rough}. Note the colour scaling maps all values above $5.7$ to the maximum colour.}
         \label{Likelihood_profile_fine} 
     \end{subfigure}
-    \caption{Error function plotted as a function of $\mu$ and $F$, $\Theta = 5400$. Note the many disconnected local minima in the bottom of a basin of low error function values.} 
+    \caption{Error function plotted as a function of $\mu$ and $F$, $\Theta = 5400$ (the modal value of $\Theta$ in Fig. \ref{13_9_hist_simplified}). Note the many disconnected local minima in the bottom of a basin of low error function values.} 
 \label{SimplifiedModelLikelihood}   
 \end{figure}
   

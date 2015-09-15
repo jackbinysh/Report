@@ -67,7 +67,7 @@ A.~Jaramillo, ``{Predicitve Modelling of Riboregulatory Circuits to Re-engineer
 \BIBentrySTDinterwordspacing
 
 \bibitem{Jaramilloa}
-------, ``{Jaramillo Lab, unpublished data}.''
+A.~Jaramillo, B.~Kisov, and S.~Shen, ``{Jaramillo Lab, unpublished data}.''
 
 \bibitem{UriAlon}
 {Uri Alon}, \emph{{An Introduction to Systems Biology}}, 1st~ed.
@@ -85,8 +85,7 @@ D.~Brewer, M.~Barenco, R.~Callard, M.~Hubank, and J.~Stark, ``{Fitting ordinary
   vol. 366, no. 1865, pp. 519--544, 2008.
 
 \bibitem{Algorithms2003}
-E.~Algorithms, E.~Algorithms, C.~G. Moles, C.~G. Moles, P.~Mendes, P.~Mendes,
-  J.~R. Banga, and J.~R. Banga, ``{Parameter Estimation in Biochemical
+C.~G. Moles, P.~Mendes, and J.~R. Banga, ``{Parameter Estimation in Biochemical
   Pathways: A Comparison of Global Optimization Methods},'' \emph{Genome
   Research}, pp. 2467--2474, 2003.
 
