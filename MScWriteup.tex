@@ -193,6 +193,7 @@ These repressors can themselves be disabled by the presence of two chemicals, aT
 Although a qualitative understanding of this system exists \cite{Rodrigo2012}, it is of interest to attempt a quantitative understanding of the genetic circuit involved. Such an understanding would allow, for example, tailoring of the system in response to design requirements, by altering the values of the important parameters of the model. By changing which sRNA-mRNA pair is used in the system, it would also allow exploration of the relationship between the thermodynamic properties of each device, and any rate constants in the proposed model.
  
 \subsection{Single Cell Fluorescence Data}
+\label{Single_Cell_Fluorescence_Data}
 
 mRNA concentrations in the system shown in Fig. \ref{ANDGate} can be indirectly observed by designing the mRNA to code for green fluorescent protein (GFP) \footnote{ The methodology of \cite{Rodrigo2012} only optimises the 5' UTR of the mRNA, so the actual protein being coded for is unimportant.}. Recent experiments have used timelapse microscopy to observe the fluoresence of \textit{E. coli} bacteria which contain the above sRNA-mRNA pair, as they are periodically forced with a varying aTc or IPTG concentration \cite{Jaramillo}. 
 
@@ -285,7 +286,7 @@ GFP\textsubscript{Immature}  \chemrel[$\gamma$]{->} GFP\textsubscript{Mature}
 }.
 \end{align*}
 
-Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$ is included, assumed identical for the mature and immature species, along with the dilution rate $\mu$ shared by all species. Secondly, in the experimental setup we can arrange for GFP molecules to be produced with a \textit{degradation tag} attached to them \cite{Hersch2004}. This tag is identified by an enzyme, ClpX, which will then degrade the molecule the tag is  attached to. This degradation process is modelled by the final terms in \eqref{eq:p} and \eqref{eq:g}. Finally, \eqref{eq:z}  represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
+Degradation of the immature and mature GFP is modelled in two ways. Firstly a generic degradation rate $\delta_{g}$ is included, assumed identical for the mature and immature species, along with the dilution rate $\mu$ shared by all species. Secondly, in the experiments described in section \ref{Single_Cell_Fluorescence_Data}, GFP molecules were produced with a \textit{degradation tag} attached to them \cite{Hersch2004}. This tag is identified by an enzyme, ClpX, which will then degrade the molecule the tag is  attached to. This degradation process is modelled by the final terms in \eqref{eq:p} and \eqref{eq:g}. Finally, \eqref{eq:z}  represents calibration of mature GFP levels to experimentally observed fluorescence, assuming a linear response.
 
 \begin{table}[h]
 \renewcommand{\arraystretch}{1.3}
@@ -404,7 +405,7 @@ In order to reduce the dimensionality of our search space, we can perform a lite
     \end{subfigure}
     \caption{Parameter estimates and model predictions for the \textit{13\_9} and \textit{14\_7} datasets. Note that in the model predictions, aTc forcing is shown - IPTG concentration is constant at a level which saturates the cell's response. The forcing curve's height is schematic - aTc concentration is switched between off and on (where by `on' we mean a level which saturates the cell's response).}
 \label{InitialResults}
-\vspace{-5mm}
+\vspace{-6mm}
 \end{figure*} 
  
 
@@ -460,11 +461,7 @@ In the next section we further investigate the loose estimates for many of the p
  \subsection{Parameter Estimability}
 \label{Parameter Estimability}
  
- There are two main reasons why a parameter may not be estimable \cite{Mclean2012,Yao2003, Beck,Jimenez-Hornero2008,Grewal1976}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others.
- 
-These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model\footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}. Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in (eg. the forcing function we use, the components of the model's state we can observe), parameter effects may be weak, or highly correlated, but in other regimes this is not true. In this case, parameter estimates may be improved by taking data in more varied experimental conditions, or attempting to increase the number of model outputs observed - in our case, observing more of the state vector than simply $z$. 
- 
- We may begin to investigate these issues in our model by performing a local sensitivity analysis about one of the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
+ There are two main reasons why a parameter may not be estimable \cite{Mclean2012,Yao2003, Beck,Jimenez-Hornero2008,Grewal1976}: Model predictions may be insensitive to the value of a particular parameter, or the effects of varying one parameter on model predictions may be highly correlated with the effects of varying several others. We may begin to investigate these issues in our model by performing a local sensitivity analysis about the solutions found in our initial parameter estimation. We numerically estimate the sensitivity matrix, $S$:
  
  \begin{align}
 S_{ij} = \hat{\theta}_{j} \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}},
@@ -493,7 +490,7 @@ Fig. \ref{SensitivityMatrix} shows plots of each column of $S$, evaluated at the
 \label{SensitivityMatrix}   
 \end{figure}
 
-We see that many of the parameters give sensitivity curves of similar shapes, and have near linear dependence - this implies that the effects of perturbing any one of these parameters all look similar in terms of model output, and are hard to distinguish between \footnote{We show only a single parameter set, but the curves are a similar shape across all estimated sets - in fact, in the majority the similarity is more striking - see Fig. \ref{Sensitivity_scaled_other} for a typical set of curves.}. This may help to explain why some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Fig. \ref{SensitivityMatrix_scaled} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}. Note also that the curve for $\Theta$ is very similar to those for the remaining parameters. This suggests that our estimated value of $\Theta$ in Fig. \ref{InitialResults_13_9_hist} is misleading, and likely a consequence of the initial bounding box.
+We see that many of the parameters give sensitivity curves of similar shapes, and have near linear dependence - this implies that the effects of perturbing any one of these parameters all look similar in terms of model output, and are hard to distinguish between \footnote{Though we only show sensitivity curves evaluated at a single parameter set, their shape is similar across all estimated sets - in fact, in the majority of the 200 estimated sets, the similarity of the sensitivity curves is more striking - see Fig. \ref{Sensitivity_scaled_other} for a typical set of curves.}. This may help to explain why some of our initial parameter estimates are very loose - this result suggests there is a family of parameters all of which, in terms of the model output we have available, cannot be resolved. As such, we should view estimates of these parameters with extreme caution. Note that the sensitivity curve that looks least similar to the others in Figs. \ref{SensitivityMatrix_scaled}, \ref{Sensitivity_scaled_other} - $\mu$ - corresponds to a relatively tightly estimated value in Fig. \ref{InitialResults}. Note also that the curve for $\Theta$ is similar to those for the remaining parameters. This suggests that our estimated value of $\Theta$ in Fig. \ref{InitialResults_13_9_hist} is misleading, and likely a consequence of the initial bounding box.
 
 \subsection{Differing timescales within the system}
 
@@ -836,6 +833,8 @@ c &= \frac{k_{\text{hyb}}}{2 k_{\text{on}} \left(\mu +\delta
 \end{document}
 
 
+
+These problems may stem from structural inadequacies in the model (often termed \textit{structural identifiability}), in which two different parameter sets can give identical model predictions \cite{Jimenez-Hornero2008,Grewal1976 }. If this is the case, no amount of experimental data will allow us to estimate parameters, and we must consider reformulating the model\footnote{A simple example of a structurally non - identifiable model is $y = \beta_{1}\beta_{2}x$, where we are given data $(x,y)$, and asked to estimate parameters $\beta_{1}$ and $\beta_{2}$ - we can see that, in principle, only the product $\beta_{1}\beta_{2}$ can ever be estimated, a problem no amount of data can fix.}. Problems may also arise for more practical reasons (\textit{practical identifiability} \cite{Mclean2012}). For example, it is possible that in the experimental regime we operate in (eg. the forcing function we use, the components of the model's state we can observe), parameter effects may be weak, or highly correlated, but in other regimes this is not true. In this case, parameter estimates may be improved by taking data in more varied experimental conditions, or attempting to increase the number of model outputs observed - in our case, observing more of the state vector than simply $z$. 
 
 
 
