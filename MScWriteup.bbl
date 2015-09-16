@@ -47,12 +47,6 @@ T.~Soper, P.~Mandin, N.~Majdalani, S.~Gottesman, and S.~a. Woodson, ``{Positive
   National Academy of Sciences of the United States of America}, vol. 107,
   no.~21, pp. 9602--9607, 2010.
 
-\bibitem{Shine1974}
-J.~Shine and L.~Dalgarno, ``{Identical 3'-terminal octanucleotide sequence in
-  18S ribosomal ribonucleic acid from different eukaryotes. A proposed role for
-  this sequence in the recognition of terminator codons.}'' \emph{The
-  Biochemical journal}, vol. 141, no.~3, pp. 609--615, 1974.
-
 \bibitem{Lutz1997}
 R.~Lutz and H.~Bujard, ``{Independent and tight regulation of transcriptional
   units in escherichia coli via the LacR/O, the TetR/O and AraC/I1-I2
@@ -68,9 +62,6 @@ A.~Jaramillo, ``{Predicitve Modelling of Riboregulatory Circuits to Re-engineer
 
 \bibitem{Jaramilloa}
 A.~Jaramillo, B.~Kisov, and S.~Shen, ``{Jaramillo Lab, unpublished data}.''
-
-\bibitem{UriAlon}
-{Uri Alon}, \emph{{An Introduction to Systems Biology}}, 1st~ed.
 
 \bibitem{Hersch2004}
 G.~L. Hersch, T.~a. Baker, and R.~T. Sauer, ``{SspB delivery of substrates for
@@ -106,6 +97,21 @@ N.~Hansen, ``{The CMA evolution strategy: A comparing review},'' \emph{Studies
 ------, ``{The CMA evolution strategy: A tutorial},'' \emph{Vu le}, pp. 1--34,
   2011. [Online]. Available:
   \url{http://www.lri.fr/~hansen/cmatutorial110628.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Ballesta2011}
+A.~Ballesta, S.~Dulong, C.~Abbara, B.~Cohen, A.~Okyar, J.~Clairambault, and
+  F.~Levi, ``{A combined experimental and mathematical approach for
+  molecular-based optimization of irinotecan circadian delivery},'' \emph{PLoS
+  Computational Biology}, vol.~7, no.~9, pp. 1--12, 2011.
+
+\bibitem{Dulong2015}
+\BIBentryALTinterwordspacing
+S.~Dulong, a.~Ballesta, a.~Okyar, and F.~Levi, ``{Identification of Circadian
+  Determinants of Cancer Chronotherapy through In Vitro Chronopharmacology and
+  Mathematical Modeling},'' \emph{Molecular Cancer Therapeutics}, vol.~14, no.
+  September, pp. 2154--2164, 2015. [Online]. Available:
+  \url{http://mct.aacrjournals.org/cgi/doi/10.1158/1535-7163.MCT-15-0129}
 \BIBentrySTDinterwordspacing
 
 \bibitem{Mclean2012}
