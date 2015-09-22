@@ -1,0 +1,252 @@
+% $Header: /Users/joseph/Documents/LaTeX/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass[8pt]{beamer}
+
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\usepackage{chemfig}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+
+\title % (optional, use only with long paper titles)
+{Modelling RNA Oscillatory Circuits}
+
+\subtitle
+{}
+
+\author % (optional, use only with lots of authors)
+{J. Binysh\inst{1}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[University of Warwick] % (optional, but mostly needed)
+{
+  \inst{1}%
+ 	Centre for Complexity Science\\
+  University of Warwick
+ }
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+%\date[CFP 2003] % (optional, should be abbreviation of conference name)
+%{Conference on Fabulous Presentations, 2003}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+%\subject{Theoretical Computer Science}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\begin{itemize}
+\item My project consisted of trying to estimate unknown parameters in an ODE model, representing a recently designed genetic regulatory circuit, using some recent experimental data.
+\item Begin by giving biological background, describing the system we are interested in. Then discuss recent experimental data, and the ODE model proposed to represent it.
+\item Then move on to talk about how to estimate unknown parameters in this model - first discussing methodology, then results.
+\item I will show that the majority of the parameters in the model cannot be uniquely estimated given the available data. I will discuss why this might be the case, and suggest the use of a simplified model, which can describe available data equally well.
+\item then conclude and suggest further work.
+\end{itemize}
+\end{frame}
+
+\section{Description of RNA Oscillatory system}
+\begin{frame}{Description of RNA Oscillatory system}
+\begin{itemize}
+\item In the cell, DNA is copied into an RNA molecule, which then gets made into a protein.
+\item This process is naturally regulated in many ways. One stage it can be regulated at is when the RNA - called mRNA - is on its way to get made into a protein
+\item In order for the mRNA to be made into a protein, a piece of molecular machinerey called the Ribosome must attach itself to it. This occurs at a place on the mRNA molecule called the Ribsome Binding site (RBS). If the RBS is blocked, the mRNA cannot be made into a protein
+\item mRNA can `self repress' - its shape is such that the molecules tail is looped over the RBS
+\item This self repression can be undone by introducing another RNA - a small RNA which binds to the mRNA, and uncovers the RBS
+\item Such a setup can be synthetically engineered - mRNA-sRNA pairs that act in this fashion can be designed. In addition, we can choose that the protein made be GFP, which fluoresces, so its concentration in the cell can be monitored.
+
+\item Further, the whole setup can be placed inside a cell, and indirectly controlled by two chemcials, aTC and IPTG, whose concentrations affect the rates of mRNA and sRNA production.
+\item Whole system forms a logical `and' gate.
+\end{itemize}
+\end{frame}
+
+\subsection{Recent Experimental data}
+
+\begin{frame}{Recent Experimental data}{}
+  \begin{itemize}
+    \item  In recent experiments, cells with the above set-up in them have been forced with a varying aTc concentration - what we see here are individual cell fluoresence time series, with aTC forcing schematically shown. 
+    \end{itemize}
+\end{frame}
+
+\subsection{ODE Model for system}
+\begin{frame}{ODE Model for system (1)}{}
+\begin{itemize}
+\item We can model this system with a set of ODE's with mass action kinetics.
+\item The first set represent the production of the two RNA's discussed above, and their hybridization. This is represented as a two step process - first into an unstable, then a stable, complex.
+\item aTc forcing is modelled via the y term. The various delta's are just degradation rates of the complexes involved, and mu represents dilutions of the chemicals due to cell growth.
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{ODE Model for system (2)}{}
+\begin{itemize}
+\item The next set of equations explicitly models protein production and observed fluorescence. beta m + fs beta c term describes the translation of the mRNA into an immature GFP (p). This then matures into mature GFP (g), which fluoresces (z)  
+\end{itemize}
+\end{frame}
+
+\section{Parameter Estimation in ODE Model}
+
+
+\subsection{Methodology - least squares error minimisation}
+
+\begin{frame}{Parameter Estimation in ODE Model}
+  \begin{itemize}
+\item So we have our ODE model, and some recent time series data. Our goal is to estimate some of the unknown parameters in the described model, by fitting it to the data.
+\item To do this, we  numerically simulate our ODE model, giving a predicted fluorescence time series for some set of parameters. We then define a least squares error between this simulation and our observed data, and seek to find the set of parameters which minimise this error.
+\item The error landscape may have many minima - to perform the minimisation we use an Evolutionary algorithm, the CMA-ES.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Parameters to be estimated in our model}
+  \begin{itemize}
+\item In our case, we have 9 unknown parameters, highlighted in red. 5 (name( only appear in the model before the translation step, in the initial hybridization process. Two (name) are associated with the translation process. Mu appears throughout the equations, and theta just represents machine calibration.
+
+\end{itemize}
+\end{frame}
+\normalsize
+
+
+\subsection{Results - Inestimable parameters, model simplifications}
+
+\begin{frame}{Initial Estimation Results}
+\begin{itemize}
+    \item Prediction from a typical set of parameters found shows model capable of quantitatively capturing data
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Initial Estimation Results}
+\begin{itemize}
+    \item However, many parameters are poorly estimated. These histograms were made by randomly starting the CMA-ES at a point within an initial bounding box, and letting it run 200 times. We see little consistency in estimates for many parameters. The x axis on the histograms are the initial bounding box given, and we see some estimates spread right across the range. 
+    \item However, some parmaters (mu, theta) are relatively consistently estimated.
+    \item Why is this the case? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sensitivity Analysis}
+\begin{itemize}
+    \item Taking one of the estimated parameter sets, and performing a local sensitivity analysis about it, suggests a possible explanation.
+    \item We see that many parameters, when slightly perturbed, have similar effects on model output - thus making their effects hard to distinguish , and so hard to simultaneously estimate 
+    \item Curves for Mu and theta relatively distinct.
+    \item This result suggests the minimisation algorithm may be working with many fewer degrees of freedom than we gave it - only 3, rather than 9. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Model fixed point for estimated parameters}
+\begin{itemize}
+	\item Although individual parameter estimates are very loose, if we look at all estimated parameter sets, there is some consistency to be found. Recall that the initial hybridization steps etc were communicated to the equations modelling translation by the ${\beta} m +{f_{s}}\beta c$ term (flick back). If we solve for the models fixed point, and look at the fixed point values of ${\beta} m +{f_{s}}\beta c$, we see similarity between all parameter sets. This suggests that the algorithm is really only altering the values of ${\beta} m +{f_{s}}\beta c$, mu and theta, rather than the full 9 degrees of freedom.
+	\item a biological interpretation of this fact may be that translation is a rate limiting step. 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Simplified Model (1)}
+\begin{itemize}
+\item This suggests we can simplify by assuming the first set of equations occur instantly, and instead just force and model the translation step. We can then re-estimate our 3 parameters as before.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Simplified Model Results (2)}
+  \begin{itemize}
+\item As before, running the CMA- ES provides us with parameter estimates. Unlike before, they are clear of the initial bounding box Further, we achieve error values as low as full model. Two peak structure likely a consequence of local minima.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simplified Model Results (3)}
+  \begin{itemize}
+\item The model is also now simple enough we can plot the error landscape, the contours of which offer a better indiction of uncertainity in F and theta than the histograms do.
+\end{itemize}
+\end{frame}
+
+\subsection{Future Work}
+
+
+\begin{frame}{Future Work}
+  
+  \end{frame}
+  
+  \section*{Summary}
+
+
+\end{document}
+
+
