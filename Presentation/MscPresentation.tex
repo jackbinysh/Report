@@ -46,6 +46,8 @@
 
 \usepackage{chemfig}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\usepackage{color}
+
 
 
 
@@ -114,11 +116,6 @@
   \titlepage
 \end{frame}
 
-\begin{frame}{Outline}
-  \tableofcontents
-  % You might wish to add the option [pausesections]
-\end{frame}
-
 
 % Structuring a talk is a difficult task and the following structure
 % may not be suitable. Here are some rules that apply for this
@@ -142,51 +139,69 @@
 \begin{frame}{The RNA Oscillatory System}{}
   % - A title should summarize the slide in an understandable fashion
   %   for anyone how does not follow everything on the slide itself.
-\includegraphics[trim = 130 600 30 30,page=4,clip = true]{../Figures/pnas1203831109.pdf}
+  \begin{center}
+  \includegraphics[trim = 0 0 0 30,clip = true,scale = 0.275]{Figures/schematic_initial.png}
+  \end{center}
+
   \begin{itemize}
     \item  mRNA produced `self repressed'  - tail folded over the RBS
     \item  sRNA binds to it - new complex has RBS uncovered.
     \end{itemize}
 \end{frame}
 
-\subsection{Recent Experimental data}
-
-\begin{frame}{Recent Experimental data}{}
-\includegraphics[scale = 0.55, trim = 0 300 0 280 ,clip = true]{../Figures/13_9}
-  \begin{itemize}
-    \item  Time series of individual cell fluorescence, forced with aTc.
-    \end{itemize}
-\end{frame}
 
 \subsection{ODE Model for system}
-\begin{frame}{ODE Model for system (1)}{}
+\begin{frame}{ODE Model for system (1) - Complex Formation}{}
+\begin{columns}
+\column{.45\textwidth}
+\includegraphics[trim = 135 0 0 0,clip = true,scale = 0.31]{Figures/schematic_binding}
+\column{.5\textwidth}
+  \begin{itemize}
+    \item  Hybridization of sRNA \textcolor{blue}{($s$)} and mRNA \textcolor{blue}{($m$)}, into unstable complex \textcolor{blue}{($s:m$)} then stable one \textcolor{blue}{($c$)}.
+    \end{itemize}
+\footnotesize
 \begin{align*} 
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \\
 \frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\mu + \delta_{m})m -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m  \\
 \frac{ds:m}{dt} & = k_{\mathrm{on}}sm  - (k_{\mathrm{off}}+ k_{\mathrm{hyb}})s:m  -(\mu + \delta_{sm} )s:m \\
 \frac{dc}{dt} & = k_{\mathrm{hyb}}s:m  -(\mu + \delta_{c})c  \\
 \end{align*}
-\vspace{-3em}
-  \begin{itemize}
-    \item  Hybridization of sRNA($s$) and mRNA ($m$), into unstable complex ($s:m$) then stable one ($c$).
-    \end{itemize}
+\end{columns}
 \end{frame}
 
-\begin{frame}{ODE Model for system (2)}{}
+\begin{frame}{ODE Model for system (2) - Translation}{}
+\begin{columns}
+\column{.45\textwidth}
+\includegraphics[trim = 0 0 0 0,clip = true,scale = 0.31]{Figures/schematic_translation}
+\column{.5\textwidth}
+  \begin{itemize}
+    \item Translation of stable complex \textcolor{blue}{($c$)} into immature GFP \textcolor{blue}{($p$)}. 
+    \item maturation of GFP \textcolor{blue}{($g$)}, machine calibration giving measured fluorescence ($z$).
+    \end{itemize}
+\footnotesize
 \begin{align*} 
 \frac{dp}{dt} & = \beta m +f_{s}\beta c -(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
 z &= z_{0} +\frac{g}{\Theta} 
 \end{align*}
-
-  \begin{itemize}
-    \item Translation of stable complex ($c$) into immature GFP ($p$). 
-    \item maturation of GFP ($g$), machine calibration giving measured fluorescence ($z$).
-    \end{itemize}
-
+\end{columns}
 \end{frame}
 
 \section{Parameter Estimation in ODE Model}
+
+\small
+\begin{frame}{Parameters to be estimated in our model}
+\begin{align*} 
+\frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
+\frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
+\frac{ds:m}{dt} & = \alert{k_{\mathrm{on}}}sm  - (\alert{k_{\mathrm{off}}}+ \alert{k_{\mathrm{hyb}}})s:m  -(\alert{\mu} + \alert{\delta_{m}} )s:m \\
+\frac{dc}{dt} & = \alert{k_{\mathrm{hyb}}}s:m  -(\alert{\mu} + \alert{\delta_{m}})c  \\
+\frac{dp}{dt} & = \alert{\beta} m +\alert{f_{s}}\beta c -(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
+\frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
+z &= z_{0} +\frac{g}{\alert{\Theta}} 
+\end{align*}
+\end{frame}
+\normalsize
 
 
 \subsection{Methodology - least squares error minimisation}
@@ -204,21 +219,6 @@ z &= z_{0} +\frac{g}{\Theta}
 \item Used evolutionary algorithm, CMA-ES, to perform minimisation.
     \end{itemize}
 \end{frame}
-
-\small
-\begin{frame}{Parameters to be estimated in our model}
-\begin{align*} 
-\frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
-\frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\mu + \alert{\delta_{m}})m -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m  \\
-\frac{ds:m}{dt} & = k_{\mathrm{on}}sm  - (k_{\mathrm{off}}+ \alert{k_{\mathrm{hyb}}})s:m  -(\mu + \delta_{m} )s:m \\
-\frac{dc}{dt} & = k_{\mathrm{hyb}}s:m  -(\mu + \delta_{m})c  \\
-\frac{dp}{dt} & = \alert{\beta} m +\alert{f_{s}}\beta c -(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
-\frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
-z &= z_{0} +\frac{g}{\alert{\Theta}} 
-\end{align*}
-\end{frame}
-\normalsize
-
 
 \subsection{Results - Inestimable parameters, model simplifications}
 
@@ -239,6 +239,10 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
           \begin{itemize}
     \item Sensitivity analysis suggests perturbations of several parameters all give similar effects on model output - \alert{hard to resolve}
             \end{itemize}
+\end{frame}
+
+\begin{frame}{Model output for all state variables}
+  \includegraphics[scale = 0.25, clip = true, trim = 30 0 0 0]{../Figures/model_output}
 \end{frame}
 
 \begin{frame}{Model fixed point for estimated parameters}

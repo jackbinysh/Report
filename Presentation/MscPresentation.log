@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  22 SEP 2015 20:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  23 SEP 2015 18:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -793,21 +793,21 @@ Package: chemfig 2013/11/28 v1.0h Draw molecule with an easy syntax
 ) (./MscPresentation.aux)
 \openout1 = `MscPresentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 111.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 113.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
@@ -876,7 +876,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box61
-Package hyperref Info: Link coloring OFF on input line 111.
+Package hyperref Info: Link coloring OFF on input line 113.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -886,56 +886,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count174
 )
-LaTeX Info: Redefining \ref on input line 111.
-LaTeX Info: Redefining \pageref on input line 111.
-LaTeX Info: Redefining \nameref on input line 111.
+LaTeX Info: Redefining \ref on input line 113.
+LaTeX Info: Redefining \pageref on input line 113.
+LaTeX Info: Redefining \nameref on input line 113.
 
 (./MscPresentation.out) (./MscPresentation.out)
 \@outlinefile=\write6
 \openout6 = `MscPresentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 111.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 113.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 111.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 113.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/ptm/m/n on input line 111.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 111.
+(Font)                  OT1/cmss/m/n --> T1/ptm/m/n on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 111.
+(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 111.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 111.
+(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 111.
+(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 111.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 111.
+(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/phv/m/it on input line 111.
+(Font)                  OT1/cmr/m/it --> T1/phv/m/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/phv/m/it on input line 111.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 111.
+(Font)                  OT1/cmr/bx/it --> T1/phv/m/it on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 111.
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 111.
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 113.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 111.
+(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 113.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 111.
+(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/ptm/bx/n on input line 111.
+(Font)                  OT1/cmss/bx/n --> T1/ptm/bx/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/phv/bx/n --> T1/phv/bx/n on input line 111.
+(Font)                  T1/phv/bx/n --> T1/phv/bx/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 111.
+(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 111.
+(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/pcr/m/n --> T1/pcr/bx/n on input line 111.
+(Font)                  T1/pcr/m/n --> T1/pcr/bx/n on input line 113.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -961,95 +961,103 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 111.
+LaTeX Info: Redefining \includegraphics on input line 113.
  (./MscPresentation.nav)
-LaTeX Font Info:    Try loading font information for U+msa on input line 115.
+LaTeX Font Info:    Try loading font information for U+msa on input line 117.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 115.
+LaTeX Font Info:    Try loading font information for U+msb on input line 117.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 115.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 117.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 115.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 117.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 115.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 117.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 115.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 117.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] (./MscPresentation.toc) [2
-
 ]
-<../Figures/pnas1203831109.pdf, id=129, page=4, 587.15062pt x 785.80779pt>
-File: ../Figures/pnas1203831109.pdf Graphic file (type pdf)
+<Figures/schematic_initial.png, id=81, 781.2973pt x 584.80103pt>
+File: Figures/schematic_initial.png Graphic file (type png)
 
-<use ../Figures/pnas1203831109.pdf, page 4>
-Package pdftex.def Info: ../Figures/pnas1203831109.pdf, page4 used on input lin
-e 150.
-(pdftex.def)             Requested size: 426.5492pt x 153.44337pt.
+<use Figures/schematic_initial.png>
+Package pdftex.def Info: Figures/schematic_initial.png used on input line 150.
+(pdftex.def)             Requested size: 214.85146pt x 152.53555pt.
+ [2
 
-Overfull \hbox (119.25932pt too wide) in paragraph at lines 150--150
-[][][]  
+ <./Figures/schematic_initial.png>]
+<Figures/schematic_binding.pdf, id=120, 794.97pt x 614.295pt>
+File: Figures/schematic_binding.pdf Graphic file (type pdf)
+
+<use Figures/schematic_binding.pdf>
+Package pdftex.def Info: Figures/schematic_binding.pdf used on input line 170.
+(pdftex.def)             Requested size: 204.43155pt x 190.42947pt.
+
+Overfull \hbox (66.15205pt too wide) in paragraph at lines 170--170
+[][]  
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 170.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 170.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+Overfull \hbox (53.40677pt too wide) in paragraph at lines 170--170
+[]  
  []
 
 [3
 
- <../Figures/pnas1203831109.pdf>]
-<../Figures/13_9.pdf, id=224, 597.50829pt x 845.0471pt>
-File: ../Figures/13_9.pdf Graphic file (type pdf)
+ <./Figures/schematic_binding.pdf>]
+<Figures/schematic_translation.png, id=173, 431.46269pt x 453.68301pt>
+File: Figures/schematic_translation.png Graphic file (type png)
 
-<use ../Figures/13_9.pdf>
-Package pdftex.def Info: ../Figures/13_9.pdf used on input line 159.
-(pdftex.def)             Requested size: 328.63057pt x 144.57932pt.
+<use Figures/schematic_translation.png>
+Package pdftex.def Info: Figures/schematic_translation.png used on input line 1
+88.
+(pdftex.def)             Requested size: 133.75204pt x 140.64027pt.
 
-Overfull \hbox (21.3407pt too wide) in paragraph at lines 159--159
-[][][]  
+Overfull \hbox (35.55748pt too wide) in paragraph at lines 188--188
+[]  
  []
 
 [4
 
- <../Figures/13_9.pdf>]
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 173.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-) [5
-
-] [6
+ <./Figures/schematic_translation.png>]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 203.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 203.
+ [5
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <6> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 206.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 221.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <6> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 206.
- [7
-
-]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 219.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 219.
- [8
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 221.
+ [6
 
 ]
 Package epstopdf Info: Source file: <../Figures/13_9_bestPlot.eps>
@@ -1064,7 +1072,7 @@ ps-converted-to.pdf ../Figures/13_9_bestPlot.eps>
 (epstopdf)             \includegraphics on input line 227.
 Package epstopdf Info: Output file is already uptodate.
 
-<../Figures/13_9_bestPlot-eps-converted-to.pdf, id=409, 1328.965pt x 736.7525pt
+<../Figures/13_9_bestPlot-eps-converted-to.pdf, id=277, 1328.965pt x 736.7525pt
 >
 File: ../Figures/13_9_bestPlot-eps-converted-to.pdf Graphic file (type pdf)
  <use ../Figures/13_9_bestPlot-eps-converted-to.pdf>
@@ -1076,7 +1084,7 @@ Overfull \hbox (25.1844pt too wide) in paragraph at lines 227--227
 [][]  
  []
 
-[9
+[7
 
  <../Figures/13_9_bestPlot-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../Figures/13_9_hist.eps>
@@ -1091,14 +1099,14 @@ onverted-to.pdf ../Figures/13_9_hist.eps>
 (epstopdf)             \includegraphics on input line 235.
 Package epstopdf Info: Output file is already uptodate.
 
-<../Figures/13_9_hist-eps-converted-to.pdf, id=449, 1328.965pt x 736.7525pt>
+<../Figures/13_9_hist-eps-converted-to.pdf, id=318, 1328.965pt x 736.7525pt>
 File: ../Figures/13_9_hist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ../Figures/13_9_hist-eps-converted-to.pdf>
 Package pdftex.def Info: ../Figures/13_9_hist-eps-converted-to.pdf used on inpu
 t line 235.
 (pdftex.def)             Requested size: 292.3732pt x 162.08604pt.
- [10
+ [8
 
  <../Figures/13_9_hist-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../Figures/Sensitivty_scaled_other.eps>
@@ -1113,7 +1121,7 @@ ed_other-eps-converted-to.pdf ../Figures/Sensitivty_scaled_other.eps>
 (epstopdf)             \includegraphics on input line 242.
 Package epstopdf Info: Output file is already uptodate.
 
-<../Figures/Sensitivty_scaled_other-eps-converted-to.pdf, id=492, 1197.47375pt 
+<../Figures/Sensitivty_scaled_other-eps-converted-to.pdf, id=361, 1197.47375pt 
 x 714.67pt>
 File: ../Figures/Sensitivty_scaled_other-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -1122,9 +1130,35 @@ Package pdftex.def Info: ../Figures/Sensitivty_scaled_other-eps-converted-to.pd
 f used on input line 242.
 (pdftex.def)             Requested size: 263.44504pt x 157.22787pt.
 
-[11
+[9
 
  <../Figures/Sensitivty_scaled_other-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../Figures/model_output.eps>
+(epstopdf)                    date: 2015-09-14 22:19:51
+(epstopdf)                    size: 448075 bytes
+(epstopdf)             Output file: <../Figures/model_output-eps-converted-to.p
+df>
+(epstopdf)                    date: 2015-09-14 22:20:00
+(epstopdf)                    size: 52902 bytes
+(epstopdf)             Command: <repstopdf --outfile=../Figures/model_output-ep
+s-converted-to.pdf ../Figures/model_output.eps>
+(epstopdf)             \includegraphics on input line 246.
+Package epstopdf Info: Output file is already uptodate.
+
+<../Figures/model_output-eps-converted-to.pdf, id=401, 1328.965pt x 736.7525pt>
+File: ../Figures/model_output-eps-converted-to.pdf Graphic file (type pdf)
+<use ../Figures/model_output-eps-converted-to.pdf>
+Package pdftex.def Info: ../Figures/model_output-eps-converted-to.pdf used on i
+nput line 246.
+(pdftex.def)             Requested size: 324.71231pt x 184.18767pt.
+
+Overfull \hbox (17.42244pt too wide) in paragraph at lines 246--246
+[][]  
+ []
+
+[10
+
+ <../Figures/model_output-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../Figures/fixedpoint_f.eps>
 (epstopdf)                    date: 2015-09-02 18:44:55
 (epstopdf)                    size: 133330 bytes
@@ -1134,19 +1168,19 @@ df>
 (epstopdf)                    size: 9798 bytes
 (epstopdf)             Command: <repstopdf --outfile=../Figures/fixedpoint_f-ep
 s-converted-to.pdf ../Figures/fixedpoint_f.eps>
-(epstopdf)             \includegraphics on input line 250.
+(epstopdf)             \includegraphics on input line 254.
 Package epstopdf Info: Output file is already uptodate.
 
-<../Figures/fixedpoint_f-eps-converted-to.pdf, id=532, 1182.4175pt x 482.80376p
+<../Figures/fixedpoint_f-eps-converted-to.pdf, id=440, 1182.4175pt x 482.80376p
 t>
 File: ../Figures/fixedpoint_f-eps-converted-to.pdf Graphic file (type pdf)
  <use ../Figures/fixedpoint_f-eps-converted-to.pdf>
 Package pdftex.def Info: ../Figures/fixedpoint_f-eps-converted-to.pdf used on i
-nput line 250.
+nput line 254.
 (pdftex.def)             Requested size: 283.786pt x 115.87526pt.
- [12
+ [11
 
- <../Figures/fixedpoint_f-eps-converted-to.pdf>] [13
+ <../Figures/fixedpoint_f-eps-converted-to.pdf>] [12
 
 ]
 Package epstopdf Info: Source file: <../Figures/13_9_hist_simplified.eps>
@@ -1158,23 +1192,23 @@ ted-to.pdf>
 (epstopdf)                    size: 8204 bytes
 (epstopdf)             Command: <repstopdf --outfile=../Figures/13_9_hist_simpl
 ified-eps-converted-to.pdf ../Figures/13_9_hist_simplified.eps>
-(epstopdf)             \includegraphics on input line 273.
+(epstopdf)             \includegraphics on input line 277.
 Package epstopdf Info: Output file is already uptodate.
 
-<../Figures/13_9_hist_simplified-eps-converted-to.pdf, id=607, 1328.965pt x 736
+<../Figures/13_9_hist_simplified-eps-converted-to.pdf, id=515, 1328.965pt x 736
 .7525pt>
 File: ../Figures/13_9_hist_simplified-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../Figures/13_9_hist_simplified-eps-converted-to.pdf>
 Package pdftex.def Info: ../Figures/13_9_hist_simplified-eps-converted-to.pdf u
-sed on input line 273.
+sed on input line 277.
 (pdftex.def)             Requested size: 344.00279pt x 93.86978pt.
 
-Overfull \hbox (36.71292pt too wide) in paragraph at lines 273--273
+Overfull \hbox (36.71292pt too wide) in paragraph at lines 277--277
 [][][]  
  []
 
-[14
+[13
 
  <../Figures/13_9_hist_simplified-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../Figures/Likelihood_profile_rough.eps>
@@ -1186,21 +1220,21 @@ nverted-to.pdf>
 (epstopdf)                    size: 31786 bytes
 (epstopdf)             Command: <repstopdf --outfile=../Figures/Likelihood_prof
 ile_rough-eps-converted-to.pdf ../Figures/Likelihood_profile_rough.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 284.
 Package epstopdf Info: Output file is already uptodate.
 
-<../Figures/Likelihood_profile_rough-eps-converted-to.pdf, id=646, 1197.47375pt
+<../Figures/Likelihood_profile_rough-eps-converted-to.pdf, id=554, 1197.47375pt
  x 714.67pt>
 File: ../Figures/Likelihood_profile_rough-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../Figures/Likelihood_profile_rough-eps-converted-to.pdf>
 Package pdftex.def Info: ../Figures/Likelihood_profile_rough-eps-converted-to.p
-df used on input line 280.
+df used on input line 284.
 (pdftex.def)             Requested size: 284.31145pt x 178.66705pt.
 
-[15
+[14
 
- <../Figures/Likelihood_profile_rough-eps-converted-to.pdf>] [16
+ <../Figures/Likelihood_profile_rough-eps-converted-to.pdf>] [15
 
 ]
 \tf@nav=\write7
@@ -1212,39 +1246,42 @@ df used on input line 280.
 \tf@snm=\write9
 \openout9 = `MscPresentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 304.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 304.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 308.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 308.
 
 (./MscPresentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 304.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 304.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 308.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 308.
 Package rerunfilecheck Info: File `MscPresentation.out' has not changed.
-(rerunfilecheck)             Checksum: 0C52BCCAB49C074BE035FF000C0E8B0A;542.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 304.
+(rerunfilecheck)             Checksum: 866784D1A133C35F661595EB86FEE38B;469.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 308.
  ) 
 Here is how much of TeX's memory you used:
- 19219 strings out of 495028
- 360354 string characters out of 6181497
+ 19198 strings out of 495028
+ 359538 string characters out of 6181497
  445250 words of memory out of 5000000
- 21881 multiletter control sequences out of 15000+600000
- 73174 words of font info for 92 fonts, out of 8000000 for 9000
+ 21855 multiletter control sequences out of 15000+600000
+ 83417 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 50i,19n,62p,404b,649s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,19n,62p,404b,598s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on MscPresentation.pdf (16 pages, 717532 bytes).
+type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on MscPresentation.pdf (15 pages, 737445 bytes).
 PDF statistics:
- 767 PDF objects out of 1000 (max. 8388607)
- 655 compressed objects within 7 object streams
- 40 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 684 PDF objects out of 1000 (max. 8388607)
+ 594 compressed objects within 6 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
