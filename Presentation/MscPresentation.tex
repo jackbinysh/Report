@@ -25,7 +25,7 @@
 
 \mode<presentation>
 {
-  \usetheme{Warsaw}
+  \usetheme{default}
   % or ...
 
   \setbeamercovered{transparent}
@@ -44,15 +44,14 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\usepackage{chemfig}
+\usepackage{epstopdf,chemfig}
+\usepackage{xcolor}
 \DeclareMathOperator*{\argmin}{arg\,min}
-\usepackage{color}
-
-
+\newenvironment{greyedout}{\color{gray}}{\ignorespacesafterend}
 
 
 \title % (optional, use only with long paper titles)
-{Modelling RNA Oscillatory Circuits}
+{Modelling RNA Circuits}
 
 \subtitle
 {}
@@ -134,9 +133,9 @@
 % - If you omit details that are vital to the proof/implementation,
 %   just say so once. Everybody will be happy with that.
 
-\section{Description of RNA Oscillatory system}
+\section{Description of RNA system}
 
-\begin{frame}{The RNA Oscillatory System}{}
+\begin{frame}{The RNA System}{}
   % - A title should summarize the slide in an understandable fashion
   %   for anyone how does not follow everything on the slide itself.
   \begin{center}
@@ -190,8 +189,8 @@ z &= z_{0} +\frac{g}{\Theta}
 \section{Parameter Estimation in ODE Model}
 
 \small
-\begin{frame}{Parameters to be estimated in our model}
-\begin{align*} 
+\begin{frame}{Full model, with Parameters to be estimated}
+\begin{align} 
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
 \frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
 \frac{ds:m}{dt} & = \alert{k_{\mathrm{on}}}sm  - (\alert{k_{\mathrm{off}}}+ \alert{k_{\mathrm{hyb}}})s:m  -(\alert{\mu} + \alert{\delta_{m}} )s:m \\
@@ -199,7 +198,7 @@ z &= z_{0} +\frac{g}{\Theta}
 \frac{dp}{dt} & = \alert{\beta} m +\alert{f_{s}}\beta c -(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
 \frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
 z &= z_{0} +\frac{g}{\alert{\Theta}} 
-\end{align*}
+\end{align}
 \end{frame}
 \normalsize
 
@@ -215,12 +214,16 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
    \includegraphics[trim = 0 40 0 0 ,page=21 ,clip = true, scale=0.23]{Figures/WCPM_Warwick-talk45-220115.pdf}
 \end{figure}
 \end{columns}
+  \begin{itemize}
+    \item Single cell fluoresence time series data (Jaramillo Lab, unpublished).
+    \item  Data records $z= z_{0} +\frac{g}{\alert{\Theta}} $
+    \end{itemize}
 \end{frame}
 
 
 \subsection{Methodology - least squares error minimisation}
 
-\begin{frame}{Parameter Estimation in ODE Model}
+\begin{frame}{Method for Parameter Estimation in ODE Model}
   \begin{block}{Goal}
  Estimate unknown parameters in model using time series data.
     \end{block}
@@ -237,26 +240,27 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \subsection{Results - Inestimable parameters, model simplifications}
 
 \begin{frame}{Initial Estimation Results}
-  \includegraphics[scale = 0.26, clip = true, trim = 50 0 0 0]{../Figures/13_9_bestPlot}
+  \includegraphics[scale = 0.28, clip = true, trim = 80 0 0 0]{Figures/13_9_bestPlot}
 \end{frame}
 
 
 \begin{frame}{Initial Estimation Results}
-  \includegraphics[scale = 0.22, clip = true, trim = 0 0 0 0]{../Figures/13_9_hist}
+  \includegraphics[scale = 0.25, clip = true, trim = 0 0 0 0]{Figures/13_9_hist}
         \begin{itemize}
     \item Many parameters poorly estimated.
             \end{itemize}
 \end{frame}
 
 \begin{frame}{Sensitivity Analysis}
-  \includegraphics[scale = 0.22, clip = true, trim = 00 0 0 0]{../Figures/Sensitivty_scaled_other}
+  \includegraphics[scale = 0.2, clip = true, trim = 00 0 0 0]{Figures/Sensitivty_scaled_other}
+  \vspace{-2mm}
           \begin{itemize}
     \item Sensitivity analysis suggests perturbations of several parameters all give similar effects on model output - \alert{hard to resolve}
             \end{itemize}
 \end{frame}
 
 \begin{frame}{Model output for all state variables}
-  \includegraphics[scale = 0.25, clip = true, trim = 30 0 0 0]{../Figures/model_output}
+  \includegraphics[scale = 0.25, clip = true, trim = 30 0 0 0]{Figures/model_output}
 \end{frame}
 
 \begin{frame}{Model fixed point for estimated parameters}
@@ -267,13 +271,54 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{itemize}
 \end{frame}
 
+\small
+\begin{frame}{Full model again}
+\begin{align*} 
+\frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
+\frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
+\frac{ds:m}{dt} & = \alert{k_{\mathrm{on}}}sm  - (\alert{k_{\mathrm{off}}}+ \alert{k_{\mathrm{hyb}}})s:m  -(\alert{\mu} + \alert{\delta_{m}} )s:m \\
+\frac{dc}{dt} & = \alert{k_{\mathrm{hyb}}}s:m  -(\alert{\mu} + \alert{\delta_{m}})c  
+\end{align*}
+\begin{center}
+\rule{0.5\textwidth}{.4pt}
+\end{center}
+\begin{align*} 
+\frac{dp}{dt} & = \alert{\beta} m +\alert{f_{s}}\beta c -(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
+\frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
+z &= z_{0} +\frac{g}{\alert{\Theta}} 
+\end{align*}
+\end{frame}
+\normalsize
 
-\begin{frame}{Simplified Model (1)}
-\begin{align*}
+\small
+\begin{frame}{Simplified Model}
+\begin{greyedout}
+\begin{align*} 
+\frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \\
+\frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\mu + \delta_{m})m -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m  \\
+\frac{ds:m}{dt} & = k_{\mathrm{on}}sm  - (k_{\mathrm{off}}+ k_{\mathrm{hyb}})s:m  -(\mu + \delta_{sm} )s:m \\
+\frac{dc}{dt} & = k_{\mathrm{hyb}}s:m  -(\mu + \delta_{c})c  
+\end{align*}
+\end{greyedout}
+\begin{center}
+\rule{0.5\textwidth}{.4pt}
+\end{center}
+\begin{align*} 
+\frac{dp}{dt} & = \alert{F}y(t)-(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
+\frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g}  \\
+z &= z_{0} +\frac{g}{\alert{\Theta}}  
+\end{align*}
+\end{frame}
+\normalsize
+
+
+
+\begin{frame}{Simplified Model}
+\begin{align}
 \frac{dp}{dt} & = \alert{F}y(t)-(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g}  \\
 z &= z_{0} +\frac{g}{\alert{\Theta}} 
-\end{align*}
+\end{align}
 \begin{itemize}
 \item  Model only rate limiting steps - force translation term directly.
 \item 3 unknown parameters
@@ -281,7 +326,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{frame}
 
 
-\begin{frame}{Simplified Model Results (2)}
+\begin{frame}{Simplified Model Results (1)}
   \includegraphics[scale = 0.28, clip = true, trim = 100 0 0 400]{../Figures/13_9_hist_simplified}
   \begin{itemize}
 \item  Error values as low as full model
@@ -290,10 +335,10 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Simplified Model Results (3)}
-  \includegraphics[scale = 0.25, clip = true, trim = 60 0 0 00]{../Figures/Likelihood_profile_rough}
+\begin{frame}{Simplified Model Results (2)}
+  \includegraphics[scale = 0.25, clip = true, trim = 0 0 0 0]{Figures/Likelihood_rough_presentation}
     \begin{itemize}
-\item  Error landscape, $\Theta = 1000$.
+\item  Error landscape, $\Theta = 5400$.
 \end{itemize}
 \end{frame}
 

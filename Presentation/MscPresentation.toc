@@ -1,8 +1,8 @@
 \beamer@endinputifotherversion {3.24pt}
 \select@language {english}
-\beamer@sectionintoc {1}{Description of RNA Oscillatory system}{2}{0}{1}
+\beamer@sectionintoc {1}{Description of RNA system}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{ODE Model for system}{3}{0}{1}
 \beamer@sectionintoc {2}{Parameter Estimation in ODE Model}{5}{0}{2}
 \beamer@subsectionintoc {2}{1}{Methodology - least squares error minimisation}{7}{0}{2}
 \beamer@subsectionintoc {2}{2}{Results - Inestimable parameters, model simplifications}{8}{0}{2}
-\beamer@subsectionintoc {2}{3}{Future Work}{16}{0}{2}
+\beamer@subsectionintoc {2}{3}{Future Work}{18}{0}{2}
