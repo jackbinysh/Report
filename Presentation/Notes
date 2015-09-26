@@ -1,0 +1,53 @@
+SLIDE NOTES
+
+
+ --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---
+
+ --- SLIDE 1 - TITLE SCREEN --- 
+
+AIM
+- Synthetic biology is approaching the point where genetic circuitry can be rationally designed. 
+- To this end, mathematical modelling is useful when trying to predict the behaviour of a proposed genetic circuit.
+- Ty[ically these models consist of a set of ODE's with unknown parameters - rate constants etc. - which we would like
+to estimate to charectise the system.
+- In this project, I studied a recently designed genetic circuit, and attempted to estimate parameters in ODE model of it.
+
+Begin by desciribng system and modle, then move on to parameter estimates.
+
+
+  
+--- SLIDE 2 - THE RNA SYSTEM --- 
+ 
+ - Okay, here's the system we study.
+ - In the cell, DNA is copied into an RNA molecule. That RNA is then made, into a protein by a piece of celluar machinery called the Ribosome - a process called translation. Here is a piece of RNA, 
+ denoted mRNA, and a Ribosome attempting to bind
+ to it. *POINT*
+ - Translation can be `self repressed' by the mRNA folding over itself, blocking the site on the RNA where the ribosome binds. You see the tail is folded over the Ribsome binding site, shown in Red.
+ - This self repression can be undone by introducing another small RNA - denoted sRNA *POINT* - which binds to the mRNA, to form a complex, with the RBS uncovered *POINT*
+ - The ribosome is then free to bind and make proteins.
+ - The amount of the small RNA present in the cell can be indirectly controlled by the concentration of a chemical, aTc. We can then force this system by altering aTc concentration
+ 
+ --- SLIDE 3 - ODE MODEL 1 --- 
+
+- Here's a schematic diagram of what I just showed you, and a system of ODE's modelling the first part of it, the hybridization of the sRNA and the mRNA into the complex.
+- its modelled as a two stage process, with mass action kinetics - k_on and k_off modelling the initial hybridization, followed by an irreversible reaction into a stable complex at rate k_hyb
+- In addition, all complexes are given a degradation rate (the deltas), and share a dilution rate due to cell growth, the mu.
+ - the aTc forcing I mentioned happens here, in the y(t) term - this is the systems response to a time varying aTc concentration.
+ - After this complex formation, translation of the complex into proteins occurs. *POINT*
+ 
+--- SLIDE 4 - ODE MODEL 2 --- 
+  
+- The translation step is shown here, modelled by another set of ODE's. Note that in this case the protein is Green fluorescent protein, or GFP.
+- Here we show translation of the complex into immature GFP, modelled by this term in the ODE's *POINT*, which then matures at rate gamma into a mature state, which fluoresces. 
+- This fluorescence can be measured experimentally - this last equation *POINT* simply calibrates the amount of GFP in a cell to a measured fluoresence.
+
+--- SLIDE 4 - Full model, with Parameters to be estimated --- 
+  
+- Okay, so in summary here is our full model, with unknown parameters to be estimated shown in red. Our models state is then composed of s, m, s:m, c, p,g, z.
+  
+--- SLIDE 5 - Recent Experimental Data --- 
+    
+- The data we will use to perform the parameters estimation consists of timeseries of single cell fluorescences - timeseries for z in the previous equations. Cells are periodically forced with a varying
+ aTc concentration *POINT*, and fluorescence in response.
+    
+      --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     --- --- --- --- --- --- ---     

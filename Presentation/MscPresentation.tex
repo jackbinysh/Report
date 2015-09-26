@@ -48,6 +48,7 @@
 \usepackage{xcolor}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \newenvironment{greyedout}{\color{gray}}{\ignorespacesafterend}
+\setbeamercolor{alerted text}{fg = red}
 
 
 \title % (optional, use only with long paper titles)
@@ -152,35 +153,35 @@
 \subsection{ODE Model for system}
 \begin{frame}{ODE Model for system (1) - Complex Formation}{}
 \begin{columns}
-\column{.45\textwidth}
-\includegraphics[trim = 135 0 0 0,clip = true,scale = 0.31]{Figures/schematic_binding}
-\column{.5\textwidth}
+\column{.4\textwidth}
+\includegraphics[trim = 135 0 0 0,clip = true,scale = 0.28]{Figures/schematic_binding}
+\column{.6\textwidth}
   \begin{itemize}
     \item  Hybridization of sRNA \textcolor{blue}{($s$)} and mRNA \textcolor{blue}{($m$)}, into unstable complex \textcolor{blue}{($s:m$)} then stable one \textcolor{blue}{($c$)}.
     \end{itemize}
 \footnotesize
 \begin{align*} 
-\frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \\
-\frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\mu + \delta_{m})m -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m  \\
-\frac{ds:m}{dt} & = k_{\mathrm{on}}sm  - (k_{\mathrm{off}}+ k_{\mathrm{hyb}})s:m  -(\mu + \delta_{sm} )s:m \\
-\frac{dc}{dt} & = k_{\mathrm{hyb}}s:m  -(\mu + \delta_{c})c  \\
+\frac{d\textcolor{blue}{s}}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \\
+\frac{d\textcolor{blue}{m}}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\mu + \delta_{m})m -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m  \\
+\frac{d\textcolor{blue}{s:m}}{dt} & = k_{\mathrm{on}}sm  - (k_{\mathrm{off}}+ k_{\mathrm{hyb}})s:m  -(\mu + \delta_{sm} )s:m \\
+\frac{d\textcolor{blue}{c}}{dt} & = k_{\mathrm{hyb}}s:m  -(\mu + \delta_{c})c  \\
 \end{align*}
 \end{columns}
 \end{frame}
 
 \begin{frame}{ODE Model for system (2) - Translation}{}
 \begin{columns}
-\column{.45\textwidth}
+\column{.4\textwidth}
 \includegraphics[trim = 0 0 0 0,clip = true,scale = 0.31]{Figures/schematic_translation}
-\column{.5\textwidth}
+\column{.6\textwidth}
   \begin{itemize}
     \item Translation of stable complex \textcolor{blue}{($c$)} into immature GFP \textcolor{blue}{($p$)}. 
     \item maturation of GFP \textcolor{blue}{($g$)}, machine calibration giving measured fluorescence ($z$).
     \end{itemize}
 \footnotesize
 \begin{align*} 
-\frac{dp}{dt} & = \beta m +f_{s}\beta c -(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
-\frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
+\frac{d\textcolor{blue}{p}}{dt} & = \beta m +f_{s}\beta c -(\gamma + \mu + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
+\frac{d\textcolor{blue}{g}}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
 z &= z_{0} +\frac{g}{\Theta} 
 \end{align*}
 \end{columns}
@@ -194,7 +195,12 @@ z &= z_{0} +\frac{g}{\Theta}
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
 \frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
 \frac{ds:m}{dt} & = \alert{k_{\mathrm{on}}}sm  - (\alert{k_{\mathrm{off}}}+ \alert{k_{\mathrm{hyb}}})s:m  -(\alert{\mu} + \alert{\delta_{m}} )s:m \\
-\frac{dc}{dt} & = \alert{k_{\mathrm{hyb}}}s:m  -(\alert{\mu} + \alert{\delta_{m}})c  \\
+\frac{dc}{dt} & = \alert{k_{\mathrm{hyb}}}s:m  -(\alert{\mu} + \alert{\delta_{m}})c  
+\end{align}
+\begin{center}
+\rule{0.5\textwidth}{.4pt}
+\end{center}
+\begin{align}
 \frac{dp}{dt} & = \alert{\beta} m +\alert{f_{s}}\beta c -(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
 \frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
 z &= z_{0} +\frac{g}{\alert{\Theta}} 
@@ -245,14 +251,14 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 
 
 \begin{frame}{Initial Estimation Results}
-  \includegraphics[scale = 0.25, clip = true, trim = 0 0 0 0]{Figures/13_9_hist}
+  \includegraphics[scale = 0.28, clip = true, trim = 130 0 0 0]{Figures/13_9_hist}
         \begin{itemize}
     \item Many parameters poorly estimated.
             \end{itemize}
 \end{frame}
 
 \begin{frame}{Sensitivity Analysis}
-  \includegraphics[scale = 0.2, clip = true, trim = 00 0 0 0]{Figures/Sensitivty_scaled_other}
+  \includegraphics[scale = 0.25, clip = true, trim = 00 0 0 0]{Figures/Sensitivty_scaled_other}
   \vspace{-2mm}
           \begin{itemize}
     \item Sensitivity analysis suggests perturbations of several parameters all give similar effects on model output - \alert{hard to resolve}
@@ -260,15 +266,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{frame}
 
 \begin{frame}{Model output for all state variables}
-  \includegraphics[scale = 0.25, clip = true, trim = 30 0 0 0]{Figures/model_output}
-\end{frame}
-
-\begin{frame}{Model fixed point for estimated parameters}
-  \includegraphics[scale = 0.24, clip = true, trim = 0 0 0 0]{../Figures/fixedpoint_f}
-\begin{itemize}
-	\item Similar fixed point values of translation forcing term, ${\beta} m +{f_{s}}\beta c$, across estimated parameter sets.
-	\item Suggests translation may be rate limiting step.
-\end{itemize}
+  \includegraphics[scale = 0.29, clip = true, trim = 0 0 0 0]{Figures/model_output}
 \end{frame}
 
 \small
@@ -327,7 +325,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 
 
 \begin{frame}{Simplified Model Results (1)}
-  \includegraphics[scale = 0.28, clip = true, trim = 100 0 0 400]{../Figures/13_9_hist_simplified}
+  \includegraphics[scale = 0.29, clip = true, trim = 100 0 0 400]{Figures/13_9_hist_simplified}
   \begin{itemize}
 \item  Error values as low as full model
 \item Clearer parameter estimation results
@@ -336,7 +334,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{frame}
 
 \begin{frame}{Simplified Model Results (2)}
-  \includegraphics[scale = 0.25, clip = true, trim = 0 0 0 0]{Figures/Likelihood_rough_presentation}
+  \includegraphics[scale = 0.26, clip = true, trim = 40 0 0 0]{Figures/Likelihood_rough_presentation}
     \begin{itemize}
 \item  Error landscape, $\Theta = 5400$.
 \end{itemize}
@@ -367,3 +365,11 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{document}
 
 
+
+\begin{frame}{Model fixed point for estimated parameters}
+  \includegraphics[scale = 0.24, clip = true, trim = 0 0 0 0]{../Figures/fixedpoint_f}
+\begin{itemize}
+	\item Similar fixed point values of translation forcing term, ${\beta} m +{f_{s}}\beta c$, across estimated parameter sets.
+	\item Suggests translation may be rate limiting step.
+\end{itemize}
+\end{frame}
