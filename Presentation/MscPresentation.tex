@@ -117,22 +117,17 @@
 \end{frame}
 
 
-% Structuring a talk is a difficult task and the following structure
-% may not be suitable. Here are some rules that apply for this
-% solution: 
-
-% - Exactly two or three sections (other than the summary).
-% - At *most* three subsections per section.
-% - Talk about 30s to 2min per frame. So there should be between about
-%   15 and 30 frames, all told.
-
-% - A conference audience is likely to know very little of what you
-%   are going to talk about. So *simplify*!
-% - In a 20min talk, getting the main ideas across is hard
-%   enough. Leave out details, even if it means being less precise than
-%   you think necessary.
-% - If you omit details that are vital to the proof/implementation,
-%   just say so once. Everybody will be happy with that.
+\begin{frame}{Objectives}{}
+  \begin{itemize}
+    \item  Rational design of genetic circuits now possible
+      \begin{itemize}
+      \item ODE models used for prediction.
+      \item Model parameters unknown.
+      \end{itemize}
+    \item Project studied a recently designed genetic circuit, attempted parameter estimation.
+    \item Parameter estimates would inform future design/experiments.
+        \end{itemize}
+\end{frame}
 
 \section{Description of RNA system}
 
@@ -140,24 +135,25 @@
   % - A title should summarize the slide in an understandable fashion
   %   for anyone how does not follow everything on the slide itself.
   \begin{center}
-  \includegraphics[trim = 0 0 0 30,clip = true,scale = 0.275]{Figures/schematic_initial.png}
+  \includegraphics[trim = 370 0 0 200,clip = true,scale = 0.4]{Figures/schematic_initial_with_forcing.png}
   \end{center}
 
   \begin{itemize}
     \item  mRNA produced `self repressed'  - tail folded over the RBS
     \item  sRNA binds to it - new complex has RBS uncovered.
+    \item Complex translated into proteins.
     \end{itemize}
 \end{frame}
 
 
 \subsection{ODE Model for system}
-\begin{frame}{ODE Model for system (1) - Complex Formation}{}
+\begin{frame}{ODE model for system (1) - Binding step}{}
 \begin{columns}
 \column{.4\textwidth}
 \includegraphics[trim = 135 0 0 0,clip = true,scale = 0.28]{Figures/schematic_binding}
 \column{.6\textwidth}
   \begin{itemize}
-    \item  Hybridization of sRNA \textcolor{blue}{($s$)} and mRNA \textcolor{blue}{($m$)}, into unstable complex \textcolor{blue}{($s:m$)} then stable one \textcolor{blue}{($c$)}.
+    \item  Binding of sRNA \textcolor{blue}{($s$)} and mRNA \textcolor{blue}{($m$)}, into unstable complex \textcolor{blue}{($s:m$)} then stable one \textcolor{blue}{($c$)}.
     \end{itemize}
 \footnotesize
 \begin{align*} 
@@ -169,7 +165,7 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{ODE Model for system (2) - Translation}{}
+\begin{frame}{ODE model for system (2) - Translation step}
 \begin{columns}
 \column{.4\textwidth}
 \includegraphics[trim = 0 0 0 0,clip = true,scale = 0.31]{Figures/schematic_translation}
@@ -190,7 +186,7 @@ z &= z_{0} +\frac{g}{\Theta}
 \section{Parameter Estimation in ODE Model}
 
 \small
-\begin{frame}{Full model, with Parameters to be estimated}
+\begin{frame}{Full model, with parameters to be estimated}
 \begin{align} 
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
 \frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
@@ -208,18 +204,8 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{frame}
 \normalsize
 
-\begin{frame}{Recent Experimental Data}{}
-\begin{columns}
-\column{.49\textwidth}
-\begin{figure}
-   \includegraphics[trim = 10 300 270 290,clip = true,scale = 0.55]{Figures/13_9}
-\end{figure}
-\column{.49\textwidth}
-\vspace{-5mm}
-\begin{figure}
-   \includegraphics[trim = 0 40 0 0 ,page=21 ,clip = true, scale=0.23]{Figures/WCPM_Warwick-talk45-220115.pdf}
-\end{figure}
-\end{columns}
+\begin{frame}{Recent experimental data}{}
+   \includegraphics[trim = 0 300 0 300,clip = true,scale = 0.55]{Figures/13_9}
   \begin{itemize}
     \item Single cell fluoresence time series data (Jaramillo Lab, unpublished).
     \item  Data records $z= z_{0} +\frac{g}{\alert{\Theta}} $
@@ -229,7 +215,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 
 \subsection{Methodology - least squares error minimisation}
 
-\begin{frame}{Method for Parameter Estimation in ODE Model}
+\begin{frame}{Method for parameter estimation in ODE model}
   \begin{block}{Goal}
  Estimate unknown parameters in model using time series data.
     \end{block}
@@ -239,38 +225,71 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
     \begin{align*}
 \argmin_{\boldsymbol{\theta}} \sum_{i =1}^{n} (z_{\mathrm{exp, mean}}(t_{i}) - z(t_{i},\boldsymbol{\theta}))^2.
 \end{align*}
-\item Used evolutionary algorithm, CMA-ES, to perform minimisation.
+\item Used evolutionary algorithm to perform minimisation.
     \end{itemize}
 \end{frame}
 
 \subsection{Results - Inestimable parameters, model simplifications}
 
-\begin{frame}{Initial Estimation Results}
+\begin{frame}{Initial estimation results}
   \includegraphics[scale = 0.28, clip = true, trim = 80 0 0 0]{Figures/13_9_bestPlot}
 \end{frame}
 
 
-\begin{frame}{Initial Estimation Results}
-  \includegraphics[scale = 0.28, clip = true, trim = 130 0 0 0]{Figures/13_9_hist}
+\begin{frame}{Initial estimation results}
+  \includegraphics[scale = 0.27, clip = true, trim = 130 0 0 50]{Figures/13_9_hist}
+  \vspace{-10mm}
         \begin{itemize}
+    \item Similar error values for all results.
     \item Many parameters poorly estimated.
             \end{itemize}
 \end{frame}
 
-\begin{frame}{Sensitivity Analysis}
+\begin{frame}{Sensitivity analysis}
+\begin{columns}
+\column{.4\textwidth}
+ \LARGE
+\begin{align*}
+S_{ij} =  \frac{\partial z}{ \partial \theta_{j}}\Bigr|_{t_{i}}
+\end{align*}
+\normalsize
+\column{.59\textwidth}
+Perturbations of parameters all give similar effects on model output - \alert{hard to distinguish}
+\end{columns}
   \includegraphics[scale = 0.25, clip = true, trim = 00 0 0 0]{Figures/Sensitivty_scaled_other}
-  \vspace{-2mm}
-          \begin{itemize}
-    \item Sensitivity analysis suggests perturbations of several parameters all give similar effects on model output - \alert{hard to resolve}
-            \end{itemize}
 \end{frame}
 
-\begin{frame}{Model output for all state variables}
-  \includegraphics[scale = 0.29, clip = true, trim = 0 0 0 0]{Figures/model_output}
-\end{frame}
 
 \small
-\begin{frame}{Full model again}
+\begin{frame}{Full model, with parameters to be estimated}
+\begin{align*} 
+\frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
+\frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
+\frac{ds:m}{dt} & = \alert{k_{\mathrm{on}}}sm  - (\alert{k_{\mathrm{off}}}+ \alert{k_{\mathrm{hyb}}})s:m  -(\alert{\mu} + \alert{\delta_{m}} )s:m \\
+\frac{dc}{dt} & = \alert{k_{\mathrm{hyb}}}s:m  -(\alert{\mu} + \alert{\delta_{m}})c  
+\end{align*}
+\begin{center}
+\rule{0.5\textwidth}{.4pt}
+\end{center}
+\begin{align*}
+\frac{dp}{dt} & = \alert{\beta} m +\alert{f_{s}}\beta c -(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
+\frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
+z &= z_{0} +\frac{g}{\alert{\Theta}} 
+\end{align*}
+\end{frame}
+\normalsize
+
+
+\begin{frame}{Model output for all state variables}
+  \includegraphics[scale = 0.26, clip = true, trim = 0 0 0 0]{Figures/model_output}
+  \begin{itemize}
+    \item $s,m,s:m,c$ \alert{(binding step)} respond instantly to forcing.
+    \item $p, z$ \alert{(translation step)} on timescale of forcing.
+\end{itemize}
+\end{frame}
+
+\footnotesize
+\begin{frame}{Translation rate limiting}
 \begin{align*} 
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\alert{\mu} + \alert{\delta_{s}})s -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m \\
 \frac{dm}{dt} &=  \frac{N\alpha_{L}}{f_{L}}x(t)-(\alert{\mu} + \alert{\delta_{m}})m -\alert{k_{\mathrm{on}}}sm +\alert{k_{\mathrm{off}}}s:m  \\
@@ -285,11 +304,18 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \frac{dg}{dt} & = \gamma p - (\alert{\mu} + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g} \\
 z &= z_{0} +\frac{g}{\alert{\Theta}} 
 \end{align*}
-\end{frame}
 \normalsize
+\vspace{-5mm}
+  \begin{itemize}
+  \item Binding equations respond instantly.
+    \item $ \alert{\beta} m +\alert{f_{s}}\beta c $ term links binding and translation. It flips between fixed point values.
+    \item All parameters `upstream' have identical effects.
+\end{itemize}
+\end{frame}
+
 
 \small
-\begin{frame}{Simplified Model}
+\begin{frame}{Simplified model}
 \begin{greyedout}
 \begin{align*} 
 \frac{ds}{dt} &= \frac{N\alpha_{T}}{f_{T}} y(t)-(\mu + \delta_{s})s -k_{\mathrm{on}}sm +k_{\mathrm{off}}s:m \\
@@ -311,7 +337,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 
 
 
-\begin{frame}{Simplified Model}
+\begin{frame}{Simplified model}
 \begin{align}
 \frac{dp}{dt} & = \alert{F}y(t)-(\gamma + \alert{\mu} + \delta_{g})p - \frac{v_{z}p}{K_{z}+p+g}   \\
 \frac{dg}{dt} & = \gamma p - (\mu + \delta_{g})g - \frac{v_{z}g}{K_{z}+p+g}  \\
@@ -324,7 +350,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{frame}
 
 
-\begin{frame}{Simplified Model Results (1)}
+\begin{frame}{Simplified model results (1)}
   \includegraphics[scale = 0.29, clip = true, trim = 100 0 0 400]{Figures/13_9_hist_simplified}
   \begin{itemize}
 \item  Error values as low as full model
@@ -333,7 +359,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Simplified Model Results (2)}
+\begin{frame}{Simplified model results (2)}
   \includegraphics[scale = 0.26, clip = true, trim = 40 0 0 0]{Figures/Likelihood_rough_presentation}
     \begin{itemize}
 \item  Error landscape, $\Theta = 5400$.
@@ -343,23 +369,23 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \subsection{Future Work}
 
 
-\begin{frame}{Future Work}
-
-  % Keep the summary *very short*.
+\begin{frame}{Future work}
   \begin{itemize}
   \item Fluorescence data \alert {not enough} to estimate all unknown parameters 
-  \begin{itemize}
-  \item Further experiments ?
-  \item Bounds on unknown parameter values.
-  \end{itemize} 
-  \item Improve modelling of translation step
+  \item Further experiments needed - observe fast timescale.
+  \item Investigate methods of McAuley et al. 
   \item Change methodology - Bayesian Methods?
-
   \end{itemize}
-  
   \end{frame}
   
-  \section*{Summary}
+  \begin{frame}{Acknowledgements}
+  \begin{itemize}
+  \item Manish Kushawaha, Jaramillo Lab - School of Life Sciences
+  \item Shenshi Shen, Boris Kisov for data.
+  \item Annabelle Ballesta - Systems Biology
+  \end{itemize}
+  \end{frame}
+  
 
 
 \end{document}
@@ -373,3 +399,23 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 	\item Suggests translation may be rate limiting step.
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Recent Experimental Data}{}
+\begin{columns}
+\column{.49\textwidth}
+\begin{figure}
+   \includegraphics[trim = 10 300 270 290,clip = true,scale = 0.55]{Figures/13_9}
+\end{figure}
+\column{.49\textwidth}
+\vspace{-5mm}
+\begin{figure}
+   \includegraphics[trim = 0 40 0 0 ,page=21 ,clip = true, scale=0.23]{Figures/WCPM_Warwick-talk45-220115.pdf}
+\end{figure}
+\end{columns}
+  \begin{itemize}
+    \item Single cell fluoresence time series data (Jaramillo Lab, unpublished).
+    \item  Data records $z= z_{0} +\frac{g}{\alert{\Theta}} $
+    \end{itemize}
+\end{frame}
+
+

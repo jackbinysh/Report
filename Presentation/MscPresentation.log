@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  25 SEP 2015 18:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.17)  28 SEP 2015 15:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -969,112 +969,111 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 117.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Figures/schematic_initial.png, id=66, 781.2973pt x 584.80103pt>
-File: Figures/schematic_initial.png Graphic file (type png)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-<use Figures/schematic_initial.png>
-Package pdftex.def Info: Figures/schematic_initial.png used on input line 150.
-(pdftex.def)             Requested size: 214.85146pt x 152.53555pt.
- [2
+]
+<Figures/schematic_initial_with_forcing.png, id=93, 1186.07115pt x 638.385pt>
+File: Figures/schematic_initial_with_forcing.png Graphic file (type png)
 
- <./Figures/schematic_initial.png>]
-<Figures/schematic_binding.pdf, id=99, 794.97pt x 614.295pt>
-File: Figures/schematic_binding.pdf Graphic file (type pdf)
+<use Figures/schematic_initial_with_forcing.png>
+Package pdftex.def Info: Figures/schematic_initial_with_forcing.png used on inp
+ut line 146.
+(pdftex.def)             Requested size: 325.86732pt x 175.05069pt.
 
-<use Figures/schematic_binding.pdf>
-Package pdftex.def Info: Figures/schematic_binding.pdf used on input line 170.
-(pdftex.def)             Requested size: 184.6485pt x 172.00142pt.
-
-Overfull \hbox (61.73444pt too wide) in paragraph at lines 170--170
-[][]  
+Overfull \hbox (18.57745pt too wide) in paragraph at lines 146--146
+ [] 
  []
 
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 170.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 170.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-Overfull \hbox (23.54437pt too wide) in paragraph at lines 170--170
-[]  
+
+Overfull \vbox (1.34647pt too high) detected at line 146
  []
 
 [3
 
- <./Figures/schematic_binding.pdf>]
-<Figures/schematic_translation.png, id=148, 431.46269pt x 561.33296pt>
-File: Figures/schematic_translation.png Graphic file (type png)
+ <./Figures/schematic_initial_with_forcing.png>]
+<Figures/schematic_binding.pdf, id=125, 794.97pt x 614.295pt>
+File: Figures/schematic_binding.pdf Graphic file (type pdf)
 
-<use Figures/schematic_translation.png>
-Package pdftex.def Info: Figures/schematic_translation.png used on input line 1
-88.
-(pdftex.def)             Requested size: 133.75204pt x 174.01141pt.
+<use Figures/schematic_binding.pdf>
+Package pdftex.def Info: Figures/schematic_binding.pdf used on input line 166.
+(pdftex.def)             Requested size: 184.6485pt x 172.00142pt.
 
-Overfull \hbox (10.83798pt too wide) in paragraph at lines 188--188
+Overfull \hbox (61.73444pt too wide) in paragraph at lines 166--166
 [][]  
  []
 
-
-Overfull \hbox (5.69508pt too wide) in paragraph at lines 188--188
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 166.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 166.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+Overfull \hbox (23.54437pt too wide) in paragraph at lines 166--166
 []  
  []
 
 [4
 
+ <./Figures/schematic_binding.pdf>]
+<Figures/schematic_translation.png, id=174, 431.46269pt x 561.33296pt>
+File: Figures/schematic_translation.png Graphic file (type png)
+
+<use Figures/schematic_translation.png>
+Package pdftex.def Info: Figures/schematic_translation.png used on input line 1
+84.
+(pdftex.def)             Requested size: 133.75204pt x 174.01141pt.
+
+Overfull \hbox (10.83798pt too wide) in paragraph at lines 184--184
+[][]  
+ []
+
+
+Overfull \hbox (5.69508pt too wide) in paragraph at lines 184--184
+[]  
+ []
+
+[5
+
  <./Figures/schematic_translation.png>]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 208.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 204.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 208.
- [5
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 204.
+ [6
 
 ]
-<Figures/13_9.pdf, id=204, 597.50829pt x 845.0471pt>
+<Figures/13_9.pdf, id=230, 597.50829pt x 845.0471pt>
 File: Figures/13_9.pdf Graphic file (type pdf)
  <use Figures/13_9.pdf>
-Package pdftex.def Info: Figures/13_9.pdf used on input line 227.
-(pdftex.def)             Requested size: 174.05222pt x 139.05865pt.
+Package pdftex.def Info: Figures/13_9.pdf used on input line 213.
+(pdftex.def)             Requested size: 328.63057pt x 133.53801pt.
 
-Overfull \hbox (23.4785pt too wide) in paragraph at lines 227--227
- [] 
+Overfull \hbox (21.3407pt too wide) in paragraph at lines 213--213
+[][][]  
  []
 
+[7
 
-<Figures/WCPM_Warwick-talk45-220115.pdf, id=206, page=21, 845.1575pt x 597.2312
-5pt>
-File: Figures/WCPM_Warwick-talk45-220115.pdf Graphic file (type pdf)
- <use Figures/WCPM_Warwick-talk45-220115.pdf, page 21>
-Package pdftex.def Info: Figures/WCPM_Warwick-talk45-220115.pdf, page21 used on
- input line 227.
-(pdftex.def)             Requested size: 194.38213pt x 128.12596pt.
-
-Overfull \hbox (43.80841pt too wide) in paragraph at lines 227--227
- [] 
- []
-
-[6
-
- <./Figures/13_9.pdf> <./Figures/WCPM_Warwick-talk45-220115.pdf>]
+ <./Figures/13_9.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <6> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 244.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 230.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <6> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 244.
- [7
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 230.
+ [8
 
 ]
 Package epstopdf Info: Source file: <Figures/13_9_bestPlot.eps>
@@ -1086,82 +1085,84 @@ Package epstopdf Info: Source file: <Figures/13_9_bestPlot.eps>
 (epstopdf)                    size: 44911 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/13_9_bestPlot-eps-
 converted-to.pdf Figures/13_9_bestPlot.eps>
-(epstopdf)             \includegraphics on input line 250.
+(epstopdf)             \includegraphics on input line 236.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/13_9_bestPlot-eps-converted-to.pdf, id=322, 1328.965pt x 736.7525pt>
+<Figures/13_9_bestPlot-eps-converted-to.pdf, id=308, 1328.965pt x 736.7525pt>
 File: Figures/13_9_bestPlot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/13_9_bestPlot-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/13_9_bestPlot-eps-converted-to.pdf used on inp
-ut line 250.
+ut line 236.
 (pdftex.def)             Requested size: 349.62376pt x 206.28929pt.
 
-Overfull \hbox (42.3339pt too wide) in paragraph at lines 250--250
+Overfull \hbox (42.3339pt too wide) in paragraph at lines 236--236
 [][]  
- []
-
-[8
-
- <./Figures/13_9_bestPlot-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <Figures/13_9_hist.eps>
-(epstopdf)                    date: 2015-09-25 15:01:38
-(epstopdf)                    size: 240246 bytes
-(epstopdf)             Output file: <Figures/13_9_hist-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-09-25 15:01:44
-(epstopdf)                    size: 18580 bytes
-(epstopdf)             Command: <repstopdf --outfile=Figures/13_9_hist-eps-conv
-erted-to.pdf Figures/13_9_hist.eps>
-(epstopdf)             \includegraphics on input line 258.
-Package epstopdf Info: Output file is already uptodate.
-
-<Figures/13_9_hist-eps-converted-to.pdf, id=356, 1378.14874pt x 827.09pt>
-File: Figures/13_9_hist-eps-converted-to.pdf Graphic file (type pdf)
-
-<use Figures/13_9_hist-eps-converted-to.pdf>
-Package pdftex.def Info: Figures/13_9_hist-eps-converted-to.pdf used on input l
-ine 258.
-(pdftex.def)             Requested size: 349.34268pt x 231.58362pt.
-
-Overfull \hbox (42.05281pt too wide) in paragraph at lines 258--258
-[][][]  
- []
-
-
-Overfull \vbox (1.07938pt too high) detected at line 258
  []
 
 [9
 
- <./Figures/13_9_hist-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <Figures/Sensitivty_scaled_other.eps>
-(epstopdf)                    date: 2015-09-23 22:31:13
-(epstopdf)                    size: 258771 bytes
-(epstopdf)             Output file: <Figures/Sensitivty_scaled_other-eps-conver
-ted-to.pdf>
-(epstopdf)                    date: 2015-09-23 22:32:37
-(epstopdf)                    size: 37586 bytes
-(epstopdf)             Command: <repstopdf --outfile=Figures/Sensitivty_scaled_
-other-eps-converted-to.pdf Figures/Sensitivty_scaled_other.eps>
-(epstopdf)             \includegraphics on input line 266.
+ <./Figures/13_9_bestPlot-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <Figures/13_9_hist.eps>
+(epstopdf)                    date: 2015-09-28 15:15:51
+(epstopdf)                    size: 311215 bytes
+(epstopdf)             Output file: <Figures/13_9_hist-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 15:17:56
+(epstopdf)                    size: 16079 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figures/13_9_hist-eps-conv
+erted-to.pdf Figures/13_9_hist.eps>
+(epstopdf)             \includegraphics on input line 246.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/Sensitivty_scaled_other-eps-converted-to.pdf, id=394, 1328.965pt x 736
-.7525pt>
-File: Figures/Sensitivty_scaled_other-eps-converted-to.pdf Graphic file (type p
-df)
- <use Figures/Sensitivty_scaled_other-eps-converted-to.pdf>
-Package pdftex.def Info: Figures/Sensitivty_scaled_other-eps-converted-to.pdf u
-sed on input line 266.
-(pdftex.def)             Requested size: 332.24043pt x 184.18767pt.
+<Figures/13_9_hist-eps-converted-to.pdf, id=343, 1328.965pt x 736.7525pt>
+File: Figures/13_9_hist-eps-converted-to.pdf Graphic file (type pdf)
 
-Overfull \hbox (24.95056pt too wide) in paragraph at lines 266--266
+<use Figures/13_9_hist-eps-converted-to.pdf>
+Package pdftex.def Info: Figures/13_9_hist-eps-converted-to.pdf used on input l
+ine 246.
+(pdftex.def)             Requested size: 323.59317pt x 185.37498pt.
+
+Overfull \hbox (16.3033pt too wide) in paragraph at lines 246--246
 [][] 
  []
 
 [10
 
- <./Figures/Sensitivty_scaled_other-eps-converted-to.pdf>]
+ <./Figures/13_9_hist-eps-converted-to.pdf>]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <17.28> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 260.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 260.
+Package epstopdf Info: Source file: <Figures/Sensitivty_scaled_other.eps>
+(epstopdf)                    date: 2015-09-28 15:18:51
+(epstopdf)                    size: 418472 bytes
+(epstopdf)             Output file: <Figures/Sensitivty_scaled_other-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2015-09-28 15:19:00
+(epstopdf)                    size: 39695 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figures/Sensitivty_scaled_
+other-eps-converted-to.pdf Figures/Sensitivty_scaled_other.eps>
+(epstopdf)             \includegraphics on input line 260.
+Package epstopdf Info: Output file is already uptodate.
+
+<Figures/Sensitivty_scaled_other-eps-converted-to.pdf, id=384, 1328.965pt x 736
+.7525pt>
+File: Figures/Sensitivty_scaled_other-eps-converted-to.pdf Graphic file (type p
+df)
+ <use Figures/Sensitivty_scaled_other-eps-converted-to.pdf>
+Package pdftex.def Info: Figures/Sensitivty_scaled_other-eps-converted-to.pdf u
+sed on input line 260.
+(pdftex.def)             Requested size: 332.24043pt x 184.18767pt.
+
+Overfull \hbox (24.95056pt too wide) in paragraph at lines 260--260
+[][]  
+ []
+
+[11
+
+ <./Figures/Sensitivty_scaled_other-eps-converted-to.pdf>] [12
+
+]
 Package epstopdf Info: Source file: <Figures/model_output.eps>
 (epstopdf)                    date: 2015-09-25 13:24:23
 (epstopdf)                    size: 266341 bytes
@@ -1171,27 +1172,22 @@ Package epstopdf Info: Source file: <Figures/model_output.eps>
 (epstopdf)                    size: 48000 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/model_output-eps-c
 onverted-to.pdf Figures/model_output.eps>
-(epstopdf)             \includegraphics on input line 270.
+(epstopdf)             \includegraphics on input line 289.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/model_output-eps-converted-to.pdf, id=427, 1153.30875pt x 693.59125pt>
+<Figures/model_output-eps-converted-to.pdf, id=453, 1153.30875pt x 693.59125pt>
 File: Figures/model_output-eps-converted-to.pdf Graphic file (type pdf)
 <use Figures/model_output-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/model_output-eps-converted-to.pdf used on inpu
-t line 270.
-(pdftex.def)             Requested size: 334.45097pt x 201.1363pt.
+t line 289.
+(pdftex.def)             Requested size: 299.8532pt x 180.32947pt.
+ [13
 
-Overfull \hbox (27.1611pt too wide) in paragraph at lines 270--270
-[][]  
- []
+ <./Figures/model_output-eps-converted-to.pdf>] [14
 
-[11
+] [15
 
- <./Figures/model_output-eps-converted-to.pdf>] [12
-
-] [13
-
-] [14
+] [16
 
 ]
 Package epstopdf Info: Source file: <Figures/13_9_hist_simplified.eps>
@@ -1203,23 +1199,23 @@ Package epstopdf Info: Source file: <Figures/13_9_hist_simplified.eps>
 (epstopdf)                    size: 8074 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/13_9_hist_simplifi
 ed-eps-converted-to.pdf Figures/13_9_hist_simplified.eps>
-(epstopdf)             \includegraphics on input line 334.
+(epstopdf)             \includegraphics on input line 360.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/13_9_hist_simplified-eps-converted-to.pdf, id=537, 1328.965pt x 736.75
+<Figures/13_9_hist_simplified-eps-converted-to.pdf, id=563, 1328.965pt x 736.75
 25pt>
 File: Figures/13_9_hist_simplified-eps-converted-to.pdf Graphic file (type pdf)
 
  <use Figures/13_9_hist_simplified-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/13_9_hist_simplified-eps-converted-to.pdf used
- on input line 334.
+ on input line 360.
 (pdftex.def)             Requested size: 356.2819pt x 97.22044pt.
 
-Overfull \hbox (48.99203pt too wide) in paragraph at lines 334--334
+Overfull \hbox (48.99203pt too wide) in paragraph at lines 360--360
 [][][]  
  []
 
-[15
+[17
 
  <./Figures/13_9_hist_simplified-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/Likelihood_rough_presentation.eps>
@@ -1232,26 +1228,29 @@ converted-to.pdf>
 (epstopdf)                    size: 48738 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/Likelihood_rough_p
 resentation-eps-converted-to.pdf Figures/Likelihood_rough_presentation.eps>
-(epstopdf)             \includegraphics on input line 341.
+(epstopdf)             \includegraphics on input line 367.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/Likelihood_rough_presentation-eps-converted-to.pdf, id=569, 1328.965pt
+<Figures/Likelihood_rough_presentation-eps-converted-to.pdf, id=595, 1328.965pt
  x 736.7525pt>
 File: Figures/Likelihood_rough_presentation-eps-converted-to.pdf Graphic file (
 type pdf)
 
 <use Figures/Likelihood_rough_presentation-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/Likelihood_rough_presentation-eps-converted-to
-.pdf used on input line 341.
+.pdf used on input line 367.
 (pdftex.def)             Requested size: 335.08397pt x 191.55113pt.
 
-Overfull \hbox (27.7941pt too wide) in paragraph at lines 341--341
+Overfull \hbox (27.7941pt too wide) in paragraph at lines 367--367
 [][][]  
  []
 
-[16
+[18
 
- <./Figures/Likelihood_rough_presentation-eps-converted-to.pdf>] [17
+ <./Figures/Likelihood_rough_presentation-eps-converted-to.pdf>] [19
+
+]
+[20
 
 ]
 \tf@nav=\write7
@@ -1263,44 +1262,45 @@ Overfull \hbox (27.7941pt too wide) in paragraph at lines 341--341
 \tf@snm=\write9
 \openout9 = `MscPresentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
-
-(./MscPresentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 365.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 391.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 391.
+ (./MscPresentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 391.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 391.
 Package rerunfilecheck Info: File `MscPresentation.out' has not changed.
-(rerunfilecheck)             Checksum: 82119C172C40525B9F63BB79932C006F;457.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 365.
+(rerunfilecheck)             Checksum: B321D1EAFBDAE0A491F170D624E41BC6;457.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 391.
  ) 
 Here is how much of TeX's memory you used:
- 19017 strings out of 495028
- 353005 string characters out of 6181497
- 440542 words of memory out of 5000000
- 21685 multiletter control sequences out of 15000+600000
- 86307 words of font info for 106 fonts, out of 8000000 for 9000
+ 19048 strings out of 495028
+ 353287 string characters out of 6181497
+ 441542 words of memory out of 5000000
+ 21706 multiletter control sequences out of 15000+600000
+ 100470 words of font info for 125 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 50i,14n,53p,404b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,16n,53p,404b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmr8a.pfb>
-Output written on MscPresentation.pdf (17 pages, 2514745 bytes).
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/times/utmr8a.pfb>
+Output written on MscPresentation.pdf (20 pages, 1705333 bytes).
 PDF statistics:
- 692 PDF objects out of 1000 (max. 8388607)
- 589 compressed objects within 6 object streams
- 41 named destinations out of 1000 (max. 500000)
- 212 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 750 PDF objects out of 1000 (max. 8388607)
+ 650 compressed objects within 7 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
