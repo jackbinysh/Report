@@ -119,12 +119,14 @@
 
 \begin{frame}{Objectives}{}
   \begin{itemize}
+  \item Goal in synthetic biology - manipulate natural cellular machinery
     \item  Rational design of genetic circuits now possible
       \begin{itemize}
       \item ODE models used for prediction.
       \item Model parameters unknown.
       \end{itemize}
-    \item Project studied a recently designed genetic circuit, attempted parameter estimation.
+    \item Project studied a recently designed genetic circuit 
+    \item \textcolor{blue}{Aim}: use \textcolor{blue}{ODE model} with \textcolor{blue}{recent data} to perform \textcolor{blue}{parameter estimation}.
     \item Parameter estimates would inform future design/experiments.
         \end{itemize}
 \end{frame}
@@ -237,7 +239,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 
 
 \begin{frame}{Initial estimation results}
-  \includegraphics[scale = 0.27, clip = true, trim = 130 0 0 50]{Figures/13_9_hist}
+  \includegraphics[scale = 0.27, clip = true, trim = 100 0 0 40]{Figures/13_9_hist}
   \vspace{-10mm}
         \begin{itemize}
             \item Many parameters poorly estimated.
@@ -351,7 +353,7 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 
 
 \begin{frame}{Simplified model results (1)}
-  \includegraphics[scale = 0.29, clip = true, trim = 100 0 0 400]{Figures/13_9_hist_simplified}
+  \includegraphics[scale = 0.29, clip = true, trim = 70 0 0 400]{Figures/13_9_hist_simplified}
   \begin{itemize}
 \item  Error values as low as full model
 \item Clearer parameter estimation results
@@ -369,12 +371,21 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 \subsection{Future Work}
 
 
-\begin{frame}{Future work}
+\begin{frame}{Conclusions and further work}
   \begin{itemize}
   \item Fluorescence data \alert {not enough} to estimate all unknown parameters 
+  \begin{itemize}
+  \item Simplified model not helpful in estimating original parameters.
+  \end{itemize}
+  \end{itemize}
+To get these parameters ...
+  \begin{itemize}
   \item Further experiments needed - observe fast timescale.
-  \item Investigate methods of McAuley et al. 
-  \item Change methodology - Bayesian Methods?
+  \item Improve methodology
+    \begin{itemize}
+    \item Algorithms for dealing with complex chemical models \& limited data.
+    \item Bayesian Methods
+      \end{itemize}
   \end{itemize}
   \end{frame}
   
@@ -388,18 +399,11 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
     
   \begin{frame}{Additional Slides}
   \Huge
-  \begin{itemize}
-  \item Additional Slides
-  \end{itemize}
+	Additional Slides
+	\normalsize
   \end{frame}
   
   
-
-
-\end{document}
-
-
-
 \begin{frame}{Model fixed point for estimated parameters}
   \includegraphics[scale = 0.24, clip = true, trim = 0 0 0 0]{../Figures/fixedpoint_f}
 \begin{itemize}
@@ -407,6 +411,12 @@ z &= z_{0} +\frac{g}{\alert{\Theta}}
 	\item Suggests translation may be rate limiting step.
 \end{itemize}
 \end{frame}
+
+\end{document}
+
+
+
+
 
 \begin{frame}{Recent Experimental Data}{}
 \begin{columns}
